@@ -1,0 +1,414 @@
+
+\subsection{Creación y ejecución de la gráfica de TensorFlow}
+\label{\detokenize{model_desc:creacion-y-ejecucion-de-la-grafica-de-tensorflow}}
+Para la implementación de la CNN en TensorFlow
+se utilizó una clase que representara una
+arquitectura. Esto fue para que experimentar con
+una estructura y parámetros diferentes sólo
+implicara instaciar un objeto de la clase.
+La clase se llama \sphinxcode{\sphinxupquote{CNNClassifierLAR}} y
+está dentro del módulo {\hyperref[\detokenize{model_desc:module-cnn_indoor_classifier_model}]{\sphinxcrossref{\sphinxcode{\sphinxupquote{cnn\_indoor\_classifier\_model}}}}}.
+El módulo anterior además de la clase contiene múltiples
+funciones auxiliares para facilitar la definición
+de los parámetros de aprendizaje, la operaciones entre los
+tensores, la obtención de las rutas de las imágenes
+y la generación de los vectores one-hot de sus etiquetas.
+
+Se pueden contruir hasta cuatro tipos distintos de
+arquitecturas, con dos capas convolucionales con una o dos
+completamente conectadas, y con una capa de convolución
+y uno o dos completamente conectadas.
+La construcción de éstas se hace con los métodos
+{\hyperref[\detokenize{model_desc:cnn_indoor_classifier_model.CNNClassifierLAR.create_graph_2_convo_layers}]{\sphinxcrossref{\sphinxcode{\sphinxupquote{cnn\_indoor\_classifier\_model.CNNClassifierLAR.create\_graph\_2\_convo\_layers()}}}}}
+y\\ {\hyperref[\detokenize{model_desc:cnn_indoor_classifier_model.CNNClassifierLAR.create_graph_1_convo_layer}]{\sphinxcrossref{\sphinxcode{\sphinxupquote{cnn\_indoor\_classifier\_model.CNNClassifierLAR.create\_graph\_1\_convo\_layer()}}}}}
+que reciben como argumento una bandera para contruir su gráfica
+de cómputo con dos o una capa de completamente conectada. A
+continuación se desglosan los pasos del método para
+crear la gráfica con dos capas de convolución.
+
+1. Creación de la primera de convolución, recibe como entradas el placeholder
+con las imágenes y a la función se le pasan como parámetros una lista con las dimensiones
+de los kernels que se aplican y el número de mapas de características. Por ejemplo
+un lista \sphinxcode{\sphinxupquote{{[}5, 5, 3, 16{]}}} indica que se deben aplicar kernels de 5*5 a
+una entrada con 3 canales (la imagen RGB), para obtener
+16 mapas de características, después se aplica un agrupamiento para disminuir las
+dimensiones de los 16 mapas a la mitad:
+
+\fvset{hllines={, ,}}%
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{convo\PYGZus{}1} \PYG{o}{=} \PYG{n}{convolutional\PYGZus{}layer}\PYG{p}{(}\PYG{n}{input\PYGZus{}x\PYGZus{}ph}\PYG{p}{,} \PYG{n}{shape}\PYG{o}{=}\PYG{n}{shape\PYGZus{}convo\PYGZus{}layers}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{)}
+\PYG{n}{convo\PYGZus{}1\PYGZus{}pooling} \PYG{o}{=} \PYG{n}{max\PYGZus{}pool\PYGZus{}2by2}\PYG{p}{(}\PYG{n}{convo\PYGZus{}1}\PYG{p}{)}
+\end{sphinxVerbatim}
+
+2. Luego sigue la otra capa de convolución que tiene como entrada las salidas
+de la capa anterior. Se aplica un agrupamiento para reducir de nuevo
+la imagen a la mitad:
+
+\fvset{hllines={, ,}}%
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{convo\PYGZus{}2} \PYG{o}{=} \PYG{n}{convolutional\PYGZus{}layer}\PYG{p}{(}\PYG{n}{convo\PYGZus{}1\PYGZus{}pooling}\PYG{p}{,} \PYG{n}{shape}\PYG{o}{=}\PYG{n}{shape\PYGZus{}convo\PYGZus{}layers}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{]}\PYG{p}{)}
+\PYG{n}{convo\PYGZus{}2\PYGZus{}pooling} \PYG{o}{=} \PYG{n}{max\PYGZus{}pool\PYGZus{}2by2}\PYG{p}{(}\PYG{n}{convo\PYGZus{}2}\PYG{p}{)}
+\end{sphinxVerbatim}
+
+3. Ahora, se redimensionan los
+mapas de características para tener una red neuronal donde cada unidad es un
+elemento dentro del mapa de características. Esto es equivalente a aplicar
+una convolución con kernel de 1*1. Se obtiene una capa, donde
+dependiendo de la bandera se conecta a una capa oculta o directamente
+a la capa de salida con 4 unidades:
+
+\fvset{hllines={, ,}}%
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{last\PYGZus{}maps\PYGZus{}of\PYGZus{}features} \PYG{o}{=} \PYG{n}{shape\PYGZus{}convo\PYGZus{}layers}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{]}\PYG{p}{[}\PYG{l+m+mi}{3}\PYG{p}{]}
+\PYG{n}{convo\PYGZus{}2\PYGZus{}flat} \PYG{o}{=} \PYG{n}{tf}\PYG{o}{.}\PYG{n}{reshape}\PYG{p}{(}\PYG{n}{convo\PYGZus{}2\PYGZus{}pooling}\PYG{p}{,} \PYG{p}{[}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{8} \PYG{o}{*} \PYG{l+m+mi}{8} \PYG{o}{*} \PYG{n}{last\PYGZus{}maps\PYGZus{}of\PYGZus{}features}\PYG{p}{]}\PYG{p}{)}
+\PYG{k}{if} \PYG{n}{two\PYGZus{}fc}\PYG{p}{:}
+    \PYG{n}{full\PYGZus{}layer\PYGZus{}one} \PYG{o}{=} \PYG{n}{tf}\PYG{o}{.}\PYG{n}{nn}\PYG{o}{.}\PYG{n}{relu}\PYG{p}{(}\PYG{n}{normal\PYGZus{}full\PYGZus{}layer}\PYG{p}{(}\PYG{n}{convo\PYGZus{}2\PYGZus{}flat}\PYG{p}{,} \PYG{n}{units\PYGZus{}fc}\PYG{p}{)}\PYG{p}{)}
+\PYG{k}{else}\PYG{p}{:}
+    \PYG{n}{full\PYGZus{}layer\PYGZus{}one} \PYG{o}{=} \PYG{n}{convo\PYGZus{}2\PYGZus{}flat}
+\end{sphinxVerbatim}
+
+4. La última capa es el vector predicho, que se pasa por la función softmax para
+medir el error con la entropía cruzada. Finalmete se tiene un la operación
+\sphinxcode{\sphinxupquote{train}} que minimiza la función de costo utilizando el algoritmo de
+retropropagación:
+
+\fvset{hllines={, ,}}%
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{y\PYGZus{}pred} \PYG{o}{=} \PYG{n}{tf}\PYG{o}{.}\PYG{n}{identity}\PYG{p}{(}\PYG{n}{normal\PYGZus{}full\PYGZus{}layer}\PYG{p}{(}\PYG{n}{full\PYGZus{}layer\PYGZus{}one}\PYG{p}{,} \PYG{l+m+mi}{4}\PYG{p}{)}\PYG{p}{,} \PYG{n}{name}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{y\PYGZus{}pred}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{)}
+\PYG{n}{cross\PYGZus{}entropy} \PYG{o}{=} \PYG{n}{tf}\PYG{o}{.}\PYG{n}{reduce\PYGZus{}mean}\PYG{p}{(}\PYG{n}{tf}\PYG{o}{.}\PYG{n}{nn}\PYG{o}{.}\PYG{n}{softmax\PYGZus{}cross\PYGZus{}entropy\PYGZus{}with\PYGZus{}logits}\PYG{p}{(}\PYG{n}{labels}\PYG{o}{=}\PYG{n}{y\PYGZus{}true\PYGZus{}ph}\PYG{p}{,} \PYG{n}{logits}\PYG{o}{=}\PYG{n}{y\PYGZus{}pred}\PYG{p}{)}\PYG{p}{)}
+\PYG{n}{optimizer} \PYG{o}{=} \PYG{n}{tf}\PYG{o}{.}\PYG{n}{train}\PYG{o}{.}\PYG{n}{GradientDescentOptimizer}\PYG{p}{(}\PYG{n}{learning\PYGZus{}rate}\PYG{o}{=}\PYG{n}{learning\PYGZus{}rate}\PYG{p}{)}
+\PYG{n}{train} \PYG{o}{=} \PYG{n}{optimizer}\PYG{o}{.}\PYG{n}{minimize}\PYG{p}{(}\PYG{n}{loss}\PYG{o}{=}\PYG{n}{cross\PYGZus{}entropy}\PYG{p}{,} \PYG{n}{global\PYGZus{}step}\PYG{o}{=}\PYG{n}{tf}\PYG{o}{.}\PYG{n}{train}\PYG{o}{.}\PYG{n}{get\PYGZus{}global\PYGZus{}step}\PYG{p}{(}\PYG{p}{)}\PYG{p}{)}
+\end{sphinxVerbatim}
+
+La ejecución de la gráfica de cómputo de una instancia
+es con el método {\hyperref[\detokenize{model_desc:cnn_indoor_classifier_model.CNNClassifierLAR.run_graph}]{\sphinxcrossref{\sphinxcode{\sphinxupquote{cnn\_indoor\_classifier\_model.CNNClassifierLAR.run\_graph()}}}}}.
+Se pasan como parámetro el número de épocas y el tamaño del lote
+para el aprendizaje.
+Este método ejecuta la operación
+\sphinxcode{\sphinxupquote{train}} que a su vez corre todas las operaciones que la preceden.
+Cada 100 épocas se evalúa la precisión del modelo.
+
+\phantomsection\label{\detokenize{model_desc:module-cnn_indoor_classifier_model}}\index{cnn\_indoor\_classifier\_model (módulo)}\phantomsection\label{\detokenize{model_desc:module-cnn_indoor_classifier_model}}\index{cnn\_indoor\_classifier\_model (módulo)}\index{CNNClassifierLAR (clase en cnn\_indoor\_classifier\_model)}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{model_desc:cnn_indoor_classifier_model.CNNClassifierLAR}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class }}\sphinxcode{\sphinxupquote{cnn\_indoor\_classifier\_model.}}\sphinxbfcode{\sphinxupquote{CNNClassifierLAR}}}{\emph{shape\_convo\_layers}, \emph{units\_fc}, \emph{learning\_rate}}{}
+La clase que representa una arquitectura de red convolucional con a lo más
+dos capas de convolución y dos capas completamente conectadas.
+
+La red está creada para específicamente aceptar entradas de dimensiones
+de 32 pixeles por 32 pixeles por 3 canales. El constructor recibe tres parámetros
+una lista con las dimensiones de los kernels, entradas de la convolución y
+número de mapas de características, un entero con el número de unidades en la
+capa oculta y un valor flotante que es la tasa de aprendizaje.
+En el siguiente ejemplo se crea una red con dos capas de convolución,
+una capa oculta con 2048 unidades y una tasa de aprendizaje de 0.01. La ejecución de la gráfica
+para el aprendizaje por lotes recibe como parámetros 200 y 3000,
+el tamaño del lote y el número de épocas.
+
+\fvset{hllines={, ,}}%
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{k+kn}{from} \PYG{n+nn}{cnn\PYGZus{}indoor\PYGZus{}classifier\PYGZus{}model} \PYG{k}{import} \PYG{n}{CNNClassifierLAR}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{n}{clasificador} \PYG{o}{=} \PYG{n}{CNNClassifierLAR}\PYG{p}{(}\PYG{p}{[}\PYG{p}{[}\PYG{l+m+mi}{5}\PYG{p}{,} \PYG{l+m+mi}{5}\PYG{p}{,} \PYG{l+m+mi}{3}\PYG{p}{,} \PYG{l+m+mi}{16}\PYG{p}{]}\PYG{p}{,} \PYG{p}{[}\PYG{l+m+mi}{3}\PYG{p}{,} \PYG{l+m+mi}{3}\PYG{p}{,} \PYG{l+m+mi}{16}\PYG{p}{,} \PYG{l+m+mi}{32}\PYG{p}{]}\PYG{p}{]}\PYG{p}{,} \PYG{l+m+mi}{2048}\PYG{p}{,} \PYG{l+m+mf}{0.01}\PYG{p}{)}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{n}{clasificador}\PYG{o}{.}\PYG{n}{create\PYGZus{}graph\PYGZus{}2\PYGZus{}convo\PYGZus{}layers}\PYG{p}{(}\PYG{p}{)}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{n}{clasificador}\PYG{o}{.}\PYG{n}{run\PYGZus{}graph}\PYG{p}{(}\PYG{l+m+mi}{200}\PYG{p}{,} \PYG{l+m+mi}{3000}\PYG{p}{)}
+\PYG{g+go}{i; time; training loss; test loss; accuracy}
+\PYG{g+go}{0;0.7688136100769043;1.5798137187957764;1.4590167999267578;0.13778409361839294}
+\PYG{g+gp}{...}
+\PYG{g+go}{3000;68.31876397132874;0.0036288381088525057;0.11022621393203735;0.9692234992980957}
+\PYG{g+go}{Time 68.3188087940216}
+\end{sphinxVerbatim}
+\index{create\_graph\_1\_convo\_layer() (método de cnn\_indoor\_classifier\_model.CNNClassifierLAR)}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{model_desc:cnn_indoor_classifier_model.CNNClassifierLAR.create_graph_1_convo_layer}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{create\_graph\_1\_convo\_layer}}}{\emph{two\_fc=True}}{}
+Método para contruir la gráfica de cómputo de una arquitectura
+con una capa de convolución y ya sea una o dos capas completamente
+conectadas.
+\begin{quote}\begin{description}
+\item[{Parámetros}] \leavevmode
+\sphinxstyleliteralstrong{\sphinxupquote{two\_fc}} (\sphinxstyleliteralemphasis{\sphinxupquote{boolean.}}) \textendash{} Bandera para indicar si hay dos capas completamente conectadas.
+
+\end{description}\end{quote}
+
+\end{fulllineitems}
+
+\index{create\_graph\_2\_convo\_layers() (método de cnn\_indoor\_classifier\_model.CNNClassifierLAR)}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{model_desc:cnn_indoor_classifier_model.CNNClassifierLAR.create_graph_2_convo_layers}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{create\_graph\_2\_convo\_layers}}}{\emph{two\_fc=True}}{}
+Método para construir la gráfica de cómputo que representa a un modelo
+con dos capas de convolución y a través de del argumento agregar una capa
+oculta o no.
+\begin{quote}\begin{description}
+\item[{Parámetros}] \leavevmode
+\sphinxstyleliteralstrong{\sphinxupquote{two\_fc}} (\sphinxstyleliteralemphasis{\sphinxupquote{boolean.}}) \textendash{} Una bandera que indica si se agrega una capa oculta.
+
+\end{description}\end{quote}
+
+\end{fulllineitems}
+
+\index{get\_training\_and\_test\_images() (método de cnn\_indoor\_classifier\_model.CNNClassifierLAR)}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{model_desc:cnn_indoor_classifier_model.CNNClassifierLAR.get_training_and_test_images}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{get\_training\_and\_test\_images}}}{\emph{dataset\_training\_path='dataset/training\_set/*'}, \emph{dataset\_test\_path='dataset/test\_set/*'}}{}
+Llena las listas con las imágenes de entrenamiento y 
+de prueba y sus repectivas etiquetas.
+\begin{quote}\begin{description}
+\item[{Parámetros}] \leavevmode\begin{itemize}
+\item {} 
+\sphinxstyleliteralstrong{\sphinxupquote{dataset\_training\_path}} (\sphinxstyleliteralemphasis{\sphinxupquote{numpy.array.}}) \textendash{} La ruta relativa al directorio de trabajo donde se encuentra el conjunto de entrenamiento.
+
+\item {} 
+\sphinxstyleliteralstrong{\sphinxupquote{dataset\_test\_path}} (\sphinxstyleliteralemphasis{\sphinxupquote{numpy.array.}}) \textendash{} La ruta relativa al directorio de trabajo donde se encuentran las imágenes del conjunto de prueba.
+
+\end{itemize}
+
+\end{description}\end{quote}
+
+\end{fulllineitems}
+
+\index{next\_batch() (método de cnn\_indoor\_classifier\_model.CNNClassifierLAR)}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{model_desc:cnn_indoor_classifier_model.CNNClassifierLAR.next_batch}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{next\_batch}}}{\emph{batch\_size}}{}
+Método para generar un lote del conjunto de entrenamiento
+junto con sus etiquetas.
+\begin{quote}\begin{description}
+\item[{Parámetros}] \leavevmode
+\sphinxstyleliteralstrong{\sphinxupquote{batch\_size}} (\sphinxstyleliteralemphasis{\sphinxupquote{int.}}) \textendash{} El tamaño del lote.
+
+\item[{Devuelve}] \leavevmode
+El lote del conjunto de entrenamiento y sus etiquetas.
+
+\item[{Tipo del valor devuelto}] \leavevmode
+Una dupla de listas con las imágenes de entrenamiento y sus etiquetas.
+
+\end{description}\end{quote}
+
+\end{fulllineitems}
+
+\index{run\_graph() (método de cnn\_indoor\_classifier\_model.CNNClassifierLAR)}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{model_desc:cnn_indoor_classifier_model.CNNClassifierLAR.run_graph}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{run\_graph}}}{\emph{batch\_size}, \emph{epochs}}{}
+Método para ejecutar la gráfica de cómputo. Realiza el entrenamiento
+por lotes y evalua la red para conocer la precisión del modelo
+cada 100 épocas.
+\begin{quote}\begin{description}
+\item[{Parámetros}] \leavevmode\begin{itemize}
+\item {} 
+\sphinxstyleliteralstrong{\sphinxupquote{batch\_size}} (\sphinxstyleliteralemphasis{\sphinxupquote{int.}}) \textendash{} El tamaño del lote.
+
+\item {} 
+\sphinxstyleliteralstrong{\sphinxupquote{epochs}} (\sphinxstyleliteralemphasis{\sphinxupquote{int.}}) \textendash{} El número de épocas.
+
+\end{itemize}
+
+\end{description}\end{quote}
+
+\end{fulllineitems}
+
+
+\end{fulllineitems}
+
+\index{conv2d() (en el módulo cnn\_indoor\_classifier\_model)}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{model_desc:cnn_indoor_classifier_model.conv2d}}\pysiglinewithargsret{\sphinxcode{\sphinxupquote{cnn\_indoor\_classifier\_model.}}\sphinxbfcode{\sphinxupquote{conv2d}}}{\emph{x}, \emph{W}}{}
+Realiza la convolución de un tensor que representa la entrada
+y otro con los kernels. La zancada es igual a 1 y el borde de
+ceros es \sphinxstylestrong{same}. Utiliza la función \sphinxcode{\sphinxupquote{conv2d}} de la API de
+TensorFlow.
+\begin{quote}\begin{description}
+\item[{Parámetros}] \leavevmode\begin{itemize}
+\item {} 
+\sphinxstyleliteralstrong{\sphinxupquote{x}} (\sphinxstyleliteralemphasis{\sphinxupquote{tensor.}}) \textendash{} La entrada de la convolución.
+
+\item {} 
+\sphinxstyleliteralstrong{\sphinxupquote{W}} (\sphinxstyleliteralemphasis{\sphinxupquote{tensor.}}) \textendash{} El tensor con los kernels.
+
+\end{itemize}
+
+\item[{Devuelve}] \leavevmode
+Un tensor con el resultado de la operación de convolución.
+
+\end{description}\end{quote}
+
+\end{fulllineitems}
+
+\index{convolutional\_layer() (en el módulo cnn\_indoor\_classifier\_model)}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{model_desc:cnn_indoor_classifier_model.convolutional_layer}}\pysiglinewithargsret{\sphinxcode{\sphinxupquote{cnn\_indoor\_classifier\_model.}}\sphinxbfcode{\sphinxupquote{convolutional\_layer}}}{\emph{input\_x}, \emph{shape}}{}
+Realiza las operaciones que se hacen en una capa
+de convolución. La convolución el agrupamiento
+y la aplicación de la función de activación ReLU.
+\begin{quote}\begin{description}
+\item[{Parámetros}] \leavevmode\begin{itemize}
+\item {} 
+\sphinxstyleliteralstrong{\sphinxupquote{input\_x}} (\sphinxstyleliteralemphasis{\sphinxupquote{tensor.}}) \textendash{} La entrada de la convolución.
+
+\item {} 
+\sphinxstyleliteralstrong{\sphinxupquote{shape}} \textendash{} Una lista con el tamaño de los kernels, el número de mapas de características de entrada y el número de mapas de caracterísitcas de salida.
+
+\end{itemize}
+
+\item[{Devuelve}] \leavevmode
+Un tensor con los resultados de las operaciones de la capa de convolución.
+
+\end{description}\end{quote}
+
+\end{fulllineitems}
+
+\index{get\_labels\_from\_path() (en el módulo cnn\_indoor\_classifier\_model)}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{model_desc:cnn_indoor_classifier_model.get_labels_from_path}}\pysiglinewithargsret{\sphinxcode{\sphinxupquote{cnn\_indoor\_classifier\_model.}}\sphinxbfcode{\sphinxupquote{get\_labels\_from\_path}}}{\emph{file\_path}}{}
+Crea un arreglo de numpy con las categoría de
+cada imagen según la carpeta en la que se encuentra.
+Utiliza el one-hot encoding para representar
+las categorías, esto es:
+\begin{itemize}
+\item {} 
+\sphinxcode{\sphinxupquote{{[}1, 0, 0, 0{]}}}, la imagen es de la categoría \sphinxstyleemphasis{desks}.
+
+\item {} 
+\sphinxcode{\sphinxupquote{{[}0, 1, 0, 0{]}}}, la imagen es de la categoría \sphinxstyleemphasis{exit}.
+
+\item {} 
+\sphinxcode{\sphinxupquote{{[}0, 0, 1, 0{]}}}, la imagen es de la categoría \sphinxstyleemphasis{office}.
+
+\item {} 
+\sphinxcode{\sphinxupquote{{[}0, 0, 0, 1{]}}}, la imagen es de la categoría \sphinxstyleemphasis{soccer\_court}.
+
+\end{itemize}
+\begin{quote}\begin{description}
+\item[{Parámetros}] \leavevmode
+\sphinxstyleliteralstrong{\sphinxupquote{file\_path}} (\sphinxstyleliteralemphasis{\sphinxupquote{str.}}) \textendash{} La ruta del archivo.
+
+\end{description}\end{quote}
+
+\end{fulllineitems}
+
+\index{hot\_encoding\_from\_category() (en el módulo cnn\_indoor\_classifier\_model)}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{model_desc:cnn_indoor_classifier_model.hot_encoding_from_category}}\pysiglinewithargsret{\sphinxcode{\sphinxupquote{cnn\_indoor\_classifier\_model.}}\sphinxbfcode{\sphinxupquote{hot\_encoding\_from\_category}}}{\emph{val}, \emph{number\_of\_categories=4}}{}
+Función para crear un vector one-hot dado un número de
+categorías y el índice de la clase correcta.
+\begin{quote}\begin{description}
+\item[{Parámetros}] \leavevmode\begin{itemize}
+\item {} 
+\sphinxstyleliteralstrong{\sphinxupquote{val}} (\sphinxstyleliteralemphasis{\sphinxupquote{int.}}) \textendash{} el número de la clase (índice de la categoría).
+
+\item {} 
+\sphinxstyleliteralstrong{\sphinxupquote{number\_of\_categories}} (\sphinxstyleliteralemphasis{\sphinxupquote{int.}}) \textendash{} el número de categorías 4 por defecto.
+
+\end{itemize}
+
+\item[{Devuelve}] \leavevmode
+un arreglo de \sphinxcode{\sphinxupquote{numpy}} que es el vector one-hot.
+
+\end{description}\end{quote}
+
+\end{fulllineitems}
+
+\index{init\_bias() (en el módulo cnn\_indoor\_classifier\_model)}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{model_desc:cnn_indoor_classifier_model.init_bias}}\pysiglinewithargsret{\sphinxcode{\sphinxupquote{cnn\_indoor\_classifier\_model.}}\sphinxbfcode{\sphinxupquote{init\_bias}}}{\emph{shape}}{}
+Retorna una variable de TensorFlow con las dimensiones 
+que se pasen como argumento.
+
+La variable representa los sesgos en una red neuronal,
+y estos se inicializan con un valor constante igual a 0.1.
+\begin{quote}\begin{description}
+\item[{Parámetros}] \leavevmode
+\sphinxstyleliteralstrong{\sphinxupquote{shape}} (\sphinxstyleliteralemphasis{\sphinxupquote{list.}}) \textendash{} Las dimensiones de la variable.
+
+\item[{Devuelve}] \leavevmode
+Una variable de TensorFlow.
+
+\end{description}\end{quote}
+
+\end{fulllineitems}
+
+\index{init\_weights() (en el módulo cnn\_indoor\_classifier\_model)}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{model_desc:cnn_indoor_classifier_model.init_weights}}\pysiglinewithargsret{\sphinxcode{\sphinxupquote{cnn\_indoor\_classifier\_model.}}\sphinxbfcode{\sphinxupquote{init\_weights}}}{\emph{shape}}{}
+Retorna una variable de TensorFlow con las dimensiones 
+que se pasen como argumento.
+
+La variable representa los pesos en una red neuronal,
+y estos se inicializan con una distribución normal, 
+con media cero y desviación estándar igual a 0.1.
+\begin{quote}\begin{description}
+\item[{Parámetros}] \leavevmode
+\sphinxstyleliteralstrong{\sphinxupquote{shape}} (\sphinxstyleliteralemphasis{\sphinxupquote{list.}}) \textendash{} Las dimensiones de la variable.
+
+\item[{Devuelve}] \leavevmode
+Una variable de TensorFlow.
+
+\end{description}\end{quote}
+
+\end{fulllineitems}
+
+\index{list\_files\_in\_directory() (en el módulo cnn\_indoor\_classifier\_model)}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{model_desc:cnn_indoor_classifier_model.list_files_in_directory}}\pysiglinewithargsret{\sphinxcode{\sphinxupquote{cnn\_indoor\_classifier\_model.}}\sphinxbfcode{\sphinxupquote{list\_files\_in\_directory}}}{\emph{directory\_name}}{}
+Crea una lista con las rutas de todos los archivos dentro de un
+directorio.
+\begin{quote}\begin{description}
+\item[{Parámetros}] \leavevmode
+\sphinxstyleliteralstrong{\sphinxupquote{directory\_name}} (\sphinxstyleliteralemphasis{\sphinxupquote{str.}}) \textendash{} la ruta del directorio relativa al espacio de trabajo.
+
+\item[{Devuelve}] \leavevmode
+list \textendash{} una lista de con las rutas de los archivos en el directorio dado.
+
+\end{description}\end{quote}
+
+\end{fulllineitems}
+
+\index{max\_pool\_2by2() (en el módulo cnn\_indoor\_classifier\_model)}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{model_desc:cnn_indoor_classifier_model.max_pool_2by2}}\pysiglinewithargsret{\sphinxcode{\sphinxupquote{cnn\_indoor\_classifier\_model.}}\sphinxbfcode{\sphinxupquote{max\_pool\_2by2}}}{\emph{x}}{}
+Realiza el agrupamiento máximo con vecidades de 2 por 2.
+Usa el método \sphinxcode{\sphinxupquote{max\_pool}} de TF.
+\begin{quote}\begin{description}
+\item[{Parámetros}] \leavevmode
+\sphinxstyleliteralstrong{\sphinxupquote{x}} (\sphinxstyleliteralemphasis{\sphinxupquote{tensor.}}) \textendash{} El tensor al que se le aplica el agrupamiento máximo.
+
+\item[{Devuelve}] \leavevmode
+El resultado de la operación de agrupamiento.
+
+\end{description}\end{quote}
+
+\end{fulllineitems}
+
+\index{normal\_full\_layer() (en el módulo cnn\_indoor\_classifier\_model)}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{model_desc:cnn_indoor_classifier_model.normal_full_layer}}\pysiglinewithargsret{\sphinxcode{\sphinxupquote{cnn\_indoor\_classifier\_model.}}\sphinxbfcode{\sphinxupquote{normal\_full\_layer}}}{\emph{input\_layer}, \emph{size}}{}
+Realiza las operaciones de una capa completamente 
+conectada en una red neuronal, sin aplicar
+la función de activación, sólo la multiplicación 
+de matrices y la suma del sesgo.
+\begin{quote}\begin{description}
+\item[{Parámetros}] \leavevmode\begin{itemize}
+\item {} 
+\sphinxstyleliteralstrong{\sphinxupquote{input\_layer}} (\sphinxstyleliteralemphasis{\sphinxupquote{tensor.}}) \textendash{} La entrada de la capa.
+
+\item {} 
+\sphinxstyleliteralstrong{\sphinxupquote{size}} (\sphinxstyleliteralemphasis{\sphinxupquote{int.}}) \textendash{} el número de unidades de la capa.
+
+\end{itemize}
+
+\item[{Devuelve}] \leavevmode
+El resultado de la multiplicación de una matriz de pesos y la entrada de la capa, más un vector de sesgos.
+
+\end{description}\end{quote}
+
+\end{fulllineitems}

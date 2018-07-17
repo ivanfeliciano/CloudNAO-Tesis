@@ -1,0 +1,177 @@
+
+
+
+\subsection{Firebase Realtime Database y CloudNAO}
+\label{\detokenize{chapter_two/desc_cloudnao:firebase-realtime-database-y-cloudnao}}
+Como componente dentro de la arquitectura CloudNAO, la Realtime Database tiene
+dos funciones principales; almacenar un registro de datos generados por el robot,
+y servir como interfaz para enviar desde un navegador web comandos que puedan
+ser ejecutados por el robot de manera remota, sin la necesidad de estar
+conectados a la misma red. A la primera
+funcionalidad la llamaremos \sphinxstyleemphasis{Robot Log} y a la segunda \sphinxstyleemphasis{Robot Remote Control}.
+
+Firebase Realtime Database es el elemento que relaciona al robot, la aplicación
+web y la móvil. En la \hyperref[\detokenize{chapter_two/desc_cloudnao:rtd-components-diagram}]{Figura \ref{\detokenize{chapter_two/desc_cloudnao:rtd-components-diagram}}} se muestran las relaciones.
+La unión del robot, la aplicación móvil y Firebase Realtime Database forma parte de
+la función de \sphinxstyleemphasis{Robot Log}. La conexión entre el robot, la aplicación web y
+Firebase Realtime Database son la otra parte del \sphinxstyleemphasis{Robot Log}, y toda la
+estructura del \sphinxstyleemphasis{Robot Remote Control}.
+
+\begin{figure}[htbp]
+\centering
+\capstart
+
+\noindent\sphinxincludegraphics[scale=0.5]{{realtime_database_diagram}.png}
+\caption{Diagrama de la relación entre los componentes de la arquitectura y Firebase Realtime Database}\label{\detokenize{chapter_two/desc_cloudnao:rtd-components-diagram}}\end{figure}
+
+De la \hyperref[\detokenize{chapter_two/desc_cloudnao:rtd-components-diagram}]{Figura \ref{\detokenize{chapter_two/desc_cloudnao:rtd-components-diagram}}} se muestran identificadas por un número
+las relaciones entre cada elemento. A continuación se describe cada una de estas:
+
+1. \sphinxstylestrong{Robot - Firebase Realtime Database}, el robot envía información
+a la base de datos mediante su API REST.
+Para la parte de \sphinxstyleemphasis{Robot Log}, envía datos de \sphinxcode{ALMemory} o de \sphinxcode{ALVideDevice}
+y para \sphinxstyleemphasis{Robot Remote Control} establece una conexión constante para recibir
+actualizaciones que son interpretadas como comandos.
+La API REST soporta el protocolo
+\sphinxhref{https://www.w3.org/TR/eventsource/}{Server-sent events}, la cual es una
+tecnología donde un cliente recibe actualizaciones automáticamente desde el
+servidor mediante una conexión HTTP. Con esta herramienta el robot se mantiene
+«escuchando» los cambios realizados a una ubicación en la base de datos. Al
+recibir un mensaje el robot lo maneja como un comando para ejecutar cierta
+acción, como puede ser un movimiento, enviar una imagen en vivo, o hasta ejecutar
+un programa. Esta es la parte principal del \sphinxstyleemphasis{Robot Remote Control}.
+
+2. \sphinxstylestrong{Aplicación móvil - Robot}, utilizando el SDK de NAOqi para Java,
+específicamente para Android, se ejecutan remotamente módulos de la API de NAOqi.
+Para la parte de Realtime Database se solicitan datos de \sphinxcode{ALMemory}. El robot
+envía la información a la aplicación y esta escribe los datos en una ubicación
+única para cada robot. Esta relación es una de las partes que generan los datos
+de \sphinxstyleemphasis{Robot Log}.
+
+3. \sphinxstylestrong{Firebase Realtime Database - Aplicación móvil}, el primer elemento
+envía los últimos valores guardados en la base de datos a una lista que se muestra
+dentro de una actividad en la aplicación cuya función es mostrar valores
+obtenidos de \sphinxcode{ALMemory}, esta parte corresponde a \sphinxstyleemphasis{Robot Log}. Usando
+el SDK para Android de Firebase Realtime Database se hacen realizan las
+operaciones de escritura y lectura de los datos de \sphinxcode{ALMemory}
+obtenidos del robot.
+
+4. \sphinxstylestrong{Firebase Realtime Database - Aplicación web}, el navegador web escribe y
+lee los datos con el SDK web de Firebase Realtime Database. Se vale de
+la funcionalidad de \sphinxstyleemphasis{Robot Log} para mostrar los últimos valores de \sphinxcode{ALMemory}
+enviados por el robot y escribe información a una ubicación de la base de
+datos a la que el robot se habrá suscrito para detectar cambios. Dichos cambios
+son comandos que el robot ejecutará. Esto último es una parte de
+\sphinxstyleemphasis{Robot Remote Control}.
+
+En las secciones subsecuentes se explica cómo implementar el servicio de
+Firebase Realtime Database en cada una de las plataformas utilizadas, el robot
+NAO, la aplicación móvil y la web.
+
+
+\subsubsection{Diseño de la base de datos}
+\label{\detokenize{chapter_two/desc_cloudnao:diseno-de-la-base-de-datos}}
+Es muy importante estructurar de manera correcta la información en una base
+de datos de Firebase.
+
+Los datos dentro de la Firebase Realtime Database se alamacenan como objetos
+JSON. La base de datos puede conceptualizarse como un árbol JSON alojado en la
+nube. A diferencia de una base de datos de SQL, no hay tablas ni registros.
+Cuando le agregas datos al árbol JSON, estos se convierten en un nodo de la
+estructura JSON existente con una clave asociada.
+
+La documentación de Firebase recomienda algunos puntos que se deben tomar
+en cuenta para estructurar los datos dentro del JSON.
+\begin{itemize}
+\item {} 
+\sphinxstylestrong{Evitar anidación de datos}. Firebase Realtime Database permite anidar datos en un máximo de 32 niveles, sin embargo, cuando obtienes datos de una ubicación de la base de datos, también se recuperan todos los nodos secundarios.
+
+\item {} 
+\sphinxstylestrong{Compactar las estructuras de datos}. Si los datos se dividen en rutas de acceso independientes, que también se conocen como no normalizadas, se pueden descargar de manera eficaz en llamadas separadas, según sea necesario.
+
+\item {} 
+\sphinxstylestrong{Crear datos escalables}. Siempre es mejor desgar un subconjunto de una lista de registros.
+
+\end{itemize}
+
+Siguiendo estas recomendaciones, se diseño una base de datos, evitando anidar
+elementos sepárandolos como fuera conveniente y manteniendo relaciones que
+eran necesarias para realizar consultas de manera simple.
+
+En las siguientes secciones primero se describe la base de datos con un efoque
+clásico con el modelo entidad relación y después como se puede transformar ese
+modelo base en un JSON que se pueda alamacenar en la nube.
+
+
+\paragraph{Modelo entidad relación}
+\label{\detokenize{chapter_two/desc_cloudnao:modelo-entidad-relacion}}
+El diagrama de la \hyperref[\detokenize{chapter_two/desc_cloudnao:entity-relationship-model-cn-firebase}]{Figura \ref{\detokenize{chapter_two/desc_cloudnao:entity-relationship-model-cn-firebase}}}, muestra el
+modelo sobre el que se basa el JSON que se almacena en Firebase.
+
+Un usuario puede tener varios robots, cada robot cuenta está relacionado
+con otras entidades como: un texto que representa el discurso que tiene que decir,
+la última imágen enviada por el robot, un largo historial de
+logs con valores de \sphinxcode{ALMemory}, el estado del robot (el nivel de batería y
+su conexión a la red), y comandos para ejecutar ciertas tareas.
+
+\begin{figure}[htbp]
+\centering
+\capstart
+
+\noindent\sphinxincludegraphics[scale=0.75]{{entity_relationship_model_cn_firebase}.png}
+\caption{Diagrama entidad relación de la base de datos para Firebase}\label{\detokenize{chapter_two/desc_cloudnao:entity-relationship-model-cn-firebase}}\end{figure}
+
+
+\paragraph{Estructura del JSON para Firebase}
+\label{\detokenize{chapter_two/desc_cloudnao:estructura-del-json-para-firebase}}
+La estructura de la base de datos descrita en el modelo de la \hyperref[\detokenize{chapter_two/desc_cloudnao:entity-relationship-model-cn-firebase}]{Figura \ref{\detokenize{chapter_two/desc_cloudnao:entity-relationship-model-cn-firebase}}}
+es la base del JSON y es por eso que puede no cumplir los requistitos de normalización,
+simplemente ilustra el diseño de la base de datos para que sea más simple su
+visualización.
+
+Con una idea de cómo está diseñada la base de datos la estructura del JSON
+queda como en la \hyperref[\detokenize{chapter_two/desc_cloudnao:json-structure}]{Figura \ref{\detokenize{chapter_two/desc_cloudnao:json-structure}}}. Es importante señalar que esta base de datos
+es muy flexible, los campos en las «entidades» que aquí son los atributos
+del JSON, pueden cambiar: eliminándolos, agregando nuevos, etcétera.
+
+\begin{figure}[htbp]
+\centering
+\capstart
+
+\noindent\sphinxincludegraphics[scale=0.50]{{Json_structure}.png}
+\caption{La estructura del JSON donde se alamacenan los datos}\label{\detokenize{chapter_two/desc_cloudnao:json-structure}}\end{figure}
+
+Para entender mejor el JSON de la \hyperref[\detokenize{chapter_two/desc_cloudnao:json-structure}]{Figura \ref{\detokenize{chapter_two/desc_cloudnao:json-structure}}}, se decriben
+algunos de sus principales atributos:
+\begin{itemize}
+\item {} 
+\sphinxstylestrong{nao-firebase}, es la raíz del objeto.
+
+\item {} 
+\sphinxstylestrong{commands}, es parte del segundo nivel, los robots se suscriben esta ubicación para manejar actualizaciones. Está compuesto por objetos que corresponde a cada robot.
+
+\item {} 
+\sphinxstylestrong{liveImages}, es parte del segundo nivel, y almacena imagenes enviadas por cada robot. Está compuesto por objetos que corresponde a cada robot.
+
+\item {} 
+\sphinxstylestrong{logs}, está en el segundo nivel, y aquí se encuentra el historial de logs de \sphinxcode{ALMemory} de cada robot. Está compuesto por objetos que corresponde a cada robot.
+
+\item {} 
+\sphinxstylestrong{robots}, definido en el segundo nivel, conjunto de todos los robots que se añaden a la aplicación.
+
+\item {} 
+\sphinxstylestrong{speeches}, está en el segundo nivel y contiene el texto que debe ser enviado al robot y éste repetir oralmente. Está compuesto por objetos que corresponde a cada robot.
+
+\item {} 
+\sphinxstylestrong{users}, en el segundo nivel, el conjunto de todos los usuarios de la aplicación, ordenados por su identificador generado por Firebase Auth. Sólo se almacena su dirección de correo electrónico y un objeto con los robots que le pertenecen.
+
+\item {} 
+\sphinxstylestrong{robotId}, es un identificador único generado por Firebase, cada robot que agrega un usuario tiene un id único. Es una cadena que sirve para que cada robot tenga su propia ubicación de comandos, imágenes, etc.
+
+\item {} 
+\sphinxstylestrong{userId}, un id obtenido de Firebase Authentication.
+
+\end{itemize}
+
+Los demás atributos son autodescriptivos.
+

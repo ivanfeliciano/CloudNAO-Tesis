@@ -1,0 +1,421 @@
+
+
+
+\section{Interfaces de Programación de Aplicaciones de Transferencia de Estado Representacional}
+\label{\detokenize{chapter_one/apis_rest:interfaces-de-programacion-de-aplicaciones-de-transferencia-de-estado-representacional}}\label{\detokenize{chapter_one/apis_rest::doc}}
+Para entender mejor el concepto de una API REST conviene poner como ejemplos
+los servicios web RESTful que se utilizan en este proyecto. Se accede
+a esos servicios a través de sus API REST y se enlistan a continuación:
+\begin{itemize}
+\item {} 
+Google Cloud Vision
+
+\item {} 
+Kairos
+
+\item {} 
+Wit.ai
+
+\item {} 
+Firebase Realtime Database
+
+\end{itemize}
+
+
+\subsection{API de Google Cloud Vision}
+\label{\detokenize{chapter_one/apis_rest:api-de-google-cloud-vision}}
+La API Vision de Google Cloud permite que los desarrolladores comprendan el
+contenido de una imagen mediante el encapsulado de potentes modelos de
+aprendizaje automático en una API REST fácil de usar. La API clasifica
+imágenes rápidamente en miles de categorías (por ejemplo, «barco de vela»,
+«león» o «torre Eiffel»), detecta objetos y caras individuales dentro de las
+imágenes, además de buscar y leer palabras impresas en ellas.
+
+El recurso que se solicita para el procesamiento de imagenes es \sphinxcode{images} y
+el URL que lo identifica es \sphinxcode{https://vision.googleapis.com/v1/images:annotate}.
+La API únicamente tiene definida la operación con el método HTTP POST,
+por lo que hacer un POST a la URL del recurso ejecuta la detección de algunas
+características en una o varias imagenes.
+
+El cuerpo del mensaje del petición HTTP es un JSON con la siguente estructura
+(por simplicidad se omiten varios objetos del JSON que no se utilizaron en el
+proyecto):
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{p}{\PYGZob{}}
+  \PYG{l+s+s2}{\PYGZdq{}requests\PYGZdq{}} \PYG{o}{:} \PYG{p}{[}
+    \PYG{p}{\PYGZob{}}
+      \PYG{l+s+s2}{\PYGZdq{}image\PYGZdq{}} \PYG{o}{:} \PYG{p}{\PYGZob{}}
+        \PYG{l+s+s2}{\PYGZdq{}content\PYGZdq{}} \PYG{o}{:} \PYG{n+nx}{string}\PYG{p}{,}
+        \PYG{l+s+s2}{\PYGZdq{}source\PYGZdq{}} \PYG{o}{:} \PYG{p}{\PYGZob{}}
+          \PYG{l+s+s2}{\PYGZdq{}gcsImageUri\PYGZdq{}} \PYG{o}{:} \PYG{n+nx}{string}\PYG{p}{,}
+          \PYG{l+s+s2}{\PYGZdq{}imageUri\PYGZdq{}} \PYG{o}{:} \PYG{n+nx}{string}
+        \PYG{p}{\PYGZcb{}}
+      \PYG{p}{\PYGZcb{}}
+      \PYG{l+s+s2}{\PYGZdq{}features\PYGZdq{}} \PYG{o}{:} \PYG{p}{[}
+        \PYG{p}{\PYGZob{}}
+          \PYG{l+s+s2}{\PYGZdq{}type\PYGZdq{}} \PYG{o}{:} \PYG{n+nx}{string}\PYG{p}{,}
+          \PYG{l+s+s2}{\PYGZdq{}maxResults\PYGZdq{}} \PYG{o}{:} \PYG{n+nx}{number}
+        \PYG{p}{\PYGZcb{}}
+      \PYG{p}{]}
+    \PYG{p}{\PYGZcb{}}
+  \PYG{p}{]}
+\PYG{p}{\PYGZcb{}}
+\end{sphinxVerbatim}
+
+\sphinxcode{requests} es una lista de objetos, donde cada objeto representa una imagen
+y las caracterísiticas que se piden detectar. \sphinxcode{image} es la representación
+de la imagen, que puede estar en tres formas distintas: codificada en base 64,
+guardada en el servicio de almacenamiento en la nuble de Google Cloud Storage
+o a través de un enlace en algún servidor. Para el primer caso a \sphinxcode{content}
+se le asigna la image codificada; en cambio, si está en un contenedor de Google Cloud Storage
+entonces se pasa a \sphinxcode{gcsImageUri} el valor de la URL de la imagen. Si se encuentra
+en algún otro servicio de almacenamiento simplemente el valor de \sphinxcode{imageUri}
+es el URL de la imagen.
+
+\sphinxcode{features} es un arreglo de las caracterísiticas que se pretenden reconocer
+en la imagen. Por cada objeto se tiene \sphinxcode{type} que es el tipo de caracterísitica
+y \sphinxcode{maxResults} que es el número máximo de ese tipo. \sphinxcode{type} puede tomar
+los siguientes valores:
+\begin{itemize}
+\item {} 
+\sphinxcode{TYPE\_UNSPECIFIED}: No se específica la característica.
+
+\item {} 
+\sphinxcode{FACE\_DETECTION}: Ejecuta la detección de rostros.
+
+\item {} 
+\sphinxcode{LANDMARK\_DETECTION}: Ejecuta la detección de puntos de referencia.
+
+\item {} 
+\sphinxcode{LOGO\_DETECTION}: Ejecuta la detección de logotipos.
+
+\item {} 
+\sphinxcode{LABEL\_DETECTION}: Ejecuta la detección de etiquetas.
+
+\item {} 
+\sphinxcode{TEXT\_DETECTION}: Ejecuta el reconocimiento óptico de caracteres (OCR).
+
+\item {} 
+\sphinxcode{DOCUMENT\_TEXT\_DETECTION}: Ejecuta el OCR sobre grandes documentos de texto.
+
+\item {} 
+\sphinxcode{SAFE\_SEARCH\_DETECTION}: Ejecuta la búqueda segura para detectar contenido pontencialmente inseguro o no deseable.
+
+\item {} 
+\sphinxcode{IMAGE\_PROPERTIES}: Calcula un conjunto de propiedades en una imagen, como los colores dominantes.
+
+\item {} 
+\sphinxcode{CROP\_HINTS}: Ejecuta la sugerencia de recortes de una imagen.
+
+\item {} 
+\sphinxcode{WEB\_DETECTION}: Ejecuta la detección web.
+
+\end{itemize}
+
+De todas estas posibles caracterísiticas, las que se utilizan dentro de la arquitectura
+CloudNAO son \sphinxcode{TEXT\_DETECTION} y \sphinxcode{LABEL\_DETECTION}.
+
+El cuerpo del mensaje de respuesta, si todo salió bien (se obtiene una código
+de estado 200), contiene información
+con la siguiente estructura:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{p}{\PYGZob{}}
+  \PYG{l+s+s2}{\PYGZdq{}responses\PYGZdq{}}\PYG{o}{:} \PYG{p}{[}
+    \PYG{p}{\PYGZob{}}
+        \PYG{l+s+s2}{\PYGZdq{}labelAnnotations\PYGZdq{}}\PYG{o}{:} \PYG{p}{[}
+          \PYG{p}{\PYGZob{}}
+            \PYG{l+s+s2}{\PYGZdq{}mid\PYGZdq{}}\PYG{o}{:} \PYG{n+nx}{string}\PYG{p}{,}
+            \PYG{l+s+s2}{\PYGZdq{}description\PYGZdq{}}\PYG{o}{:} \PYG{n+nx}{string}\PYG{p}{,}
+            \PYG{l+s+s2}{\PYGZdq{}score\PYGZdq{}}\PYG{o}{:} \PYG{n+nx}{number}
+          \PYG{p}{\PYGZcb{}}
+        \PYG{p}{]}\PYG{p}{,}
+        \PYG{l+s+s2}{\PYGZdq{}textAnnotations\PYGZdq{}}\PYG{o}{:} \PYG{p}{[}
+          \PYG{p}{\PYGZob{}}
+              \PYG{l+s+s2}{\PYGZdq{}mid\PYGZdq{}}\PYG{o}{:} \PYG{n+nx}{string}\PYG{p}{,}
+              \PYG{l+s+s2}{\PYGZdq{}locale\PYGZdq{}}\PYG{o}{:} \PYG{n+nx}{string}\PYG{p}{,}
+              \PYG{l+s+s2}{\PYGZdq{}score\PYGZdq{}}\PYG{o}{:} \PYG{n+nx}{number}\PYG{p}{,}
+              \PYG{l+s+s2}{\PYGZdq{}boundingPoly\PYGZdq{}}\PYG{o}{:} \PYG{p}{\PYGZob{}}
+                \PYG{l+s+s2}{\PYGZdq{}vertices\PYGZdq{}}\PYG{o}{:} \PYG{p}{[}
+                  \PYG{p}{\PYGZob{}}
+                    \PYG{l+s+s2}{\PYGZdq{}x\PYGZdq{}}\PYG{o}{:} \PYG{n+nx}{number}\PYG{p}{,}
+                    \PYG{l+s+s2}{\PYGZdq{}y\PYGZdq{}}\PYG{o}{:} \PYG{n+nx}{number}
+                  \PYG{p}{\PYGZcb{}}
+                \PYG{p}{]}
+              \PYG{p}{\PYGZcb{}}
+          \PYG{p}{\PYGZcb{}}
+        \PYG{p}{]}
+    \PYG{p}{\PYGZcb{}}
+  \PYG{p}{]}
+\PYG{p}{\PYGZcb{}}
+\end{sphinxVerbatim}
+
+La respuesta obtenida depende de que caracterísiticas se solicitaron,
+para el JSON anterior suponemos que se pidió la detección de
+categorías y el reconocimiento de texto. \sphinxcode{mid} es un identificador,
+\sphinxcode{description} es la descripción textual de la entidad; por ejemplo,
+para el caso de \sphinxcode{labelAnnotations}, \sphinxcode{description} puede tener un valor
+asociado igual a «psychedelic art», en cambio para \sphinxcode{textAnnotations},
+se espera tenga una cadena del texto encontrado como «lateralus».
+
+El \sphinxcode{score} es la precisión de la detección de la entidad en la imagen,
+toma valores en el intervalo {[}0, 1{]}. \sphinxcode{boundingPoly} contiene
+las coordenadas del polígono que encierra la entidad encontrada.
+
+
+\subsection{API de Kairos}
+\label{\detokenize{chapter_one/apis_rest:api-de-kairos}}
+Kairos permite a los desarrolladores integrar un análisis de rostros preciso
+y rápido en cualquier aplicación o servicio. Cuenta con un API REST
+para ejecutar tareas en la nube como la detección e identificación de rostros,
+emociones, raza, edad, entre otras. También cuenta con un SDK, más limitado
+pero que puede ejecutarse offline y directamente en dispositivos móviles.
+Por ahora sólo nos interesa la API REST, por lo que describiremos cómo funciona,
+es decir, cómo se debe hacer una petición y cuál es la respuesta
+que envía el servicio.
+
+Para realizar el reconocimiento de caras, la API tiene como URL base
+\sphinxcode{https://api.kairos.com} y cuenta con diversos recursos para cada tipo de
+reconocimiento. Únicamente nos interesan dos recursos, \sphinxcode{enroll} y
+\sphinxcode{recognize}, que son relativos al URL base.
+El primero toma una fotografía, encuentra rostros en esta,
+y los guarda en una galería, cada rostro necesita un identificador de la
+persona. Las galerías sirven para que posteriormente se reconozca a un sujeto
+por medio de su fotografía.
+
+El otro recurso que nos interesa es \sphinxcode{recognize}, que toma una fotografía
+encuentra caras e intenta emparejarlas con las que sean guardado
+previamente en una galería.
+
+Para hacer ambas peticiones se utiliza el método POST. Al hacer un POST
+a \sphinxcode{/enroll} se debe enviar un JSON con la siguiente estructura en el cuerpo
+del mensaje.
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{p}{\PYGZob{}}
+  \PYG{l+s+s2}{\PYGZdq{}image\PYGZdq{}}\PYG{o}{:} \PYG{n+nx}{string}\PYG{p}{,}
+  \PYG{l+s+s2}{\PYGZdq{}subject\PYGZus{}id\PYGZdq{}}\PYG{o}{:} \PYG{n+nx}{string}\PYG{p}{,}
+  \PYG{l+s+s2}{\PYGZdq{}gallery\PYGZus{}name\PYGZdq{}}\PYG{o}{:} \PYG{n+nx}{string}
+\PYG{p}{\PYGZcb{}}
+\end{sphinxVerbatim}
+
+\sphinxcode{image} es un URL de acceso público o la codificación en base 64, \sphinxcode{subject\_id} es un identificador
+de una cara, es único y es definido por el desarrollador, \sphinxcode{gallery\_name}
+definida también por el desarrollador sirve para identificar la galería.
+
+La respuesta de un POST a \sphinxcode{/enroll}, si todo fue exitoso
+es un JSON con la siguiente estructura.
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{p}{\PYGZob{}}
+  \PYG{l+s+s2}{\PYGZdq{}face\PYGZus{}id\PYGZdq{}}\PYG{o}{:} \PYG{n+nx}{string}\PYG{p}{,}
+  \PYG{l+s+s2}{\PYGZdq{}images\PYGZdq{}}\PYG{o}{:} \PYG{p}{[}
+    \PYG{p}{\PYGZob{}}
+      \PYG{l+s+s2}{\PYGZdq{}attributes\PYGZdq{}}\PYG{o}{:} \PYG{p}{\PYGZob{}}
+        \PYG{l+s+s2}{\PYGZdq{}lips\PYGZdq{}}\PYG{o}{:} \PYG{n+nx}{string}\PYG{p}{,}
+        \PYG{l+s+s2}{\PYGZdq{}asian\PYGZdq{}}\PYG{o}{:} \PYG{n+nx}{number}\PYG{p}{,}
+        \PYG{l+s+s2}{\PYGZdq{}gender\PYGZdq{}}\PYG{o}{:} \PYG{p}{\PYGZob{}}
+          \PYG{l+s+s2}{\PYGZdq{}type\PYGZdq{}}\PYG{o}{:} \PYG{n+nx}{string}
+        \PYG{p}{\PYGZcb{}}\PYG{p}{,}
+        \PYG{l+s+s2}{\PYGZdq{}age\PYGZdq{}}\PYG{o}{:} \PYG{n+nx}{number}\PYG{p}{,}
+        \PYG{l+s+s2}{\PYGZdq{}hispanic\PYGZdq{}}\PYG{o}{:} \PYG{n+nx}{number}\PYG{p}{,}
+        \PYG{l+s+s2}{\PYGZdq{}other\PYGZdq{}}\PYG{o}{:} \PYG{n+nx}{number}\PYG{p}{,}
+        \PYG{l+s+s2}{\PYGZdq{}black\PYGZdq{}}\PYG{o}{:} \PYG{n+nx}{number}\PYG{p}{,}
+        \PYG{l+s+s2}{\PYGZdq{}white\PYGZdq{}}\PYG{o}{:} \PYG{n+nx}{number}\PYG{p}{,}
+        \PYG{l+s+s2}{\PYGZdq{}glasses\PYGZdq{}}\PYG{o}{:} \PYG{n+nx}{string}
+      \PYG{p}{\PYGZcb{}}\PYG{p}{,}
+      \PYG{l+s+s2}{\PYGZdq{}transaction\PYGZdq{}}\PYG{o}{:} \PYG{p}{\PYGZob{}}
+        \PYG{l+s+s2}{\PYGZdq{}status\PYGZdq{}}\PYG{o}{:} \PYG{n+nx}{string}\PYG{p}{,}
+        \PYG{l+s+s2}{\PYGZdq{}topLeftX\PYGZdq{}}\PYG{o}{:} \PYG{n+nx}{number}\PYG{p}{,}
+        \PYG{l+s+s2}{\PYGZdq{}topLeftY\PYGZdq{}}\PYG{o}{:} \PYG{n+nx}{number}\PYG{p}{,}
+        \PYG{l+s+s2}{\PYGZdq{}gallery\PYGZus{}name\PYGZdq{}}\PYG{o}{:} \PYG{n+nx}{string}\PYG{p}{,}
+        \PYG{l+s+s2}{\PYGZdq{}timestamp\PYGZdq{}}\PYG{o}{:} \PYG{n+nx}{string}\PYG{p}{,}
+        \PYG{l+s+s2}{\PYGZdq{}height\PYGZdq{}}\PYG{o}{:} \PYG{n+nx}{number}\PYG{p}{,}
+        \PYG{l+s+s2}{\PYGZdq{}quality\PYGZdq{}}\PYG{o}{:} \PYG{n+nx}{number}\PYG{p}{,}
+        \PYG{l+s+s2}{\PYGZdq{}confidence\PYGZdq{}}\PYG{o}{:} \PYG{n+nx}{number}\PYG{p}{,}
+        \PYG{l+s+s2}{\PYGZdq{}subject\PYGZus{}id\PYGZdq{}}\PYG{o}{:} \PYG{n+nx}{string}\PYG{p}{,}
+        \PYG{l+s+s2}{\PYGZdq{}width\PYGZdq{}}\PYG{o}{:} \PYG{n+nx}{number}\PYG{p}{,}
+        \PYG{l+s+s2}{\PYGZdq{}face\PYGZus{}id\PYGZdq{}}\PYG{o}{:} \PYG{n+nx}{number}
+      \PYG{p}{\PYGZcb{}}
+    \PYG{p}{\PYGZcb{}}
+  \PYG{p}{]}
+\PYG{p}{\PYGZcb{}}
+\end{sphinxVerbatim}
+
+Como se puede ver, los elementos del JSON son autodescriptivos. Para el caso
+del POST a \sphinxcode{/recognize}, el cuerpo de la petición lleva un JSON como el
+siguiente:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{p}{\PYGZob{}}
+  \PYG{l+s+s2}{\PYGZdq{}image\PYGZdq{}}\PYG{o}{:} \PYG{n+nx}{string}\PYG{p}{,}
+  \PYG{l+s+s2}{\PYGZdq{}gallery\PYGZus{}name\PYGZdq{}}\PYG{o}{:} \PYG{n+nx}{string}
+\PYG{p}{\PYGZcb{}}
+\end{sphinxVerbatim}
+
+La respuesta enviada por Kairos,  si se todo fue exitoso,
+es un JSON con campos autodescriptivos como los
+de la respuesta del recurso previo. Este JSON tiene se muestra a continuación.
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{p}{\PYGZob{}}
+  \PYG{l+s+s2}{\PYGZdq{}images\PYGZdq{}}\PYG{o}{:} \PYG{p}{[}
+    \PYG{p}{\PYGZob{}}
+      \PYG{l+s+s2}{\PYGZdq{}transaction\PYGZdq{}}\PYG{o}{:} \PYG{p}{\PYGZob{}}
+        \PYG{l+s+s2}{\PYGZdq{}status\PYGZdq{}}\PYG{o}{:} \PYG{n+nx}{string}\PYG{p}{,}
+        \PYG{l+s+s2}{\PYGZdq{}width\PYGZdq{}}\PYG{o}{:} \PYG{n+nx}{number}\PYG{p}{,}
+        \PYG{l+s+s2}{\PYGZdq{}topLeftX\PYGZdq{}}\PYG{o}{:} \PYG{n+nx}{number}\PYG{p}{,}
+        \PYG{l+s+s2}{\PYGZdq{}topLeftY\PYGZdq{}}\PYG{o}{:} \PYG{n+nx}{number}\PYG{p}{,}
+        \PYG{l+s+s2}{\PYGZdq{}gallery\PYGZus{}name\PYGZdq{}}\PYG{o}{:} \PYG{n+nx}{string}\PYG{p}{,}
+        \PYG{l+s+s2}{\PYGZdq{}face\PYGZus{}id\PYGZdq{}}\PYG{o}{:} \PYG{n+nx}{number}\PYG{p}{,}
+        \PYG{l+s+s2}{\PYGZdq{}confidence\PYGZdq{}}\PYG{o}{:} \PYG{n+nx}{number}\PYG{p}{,}
+        \PYG{l+s+s2}{\PYGZdq{}subject\PYGZus{}id\PYGZdq{}}\PYG{o}{:} \PYG{n+nx}{string}\PYG{p}{,}
+        \PYG{l+s+s2}{\PYGZdq{}height\PYGZdq{}}\PYG{o}{:} \PYG{n+nx}{number}\PYG{p}{,}
+        \PYG{l+s+s2}{\PYGZdq{}quality\PYGZdq{}}\PYG{o}{:} \PYG{n+nx}{number}
+      \PYG{p}{\PYGZcb{}}\PYG{p}{,}
+      \PYG{l+s+s2}{\PYGZdq{}candidates\PYGZdq{}}\PYG{o}{:} \PYG{p}{[}
+        \PYG{p}{\PYGZob{}}
+          \PYG{l+s+s2}{\PYGZdq{}subject\PYGZus{}id\PYGZdq{}}\PYG{o}{:} \PYG{n+nx}{string}\PYG{p}{,}
+          \PYG{l+s+s2}{\PYGZdq{}confidence\PYGZdq{}}\PYG{o}{:} \PYG{n+nx}{number}\PYG{p}{,}
+          \PYG{l+s+s2}{\PYGZdq{}enrollment\PYGZus{}timestamp\PYGZdq{}}\PYG{o}{:} \PYG{n+nx}{string}
+        \PYG{p}{\PYGZcb{}}\PYG{p}{,}
+        \PYG{p}{\PYGZob{}}
+          \PYG{l+s+s2}{\PYGZdq{}subject\PYGZus{}id\PYGZdq{}} \PYG{o}{:} \PYG{n+nx}{string}\PYG{p}{,}
+          \PYG{l+s+s2}{\PYGZdq{}confidence\PYGZdq{}} \PYG{o}{:} \PYG{n+nx}{numref}\PYG{p}{,}
+          \PYG{l+s+s2}{\PYGZdq{}enrollment\PYGZus{}timestamp\PYGZdq{}}\PYG{o}{:} \PYG{n+nx}{string}
+        \PYG{p}{\PYGZcb{}}
+      \PYG{p}{]}
+    \PYG{p}{\PYGZcb{}}
+  \PYG{p}{]}
+\PYG{p}{\PYGZcb{}}
+\end{sphinxVerbatim}
+
+
+\subsection{API de Wit.ai}
+\label{\detokenize{chapter_one/apis_rest:api-de-wit-ai}}
+Wit.ai es una API para procesamiento de lenguaje natural capaz de convertir
+oraciones en datos estructurados. Esto quiere decir que puedes crear bots
+que interactúen con humanos en plataformas de mensajería. Con Wit.ai los
+desarrolladores pueden contruir aplicaciones a la que se les pueda hablar o
+escribir. Los bots aprenden conforme se les hable, se vuelven más inteligentes
+en cada interacción.
+
+Wit.ai, como muchos servicios, cuenta con diferentes SDK para lenguajes como
+JavaScript, Python y Ruby. También tiene una API REST para extraer el significado
+de una sentencia o de un discurso de audio. Por ahora nos enfocaremos
+al segundo caso, cómo solicitar y cuál es la respuesta al enviar audio
+para su procesamiento.
+
+Wit trabaja con \sphinxstyleemphasis{intents} y \sphinxstyleemphasis{entities}. Las intents se usan para entender
+el significado en general de una oración. Por ejemplo la intent
+de la oración «¿A qué hora abren la bibloteca central de CU?»
+puede ser las horas de apertura de un lugar. Las entities
+proveen más información para contestar correctamente. Siguiente el ejemplo,
+el usuario no está preguntando a qué hora abren todas las bibliotecas,
+sino en específico la biblioteca central de CU, por lo que
+una entity sería el lugar del que se desear obtener la hora de apertura.
+
+La API cuenta con el URL base \sphinxcode{htttps://api.wit.ai/} y el recurso que
+solicitamos es \sphinxcode{/speech}. A través de un POST a \sphinxcode{htttps://api.wit.ai/speech}
+podemos obtener el significado de un archivo de audio.
+
+A diferencia de las otras API donde no necesariamente tenemos que especificar
+un encabezado en el mensaje de petición HTTP, aquí es necesario especificar
+el formato del archivo de audio. Se debe pasar como valor al campo
+\sphinxcode{Content-type} cualquiera de los siguientes:
+\begin{itemize}
+\item {} 
+\sphinxcode{audio/wav}: si envias un archivo wav.
+
+\item {} 
+\sphinxcode{audio/mpeg3}: para un archivo mp3.
+
+\item {} 
+\sphinxcode{audio/ulaw}: para archivo G.11 u-law.
+
+\end{itemize}
+
+Wit.ai únicamente procesa audio en formato monoaural no estéreo.
+
+En el cuerpo del mensaje va la información binaria, es decir,
+el archivo de audio. La respuesta del servidor
+es un JSON con la siguiente estructura:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{p}{\PYGZob{}}
+  \PYG{l+s+s2}{\PYGZdq{}msg\PYGZus{}id\PYGZdq{}}\PYG{o}{:} \PYG{n+nx}{string}\PYG{p}{,}
+  \PYG{l+s+s2}{\PYGZdq{}\PYGZus{}text\PYGZdq{}}\PYG{o}{:} \PYG{n+nx}{string}\PYG{p}{,}
+  \PYG{l+s+s2}{\PYGZdq{}entities\PYGZdq{}}\PYG{o}{:} \PYG{p}{\PYGZob{}}
+    \PYG{n+nx}{string} \PYG{o}{:} \PYG{p}{[} \PYG{p}{\PYGZob{}}
+      \PYG{l+s+s2}{\PYGZdq{}value\PYGZdq{}}\PYG{o}{:} \PYG{n+nx}{string}\PYG{p}{,}
+      \PYG{l+s+s2}{\PYGZdq{}confidence\PYGZdq{}}\PYG{o}{:} \PYG{n+nx}{number}
+    \PYG{p}{\PYGZcb{}} \PYG{p}{]}\PYG{p}{,}
+    \PYG{l+s+s2}{\PYGZdq{}intent\PYGZdq{}}\PYG{o}{:} \PYG{p}{\PYGZob{}}
+      \PYG{l+s+s2}{\PYGZdq{}value\PYGZdq{}}\PYG{o}{:} \PYG{n+nx}{string}\PYG{p}{,}
+      \PYG{l+s+s2}{\PYGZdq{}confidence\PYGZdq{}}\PYG{p}{;} \PYG{n+nx}{number}
+    \PYG{p}{\PYGZcb{}}
+  \PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+\end{sphinxVerbatim}
+
+\sphinxcode{msg\_id} es el id de la respuesta. \sphinxcode{\_text} es la trancripción
+del discurso de audio en texto. \sphinxcode{entities} es un objeto con las
+entities e intents que se encontraron. Si es una intent
+el objeto tiene como llave la cadena \sphinxcode{"intent"} y como
+valores los campos \sphinxcode{value} y \sphinxcode{confidence}, donde el primero
+es el valor con el que se definió la intent y el segundo es la
+probabilidad de que sea tal intent. Si es una
+entity la llave del objeto es el nombre de la entity y como valor
+tiene un arreglo de las diferentes apariciones que tiene
+esa entity en el mensaje. Cada entity tiene los campos de
+\sphinxcode{value} y \sphinxcode{confidence}.
+
+
+\subsection{API REST de Firebase Database}
+\label{\detokenize{chapter_one/apis_rest:api-rest-de-firebase-database}}
+La base de datos en tiempo real de Firebase cuenta con una API REST
+para realizar operaciones para leer, escribir, modificar o eliminar datos.
+
+Se puede utilizar cualquier URL de la base de datos de Firebase como un endpoint
+REST. Todo lo que se necesita es añadir la extensión \sphinxcode{.json} al final del
+URL y enviar una petición desde cualquier cliente HTTP.
+
+Para poder utilizar la API REST, el mapeo de los métodos
+HTTP y las operaciones sobre Firebase Realtime Database es el siguiente.
+\begin{itemize}
+\item {} 
+\sphinxstylestrong{GET}, para leer información previamente almacenada en la base de datos.
+
+\item {} 
+\sphinxstylestrong{PUT}, para escribir datos sobre una ubicación de la base de datos. Si existen datos los sobreescribe. Equivalente a \sphinxcode{set()} de los SDK.
+
+\item {} 
+\sphinxstylestrong{POST}, para añadir información en la base de datos. Se asigna un identificador único generado por Firebase. Es equivalente al \sphinxcode{push()} de los SDK.
+
+\item {} 
+\sphinxstylestrong{PATCH}, para actualizar datos en una ubicación sin sobreescribir. Equivalente a \sphinxcode{update()} de los SDK.
+
+\item {} 
+\sphinxstylestrong{DELETE}, elimina los datos en la ubicación dada.
+
+\end{itemize}
+
+La lista anterior muestra los métodos de lectura y escritura sobre la base
+de datos, sin embargo, la API REST soportan el protocolo \sphinxstylestrong{Server-sent events (SSE)},
+que define una API para recibir notificaciones push desde un servidor a través
+de una conexión HTTP.
+
+Para recibir las actualizaciones sobre una ubicación en la base de datos se
+necesitan hacer tres cosas:
+\begin{itemize}
+\item {} 
+Configurar el header \sphinxcode{Accept} igual a \sphinxcode{text/event-stream}. Del lado del cliente.
+
+\item {} 
+Respetar los redireccionamientos HTTP.
+
+\item {} 
+Si la ubicación de la base de datos requiere permisos, incluir el parámetro \sphinxcode{auth}.
+
+\end{itemize}

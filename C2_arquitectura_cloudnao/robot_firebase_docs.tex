@@ -1,0 +1,698 @@
+\subsection{Firebase y el robot NAO}\label{\detokenize{firebase-nao-robot}}
+El robot NAO dentro de la arquitectura CloudNAO es sobre quien se aplican las
+otras tecnologías desarrolladas. La aplicación móvil, utilizando el SDK para Android de NAOqi,
+controla al robot, recibe imágenes para sus procesamiento en la nube, almacena
+logs para sus posteriores análisis usando la Firebase, también en la nube, y muchas
+funcionalidades más. Sin embargo, en esta sección se describe el robot como componente
+que no sólo recibe órdenes y envía datos sin ejecutar un programa localmente.
+
+El cómputo en la nube como ya se habló en en secciones pasadas, incluye también
+que el robot aunque no realice todo el procesamiento que conlleva el ejecutar
+un modelo de aprendizaje profundo para analizar imágenes, procese la salida
+de un algoritmo para realizar cierta tarea que desee.
+
+En esta sección se describe cómo conectar al robot a la aplicación web utilizando
+como intermediario a Firebase. También se describe como conectarse a la API RESTful
+de CloudNAO para que el robot realice algunas actividades con los resultados
+que adquiere de ésta.
+
+Para conectar remotamente a la aplicación web con el robot NAO, es necesario
+un intermediario, ya que se quiere que la conexión no sea dentro de una misma red
+y la respuesta sea inmediata, Ese intermediario es Firebase, que sirve como
+backend para conectar estas plataformas.
+
+El robot es una plataforma con recursos muy limitados, no hay un SDK
+específicamente hecho para el robot. Por lo anterior, se utilza la API REST
+de Firebase Realtime Database para envíar y recibir información a través de
+internet. Sin embargo, a pesar de ser una API REST, fue necesaria la creación
+de un módulo escrito en Python que sirviera como una interfaz de alto nivel,
+donde hacer una petición HTTP fuera igual de sencillo que llamar una función en
+los SDK disponibles.
+
+
+\paragraph{Módulo auxiliar para la API REST}
+\label{\detokenize{nao_firebase:modulo-auxiliar-para-la-api-rest}}
+Para utilizar la API REST de manera más simple se desarrolló una biblioteca
+que encapsulara los métodos de lectura, escritura y el streaming de datos.
+
+Es un módulo de Python, compuesto por dos partes principales; la primera parte
+es aquella que maneja las peticiones de escritura y lectura usando los métodos
+HTTP antes mencionados, la segunda parte es la encargada de recibir las
+notificaciones de parte del servidor. Para la primera el uso de la biblioteca
+\sphinxcode{\sphinxupquote{requests}} es suficiente. Para la segunda, se emplean las bibliotecas
+\sphinxcode{\sphinxupquote{threading}}, para que en un hilo se escuchen los cambios, \sphinxcode{\sphinxupquote{sseclient}},
+un cliente del protocolo \sphinxstylestrong{SSE}, y \sphinxcode{\sphinxupquote{socket}}, el hilo del clente \sphinxstylestrong{SSE}.
+
+A continuación se describe cada componente del módulo \sphinxcode{\sphinxupquote{firebase}}.
+
+\phantomsection\label{\detokenize{nao_firebase:module-firebase}}\index{firebase (módulo)}\index{ClosableSSEClient (clase en firebase)}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{nao_firebase:firebase.ClosableSSEClient}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class }}\sphinxcode{\sphinxupquote{firebase.}}\sphinxbfcode{\sphinxupquote{ClosableSSEClient}}}{\emph{*args}, \emph{**kwargs}}{}
+Una clase pública desarrollada por el equipo de Firebase.
+Añade una funcionalidad al módulo \sphinxcode{\sphinxupquote{SSEClient}} para
+abandonar correctamete el streaming.
+\index{close() (método de firebase.ClosableSSEClient)}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{nao_firebase:firebase.ClosableSSEClient.close}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{close}}}{}{}
+Añade la funcionalidad necesaria para salir del streaming de manera correcta
+Se busca el socket dentro del módulo cliente de SSE y se cierra para lanzar una
+excepción y abandonar el streaming.
+
+\end{fulllineitems}
+
+
+\end{fulllineitems}
+
+\index{FirebaseDatabase (clase en firebase)}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{nao_firebase:firebase.FirebaseDatabase}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class }}\sphinxcode{\sphinxupquote{firebase.}}\sphinxbfcode{\sphinxupquote{FirebaseDatabase}}}{\emph{url}}{}
+Una clase para usar utilizar la API REST de Firebase con métodos de alto nivel.
+Sirve para crear algo similar a las \sphinxstyleemphasis{Referencias} denifidas por Firebase.
+Un objeto de esta clase representa una ubicación específica en la base de datos.
+Con los métodos se realizan operaciones de escritura y lectura sobre esa ubicación.
+
+El constructor de la clase se encarga de definir la ubicación de la base de datos
+sobre la que se harán las operaciones.
+Necesita el diccionario \sphinxcode{\sphinxupquote{config}} que contiene el valor del parámetro de autorización.
+\index{add\_event\_listener() (método de firebase.FirebaseDatabase)}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{nao_firebase:firebase.FirebaseDatabase.add_event_listener}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{add\_event\_listener}}}{\emph{handler\_function}}{}~\index{add\_event\_listener() (método de firebase.FirebaseDatabase)}
+
+\begin{fulllineitems}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{add\_event\_listener}}}{\emph{handler\_function}}{}
+\end{fulllineitems}
+
+
+Este método crea un hilo para escuchar los cambios en la ubicación actual
+de la base de datos, y manejar esos cambios en una función.
+\begin{quote}\begin{description}
+\item[{Parámetros}] \leavevmode
+\sphinxstyleliteralstrong{\sphinxupquote{handler\_function}} \textendash{} La función que maneja los eventos enviados por firebase.
+
+\end{description}\end{quote}
+
+\end{fulllineitems}
+
+\index{child() (método de firebase.FirebaseDatabase)}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{nao_firebase:firebase.FirebaseDatabase.child}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{child}}}{\emph{path}}{}~
+Se encarga de crear una nueva instancia con una ubicación relativa a la actual.
+\begin{quote}\begin{description}
+\item[{Parámetros}] \leavevmode
+\sphinxstyleliteralstrong{\sphinxupquote{path}} \textendash{} La ruta que se añade a la ubicación actual.
+
+\item[{Devuelve}] \leavevmode
+Un nuevo objeto de \sphinxcode{\sphinxupquote{FirebaseDatabase}}
+
+\end{description}\end{quote}
+
+\end{fulllineitems}
+
+\index{get() (método de firebase.FirebaseDatabase)}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{nao_firebase:firebase.FirebaseDatabase.get}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{get}}}{}{}~
+Este método obtiene los datos asociados con la ubicación del objeto a través
+del método \sphinxcode{\sphinxupquote{GET}} del protocolo HTTP.
+
+\end{fulllineitems}
+
+\index{push() (método de firebase.FirebaseDatabase)}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{nao_firebase:firebase.FirebaseDatabase.push}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{push}}}{\emph{data}}{}~
+Genera una nueva ubicación hija de la actual. Esta ubicación tiene un
+llave aleatoria única y se escriben los datos en esta.
+Por ejemplo, al hacer un \sphinxcode{\sphinxupquote{push(\{"name" : "Rick Deckard"\})}} a \sphinxcode{\sphinxupquote{/users/}}
+se produce \sphinxcode{\sphinxupquote{/users/-L43aJQFQNzAIXry8\_6g/name/}} con un valor \sphinxcode{\sphinxupquote{Rick Deckard}}.
+Simplemente hace un \sphinxcode{\sphinxupquote{POST}} con los datos a enviar  a la URL del objeto.
+\begin{quote}\begin{description}
+\item[{Parámetros}] \leavevmode
+\sphinxstyleliteralstrong{\sphinxupquote{data}} (\sphinxstyleliteralemphasis{\sphinxupquote{Cualquier tipo de datos válido en un JSON.}}) \textendash{} Los datos que se envían en la petición.
+
+\end{description}\end{quote}
+
+\end{fulllineitems}
+
+\index{remove() (método de firebase.FirebaseDatabase)}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{nao_firebase:firebase.FirebaseDatabase.remove}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{remove}}}{}{}~
+Elimina todos los datos en la ubicación actual.
+
+\end{fulllineitems}
+
+\index{remove\_event\_listener() (método de firebase.FirebaseDatabase)}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{nao_firebase:firebase.FirebaseDatabase.remove_event_listener}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{remove\_event\_listener}}}{}{}~\index{remove\_event\_listener() (método de firebase.FirebaseDatabase)}
+
+\begin{fulllineitems}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{remove\_event\_listener}}}{}{}
+\end{fulllineitems}
+
+
+Abandona el streaming de Firebase y une al hilo con el hilo principal.
+
+\end{fulllineitems}
+
+\index{set() (método de firebase.FirebaseDatabase)}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{nao_firebase:firebase.FirebaseDatabase.set}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{set}}}{\emph{data}}{}~
+Escribe datos en la ubicación actual. Esto sobreescribe cualquier información
+que contenga.
+Hace un \sphinxcode{\sphinxupquote{PUT}} sobre la ubicación actual.
+:param data: Los datos que se envían en la petición.
+:type data: Cualquier tipo de datos válido en un JSON.
+
+\end{fulllineitems}
+
+\index{update() (método de firebase.FirebaseDatabase)}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{nao_firebase:firebase.FirebaseDatabase.update}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{update}}}{\emph{data}}{}~
+Escribe multiples valores en la ubicación actual de la base de datos. A diferencia
+de {\hyperref[\detokenize{nao_firebase:firebase.FirebaseDatabase.set}]{\sphinxcrossref{\sphinxcode{\sphinxupquote{set()}}}}} solo actualiza los valores que se desean de acuerdo a la ubicación
+actual. Se hace un \sphinxcode{\sphinxupquote{PATCH}} al URL.
+\begin{quote}\begin{description}
+\item[{Parámetros}] \leavevmode
+\sphinxstyleliteralstrong{\sphinxupquote{data}} (\sphinxstyleliteralemphasis{\sphinxupquote{Cualquier tipo de datos válido en un JSON.}}) \textendash{} Los datos que se envían en la petición.
+
+\end{description}\end{quote}
+
+\end{fulllineitems}
+
+
+\end{fulllineitems}
+
+\index{RemoteThread (clase en firebase)}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{nao_firebase:firebase.RemoteThread}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class }}\sphinxcode{\sphinxupquote{firebase.}}\sphinxbfcode{\sphinxupquote{RemoteThread}}}{\emph{url}, \emph{handler}}{}
+Una clase creada por el equipo de Firebase para que un hilo
+se encargue de los eventos enviados por Firebase, con una
+funcionalidad que añadí para que una función callback maneje
+los datos enviados por Firebase.
+\index{close() (método de firebase.RemoteThread)}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{nao_firebase:firebase.RemoteThread.close}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{close}}}{}{}~
+Deja el streaming, usando {\hyperref[\detokenize{nao_firebase:firebase.RemoteThread.close}]{\sphinxcrossref{\sphinxcode{\sphinxupquote{close()}}}}} del cliente SSE.
+
+\end{fulllineitems}
+
+\index{run() (método de firebase.RemoteThread)}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{nao_firebase:firebase.RemoteThread.run}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{run}}}{}{}~
+Método para recibir el streaming de Firebase hasta que se cierre la
+conexión.
+
+\end{fulllineitems}
+
+
+\end{fulllineitems}
+
+\index{check\_response() (en el módulo firebase)}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{nao_firebase:firebase.check_response}}\pysiglinewithargsret{\sphinxcode{\sphinxupquote{firebase.}}\sphinxbfcode{\sphinxupquote{check\_response}}}{\emph{response}}{}
+Función para verficar el código de estado de la respuesta enviada
+por firebase.
+\begin{quote}\begin{description}
+\item[{Parámetros}] \leavevmode
+\sphinxstyleliteralstrong{\sphinxupquote{response}} \textendash{} El objeto con la respuesta enviada por Firebase.
+
+\item[{Devuelve}] \leavevmode
+Un diccionario con una respuesta de la petición.
+
+\item[{Type}] \leavevmode
+dict
+
+\end{description}\end{quote}
+
+\end{fulllineitems}
+
+
+
+\paragraph{Módulo para utilizar la API de NAOqi}
+\label{\detokenize{nao_firebase:modulo-para-utiizar-modulos-de-naoqi}}
+Este módulo es el que se ocupa de integrar la API de NAOqi en la aplicación
+que se corre sobre el robot. Aquí se crean los proxies a los módulos de NAOqi,
+y los métodos que se utilizan para obtener datos de la memoria del robot,
+realizar un movimiento, hablar, entre otros.
+
+\phantomsection\label{\detokenize{nao_firebase:module-nao_robot}}\index{nao\_robot (módulo)}\index{Robot (clase en nao\_robot)}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{nao_firebase:nao_robot.Robot}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class }}\sphinxcode{\sphinxupquote{nao\_robot.}}\sphinxbfcode{\sphinxupquote{Robot}}}{\emph{ip\_address}, \emph{port}}{}
+Una clase para encapsular todos los métodos del robot
+que van a recibir o enviar información a Firebase.
+
+Los atributos de clase y sus valores son los siguientes:
+
+\fvset{hllines={, ,}}%
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{cam\PYGZus{}idx} \PYG{o}{=} \PYG{l+m+mi}{0}
+\PYG{n}{resolution} \PYG{o}{=} \PYG{l+m+mi}{0}
+\PYG{n}{color\PYGZus{}space} \PYG{o}{=} \PYG{l+m+mi}{11}
+\PYG{n}{fps} \PYG{o}{=} \PYG{l+m+mi}{10}
+\PYG{n}{camera\PYGZus{}subscriber} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{cameraSubscriber0001}\PYG{l+s+s1}{\PYGZsq{}}
+\PYG{n}{sonar\PYGZus{}subscriber} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{sonarSubscriber0001}\PYG{l+s+s1}{\PYGZsq{}}
+\PYG{n}{move\PYGZus{}config} \PYG{o}{=} \PYG{p}{[}
+    \PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{MaxStepFrequency}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,} \PYG{l+m+mf}{0.5}\PYG{p}{]}\PYG{p}{,}
+    \PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{MaxStepTheta}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,} \PYG{l+m+mf}{0.349}\PYG{p}{]}\PYG{p}{,}
+    \PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{MaxStepX}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,} \PYG{l+m+mf}{0.04}\PYG{p}{]}\PYG{p}{,}
+    \PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{MaxStepY}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,} \PYG{l+m+mf}{0.14}\PYG{p}{]}\PYG{p}{,}
+    \PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{StepHeight}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,} \PYG{l+m+mf}{0.02}\PYG{p}{]}
+\PYG{p}{]}
+\end{sphinxVerbatim}
+
+El constructor de la clase crea los proxies a los módulos de NAOqi.
+Recibe la la dirección ip y el puerto del robot.
+\index{change\_posture() (método de nao\_robot.Robot)}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{nao_firebase:nao_robot.Robot.change_posture}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{change\_posture}}}{\emph{posture}}{}
+Cambia entre dos posturas del robot, \sphinxstylestrong{Stand} y \sphinxstylestrong{Crouch}.
+\begin{quote}\begin{description}
+\item[{Parámetros}] \leavevmode
+\sphinxstyleliteralstrong{\sphinxupquote{posture}} \textendash{} El nombre de la postura del robot que se desea obtener
+
+\end{description}\end{quote}
+
+\end{fulllineitems}
+
+\index{get\_battery\_level() (método de nao\_robot.Robot)}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{nao_firebase:nao_robot.Robot.get_battery_level}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{get\_battery\_level}}}{}{}
+Solicita el valor del nivel de la batería desde la memoria del robot
+y lo retorna
+\begin{quote}\begin{description}
+\item[{Devuelve}] \leavevmode
+Un número con el nivel actual de la batería
+
+\item[{Type}] \leavevmode
+int
+
+\end{description}\end{quote}
+
+\end{fulllineitems}
+
+\index{get\_image\_from\_robot() (método de nao\_robot.Robot)}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{nao_firebase:nao_robot.Robot.get_image_from_robot}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{get\_image\_from\_robot}}}{}{}
+Obtiene la imagen del robot codificada en base64. Primero con
+\sphinxcode{\sphinxupquote{getImageRemote()}} recibe el contenedor de la imagen, y luego,
+el arreglo de bytes de la imagen en el contenedor, se guarda en una
+estructura de \sphinxcode{\sphinxupquote{PIL}} para que pueda convertirse en una cadena.
+\begin{quote}\begin{description}
+\item[{Devuelve}] \leavevmode
+La imagen codificada en base64
+
+\item[{Type}] \leavevmode
+str
+
+\end{description}\end{quote}
+
+\end{fulllineitems}
+
+\index{get\_values\_from\_memory() (método de nao\_robot.Robot)}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{nao_firebase:nao_robot.Robot.get_values_from_memory}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{get\_values\_from\_memory}}}{}{}
+Obtiene valores de la memoria del robot y retorna un diccionario
+con sus llaves y valores.
+\begin{quote}\begin{description}
+\item[{Devuelve}] \leavevmode
+Un diccionario con los valores de \sphinxcode{\sphinxupquote{ALMemory}}
+
+\item[{Type}] \leavevmode
+dict
+
+\end{description}\end{quote}
+
+\end{fulllineitems}
+
+\index{move\_joint() (método de nao\_robot.Robot)}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{nao_firebase:nao_robot.Robot.move_joint}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{move\_joint}}}{\emph{joint\_name}, \emph{angle}}{}
+Mueve una articulación del robot con respecto a la posción inicial de una
+articulación. Primero activa la rigidez del motor que mueve la articulación, realiza el movimiento en dos
+segundos y luego desactiva la rigidez del motor.
+
+\end{fulllineitems}
+
+\index{move\_robot() (método de nao\_robot.Robot)}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{nao_firebase:nao_robot.Robot.move_robot}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{move\_robot}}}{\emph{\_x}, \emph{\_y}, \emph{\_theta}}{}
+Método para ejecutar hacer caminar utilizando \sphinxcode{\sphinxupquote{moveToward}} de la
+API de NAOqi.
+\begin{quote}\begin{description}
+\item[{Parámetros}] \leavevmode\begin{itemize}
+\item {} 
+\sphinxstyleliteralstrong{\sphinxupquote{\_x}} \textendash{} La velocidad (-1, 1) sobre el eje \sphinxstylestrong{X}
+
+\item {} 
+\sphinxstyleliteralstrong{\sphinxupquote{\_y}} \textendash{} La velocidad (-1, 1) sobre el eje \sphinxstylestrong{Y}
+
+\item {} 
+\sphinxstyleliteralstrong{\sphinxupquote{\_theta}} \textendash{} La velocidad (-1, 1) sobre el eje \sphinxstylestrong{Z}
+
+\end{itemize}
+
+\end{description}\end{quote}
+
+\end{fulllineitems}
+
+\index{say\_speech() (método de nao\_robot.Robot)}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{nao_firebase:nao_robot.Robot.say_speech}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{say\_speech}}}{\emph{text}}{}
+Ejecuta la función \sphinxcode{\sphinxupquote{say}} de \sphinxcode{\sphinxupquote{ALTextToSpeech}}. Dice la cadena
+enviada como parámetro.
+\begin{quote}\begin{description}
+\item[{Parámetros}] \leavevmode
+\sphinxstyleliteralstrong{\sphinxupquote{text}} \textendash{} El texto que debe decir el robot
+
+\end{description}\end{quote}
+
+\end{fulllineitems}
+
+\index{set\_move\_config() (método de nao\_robot.Robot)}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{nao_firebase:nao_robot.Robot.set_move_config}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{set\_move\_config}}}{\emph{move\_config\_map}}{}
+Cambia los parámetros de caminado del robot. Recibe un diccionario
+con los nuevos parámetros y sus valores. Los procesa para ver si son válidos
+y cambiarlos.
+
+\end{fulllineitems}
+
+\index{stop\_movement() (método de nao\_robot.Robot)}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{nao_firebase:nao_robot.Robot.stop_movement}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{stop\_movement}}}{}{}
+Método para detener los movimientos del robot, llama a \sphinxcode{\sphinxupquote{stopMove()}}
+de \sphinxcode{\sphinxupquote{ALMotion}}.
+
+\end{fulllineitems}
+
+\index{subscribe\_to\_camera() (método de nao\_robot.Robot)}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{nao_firebase:nao_robot.Robot.subscribe_to_camera}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{subscribe\_to\_camera}}}{}{}
+Se suscribe a la cámara del robot, con los parámetros que se definieron
+en los atributos de la clase.
+
+\end{fulllineitems}
+
+\index{subscribe\_to\_sonar() (método de nao\_robot.Robot)}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{nao_firebase:nao_robot.Robot.subscribe_to_sonar}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{subscribe\_to\_sonar}}}{}{}
+Se suscribe al sonar para que se actualicen los valores en la memoria
+con las distancias a obstáculos.
+
+\end{fulllineitems}
+
+\index{unsubscribe\_to\_camera() (método de nao\_robot.Robot)}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{nao_firebase:nao_robot.Robot.unsubscribe_to_camera}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{unsubscribe\_to\_camera}}}{}{}
+Da de baja al suscriptor de la cámara
+
+\end{fulllineitems}
+
+\index{unsubscribe\_to\_sonar() (método de nao\_robot.Robot)}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{nao_firebase:nao_robot.Robot.unsubscribe_to_sonar}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{unsubscribe\_to\_sonar}}}{}{}
+Se apagan los sonares.
+
+\end{fulllineitems}
+
+
+\end{fulllineitems}
+
+
+
+\paragraph{Conectando la API REST de Firebase y NAOqi}
+\label{\detokenize{nao_firebase:conectando-la-api-rest-de-firebase-y-naoqi}}
+Después de contar con una biblioteca cliente para realizar peticiones a la
+API REST de Firebase y con un módulo que utilice la API de NAOqi sólo
+resta unirlos en una aplicación que sea fácil de ejecutar y que responda con
+funciones de módulos de NAOqi a actualizaciones enviadas por Firebase o
+que envíe información a ubicaciones de la base de datos.
+
+Este aplicación debe poder ejecutarse local y remotamente (dentro de la misma red)
+en el robot.
+
+Para mantener simple la ejecución del script que conecta al robot con Firebase
+la aplicación está dividida en cinco módulos. Estos incluyen a los módulos
+descritos anteriormente, \sphinxcode{\sphinxupquote{firebase}} y \sphinxcode{\sphinxupquote{nao\_robot}}.
+
+
+\subsubsection{app.py}
+\label{\detokenize{nao_firebase:app-py}}\label{\detokenize{nao_firebase:module-app}}\index{app (módulo)}\index{main() (en el módulo app)}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{nao_firebase:app.main}}\pysiglinewithargsret{\sphinxcode{\sphinxupquote{app.}}\sphinxbfcode{\sphinxupquote{main}}}{}{}
+Inicia la aplicación, obtiene la dirección ip y puerto del robot a través
+de los argumentos enviados en la línea de comandos, luego llama a la Función
+\sphinxcode{\sphinxupquote{run()}} del módulo \sphinxcode{\sphinxupquote{fire\_nao}}.
+
+\end{fulllineitems}
+
+
+
+\subsubsection{confg.py}
+\label{\detokenize{nao_firebase:confg-py}}
+Este archivo unicamente tiene un diccionario con la configuración para Firebase
+con el siguiente formato:
+
+\fvset{hllines={, ,}}%
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{config} \PYG{o}{=} \PYG{p}{\PYGZob{}}
+    \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{databaseURL}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{https://url\PYGZhy{}de\PYGZhy{}firebase.com/}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}
+    \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{auth}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{API KEY del proyecto de Firebase}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}
+    \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{robotUID}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{identificador único del robot generado por Firebase}\PYG{l+s+s2}{\PYGZdq{}}
+\PYG{p}{\PYGZcb{}}
+\end{sphinxVerbatim}
+
+
+\subsubsection{fire\_nao.py}
+\label{\detokenize{nao_firebase:fire-nao-py}}
+Este módulo es quien integra a \sphinxcode{\sphinxupquote{firebase{}`{}`{}`y {}`{}`nao\_robot}} para comunicar al robot
+con la aplicación web a través de Firebase.
+
+\phantomsection\label{\detokenize{nao_firebase:module-fire_nao}}\index{fire\_nao (módulo)}\index{REF\_TO\_COMMANDS (en el módulo fire\_nao)}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{nao_firebase:fire_nao.REF_TO_COMMANDS}}\pysigline{\sphinxcode{\sphinxupquote{fire\_nao.}}\sphinxbfcode{\sphinxupquote{REF\_TO\_COMMANDS}}\sphinxbfcode{\sphinxupquote{ = \textless{}firebase.FirebaseDatabase object\textgreater{}}}}
+Referencia a la ubicación de los comandos en la base de datos
+
+\end{fulllineitems}
+
+\index{REF\_TO\_LIVE\_IMAGE (en el módulo fire\_nao)}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{nao_firebase:fire_nao.REF_TO_LIVE_IMAGE}}\pysigline{\sphinxcode{\sphinxupquote{fire\_nao.}}\sphinxbfcode{\sphinxupquote{REF\_TO\_LIVE\_IMAGE}}\sphinxbfcode{\sphinxupquote{ = \textless{}firebase.FirebaseDatabase object\textgreater{}}}}
+Referencia a la ubicación donde se enviarán las imágenes de la cámara del robot
+
+\end{fulllineitems}
+
+\index{REF\_TO\_LOGS (en el módulo fire\_nao)}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{nao_firebase:fire_nao.REF_TO_LOGS}}\pysigline{\sphinxcode{\sphinxupquote{fire\_nao.}}\sphinxbfcode{\sphinxupquote{REF\_TO\_LOGS}}\sphinxbfcode{\sphinxupquote{ = \textless{}firebase.FirebaseDatabase object\textgreater{}}}}
+Referencia donde se guardan los logs del robot en la base de datos
+
+\end{fulllineitems}
+
+\index{REF\_TO\_STATUS (en el módulo fire\_nao)}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{nao_firebase:fire_nao.REF_TO_STATUS}}\pysigline{\sphinxcode{\sphinxupquote{fire\_nao.}}\sphinxbfcode{\sphinxupquote{REF\_TO\_STATUS}}\sphinxbfcode{\sphinxupquote{ = \textless{}firebase.FirebaseDatabase object\textgreater{}}}}
+Referencia a la ubicación con el estado de la conexión del robot y el nivel de batería
+
+\end{fulllineitems}
+
+\index{ROBOT (en el módulo fire\_nao)}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{nao_firebase:fire_nao.ROBOT}}\pysigline{\sphinxcode{\sphinxupquote{fire\_nao.}}\sphinxbfcode{\sphinxupquote{ROBOT}}\sphinxbfcode{\sphinxupquote{ = None}}}
+La instancia del objeto Robot, para ejecutar funciones de NAOqi. Se incializa con valor nulo.
+
+\end{fulllineitems}
+
+\index{ROBOT\_OPTIONS (en el módulo fire\_nao)}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{nao_firebase:fire_nao.ROBOT_OPTIONS}}\pysigline{\sphinxcode{\sphinxupquote{fire\_nao.}}\sphinxbfcode{\sphinxupquote{ROBOT\_OPTIONS}}\sphinxbfcode{\sphinxupquote{ = \{'changePosture': \textless{}function change\_posture at 0x7effe8e46488\textgreater{}, 'gaitParameters': \textless{}function set\_move\_config at 0x7effe8e46840\textgreater{}, 'moveJoint': \textless{}function move\_joint at 0x7effe8e46378\textgreater{}, 'speech': \textless{}function say at 0x7effe8e46730\textgreater{}, 'walk': \textless{}function walk at 0x7effe8e46510\textgreater{}, 'walkSpeed': \textless{}function set\_velocity at 0x7effe8e46400\textgreater{}\}}}}
+El diccionario que mapea los valores recibidos de Firebase a una función que ejecute el comando.
+
+\end{fulllineitems}
+
+\index{ROOT\_DB\_REF (en el módulo fire\_nao)}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{nao_firebase:fire_nao.ROOT_DB_REF}}\pysigline{\sphinxcode{\sphinxupquote{fire\_nao.}}\sphinxbfcode{\sphinxupquote{ROOT\_DB\_REF}}\sphinxbfcode{\sphinxupquote{ = \textless{}firebase.FirebaseDatabase object\textgreater{}}}}
+La referencia a la base de datos de Firebase
+
+\end{fulllineitems}
+
+\index{change\_posture() (en el módulo fire\_nao)}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{nao_firebase:fire_nao.change_posture}}\pysiglinewithargsret{\sphinxcode{\sphinxupquote{fire\_nao.}}\sphinxbfcode{\sphinxupquote{change\_posture}}}{\emph{*args}}{}
+Función que se llama cuando se recibe una actualización que solicita
+el cambio de postura del robot.
+\begin{quote}\begin{description}
+\item[{Parámetros}] \leavevmode
+\sphinxstyleliteralstrong{\sphinxupquote{*args}} \textendash{} Se esperan dos argumentos, el primero debe ser nulo y el segundo la postura.
+
+\item[{Args{[}1{]}}] \leavevmode
+(\sphinxcode{\sphinxupquote{str}}) La postura del robot (Stand, Crouch)
+
+\end{description}\end{quote}
+
+\end{fulllineitems}
+
+\index{commands\_handler() (en el módulo fire\_nao)}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{nao_firebase:fire_nao.commands_handler}}\pysiglinewithargsret{\sphinxcode{\sphinxupquote{fire\_nao.}}\sphinxbfcode{\sphinxupquote{commands\_handler}}}{\emph{**kwargs}}{}
+La función del escuchador suscrito a la ubicación de Firebase
+\sphinxcode{\sphinxupquote{REF\_TO\_COMMANDS}}. Parse la respuesta y luego de acuerdo al comando enviado
+ejecuta la función que corresponde según \sphinxcode{\sphinxupquote{ROBOT\_OPTIONS}}.
+
+\end{fulllineitems}
+
+\index{init\_subscribers() (en el módulo fire\_nao)}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{nao_firebase:fire_nao.init_subscribers}}\pysiglinewithargsret{\sphinxcode{\sphinxupquote{fire\_nao.}}\sphinxbfcode{\sphinxupquote{init\_subscribers}}}{}{}
+Inicializa los suscriptores. Por ahora sólo la cámara.
+
+\end{fulllineitems}
+
+\index{move\_joint() (en el módulo fire\_nao)}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{nao_firebase:fire_nao.move_joint}}\pysiglinewithargsret{\sphinxcode{\sphinxupquote{fire\_nao.}}\sphinxbfcode{\sphinxupquote{move\_joint}}}{\emph{*args}}{}
+Función que se llama cuando se recibe una actualización que solicita
+mover una articulación.
+\begin{quote}\begin{description}
+\item[{Parámetros}] \leavevmode
+\sphinxstyleliteralstrong{\sphinxupquote{*args}} \textendash{} Se esperan dos argumentos, el nombre de la articulación y el ángulo que debe moverse
+
+\item[{Args{[}0{]}}] \leavevmode
+(\sphinxcode{\sphinxupquote{str}}) El nombre de la articulación
+
+\item[{Args{[}1{]}}] \leavevmode
+(\sphinxcode{\sphinxupquote{float}}) El valor en grados sexagesimales del ángulo.
+
+\end{description}\end{quote}
+
+\end{fulllineitems}
+
+\index{off\_subscribers() (en el módulo fire\_nao)}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{nao_firebase:fire_nao.off_subscribers}}\pysiglinewithargsret{\sphinxcode{\sphinxupquote{fire\_nao.}}\sphinxbfcode{\sphinxupquote{off\_subscribers}}}{}{}
+Da de baja los suscriptores.
+
+\end{fulllineitems}
+
+\index{run() (en el módulo fire\_nao)}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{nao_firebase:fire_nao.run}}\pysiglinewithargsret{\sphinxcode{\sphinxupquote{fire\_nao.}}\sphinxbfcode{\sphinxupquote{run}}}{\emph{robot\_ip}, \emph{robot\_port}}{}
+La función que se llama al ejecutar la aplicación, inicializa la variable
+\sphinxcode{\sphinxupquote{ROBOT}} como una instancia de la clase \sphinxcode{\sphinxupquote{Robot()}}. Se añade el agente que
+escucha los cambios en una referencia de la base de datos (\sphinxcode{\sphinxupquote{REF\_TO\_COMMANDS}}).
+Inician los suscriptores. Luego con declara un bucle que se ejecuta
+hasta que el usuario interrumpe el programa. Mientras no se detenga
+envía constantes actualizaciones a Firebase. Cuando se detiene,
+se dan de baja los suscriptores y se elimina el escuchador.
+
+\end{fulllineitems}
+
+\index{say() (en el módulo fire\_nao)}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{nao_firebase:fire_nao.say}}\pysiglinewithargsret{\sphinxcode{\sphinxupquote{fire\_nao.}}\sphinxbfcode{\sphinxupquote{say}}}{\emph{*args}}{}
+Función que se llama cuando se recibe una actualización que solicita
+que el robot diga un discurso.
+\begin{quote}\begin{description}
+\item[{Parámetros}] \leavevmode
+\sphinxstyleliteralstrong{\sphinxupquote{*args}} \textendash{} Se esperan dos argumentos, el primero debe ser nulo y el segundo el texto que debe repetir el robot.
+
+\item[{Args{[}1{]}}] \leavevmode
+(\sphinxcode{\sphinxupquote{str}}) El texto que debe decir el robot.
+
+\end{description}\end{quote}
+
+\end{fulllineitems}
+
+\index{set\_move\_config() (en el módulo fire\_nao)}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{nao_firebase:fire_nao.set_move_config}}\pysiglinewithargsret{\sphinxcode{\sphinxupquote{fire\_nao.}}\sphinxbfcode{\sphinxupquote{set\_move\_config}}}{\emph{*args}}{}
+Función que se llama cuando se recibe una actualización que solicita
+que el robot cambie los parámetros de caminado
+\begin{quote}\begin{description}
+\item[{Parámetros}] \leavevmode
+\sphinxstyleliteralstrong{\sphinxupquote{*args}} \textendash{} Se esperan dos argumentos, el primero debe ser nulo y el segundo un diccionario con los parámetros que se quieren actualizar y los nuevos valores.
+
+\item[{Args{[}1{]}}] \leavevmode
+(\sphinxcode{\sphinxupquote{dict}}). Los nuevos valores para los parámetros de caminado
+
+\end{description}\end{quote}
+
+\end{fulllineitems}
+
+\index{set\_velocity() (en el módulo fire\_nao)}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{nao_firebase:fire_nao.set_velocity}}\pysiglinewithargsret{\sphinxcode{\sphinxupquote{fire\_nao.}}\sphinxbfcode{\sphinxupquote{set\_velocity}}}{\emph{*args}}{}
+Función que se llama cuando se recibe una actualización que solicita
+que el robot cambie la velocidad de caminado
+\begin{quote}\begin{description}
+\item[{Parámetros}] \leavevmode
+\sphinxstyleliteralstrong{\sphinxupquote{*args}} \textendash{} Se esperan dos argumentos, el primero debe ser nulo y el segundo la velocidad.
+
+\item[{Args{[}1{]}}] \leavevmode
+(\sphinxcode{\sphinxupquote{float}}) La velocidad de caminado (-1, 1)
+
+\end{description}\end{quote}
+
+\end{fulllineitems}
+
+\index{walk() (en el módulo fire\_nao)}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{nao_firebase:fire_nao.walk}}\pysiglinewithargsret{\sphinxcode{\sphinxupquote{fire\_nao.}}\sphinxbfcode{\sphinxupquote{walk}}}{\emph{*args}}{}
+Función que se llama cuando se recibe una actualización que solicita
+que el robot camine o se detenga.
+\begin{quote}\begin{description}
+\item[{Parámetros}] \leavevmode
+\sphinxstyleliteralstrong{\sphinxupquote{*args}} \textendash{} Se esperan dos argumentos, el primero debe ser nulo y el segundo la dirección a del caminado o la bandera de \sphinxcode{\sphinxupquote{stop}} para que se detenga.
+
+\item[{Args{[}1{]}}] \leavevmode
+(\sphinxcode{\sphinxupquote{str}}) La dirección del caminado (forward, backward, right, left, turnLeft, turnRight, stop)
+
+\end{description}\end{quote}
+
+\end{fulllineitems}

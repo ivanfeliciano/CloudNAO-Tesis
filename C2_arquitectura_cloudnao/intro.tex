@@ -1,0 +1,58 @@
+\section{Descripción de la arquitectura CloudNAO}
+\label{\detokenize{chapter_two/desc_cloudnao:descripcion-de-la-arquitectura-cloudnao}}\label{\detokenize{chapter_two/desc_cloudnao::doc}}
+CloudNAO integra servicios web de
+terceros, servicios web desarrollados por el LAR, una aplicación móvil para
+dispositivos con el sistema operativo Android, la plataforma como servicio
+Firebase, una aplicación web y al robot humanoide NAO. Todos estos componentes
+se comunican a través de internet. Cada componente tiene subcomponentes que
+permiten la comunicación y el procesamiento de diversas tareas. En la parte del
+backend están los servicios web de terceros, los desarrollados
+por el LAR y Firebase. Los elementos restantes corresponden entonces al
+frontend.
+
+Los servicios web de terceros utilizados son brindados por Google Cloud,
+Kairos y Wit.ai. Se integran a algunos elementos de la arquitectura a través
+de sus API REST.
+
+Los servicios provistos por el LAR, son ejemplos de algunas aplicaciones sobre el
+robot que le permitan realizar tareas complejas, como el procesamiento
+de imagenes para detección de objetos o clasificación de escenarios.
+
+Los servicios de terceros junto con los del LAR se integran dentro de un servidor al
+que llamaremos \sphinxstyleemphasis{servidor LAR}. Éste cuenta
+con una API REST, que tiene como clientes al robot y a la aplicación móvil.
+
+Las funcionalidades de Firebase utilizadas son: la base de datos en tiempo real,
+para envío de información entre el robot y las aplicaciones móvil y web,
+la autenticación, para el acceso a la aplicación móvil y web, y hosting para
+la aplicación web.
+
+La aplicación móvil es una herramienta frontend para que los usuarios
+interactúen con el robot sin necesidad de instalar o ejecutar un programa de
+manera local en éste. Hace peticiones a la API REST del servidor del LAR y
+se comunica con Firebase. Usando el SDK de Java de NAOqi la
+aplicación recibe datos del robot y ejecuta comandos de manera remota.
+
+De manera similar, la aplicación web, es una parte del frontend para enlazar
+al usuario con el robot, sin embargo, esta interacción tiene como intermediario
+a Firebase, por lo que la aplicación utiliza su API web. En este caso el robot
+sí necesita comunicarse con Firebase a través de un programa corriendo local
+o remotamente.
+
+El robot es quien se conecta con el mayor número de componentes, usando las API
+web de los servicios o plataformas, y con el framework de NAOqi.
+
+La \hyperref[\detokenize{chapter_two/desc_cloudnao:cn-components-diagram}]{Figura \ref{\detokenize{chapter_two/desc_cloudnao:cn-components-diagram}}} es un diagrama con los
+componentes de la arquitectura y de las interfaces que brindan o necesita cada
+uno de los elementos.
+
+\begin{figure}[htbp]
+\centering
+\capstart
+
+\noindent\sphinxincludegraphics[scale=0.3]{{CN_components_diagram}.png}
+\caption{Diagrama de los componentes de la arquitectura.}\label{\detokenize{chapter_two/desc_cloudnao:cn-components-diagram}}\end{figure}
+
+En las siguientes secciones se describen con mayor detalle cada uno de los
+componentes y subcomponentes que forman esta arquitectura.
+
