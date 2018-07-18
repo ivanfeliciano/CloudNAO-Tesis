@@ -396,7 +396,7 @@ Con esto, todo lo descrito a continuación que se refiera a la instalación de
 paquetes o ejecución de programas se hace dentro de un ambiente virtual.
 
 
-\subparagraph{Inicialización}
+\subparagraph{Inicialización.}
 \label{\detokenize{chapter_two/desc_cloudnao:inicializacion}}
 Todas las aplicaciones de Flask deben crear una \sphinxstyleemphasis{instacia de la aplicación}. Este
 objeto maneja todas las peticiones que recibe el servidor web, usando
@@ -416,7 +416,7 @@ para determinar la ruta raíz de la aplicación, para que después pueda encontr
 los archivos de los recursos relativos a la ubicación de la aplicación.
 
 
-\subparagraph{Rutas}
+\subparagraph{Rutas.}
 \label{\detokenize{chapter_two/desc_cloudnao:rutas}}
 Los clientes envían peticiones al servidor web, que a su vez las envía a la
 instancia de la aplicación de Flask. La instacia de la aplicación necesita saber
@@ -725,7 +725,7 @@ con varios argumentos opcionales, \sphinxcode{-{-}host, -{-}port, -{-}threaded, 
 entre otros.
 
 
-\subparagraph{Flask-RESTful}
+\subparagraph{Flask-RESTful.}
 \label{\detokenize{chapter_two/desc_cloudnao:flask-restful}}
 Flask-RESTful es una extensión para Flask que añade soporte para la rápida
 construcción de una API REST. Las características básicas de esta extensón
@@ -810,7 +810,7 @@ programa usando esta extensión.
 \end{sphinxVerbatim}
 
 
-\subparagraph{Flask-SQLAlchemy}
+\subparagraph{Flask-SQLAlchemy.}
 \label{\detokenize{chapter_two/desc_cloudnao:flask-sqlalchemy}}
 Flask-SQLAlchemy simplifica el uso de \sphinxstyleemphasis{SQLAlchemy} dentro de una aplicación de
 Flask. SQLAlchemy es un  poderoso framework para bases de datos relacionales
@@ -836,13 +836,12 @@ y configurar una base de datos simple en SQLite.
 El objeto \sphinxcode{db} instanciado de la clase \sphinxcode{SQLAlchemy} representa a la base
 de datos y brinda acceso a toda la funcionalidad de Flask-SQLAlchemy.
 
-A continuación describo de manera muy general algunas características importantes
-que se necesitan conocer sobre esta extensión para entender mejor la estructura
-de la API.
 
-
-\subparagraph{\sphinxstylestrong{Definición de un modelo}}
-\label{\detokenize{chapter_two/desc_cloudnao:definicion-de-un-modelo}}
+%A continuación describo de manera muy general algunas características importantes
+%que se necesitan conocer sobre esta extensión para entender mejor la estructura
+%de la API.
+%\subparagraph{\sphinxstylestrong{Definición de un modelo}}
+%\label{\detokenize{chapter_two/desc_cloudnao:definicion-de-un-modelo}}
 El término \sphinxstyleemphasis{modelo} es usado para referirse a entidades persistentes dentro de la
 aplicación. En el contexto de un ORM, un modelo es una clase de Python con
 atributos que son iguales a las columnas de la tabla de una base de datos.
@@ -881,14 +880,14 @@ Las variables restantes son los atributos del modelo, definidas como instancias
 de la clase \sphinxcode{db.Column}.
 
 El primer argumento en el constructor de \sphinxcode{db.Column} es el tipo de dato
-para la comlumna de la base de datos. \sphinxcode{Integer, Float, String, Text}, son
+para la columna de la base de datos. \sphinxcode{Integer, Float, String, Text}, son
 sólo algunos de todas las opciones disponibles.
 Los argumentos restantes son opciones de configuración para el atributo. Entre
 las más comunes están \sphinxcode{primary\_key, unique, index, default} y  \sphinxcode{nullable}.
 
 
-\subparagraph{\sphinxstylestrong{Relaciones}}
-\label{\detokenize{chapter_two/desc_cloudnao:relaciones}}
+%\subparagraph{\sphinxstylestrong{Relaciones}}
+%\label{\detokenize{chapter_two/desc_cloudnao:relaciones}}
 Las bases de datos relaciones establecen conexiones entre tuplas de diferentes
 tablas, con el uso de relaciones. En el diagrama relacional de la \hyperref[\detokenize{chapter_two/desc_cloudnao:relationship-example}]{Figura \ref{\detokenize{chapter_two/desc_cloudnao:relationship-example}}}
 se establece una relación de \sphinxstyleemphasis{uno a muchos} de usuarios a recursos.
@@ -896,7 +895,8 @@ se establece una relación de \sphinxstyleemphasis{uno a muchos} de usuarios a r
 Esta relación uno a muchos se representa en nuestras clases modelo añadiendo
 un atributo más, en la clase \sphinxcode{Recurso} agregamos como
 llave foránea el id del usuario al que le
-pertenece \sphinxcode{id\_usuario = db.Column(db.Integer, db.ForeignKey('usuarios.id'))}.
+pertenece \sphinxcode{id\_usuario = db.Column(db.Integer, db.ForeignKey('usuari\\
+os.id'))}.
 Para el modelo de \sphinxcode{Usuario} agregamos el atributo
 \sphinxcode{recursos = db.relationship('Recurso', backref='usuario')}. El primer argumento
 indica que modelo está del otro lado de la relación, \sphinxcode{backref} establece la
@@ -911,73 +911,31 @@ del lado de los muchos en la relación.
 \subparagraph{\sphinxstylestrong{Operaciones sobre la base de datos}}
 \label{\detokenize{chapter_two/desc_cloudnao:operaciones-sobre-la-base-de-datos}}
 
-\begin{savenotes}\sphinxattablestart
-\centering
-\begin{tabulary}{\linewidth}[t]{|T|T|T|}
-\hline
-\sphinxstylethead{ 
-Operación
-\unskip}\relax &\sphinxstylethead{ 
-Código
-\unskip}\relax &\sphinxstylethead{ 
-Descripción
-\unskip}\relax \\
-\hline
-Crear tablas
-&
-\sphinxcode{db.create\_all()}
-&
+\begin{itemize}
+\item
+Crear tablas:\sphinxcode{db.create\_all()}.
 Crea la base de datos basándose en las clases modelos.
-\\
-\hline
-Borrar tablas
-&
-\sphinxcode{db.drop\_all()}
-&
+\item
+Borrar tablas:\sphinxcode{db.drop\_all()}.
 Destruye los datos en la base de datos.
-\\
-\hline
-Añadir tuplas
-&
-\sphinxcode{db.session.add(Objeto){}`}
-&
+\item
+Añadir tuplas:\sphinxcode{db.session.add(Objeto){}`}.
 Los cambios  se manejan a través de una \sphinxcode{session} en la base de datos. Se pasa como parámetro un objeto del modelo.
-\\
-\hline
-Escrubir cambios
-&
-\sphinxcode{db.session.commit()}
-&
+\item
+Escrubir cambios:\sphinxcode{db.session.commit()}.
 Para guardar los objetos en la base de datos, las sesiones necesitan ser \sphinxstyleemphasis{confirmadas}.
-\\
-\hline
-Modificar tupas
-&
-\sphinxcode{Objeto.atributo\_a\_actualizar = nuevo\_valor} \sphinxcode{db.session.add(Objeto)}
-&
+\item
+Modificar tupas:\sphinxcode{Objeto.atributo\_a\_actualizar = nuevo\_valor} \sphinxcode{db.session.add(Objeto)}.
 El método \sphinxcode{add} también se puede usar para actualizar los modelos.
-\\
-\hline
-Eliminar tuplas
-&
-\sphinxcode{db.session.delete(Objeto)}
-&
+\item
+Eliminar tuplas:\sphinxcode{db.session.delete(Objeto)}.
 El método \sphinxcode{delete} recibe como parámetro al objeto que desea eliminarse.
-\\
-\hline
-Consultas
-&
-\sphinxcode{Modelo.query.all()} \sphinxcode{Modelo.query.filter\_by(Criterio)}
-&
+\item
+Consultas:\sphinxcode{Modelo.query.all()} \sphinxcode{Modelo.query.filter\_by(Criterio)}.
 La consulta más básica retorna todo el contenido de la tabla correspondiente \sphinxcode{Modelo.query.all()}.Se puden usar \sphinxstyleemphasis{filtros} para buscar elementos más específicos en la base de datos.
-\\
-\hline
-\end{tabulary}
-\par
-\sphinxattableend\end{savenotes}
+\end{itemize}
 
-
-\subparagraph{Requests}
+\subparagraph{Requests.}
 \label{\detokenize{chapter_two/desc_cloudnao:requests}}
 Requests permite hacer peticiones HTTP de una manera muy sencilla. Un petición
 de tipo GET se convierte en algo simple como lo siguiente:
@@ -1030,11 +988,12 @@ Podemos checar el código de estado de la respuesta con
 \sphinxcode{Response.status\_code}. Y también los headers, utilizando \sphinxcode{Response.headers}.
 
 
-\paragraph{Código}
+\paragraph{Aplicación}
 \label{\detokenize{chapter_two/desc_cloudnao:codigo}}
-La estructura de la aplicación está levemente basada en la definida en el libro
-\sphinxstylestrong{Flask Web Development} de Miguel Grinberg, pero adaptada para una API REST.
-Esta quedó como sigue.
+La estructura de la aplicación quedó como sigue:
+%está levemente basada en la definida en el libro
+%\sphinxstylestrong{Flask Web Development} de Miguel Grinberg, pero adaptada para una API REST.
+%Esta quedó como sigue.
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 ├── app
@@ -1094,14 +1053,14 @@ En las siguientes secciones se documentan las partes más importantes del
 proyecto, el paquete \sphinxstyleemphasis{app}, \sphinxstyleemphasis{config.py} y \sphinxstyleemphasis{manage.py}.
 
 
-\subparagraph{Aplicación (\sphinxstyleemphasis{app})}
+\subparagraph{Aplicación (\sphinxstyleemphasis{app}).}
 \label{\detokenize{chapter_two/desc_cloudnao:aplicacion-app}}\label{\detokenize{chapter_two/desc_cloudnao:module-app}}\index{app (módulo)}
-La aplcación en Flask de la API de CloudNAO, está compuesta por varios paquetes,
+La aplicación en Flask de la API de CloudNAO, está compuesta por varios paquetes,
 los recursos, los modelos para la base datos, los clientes de los servicios web de
 terceros, modelos de Tensorflow y módulos auxiliares.
 
 
-\subparagraph{Modelos (\sphinxstyleemphasis{models})}
+\subparagraph{Modelos (\sphinxstyleemphasis{models}).}
 \label{\detokenize{chapter_two/desc_cloudnao:module-app.models}}\label{\detokenize{chapter_two/desc_cloudnao:modelos-models}}\index{app.models (módulo)}
 Este paquete contiene los modelos de la base de datos, usando SQLAlchemy.
 \phantomsection\label{\detokenize{chapter_two/desc_cloudnao:module-app.models.user_model}}\index{app.models.user\_model (módulo)}\phantomsection\label{\detokenize{chapter_two/desc_cloudnao:module-user_model}}\index{user\_model (módulo)}\index{UserModel (clase en app.models.user\_model)}
@@ -1127,22 +1086,22 @@ Atributo
 Descripción
 \unskip}\relax \\
 \hline
-\sphinxcode{id}
+id
 &
 El id del usuario, es una llave primaria.
 \\
 \hline
-\sphinxcode{username}
+username
 &
 Una cadena con el nombre del usuario, es única.
 \\
 \hline
-\sphinxcode{password\_hash}
+password\_hash
 &
 Una cadena que obtenida de una función hash aplicada a la contraseña original
 \\
 \hline
-\sphinxcode{access\_token}
+access\_token
 &
 Una cadena única que sirve como llave de autorización al hacer peticiones a los recursos de la API.
 \\
@@ -1170,130 +1129,10 @@ base de datos.
 \PYG{g+go}{[\PYGZlt{}UserModel 1\PYGZgt{}]}
 \end{sphinxVerbatim}
 
-El Constructor de la clase recibe como parámetros el nombre del usuario
-y la contraseña, la cuál se pasa por una función hash, usando la función
-\sphinxcode{generate\_password\_hash} del módulo \sphinxcode{werkzeug.security}. También se
-genera un token de accesso único usando el método {\hyperref[\detokenize{chapter_two/desc_cloudnao:app.models.user_model.UserModel.generate_token}]{\sphinxcrossref{\sphinxcode{generate\_token()}}}}.
-\begin{quote}\begin{description}
-\item[{Parámetros}] \leavevmode\begin{itemize}
-\item {} 
-\sphinxstyleliteralstrong{username} (\sphinxstyleliteralemphasis{string}) \textendash{} El nombre del usuario.
 
-\item {} 
-\sphinxstyleliteralstrong{password} (\sphinxstyleliteralemphasis{string}) \textendash{} La contraseña del usuario.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\end{itemize}
-
-\end{description}\end{quote}
-\index{find\_by\_access\_token() (método de clase de app.models.user\_model.UserModel)}
-
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{chapter_two/desc_cloudnao:app.models.user_model.UserModel.find_by_access_token}}\pysiglinewithargsret{\sphinxbfcode{classmethod }\sphinxbfcode{find\_by\_access\_token}}{\emph{access\_token}}{}~
-Hace la consulta a la base de datos de acuerdo al token
-de acceo del usuario.
-Retorn el primer registro donde el \sphinxcode{access\_token} coincida,
-si no encuentra nada regresa un objeto \sphinxcode{None}
-\begin{quote}\begin{description}
-\item[{Parámetros}] \leavevmode
-\sphinxstyleliteralstrong{access\_token} \textendash{} El token de acceso que se desea consultar.
-
-\item[{Devuelve}] \leavevmode
-Un objeto \sphinxcode{UserModel} que representa al usuario encontrado ó None si no hubo coincidencias.
-
-\item[{Tipo del valor devuelto}] \leavevmode
-\sphinxcode{UserModel} ó None.
-
-\end{description}\end{quote}
-
-\end{fulllineitems}
-
-\index{find\_by\_id() (método de clase de app.models.user\_model.UserModel)}
-
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{chapter_two/desc_cloudnao:app.models.user_model.UserModel.find_by_id}}\pysiglinewithargsret{\sphinxbfcode{classmethod }\sphinxbfcode{find\_by\_id}}{\emph{\_id}}{}~
-Hace la consulta a la base de datos de acuerdo al id del usuario.
-Retorn el primer registro donde el \sphinxcode{\_id} coincida, si no encuentra
-nada regresa un objeto \sphinxcode{None}.
-\begin{quote}\begin{description}
-\item[{Parámetros}] \leavevmode
-\sphinxstyleliteralstrong{\_id} \textendash{} El id de usuario que se desea consultar.
-
-\item[{Devuelve}] \leavevmode
-Un objeto \sphinxcode{UserModel} que representa al usuario encontrado ó None si no hubo coincidencias.
-
-\item[{Tipo del valor devuelto}] \leavevmode
-\sphinxcode{UserModel} ó None.
-
-\end{description}\end{quote}
-
-\end{fulllineitems}
-
-\index{find\_by\_username() (método de clase de app.models.user\_model.UserModel)}
-
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{chapter_two/desc_cloudnao:app.models.user_model.UserModel.find_by_username}}\pysiglinewithargsret{\sphinxbfcode{classmethod }\sphinxbfcode{find\_by\_username}}{\emph{username}}{}~
-Hace la consulta a la base de datos de acuerdo al nombre de usuario.
-Retorn el primer registro donde el \sphinxcode{username} coincida, si no encuentra
-nada regresa un objeto \sphinxcode{None}
-\begin{quote}\begin{description}
-\item[{Parámetros}] \leavevmode
-\sphinxstyleliteralstrong{username} (\sphinxstyleliteralemphasis{string.}) \textendash{} El nombre de usuario que se desea consultar.
-
-\item[{Devuelve}] \leavevmode
-Un objeto \sphinxcode{UserModel} que representa al usuario encontrado ó None si no hubo coincidencias.
-
-\item[{Tipo del valor devuelto}] \leavevmode
-\sphinxcode{UserModel} ó None.
-
-\end{description}\end{quote}
-
-\end{fulllineitems}
-
-\index{generate\_token() (método de clase de app.models.user\_model.UserModel)}
-
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{chapter_two/desc_cloudnao:app.models.user_model.UserModel.generate_token}}\pysiglinewithargsret{\sphinxbfcode{classmethod }\sphinxbfcode{generate\_token}}{}{}~\begin{quote}\begin{description}
-\item[{Devuelve}] \leavevmode
-Una cadena de 50 caractere que se genera aleatoriamente y representa al token de acceso.
-
-\item[{Tipo del valor devuelto}] \leavevmode
-string.
-
-\end{description}\end{quote}
-
-\end{fulllineitems}
-
-\index{save\_to\_db() (método de app.models.user\_model.UserModel)}
-
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{chapter_two/desc_cloudnao:app.models.user_model.UserModel.save_to_db}}\pysiglinewithargsret{\sphinxbfcode{save\_to\_db}}{}{}
-Inserta un usuario en la base de datos.
-
-\end{fulllineitems}
-
-\index{verify\_password() (método de app.models.user\_model.UserModel)}
-
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{chapter_two/desc_cloudnao:app.models.user_model.UserModel.verify_password}}\pysiglinewithargsret{\sphinxbfcode{verify\_password}}{\emph{password}}{}
-Checa que la contraseña almacenada sea la misma que la que se pasa
-como parámetros pasada a través de una función hash.
-\begin{quote}\begin{description}
-\item[{Parámetros}] \leavevmode
-\sphinxstyleliteralstrong{password} (\sphinxstyleliteralemphasis{string.}) \textendash{} Contraseña sin aplicar el hash.
-
-\item[{Devuelve}] \leavevmode
-\sphinxcode{True} si son iguales, o \sphinxcode{False} de los contrario.
-
-\item[{Tipo del valor devuelto}] \leavevmode
-boolean.
-
-\end{description}\end{quote}
-
-\end{fulllineitems}
-
-
-\end{fulllineitems}
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 \subparagraph{Recursos (\sphinxstyleemphasis{resources})}
