@@ -264,7 +264,7 @@ En la tabla \ref{tab:json_schema_response} se describen los atributos del JSON.
 \multicolumn{2}{|l|}{\cellcolor[HTML]{68CBD0}\texttt{features}}                                                                                                                                \\ \hline
 \endfirsthead
 %
-%\endhead
+\endhead
 %
 \cellcolor[HTML]{68CBD0}\textbf{Tipo de dato} & objeto                                                                                                                                         \\ \hline
 \multicolumn{2}{|l|}{\cellcolor[HTML]{68CBD0}\textbf{Propiedades}}                                                                                                                             \\ \hline
@@ -1065,18 +1065,22 @@ terceros, modelos de Tensorflow y módulos auxiliares.
 Este paquete contiene los modelos de la base de datos, usando SQLAlchemy.
 \phantomsection\label{\detokenize{chapter_two/desc_cloudnao:module-app.models.user_model}}\index{app.models.user\_model (módulo)}\phantomsection\label{\detokenize{chapter_two/desc_cloudnao:module-user_model}}\index{user\_model (módulo)}\index{UserModel (clase en app.models.user\_model)}
 
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{chapter_two/desc_cloudnao:app.models.user_model.UserModel}}\pysiglinewithargsret{\sphinxbfcode{class }\sphinxcode{app.models.user\_model.}\sphinxbfcode{UserModel}}{\emph{username}, \emph{password}}{}
+%
+%\begin{fulllineitems}
+%\phantomsection\label{\detokenize{chapter_two/desc_cloudnao:app.models.user_model.UserModel}}
+
+\codedocumentation{
+\sphinxbfcode{class }\sphinxcode{app.models.user\_model.}\sphinxbfcode{UserModel}{(\emph{username}, \emph{password}})}
+
 Una clase pública para el modelo del usuario que se almacena en la base
 de datos.
 El nombre de la tabla en la base de datos es \sphinxcode{users}. Los atributos de esta
-última se describen en la tabla \hyperref[\detokenize{chapter_two/desc_cloudnao:user-model-attr}]{Tabla \ref{\detokenize{chapter_two/desc_cloudnao:user-model-attr}}}.
-
+última se describen en la tabla \ref{desc_cloudnao:user-model-attr}.
 
 \begin{savenotes}\sphinxattablestart
 \centering
 \sphinxcapstartof{table}
-\sphinxcaption{Descripción de los atributos del modelo User}\label{\detokenize{chapter_two/desc_cloudnao:user-model-attr}}
+\sphinxcaption{Descripción de los atributos del modelo User\label{desc_cloudnao:user-model-attr}}
 \sphinxaftercaption
 \begin{tabulary}{\linewidth}[t]{|T|T|}
 \hline
@@ -1131,18 +1135,18 @@ base de datos.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\end{fulllineitems}
 
 
-\subparagraph{Recursos (\sphinxstyleemphasis{resources})}
+\subparagraph{Recursos (\sphinxstyleemphasis{resources}).}
 \label{\detokenize{chapter_two/desc_cloudnao:recursos-resources}}\label{\detokenize{chapter_two/desc_cloudnao:module-app.resources}}\index{app.resources (módulo)}
 En este paquete se definen los recursos que representan a los servicios que
 la API estará brindando. Desde el registro de un usuario, obtención de un nuevo
 token de acceso, hasta el procesamiento de imágenes.
 \phantomsection\label{\detokenize{chapter_two/desc_cloudnao:module-app.resources.user}}\index{app.resources.user (módulo)}\phantomsection\label{\detokenize{chapter_two/desc_cloudnao:module-user}}\index{user (módulo)}\index{UserRegister (clase en app.resources.user)}
 
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{chapter_two/desc_cloudnao:app.resources.user.UserRegister}}\pysigline{\sphinxbfcode{class }\sphinxcode{app.resources.user.}\sphinxbfcode{UserRegister}}
+\codedocumentation{
+\sphinxbfcode{class }\sphinxcode{app.resources.user.}\sphinxbfcode{UserRegister}}
+
 Una clase pública que representa un recurso de la API REST, para el
 almacenamiento de nuevos usuarios. Hereda de la clase \sphinxcode{Resource} de
 \sphinxcode{flask\_restful} y usa un objeto de la clase \sphinxcode{RequestParser} para definir
@@ -1188,12 +1192,9 @@ continuación:
 \end{fulllineitems}
 
 
-\end{fulllineitems}
+\codedocumentation{
+\sphinxbfcode{class }\sphinxcode{app.resources.token.}\sphinxbfcode{Token}}
 
-\phantomsection\label{\detokenize{chapter_two/desc_cloudnao:module-app.resources.token}}\index{app.resources.token (módulo)}\phantomsection\label{\detokenize{chapter_two/desc_cloudnao:module-token}}\index{token (módulo)}\index{Token (clase en app.resources.token)}
-
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{chapter_two/desc_cloudnao:app.resources.token.Token}}\pysigline{\sphinxbfcode{class }\sphinxcode{app.resources.token.}\sphinxbfcode{Token}}
 Clase pública que representa un token en la API REST. Permite la obtención
 de un nuevo token de acceso a la API, usando un método POST y enviado en el
 mensaje el nombre de usuario y la contraseña. Todo
@@ -1234,34 +1235,30 @@ siguientes:
 
 \end{fulllineitems}
 
+\codedocumentation{
+\sphinxbfcode{class }\sphinxcode{app.resources.vision.}\sphinxbfcode{Vision}}
 
-\end{fulllineitems}
-
-\phantomsection\label{\detokenize{chapter_two/desc_cloudnao:module-app.resources.vision}}\index{app.resources.vision (módulo)}\phantomsection\label{\detokenize{chapter_two/desc_cloudnao:module-vision}}\index{vision (módulo)}\index{Vision (clase en app.resources.vision)}
-
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{chapter_two/desc_cloudnao:app.resources.vision.Vision}}\pysigline{\sphinxbfcode{class }\sphinxcode{app.resources.vision.}\sphinxbfcode{Vision}}
 Clase pública del recurso de la API REST para solicitar el procesamiento
 de imágenes. Acepta peticiones de tipo \sphinxcode{POST} en cuyo cuerpo van las
 características que se desean computar. Las aceptadas son las siguientes:
 \begin{itemize}
-\item {} 
-FACE\_RECOGNITION
+\item {}
+\texttt{FACE\_RECOGNITION}
 
-\item {} 
-OBJECT\_DETECTION
+\item {}
+\texttt{OBJECT\_DETECTION}
 
-\item {} 
-LABELS\_DETECTION
+\item {}
+\texttt{LABELS\_DETECTION}
 
-\item {} 
-OCR\_TRANSLATION
+\item {}
+\texttt{OCR\_TRANSLATION}
 
-\item {} 
-FACE\_ENROLL
+\item {}
+\texttt{FACE\_ENROLL}
 
-\item {} 
-CLASSIFY\_INDOOR\_SCENES
+\item {}
+\texttt{CLASSIFY\_INDOOR\_SCENES}
 
 \end{itemize}
 \index{post() (método de app.resources.vision.Vision)}
@@ -1275,222 +1272,57 @@ solicita en el cuerpo del mensaje.
 
 Aquí se unen en una sola las respuestas de los módulos dentro de
 \sphinxcode{app.tf\_models} y \sphinxcode{app.tpa\_client\_libraries}.
-\begin{quote}\begin{description}
-\item[{Devuelve}] \leavevmode
-La respuesta que se enviará al cliente en un diccionario.
-
-\item[{Tipo del valor devuelto}] \leavevmode
-dict
-
-\end{description}\end{quote}
-
-\end{fulllineitems}
-
-
-\end{fulllineitems}
-
-\index{classify\_indoor\_scenes() (en el módulo app.resources.vision)}
-
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{chapter_two/desc_cloudnao:app.resources.vision.classify_indoor_scenes}}\pysiglinewithargsret{\sphinxcode{app.resources.vision.}\sphinxbfcode{classify\_indoor\_scenes}}{\emph{**kwargs}}{}~
-Regresa el resultado del método \sphinxcode{app.tf\_models.indoor\_scenes\_classifier.classify\_image()}
-para añadirlo al cuerpo de la respuesta que se envía al cliente.
-
-\end{fulllineitems}
-
-\index{face\_enroll() (en el módulo app.resources.vision)}
-
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{chapter_two/desc_cloudnao:app.resources.vision.face_enroll}}\pysiglinewithargsret{\sphinxcode{app.resources.vision.}\sphinxbfcode{face\_enroll}}{\emph{**kwargs}}{}~
-Regresa el diccionario del método
-{\hyperref[\detokenize{chapter_two/desc_cloudnao:app.tpa_client_libraries.kairos_client.Kairos.enroll}]{\sphinxcrossref{\sphinxcode{app.tpa\_client\_libraries.kairos\_client.Kairos.enroll()}}}}
-que se integrará al cuerpo de la respuesta enviada al cliente.
-
-\end{fulllineitems}
-
-\index{face\_recognition() (en el módulo app.resources.vision)}
-
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{chapter_two/desc_cloudnao:app.resources.vision.face_recognition}}\pysiglinewithargsret{\sphinxcode{app.resources.vision.}\sphinxbfcode{face\_recognition}}{\emph{**kwargs}}{}~
-Regresa el diccionario del método
-{\hyperref[\detokenize{chapter_two/desc_cloudnao:app.tpa_client_libraries.kairos_client.Kairos.recognize}]{\sphinxcrossref{\sphinxcode{app.tpa\_client\_libraries.kairos\_client.Kairos.recognize()}}}}
-que se integrará al cuerpo de la respuesta enviada al cliente.
-
-\end{fulllineitems}
-
-\index{labels\_detection() (en el módulo app.resources.vision)}
-
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{chapter_two/desc_cloudnao:app.resources.vision.labels_detection}}\pysiglinewithargsret{\sphinxcode{app.resources.vision.}\sphinxbfcode{labels\_detection}}{\emph{**kwargs}}{}~
-Retorna el diccionario del método
-{\hyperref[\detokenize{chapter_two/desc_cloudnao:app.tpa_client_libraries.google_cloud_vision.GoogleCloudVision.text_annotations_description}]{\sphinxcrossref{\sphinxcode{app.tpa\_client\_libraries.google\_cloud\_vision.GoogleCloudVision.text\_annotations\_description()}}}}
-que se integrará al cuerpo de la respuesta enviada al cliente.
-
-\end{fulllineitems}
-
-\index{object\_detection() (en el módulo app.resources.vision)}
-
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{chapter_two/desc_cloudnao:app.resources.vision.object_detection}}\pysiglinewithargsret{\sphinxcode{app.resources.vision.}\sphinxbfcode{object\_detection}}{\emph{**kwargs}}{}~
-Regresa un diccionario del método
-\sphinxcode{app.tf\_models.object\_detection.ObjectDetectionTensorflowself.object\_detection()}
-que se integrará al cuerpo de la respuesta enviada al cliente.
-
-\end{fulllineitems}
-
-\index{ocr\_translation() (en el módulo app.resources.vision)}
-
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{chapter_two/desc_cloudnao:app.resources.vision.ocr_translation}}\pysiglinewithargsret{\sphinxcode{app.resources.vision.}\sphinxbfcode{ocr\_translation}}{\emph{**kwargs}}{}~
-Esta función primero hace la solicitud al servicio de OCR de Google Cloud
-Vision y después traduce el texto encontrado con la API de Google Cloud
-Translation. Regresa el diccionario obtenido del método
-{\hyperref[\detokenize{chapter_two/desc_cloudnao:app.tpa_client_libraries.google_cloud_translation.GoogleCloudTranslation.translate}]{\sphinxcrossref{\sphinxcode{app.tpa\_client\_libraries.google\_cloud\_translation.GoogleCloudTranslation.translate()}}}}
-si se encontró texto.
 
 \end{fulllineitems}
 
 
 
-\subparagraph{Modelos de Tensorflow (\sphinxstyleemphasis{tf\_models})}
-\label{\detokenize{chapter_two/desc_cloudnao:modelos-de-tensorflow-tf-models}}\label{\detokenize{chapter_two/desc_cloudnao:module-app.tf_models.object_detection}}\index{app.tf\_models.object\_detection (módulo)}\phantomsection\label{\detokenize{chapter_two/desc_cloudnao:module-object_detection}}\index{object\_detection (módulo)}\index{ObjectDetectionTensorflow (clase en app.tf\_models.object\_detection)}
+\subparagraph{Modelos de Tensorflow (\sphinxstyleemphasis{tf\_models}).}
+En este paquete se encuentran los módulos encargados de la 
+detección de objetos y la clasificación de escenarios usando
+TensorFlow.
 
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{chapter_two/desc_cloudnao:app.tf_models.object_detection.ObjectDetectionTensorflow}}\pysigline{\sphinxbfcode{class }\sphinxcode{app.tf\_models.object\_detection.}\sphinxbfcode{ObjectDetectionTensorflow}}~
+\codedocumentation{\sphinxbfcode{class }\sphinxcode{app.tf\_models.object\_detection.}\sphinxbfcode{ObjectDetectionTensorflow}}
+
+
 Una clase pública que utiliza un modelo pre-entrenado para la detección
 de múltiples objetos en una imagen. El modelo utilizado es
-\sphinxcode{ssd\_mobilenet\_v1\_coco} provisto por la API de TensorFlow y entrenado con el
+\sphinxcode{ssd\_mobilenet\_v1\_\\coco} provisto por la API de TensorFlow y entrenado con el
 conjunto de imágenes de \sphinxhref{http://cocodataset.org/}{COCO}.
-\begin{quote}\begin{description}
-\item[{Ejemplo}] \leavevmode
-\end{description}\end{quote}
 
 El siguiente ejemplo
-muestra un simple uso de la clase. La imagen utilizada es la \hyperref[\detokenize{chapter_two/desc_cloudnao:obj-detec-before}]{Figura \ref{\detokenize{chapter_two/desc_cloudnao:obj-detec-before}}}
-codificada en base 64.
+muestra un simple uso de la clase.
 
-\begin{figure}[htbp]
-\centering
-
-\noindent\sphinxincludegraphics{{object_detection_image}.jpeg}
-\label{\detokenize{chapter_two/desc_cloudnao:obj-detec-before}}\end{figure}
+%\begin{figure}[htbp]
+%\centering
+%
+%\subfloat[]{{\includegraphics[width=5cm]{object_detection_image}}}%
+%\qquad
+%\subfloat[]{{\includegraphics[width=6cm]{object_detection_boxes}}}%
+%\caption{Imagen utilizada en el ejemplo. (b) muestra los cuadros delimitadores de lo objetos encontrados.}
+%
+%\end{figure}
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{k+kn}{from} \PYG{n+nn}{app}\PYG{n+nn}{.}\PYG{n+nn}{tf\PYGZus{}models}\PYG{n+nn}{.}\PYG{n+nn}{object\PYGZus{}detection} \PYG{k}{import} \PYG{n}{ObjectDetectionTensorflow}
 \PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{n}{object\PYGZus{}detector} \PYG{o}{=} \PYG{n}{ObjectDetectionTensorflow}\PYG{p}{(}\PYG{p}{)}
 \PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{n}{image\PYGZus{}base64} \PYG{o}{=} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{/9j/4AAQSkZJRgABAQEAYABgAAD/2...}\PYG{l+s+s2}{\PYGZdq{}}
 \PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{n}{object\PYGZus{}detector}\PYG{o}{.}\PYG{n}{object\PYGZus{}detection}\PYG{p}{(}\PYG{n}{image\PYGZus{}base64}\PYG{p}{)}
-\PYG{g+go}{[\PYGZob{}\PYGZsq{}confidence\PYGZsq{}: 0.8984639048576355, \PYGZsq{}category\PYGZsq{}: \PYGZsq{}car\PYGZsq{}, \PYGZsq{}topLeftY\PYGZsq{}: 175.0, \PYGZsq{}height\PYGZsq{}: 129.0, \PYGZsq{}width\PYGZsq{}: 154.0, \PYGZsq{}topLeftX\PYGZsq{}: 0.0\PYGZcb{}, \PYGZob{}\PYGZsq{}confidence\PYGZsq{}: 0.894320547580719, \PYGZsq{}category\PYGZsq{}: \PYGZsq{}person\PYGZsq{}, \PYGZsq{}topLeftY\PYGZsq{}: 177.0, \PYGZsq{}height\PYGZsq{}: 133.0, \PYGZsq{}width\PYGZsq{}: 59.0, \PYGZsq{}topLeftX\PYGZsq{}: 266.0\PYGZcb{}, \PYGZob{}\PYGZsq{}confidence\PYGZsq{}: 0.7755478620529175, \PYGZsq{}category\PYGZsq{}: \PYGZsq{}person\PYGZsq{}, \PYGZsq{}topLeftY\PYGZsq{}: 174.0, \PYGZsq{}height\PYGZsq{}: 133.0, \PYGZsq{}width\PYGZsq{}: 51.0, \PYGZsq{}topLeftX\PYGZsq{}: 225.0\PYGZcb{}, \PYGZob{}\PYGZsq{}confidence\PYGZsq{}: 0.7133584022521973, \PYGZsq{}category\PYGZsq{}: \PYGZsq{}person\PYGZsq{}, \PYGZsq{}topLeftY\PYGZsq{}: 167.0, \PYGZsq{}height\PYGZsq{}: 144.0, \PYGZsq{}width\PYGZsq{}: 51.0, \PYGZsq{}topLeftX\PYGZsq{}: 61.0\PYGZcb{}, \PYGZob{}\PYGZsq{}confidence\PYGZsq{}: 0.6583505868911743, \PYGZsq{}category\PYGZsq{}: \PYGZsq{}person\PYGZsq{}, \PYGZsq{}topLeftY\PYGZsq{}: 166.0, \PYGZsq{}height\PYGZsq{}: 142.0, \PYGZsq{}width\PYGZsq{}: 51.0, \PYGZsq{}topLeftX\PYGZsq{}: 373.0\PYGZcb{}, \PYGZob{}\PYGZsq{}confidence\PYGZsq{}: 0.6310416460037231, \PYGZsq{}category\PYGZsq{}: \PYGZsq{}person\PYGZsq{}, \PYGZsq{}topLeftY\PYGZsq{}: 170.0, \PYGZsq{}height\PYGZsq{}: 150.0, \PYGZsq{}width\PYGZsq{}: 99.0, \PYGZsq{}topLeftX\PYGZsq{}: 12.0\PYGZcb{}, \PYGZob{}\PYGZsq{}confidence\PYGZsq{}: 0.6006952524185181, \PYGZsq{}category\PYGZsq{}: \PYGZsq{}person\PYGZsq{}, \PYGZsq{}topLeftY\PYGZsq{}: 189.0, \PYGZsq{}height\PYGZsq{}: 109.0, \PYGZsq{}width\PYGZsq{}: 45.0, \PYGZsq{}topLeftX\PYGZsq{}: 164.0\PYGZcb{}]}
+\PYG{g+go}{[\PYGZob{}\PYGZsq{}confidence\PYGZsq{}: 0.8984639048576355, \PYGZsq{}category\PYGZsq{}: \PYGZsq{}car\PYGZsq{}, \PYGZsq{}topLeftY\PYGZsq{}: 175.0, \PYGZsq{}height\PYGZsq{}: 129.0, \PYGZsq{}width\PYGZsq{}: 154.0, \PYGZsq{}topLeftX\PYGZsq{}: 0.0\PYGZcb{},..., \PYGZob{}\PYGZsq{}confidence\PYGZsq{}: 0.6006952524185181, \PYGZsq{}category\PYGZsq{}: \PYGZsq{}person\PYGZsq{}, \PYGZsq{}topLeftY\PYGZsq{}: 189.0, \PYGZsq{}height\PYGZsq{}: 109.0, \PYGZsq{}width\PYGZsq{}: 45.0, \PYGZsq{}topLeftX\PYGZsq{}: 164.0\PYGZcb{}]}
 \PYG{g+go}{\PYGZgt{}\PYGZgt{}\PYGZgt{}}
 \end{sphinxVerbatim}
 
-Si graficamos las coordenadas de los objetos encotrados, tenemos como resultado
-la \hyperref[\detokenize{chapter_two/desc_cloudnao:obj-detec-after}]{Figura \ref{\detokenize{chapter_two/desc_cloudnao:obj-detec-after}}}.
-
-\begin{figure}[htbp]
-\centering
-
-\noindent\sphinxincludegraphics{{object_detection_boxes}.png}
-\label{\detokenize{chapter_two/desc_cloudnao:obj-detec-after}}\end{figure}
-
-El constructor se encarga de cargar el modelo de Tensorflow en la
-memoria, a partir del archivo \sphinxcode{frozen\_inference\_graph.pb}.
-\index{create\_response() (método de app.tf\_models.object\_detection.ObjectDetectionTensorflow)}
-
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{chapter_two/desc_cloudnao:app.tf_models.object_detection.ObjectDetectionTensorflow.create_response}}\pysiglinewithargsret{\sphinxbfcode{create\_response}}{\emph{image\_np}, \emph{boxes}, \emph{classes}, \emph{scores}}{}~
-Método que se encarga de convertir en un diccionario el resultado del
-modelo, para que pueda ser regresado en el cuerpo de la API REST.
-
-El formato del objeto retornado es el siguiente:
-
-\begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{p}{[}
-    \PYG{p}{\PYGZob{}}
-        \PYG{l+s+s2}{\PYGZdq{}confidence\PYGZdq{}} \PYG{o}{:} \PYG{l+m+mf}{0.0}\PYG{p}{,}
-        \PYG{l+s+s2}{\PYGZdq{}topLeftX\PYGZdq{}}\PYG{o}{:} \PYG{l+m+mf}{0.0}\PYG{p}{,}
-        \PYG{l+s+s2}{\PYGZdq{}topLeftY\PYGZdq{}}\PYG{o}{:} \PYG{l+m+mf}{0.0}\PYG{p}{,}
-        \PYG{l+s+s2}{\PYGZdq{}height\PYGZdq{}} \PYG{o}{:} \PYG{l+m+mf}{0.0}
-        \PYG{l+s+s2}{\PYGZdq{}width\PYGZdq{}} \PYG{o}{:} \PYG{l+m+mf}{0.0}
-        \PYG{l+s+s2}{\PYGZdq{}category\PYGZdq{}} \PYG{o}{:} \PYG{l+s+s2}{\PYGZdq{}\PYGZdq{}}
-    \PYG{p}{\PYGZcb{}}
-\PYG{p}{]}
-\end{sphinxVerbatim}
-\begin{quote}\begin{description}
-\item[{Parámetros}] \leavevmode\begin{itemize}
-\item {} 
-\sphinxstyleliteralstrong{image\_np} (\sphinxstyleliteralemphasis{numpy.array.}) \textendash{} El contenedor de la imagen.
-
-\item {} 
-\sphinxstyleliteralstrong{boxes} (\sphinxstyleliteralemphasis{numpy.array}) \textendash{} Un arreglo con las coordenadas del cuadrilátero que encierran a cada objeto.
-
-\item {} 
-\sphinxstyleliteralstrong{scores} (\sphinxstyleliteralemphasis{list}) \textendash{} Una lista con las probabilidades de que el objeto encontrado sea el correcto.
-
-\end{itemize}
-
-\item[{Devuelve}] \leavevmode
-Un diccionario \sphinxcode{response} que contiene los objectos detectados.
-
-\item[{Tipo del valor devuelto}] \leavevmode
-dict
-
-\end{description}\end{quote}
-
-\end{fulllineitems}
-
-\index{object\_detection() (método de app.tf\_models.object\_detection.ObjectDetectionTensorflow)}
-
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{chapter_two/desc_cloudnao:app.tf_models.object_detection.ObjectDetectionTensorflow.object_detection}}\pysiglinewithargsret{\sphinxbfcode{object\_detection}}{\emph{image}, \emph{is\_url=None}}{}~
-Es el método encargado de evaluar la imagen en el modelo. Aquí es donde
-se realiza la ejecución de la gráfica de tensorflow.
-Primero corre el modelo, después genera la repuesta con {\hyperref[\detokenize{chapter_two/desc_cloudnao:app.tf_models.object_detection.ObjectDetectionTensorflow.create_response}]{\sphinxcrossref{\sphinxcode{create\_response()}}}}
-y regresa el resultado de éste, dependiendo de si encontró o no objectos.
-\begin{quote}\begin{description}
-\item[{Parámetros}] \leavevmode\begin{itemize}
-\item {} 
-\sphinxstyleliteralstrong{image} (\sphinxstyleliteralemphasis{string.}) \textendash{} El URL de la imagen que se desea procesar o la codificación en base 64 de esta.
-
-\item {} 
-\sphinxstyleliteralstrong{is\_url} (\sphinxstyleliteralemphasis{boolean.}) \textendash{} Bandera para elegir la forma en que se carga la imagen.
-
-\end{itemize}
-
-\item[{Devuelve}] \leavevmode
-La respuesta que enviará la API REST.
-
-\item[{Tipo del valor devuelto}] \leavevmode
-dict.
-
-\end{description}\end{quote}
-
-\end{fulllineitems}
 
 
-\end{fulllineitems}
+\codedocumentation{\sphinxbfcode{class }\sphinxcode{app.tf\_models.indoor\_scenes\_classifier.}\sphinxbfcode{ImageClassifier}}
 
-\phantomsection\label{\detokenize{chapter_two/desc_cloudnao:module-app.tf_models.indoor_scenes_classifier}}\index{app.tf\_models.indoor\_scenes\_classifier (módulo)}\phantomsection\label{\detokenize{chapter_two/desc_cloudnao:module-indoor_scenes_classifier}}\index{indoor\_scenes\_classifier (módulo)}\index{ImageClassifier (clase en app.tf\_models.indoor\_scenes\_classifier)}
-
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{chapter_two/desc_cloudnao:app.tf_models.indoor_scenes_classifier.ImageClassifier}}\pysigline{\sphinxbfcode{class }\sphinxcode{app.tf\_models.indoor\_scenes\_classifier.}\sphinxbfcode{ImageClassifier}}~
 Una clase pública que utiliza que utiliza una red neuronal
 convolucional implementada en Tensorflow para clasificar en cuatro
 clases una imagen. Las clases son:
-\begin{itemize}
-\item {} 
-desks
-
-\item {} 
-exit
-
-\item {} 
-office
-
-\item {} 
-soccer\_court
-
-\end{itemize}
+desks,
+exit,
+office,
+y soccer\_court.
 
 Es la clase que carga el modelo ya entrenado, simplemente carga
 la gráfica de cómputo que diseñamos con los parámetros
@@ -1498,19 +1330,17 @@ aprendidos. El clasificador puede
 recibir una imagen codificada en base64 o su URL. El resultado
 es un diccionario que pueda ser enviado como respuesta en la API
 REST.
-\begin{quote}\begin{description}
-\item[{Ejemplo}] \leavevmode
-\end{description}\end{quote}
 
 El siguiente ejemplo
-muestra un simple uso de la clase. La imagen utilizada es la \hyperref[\detokenize{chapter_two/desc_cloudnao:image-class-example}]{Figura \ref{\detokenize{chapter_two/desc_cloudnao:image-class-example}}}
+muestra un simple uso de la clase. La imagen utilizada es la
+de la figura \ref{fig:nao_soccer_court}
 codificada en base 64.
 
 \begin{figure}[htbp]
 \centering
-
-\noindent\sphinxincludegraphics{{soccer1}.jpg}
-\label{\detokenize{chapter_two/desc_cloudnao:image-class-example}}\end{figure}
+\caption{Cancha de entrenamiento del robot NAO.\label{fig:nao_soccer_court}}
+\includegraphics[scale=0.3]{{soccer1}.jpg}
+\end{figure}
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{k+kn}{from} \PYG{n+nn}{app}\PYG{n+nn}{.}\PYG{n+nn}{tf\PYGZus{}models}\PYG{n+nn}{.}\PYG{n+nn}{object\PYGZus{}detection} \PYG{k}{import} \PYG{n}{ImageClassifier}
@@ -1520,47 +1350,6 @@ codificada en base 64.
 \PYG{g+go}{\PYGZob{}\PYGZsq{}indoor\PYGZus{}scene\PYGZsq{}: \PYGZsq{}soccer\PYGZus{}court\PYGZsq{}\PYGZcb{}}
 \PYG{g+go}{\PYGZgt{}\PYGZgt{}\PYGZgt{}}
 \end{sphinxVerbatim}
-
-El constructor se encarga de cargar al objeto MetaGraph de Tensorflow
-del modelo ya entrenado.
-\index{categories (atributo de app.tf\_models.indoor\_scenes\_classifier.ImageClassifier)}
-
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{chapter_two/desc_cloudnao:app.tf_models.indoor_scenes_classifier.ImageClassifier.categories}}\pysigline{\sphinxbfcode{categories}\sphinxbfcode{ = {[}'desks', 'exit', 'office', 'soccer\_court'{]}}}
-La lista de categorías que puede predecir
-
-\end{fulllineitems}
-
-\index{classify\_image() (método de app.tf\_models.indoor\_scenes\_classifier.ImageClassifier)}
-
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{chapter_two/desc_cloudnao:app.tf_models.indoor_scenes_classifier.ImageClassifier.classify_image}}\pysiglinewithargsret{\sphinxbfcode{classify\_image}}{\emph{image}, \emph{is\_url=None}}{}~
-Es el método encargado de evaluar la imagen en el modelo. Aquí es donde
-se realiza la ejecución de la gráfica de flujo de nuestra CNN.
-\begin{quote}\begin{description}
-\item[{Parámetros}] \leavevmode\begin{itemize}
-\item {} 
-\sphinxstyleliteralstrong{image} (\sphinxstyleliteralemphasis{string.}) \textendash{} El URL de la imagen que se desea procesar o la codificación en base 64 de esta.
-
-\item {} 
-\sphinxstyleliteralstrong{is\_url} (\sphinxstyleliteralemphasis{boolean.}) \textendash{} Bandera para elegir la forma en que se carga la imagen.
-
-\end{itemize}
-
-\item[{Devuelve}] \leavevmode
-La respuesta que enviará la API REST.
-
-\item[{Tipo del valor devuelto}] \leavevmode
-dict.
-
-\end{description}\end{quote}
-
-\end{fulllineitems}
-
-
-\end{fulllineitems}
-
-
 
 \subparagraph{Cliente de servicios web de terceros (\sphinxstyleemphasis{tpa\_client\_libraries})}
 \label{\detokenize{chapter_two/desc_cloudnao:cliente-de-servicios-web-de-terceros-tpa-client-libraries}}\phantomsection\label{\detokenize{chapter_two/desc_cloudnao:module-app.tpa_client_libraries.google_cloud_translation}}\index{app.tpa\_client\_libraries.google\_cloud\_translation (módulo)}\index{GoogleCloudTranslation (clase en app.tpa\_client\_libraries.google\_cloud\_translation)}
@@ -1935,116 +1724,11 @@ La respuesta que será enviada a través del API REST.
 \subparagraph{Utilidades (\sphinxstyleemphasis{utils})}
 \label{\detokenize{chapter_two/desc_cloudnao:utilidades-utils}}\index{make\_request() (en el módulo app.utils.requests\_utils)}
 
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{chapter_two/desc_cloudnao:app.utils.requests_utils.make_request}}\pysiglinewithargsret{\sphinxcode{app.utils.requests\_utils.}\sphinxbfcode{make\_request}}{\emph{method}, \emph{**kwargs}}{}~
-Función para hacer peticiones HTTP utilizando la biblioteca \sphinxcode{requests}.
-\begin{quote}\begin{description}
-\item[{Parámetros}] \leavevmode\begin{itemize}
-\item {} 
-\sphinxstyleliteralstrong{method} (\sphinxstyleliteralemphasis{string}) \textendash{} El método HTTP, \sphinxtitleref{get}, \sphinxtitleref{post}, etc.
-
-\item {} 
-\sphinxstyleliteralstrong{**kwargs} (\sphinxstyleliteralemphasis{dict}) \textendash{} 
-Un diccionario que tiene los componentes del mensaje HTTP.
-\begin{itemize}
-\item {} \begin{description}
-\item[{\sphinxstylestrong{url} (\sphinxstyleemphasis{string}) el url del recurso. Es lo mínimo que se requiere para}] \leavevmode
-hacer la petición.
-
-\end{description}
-
-\item {} 
-\sphinxstylestrong{headers} (\sphinxstyleemphasis{dict}) los headers personalizados.
-
-\item {} 
-\sphinxstylestrong{data} (\sphinxstyleemphasis{dict}) el cuerpo del mensaje.
-
-\end{itemize}
-
-
-\end{itemize}
-
-\item[{Devuelve}] \leavevmode
-Un diccionario con la respuesta de la petición o con mensajes de error.
-
-\item[{Tipo del valor devuelto}] \leavevmode
-dict
-
-\end{description}\end{quote}
-
-\end{fulllineitems}
-
-\phantomsection\label{\detokenize{chapter_two/desc_cloudnao:module-app.utils.auxiliar_functions}}\index{app.utils.auxiliar\_functions (módulo)}\phantomsection\label{\detokenize{chapter_two/desc_cloudnao:module-auxiliar_functions}}\index{auxiliar\_functions (módulo)}\index{check\_data\_type() (en el módulo app.utils.auxiliar\_functions)}
-
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{chapter_two/desc_cloudnao:app.utils.auxiliar_functions.check_data_type}}\pysiglinewithargsret{\sphinxcode{app.utils.auxiliar\_functions.}\sphinxbfcode{check\_data\_type}}{\emph{\_object}, \emph{\_class}}{}~
-Verifica que una objeto sea una instancia de una clase.
-\begin{quote}\begin{description}
-\item[{Parámetros}] \leavevmode\begin{itemize}
-\item {} 
-\sphinxstyleliteralstrong{\_object} \textendash{} El nombre del objeto a evaluar.
-
-\item {} 
-\sphinxstyleliteralstrong{\_class} \textendash{} La clase con la que se compara.
-
-\end{itemize}
-
-\item[{Devuelve}] \leavevmode
-Un valor booleano \sphinxcode{True} si el objeto es una instancia de dicha clase. \sphinxcode{False} de lo contrario.
-
-\item[{Tipo del valor devuelto}] \leavevmode
-boolean.
-
-\end{description}\end{quote}
-
-\end{fulllineitems}
-
-\index{create\_set\_of\_features() (en el módulo app.utils.auxiliar\_functions)}
-
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{chapter_two/desc_cloudnao:app.utils.auxiliar_functions.create_set_of_features}}\pysiglinewithargsret{\sphinxcode{app.utils.auxiliar\_functions.}\sphinxbfcode{create\_set\_of\_features}}{\emph{features}}{}~
-Función para crear el conjunto de las operaciones de vision. Además de evitar
-la duplicación de operaciones elimina las inválidas.
-\begin{quote}\begin{description}
-\item[{Parámetros}] \leavevmode
-\sphinxstyleliteralstrong{features} (\sphinxstyleliteralemphasis{list.}) \textendash{} Una lista con las características que se reciben en el cuerpo de la petición a la API.
-
-\item[{Devuelve}] \leavevmode
-Una lista con un conjunto de operaciones válidas que podrá realizar la API sobre una imagen.
-
-\item[{Tipo del valor devuelto}] \leavevmode
-list.
-
-\end{description}\end{quote}
-
-\end{fulllineitems}
-
-\index{require\_api\_key() (en el módulo app.utils.auxiliar\_functions)}
-
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{chapter_two/desc_cloudnao:app.utils.auxiliar_functions.require_api_key}}\pysiglinewithargsret{\sphinxcode{app.utils.auxiliar\_functions.}\sphinxbfcode{require\_api\_key}}{\emph{func}}{}~
-Este decorador se encarga de evitar el acceso a la API sin un token de acceso
-válido en los encabezados de la petición.
-
-\end{fulllineitems}
-
-\index{load\_image\_into\_numpy\_array() (en el módulo app.utils.image\_utils)}
-
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{chapter_two/desc_cloudnao:app.utils.image_utils.load_image_into_numpy_array}}\pysiglinewithargsret{\sphinxcode{app.utils.image\_utils.}\sphinxbfcode{load\_image\_into\_numpy\_array}}{\emph{image}}{}~
-Función encargada de cargar la imagen del archivo abierto por el el módulo
-\sphinxcode{Image} de la biblioteca \sphinxcode{Pillow} en una estructura de datos de \sphinxcode{numpy}.
-\begin{quote}\begin{description}
-\item[{Parámetros}] \leavevmode
-\sphinxstyleliteralstrong{image} \textendash{} El objeto creado por \sphinxcode{Image}
-
-\item[{Devuelve}] \leavevmode
-Un estructura de datos \sphinxcode{array} de \sphinxcode{numpy} que contiene la imagen.
-
-\end{description}\end{quote}
-
-\end{fulllineitems}
-
+Este paquete incluye funciones auxiliares
+para hacer peticiones HTTP utilizando la biblioteca 
+\texttt{requests} de Python, funciones para validar
+la autenticación y cargar una imagen en un arreglo
+de \texttt{numpy}.
 
 
 \paragraph{Configuración y ejecución}

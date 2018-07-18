@@ -42,7 +42,8 @@
 \usepackage{longtable}
 \usepackage[dontkeepoldnames]{sphinx}
 \usepackage{bold-extra}
-
+\usepackage{caption}
+\usepackage{subfig}
 
 \def\@makechapterhead#1{\vspace*{50\p@}{\parindent\z@\raggedright\normalfont\ifnum\c@secnumdepth>\m@ne\if@mainmatter\huge\bfseries\@chapapp\space\thechapter: \fi\fi\interlinepenalty\@M\Huge\bfseries#1\par\nobreak\vskip40\p@}}
 \makeatother
@@ -69,11 +70,20 @@
 \newtheorem*{remark}{Remark}
 % \setcounter{secnumdepth}{4}
 
+
+
+
+
+
+\newcounter{subsubparagraph}[subparagraph]
+\renewcommand\thesubsubparagraph{%
+  \thesubparagraph.\@arabic\c@subsubparagraph}
+
+
 \titleformat{\paragraph}
 {\normalfont\normalsize\bfseries}{\theparagraph}{1em}{}
 \titlespacing*{\paragraph}
 {0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
-
 
 
 
