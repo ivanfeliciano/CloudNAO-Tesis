@@ -16,6 +16,7 @@ aplicación, ya sea para la parte que ve el usuario final como los componentes
 internos para que desarrolladores puedan mantenerla o añadir nuevas
 funcionalidades.
 
+\subsubsection{Descripción de la aplicación}
 \paragraph{Requisitos}
 \label{\detokenize{users_docs:requisitos}}
 La aplicación fue probada con éxito sobre dispositivos con arquitecturas ARM,
@@ -42,26 +43,26 @@ de cada uno.
 En general las siguientes son las funcionalidades ofrecidas por las aplicación.
 
 
-\paragraph{Autenticación de usuarios}
+\subparagraph{Autenticación de usuarios.}
 \label{\detokenize{users_docs:autenticacion-de-usuarios}}
 Para poder ocupar la aplicación los usuarios deben iniciar sesión con un correo
 y contraseña. La aplicación cuenta con la opción de registro, si el usuario
 es nuevo.
 
 
-\paragraph{Los usuarios pueden añadir nuevos robots}
+\subparagraph{Los usuarios pueden añadir nuevos robots.}
 \label{\detokenize{users_docs:los-usuarios-pueden-anadir-nuevos-robots}}
 Para llevar un control de los robots que tiene un usuario se le permite añadir
 los robots que sean necesarios.
 
 
-\paragraph{Selección de robots previamente guardados}
+\subparagraph{Selección de robots previamente guardados.}
 \label{\detokenize{users_docs:seleccion-de-robots-previamente-guardados}}
 El usuario cuenta con una lista que le muestra los robots disponibles
 que previamente creo.
 
 
-\paragraph{Conexión con un robot seleccionado}
+\subparagraph{Conexión con un robot seleccionado.}
 \label{\detokenize{users_docs:conexion-con-un-robot-seleccionado}}
 Al elegir un robot entre los que el usuario posee, simplemente escribe la
 dirección IP del robot, y se crea una conexión eon éste dentro de la misma
@@ -69,7 +70,7 @@ red. Con esto, es posible acceder a todas las características disponibles en la
 aplicación.
 
 
-\paragraph{Control remoto para el robot}
+\subparagraph{Control remoto para el robot.}
 \label{\detokenize{users_docs:control-remoto-para-el-robot}}
 Una primera necesidad que se encontró y por la que surgió todo el proyecto
 fue crear un control remoto para el robot NAO. Es muy básico pero admite
@@ -77,13 +78,13 @@ comandos para hacer al robot caminar sobre sus tres ejes y cambiar entre dos
 posturas.
 
 
-\paragraph{Imagen en vivo de la cámara del robot}
+\subparagraph{Imagen en vivo de la cámara del robot.}
 \label{\detokenize{users_docs:imagen-en-vivo-de-la-camara-del-robot}}
 Esta característica está integrada con el control remoto, para poder ver lo
 que ve el robot a través de su cámara.
 
 
-\paragraph{Guarda valores de ALMemory en la nube}
+\subparagraph{Guarda valores de ALMemory en la nube.}
 \label{\detokenize{users_docs:guarda-valores-de-almemory-en-la-nube}}
 Otra función dentro del control remoto es la de la opción de guardar ciertos
 valores de la memoria del robot en la nube, para consultarlos o descargarlos
@@ -92,7 +93,7 @@ están disponibles para su almacenamiento son los siguientes:
 rightUSSensorValue, leftUSSensorValue, rightFootTotalWeight, RightBumperPressed, leftFootTotalWeight, ChestButtonPressed, RearTactilTouched, leftFootContact, LeftBumperPressed, footContact, FrontTactilTouched, BatteryChargeChanged, PostureChanged, rightFootContact, MiddleTactilTouched, GyrometerX, GyrometerY, AccelerometerX, AccelerometerY, AccelerometerZ, TorsoAngleX, TorsoAngleY.
 
 
-\paragraph{Detección de rostros en una fotografía enviada por el robot}
+\subparagraph{Detección de rostros en una fotografía enviada por el robot.}
 \label{\detokenize{users_docs:deteccion-de-rostros-en-una-fotografia-enviada-por-el-robot}}
 La detección  de rostros es un problema levemente resuelto por el equipo
 de Aldebaran; existe un módulo dentro de NAOqi para seguir rostros o detectarlos,
@@ -106,7 +107,7 @@ a la API de CloudNAO que a la vez se conecta con la de Kairos. Si todo fue
 exitoso un nuevo rostro se conserva para su futuro reconocimiento.
 
 
-\paragraph{Reconocimiento de rostros previamente almacenados}
+\subparagraph{Reconocimiento de rostros previamente almacenados.}
 \label{\detokenize{users_docs:reconocimiento-de-rostros-previamente-almacenados}}
 Es la continuación de la característica mencionada anteriormente, reconoce
 a sujetos antes guardados a través de una foto de sus rostros. Cuando
@@ -115,7 +116,7 @@ de que el robot ejecute una animación y diga un breve saludo a cada persona
 encontrada.
 
 
-\paragraph{Detección de objectos de entre 80 categorías en una imagen de la cámara del robot}
+\subparagraph{Detección de objectos de entre 80 categorías en una imagen de la cámara del robot.}
 \label{\detokenize{users_docs:deteccion-de-objectos-de-entre-80-categorias-en-una-imagen-de-la-camara-del-robot}}
 Funciona de manera similar a la detección de rostros. Envía una imagen capturada
 con la cámara del robot a la API RESTful de CloudNAO, que ejecuta un módulo
@@ -126,7 +127,7 @@ con el nombre que le corresponde. El robot simplemente
 dice la cantidad de objetos que ve de acuerdo a las categorías válidas.
 
 
-\paragraph{Reconocimiento óptico de caracteres y traducción de texto encontrados en una imagen enviada por el robot}
+\subparagraph{Reconocimiento óptico de caracteres y traducción de texto encontrados en una imagen enviada por el robot.}
 \label{\detokenize{users_docs:reconocimiento-optico-de-caracteres-y-traduccion-de-texto-encontrados-en-una-imagen-enviada-por-el-robot}}
 La aplicación solicita una imagen del robot, esa imagen es parte de la petición
 a la API RESTful de CloudNAO, igual que en las dos funcionalidades anteriores.
@@ -176,12 +177,10 @@ traducción en un discurso oral.
 \subsubsection{Guía para desarrolladores}
 \label{\detokenize{dev_docs::doc}}\label{\detokenize{dev_docs:guia-para-desarrolladores}}
 
-\paragraph{Requisitos}
-\label{\detokenize{dev_docs:requisitos}}
 Para desarrollar la aplicación fueron tres los elementos importantes:
 \begin{itemize}
 \item {} 
-Un entorno de desarrollo integrado (Android Studio).
+Un entorno de desarrollo integrado (\textbf{Android Studio}).
 
 \item {} 
 El robot humanoide NAO (no simulado).
@@ -191,13 +190,16 @@ El SDK para Android de NAOqi.
 
 \end{itemize}
 
-Está implicitamente claro que una computadora y acceso a una red inalámbrica
-en cada uno de los dispositivos son necesarios.
+Además de los elementos anteriores se necesitan una computadora y acceso a una red inalámbrica
+en cada uno de los dispositivos.
 
-Antes de mostrar el código, se mencionan algunas de las principales herramientas
-que hay que conocer para poder seguir el código de una manera más sencilla.
-Cabe señalar que se espera que exista cierta familiaridad con
-Java por parte del lector.
+En las siguientes subsecciones se describen las herramientas ocupadas durante 
+el desarrollo de la aplicación:
+Android Studio, Firebase Realtime
+Database, Firebase UI para la autenticación, y las bibliotecas Butterknife
+y Volley para el manejo de la IU y para las peticiones a la API REST,
+respectivamente. Después de la breve descripción de los elementos
+mencionados se listan las actividades principales (subclases de \texttt{Activity}) dentro de la aplicación móvil.
 
 
 \paragraph{Android Studio}

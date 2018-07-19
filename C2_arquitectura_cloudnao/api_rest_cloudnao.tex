@@ -11,7 +11,7 @@ terceros, los módulos mantenidos por el LAR y los entrega en una sola API.
 Es un cliente y servidor a la vez.
 
 
-\subsubsection{Documentación para desarrolladores (\sphinxstyleemphasis{clientes})}
+\subsubsection{Descripción de la API}
 \label{\detokenize{chapter_two/desc_cloudnao:documentacion-para-desarrolladores-clientes}}
 La API REST de CloudNAO permite integrar dentro de una aplicación un
 conjunto de herramientas para el análisis de imágenes.
@@ -323,8 +323,11 @@ Descripción                                   & Escenario reconocido.          
 \end{longtable}
 
 
+\subparagraph{Ejemplo de una petición a la API con CURL}
 
-\subsubsection{Documentación para \sphinxstyleemphasis{maintainers} de la API}
+
+
+\subsubsection{Guía para desarrolladores}
 \label{\detokenize{chapter_two/desc_cloudnao:documentacion-para-maintainers-de-la-api}}
 Esta API puede funcionar de manera individual, no es necesario contar con todos
 los componentes de la arquitectura. Puede integrarse en algún otro sistema,
@@ -988,9 +991,10 @@ Podemos checar el código de estado de la respuesta con
 \sphinxcode{Response.status\_code}. Y también los headers, utilizando \sphinxcode{Response.headers}.
 
 
-\paragraph{Aplicación}
+\paragraph{Descripción de los módulos principales}
 \label{\detokenize{chapter_two/desc_cloudnao:codigo}}
-La estructura de la aplicación quedó como sigue:
+La aplicación está compuesta por diferentes por módulos
+divididos de la siguiente forma:
 %está levemente basada en la definida en el libro
 %\sphinxstylestrong{Flask Web Development} de Miguel Grinberg, pero adaptada para una API REST.
 %Esta quedó como sigue.
