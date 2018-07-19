@@ -16,10 +16,6 @@ aplicación, ya sea para la parte que ve el usuario final como los componentes
 internos para que desarrolladores puedan mantenerla o añadir nuevas
 funcionalidades.
 
-
-\subsubsection{Descripción de la aplicación}
-\label{\detokenize{users_docs::doc}}\label{\detokenize{users_docs:descripcion-de-la-aplicacion}}
-
 \paragraph{Requisitos}
 \label{\detokenize{users_docs:requisitos}}
 La aplicación fue probada con éxito sobre dispositivos con arquitecturas ARM,
@@ -48,7 +44,7 @@ En general las siguientes son las funcionalidades ofrecidas por las aplicación.
 
 \paragraph{Autenticación de usuarios}
 \label{\detokenize{users_docs:autenticacion-de-usuarios}}
-Para poder ocupar la aplicación los usuarios deben inicar sesión con un correo
+Para poder ocupar la aplicación los usuarios deben iniciar sesión con un correo
 y contraseña. La aplicación cuenta con la opción de registro, si el usuario
 es nuevo.
 
@@ -93,74 +89,7 @@ Otra función dentro del control remoto es la de la opción de guardar ciertos
 valores de la memoria del robot en la nube, para consultarlos o descargarlos
 después en la aplicación web. El conjunto de valores que por ahora
 están disponibles para su almacenamiento son los siguientes:
-\begin{itemize}
-\item {} 
-rightUSSensorValue
-
-\item {} 
-leftUSSensorValue
-
-\item {} 
-rightFootTotalWeight
-
-\item {} 
-RightBumperPressed
-
-\item {} 
-leftFootTotalWeight
-
-\item {} 
-ChestButtonPressed
-
-\item {} 
-RearTactilTouched
-
-\item {} 
-leftFootContact
-
-\item {} 
-LeftBumperPressed
-
-\item {} 
-footContact
-
-\item {} 
-FrontTactilTouched
-
-\item {} 
-BatteryChargeChanged
-
-\item {} 
-PostureChanged
-
-\item {} 
-rightFootContact
-
-\item {} 
-MiddleTactilTouched
-
-\item {} 
-GyrometerX
-
-\item {} 
-GyrometerY
-
-\item {} 
-AccelerometerX
-
-\item {} 
-AccelerometerY
-
-\item {} 
-AccelerometerZ
-
-\item {} 
-TorsoAngleX
-
-\item {} 
-TorsoAngleY
-
-\end{itemize}
+rightUSSensorValue, leftUSSensorValue, rightFootTotalWeight, RightBumperPressed, leftFootTotalWeight, ChestButtonPressed, RearTactilTouched, leftFootContact, LeftBumperPressed, footContact, FrontTactilTouched, BatteryChargeChanged, PostureChanged, rightFootContact, MiddleTactilTouched, GyrometerX, GyrometerY, AccelerometerX, AccelerometerY, AccelerometerZ, TorsoAngleX, TorsoAngleY.
 
 
 \paragraph{Detección de rostros en una fotografía enviada por el robot}
@@ -174,7 +103,7 @@ la que se puede hacer procesamiento de imágenes con solo una petición HTTP.
 El usuario simplemente toma una fotografía con la cámara del robot, añade
 la etiqueta de la persona que se encuentra en esa imagen y esto se envía
 a la API de CloudNAO que a la vez se conecta con la de Kairos. Si todo fue
-exitoso un nuevo rostro se conseva para su futuro reconocimiento.
+exitoso un nuevo rostro se conserva para su futuro reconocimiento.
 
 
 \paragraph{Reconocimiento de rostros previamente almacenados}
@@ -207,42 +136,42 @@ es el texto traducido al español. El robot tiene la opción de convertir la
 traducción en un discurso oral.
 
 
-\subsubsection{Demostración de la aplicación funcionando}
-\label{\detokenize{users_docs:demostracion-de-la-aplicacion-funcionando}}
-En esta sección se describe de manera pictórica el flujo de la aplicación.
-Desde que el usuario inicia sesión, selecciona un robot y se conecta a él,
-y recorre cada una de las opciones del menú.
+% \subsubsection{Demostración de la aplicación funcionando}
+% \label{\detokenize{users_docs:demostracion-de-la-aplicacion-funcionando}}
+% En esta sección se describe de manera pictórica el flujo de la aplicación.
+% Desde que el usuario inicia sesión, selecciona un robot y se conecta a él,
+% y recorre cada una de las opciones del menú.
 
-Cada parte va acompañada de una captura de pantalla de la aplicación y
-una fotografía del robot si esta es necesaria.
+% Cada parte va acompañada de una captura de pantalla de la aplicación y
+% una fotografía del robot si esta es necesaria.
 
 
-\paragraph{Inicio de sesión}
-\label{\detokenize{users_docs:inicio-de-sesion}}
+% \paragraph{Inicio de sesión}
+% \label{\detokenize{users_docs:inicio-de-sesion}}
 
-\paragraph{Selección de Robot}
-\label{\detokenize{users_docs:seleccion-de-robot}}
+% \paragraph{Selección de Robot}
+% \label{\detokenize{users_docs:seleccion-de-robot}}
 
-\paragraph{Recorrido por el menú}
-\label{\detokenize{users_docs:recorrido-por-el-menu}}
+% \paragraph{Recorrido por el menú}
+% \label{\detokenize{users_docs:recorrido-por-el-menu}}
 
-\paragraph{Control remoto}
-\label{\detokenize{users_docs:control-remoto}}
+% \paragraph{Control remoto}
+% \label{\detokenize{users_docs:control-remoto}}
 
-\paragraph{Reconocimiento facial}
-\label{\detokenize{users_docs:reconocimiento-facial}}
+% \paragraph{Reconocimiento facial}
+% \label{\detokenize{users_docs:reconocimiento-facial}}
 
-\paragraph{Reconocimiento óptico de caracteres y traducción}
-\label{\detokenize{users_docs:reconocimiento-optico-de-caracteres-y-traduccion}}
+% \paragraph{Reconocimiento óptico de caracteres y traducción}
+% \label{\detokenize{users_docs:reconocimiento-optico-de-caracteres-y-traduccion}}
 
-\paragraph{Detección de objetos}
-\label{\detokenize{users_docs:deteccion-de-objetos}}
+% \paragraph{Detección de objetos}
+% \label{\detokenize{users_docs:deteccion-de-objetos}}
 
-\paragraph{Cierra la conexión con el robot}
-\label{\detokenize{users_docs:cierra-la-conexion-con-el-robot}}
+% \paragraph{Cierra la conexión con el robot}
+% \label{\detokenize{users_docs:cierra-la-conexion-con-el-robot}}
 
-\paragraph{Cierra la sesión del usuario}
-\label{\detokenize{users_docs:cierra-la-sesion-del-usuario}}
+% \paragraph{Cierra la sesión del usuario}
+% \label{\detokenize{users_docs:cierra-la-sesion-del-usuario}}
 
 \subsubsection{Guía para desarrolladores}
 \label{\detokenize{dev_docs::doc}}\label{\detokenize{dev_docs:guia-para-desarrolladores}}
@@ -304,29 +233,24 @@ módulos de apps para Android
 \item {} 
 módulos de bibliotecas
 
-\item {} 
-módulos de Google App Engine
 
 \end{itemize}
 
 De manera predeterminada, Android Studio muestra los archivos de tu proyecto en la vista de proyectos de Android, como se muestra en la figura 1. Esta vista se organiza en módulos para proporcionar un rápido acceso a los archivos de origen clave de tu proyecto.
 
-Todos los archivos de compilación son visibles en el nivel superior de Secuencias de comando de Gradle y cada módulo de la aplicación contiene las siguientes carpetas:
+Cada módulo de la aplicación contiene las siguientes carpetas:
 \begin{itemize}
 \item {} 
 \sphinxstylestrong{manifests}: contiene el archivo \sphinxcode{AndroidManifest.xml}.
 
 \item {} 
-\sphinxstylestrong{java}: contiene los archivos de código fuente de Java, incluido el código de prueba JUnit.
+\sphinxstylestrong{java}: contiene los archivos de código fuente de Java.
 
 \item {} 
 \sphinxstylestrong{res}: Contiene todos los recursos, como diseños XML, cadenas de IU e imágenes de mapa de bits.
 
 \end{itemize}
 
-La estructura del proyecto para Android en el disco difiere de esta representación plana. Para ver la estructura de archivos real del proyecto, selecciona Project en la lista desplegable Project (en la figura 1 se muestra como Android).
-
-También puedes personalizar la vista de los archivos del proyecto para concentrarte en aspectos específicos del desarrollo de tu aplicación. Por ejemplo, al seleccionar la vista Problems de tu proyecto, aparecerán enlaces a los archivos de origen que contengan errores conocidos de codificación y sintaxis, como una etiqueta de cierre faltante para un elemento XML en un archivo de diseño.
 
 
 \paragraph{Sistema de compilación de Gradle}
@@ -347,7 +271,7 @@ volver a usar códigos y recursos entre conjuntos de archivos de origen.
 Recurriendo a la flexibilidad de Gradle, puedes lograr todo esto sin modificar los archivos de origen de tu app. Los archivos de compilación de Android Studio se denominan build.gradle. Son archivos de texto sin formato que usan la sintaxis Groovy para configurar la compilación con elementos proporcionados por el complemento de Android para Gradle. Cada proyecto tiene un archivo de compilación de nivel superior para todo el proyecto y archivos de compilación de nivel de módulo independientes para cada módulo. Cuando importas un proyecto existente, Android Studio genera automáticamente los archivos de compilación necesarios.
 
 
-\paragraph{Una primera aplicación}
+\paragraph{Ejemplo de una aplicación}
 \label{\detokenize{dev_docs:una-primera-aplicacion}}
 En esa sección se muestra como crear una aplicación para Android muy simple
 y básica. El objetivo es exponer algunos conceptos que son requeridos al
@@ -367,15 +291,15 @@ se refleja el resultado de si fue o no correcta la elección.
 
 La aplicación cosiste de una \sphinxstyleemphasis{actividad} y un \sphinxstyleemphasis{layout}.
 
-Una \sphinxstyleemphasis{actividad} es una instancia de \sphinxstylestrong{Activity} una clase del Android SDK.
+Una \sphinxstyleemphasis{actividad} es una instancia de \sphinxcode{Activity} una clase del Android SDK.
 Una actividad es la encargada de manejar la interacción del usuario con una
 pantalla de información.
 
-Se escriben subclases de \sphinxstylestrong{Activity} para implementar la funcionalidad que la
+Se escriben subclases de \sphinxcode{Activity} para implementar la funcionalidad que la
 aplicación requiera. Una aplicación puede tener una o muchas subclases.
 
 Data Structures Quiz es una aplicación muy simple, sólo necesitará una sola
-subclase de \sphinxstylestrong{Activity} llamada \sphinxstylestrong{QuizActivity}. Quiz Activity manejará la
+subclase de \sphinxcode{Activity} llamada \sphinxcode{QuizActivity}. \sphinxcode{QuizActivity} manejará la
 interfaz de usuario.
 
 Un \sphinxstyleemphasis{layout} define un conjunto de objetos en la IU y sus posiciones en la
@@ -383,7 +307,7 @@ pantalla. Un layout está compuesto por definiciones escritas en un archivo
 XML. Cada definición es usada para crear un objeto que aparece en la pantalla,
 como un botón o texto.
 
-Data Structures Quiz incluye un archivo del layout llamado activity\_main.xml.
+Data Structures Quiz incluye un archivo del layout llamado \sphinxcode{activity\_main.xml}.
 
 
 \paragraph{Creación del proyecto}
@@ -394,7 +318,7 @@ los archivos para construir una aplicación.
 Para crear un nuevo proyecto, simplemente se sigue el guía que provee Android
 Studio, basta con dar siguiente a todo por ahora.
 
-Las pantallas que se muestran en la figura :: ilustran cada página o ventana
+Las pantallas que se muestran en la figura ilustran cada página o ventana
 que se crea al seguir las instrucciones. En resumen, se define el nombre
 de la aplicación, se especifica que dispositivos podrán ejecutar la aplicación,
 y se elige una actividad que servirá como punto de partida.
@@ -402,19 +326,19 @@ y se elige una actividad que servirá como punto de partida.
 
 \paragraph{Diseño de la IU}
 \label{\detokenize{dev_docs:diseno-de-la-iu}}
-El archivo activity\_main.xml, debe contener los siguientes elementos:
+El archivo \sphinxcode{activity\_main.xml}, debe contener los siguientes elementos:
 \begin{itemize}
 \item {} 
-Un LinearLayout orientado verticalmente
+Un \sphinxcode{LinearLayout} orientado verticalmente.
 
 \item {} 
-Un TextView
+Un \sphinxcode{TextView}.
 
 \item {} 
-Un LinearLayout orientado horizontalmente
+Un \sphinxcode{LinearLayout} orientado horizontalmente
 
 \item {} 
-Dos botones
+Dos botones (\sphinxcode{Button}).
 
 \end{itemize}
 
@@ -466,33 +390,33 @@ Cada elemento tiene un conjunto de atributos XML. Cada atrbuto es una instrucci�
 sobre cómo debe configurarse el widget.
 
 
-\subparagraph{La jerarquía del view}
+\subparagraph{La jerarquía del view.}
 \label{\detokenize{dev_docs:la-jerarquia-del-view}}
 Los widgets existen un una jerarquía de objetos \sphinxstylestrong{View} llamada la jerarquía
 view. La figura :: muestra la jerarquía que corresponde a nuestro archivo
-activity\_main.xml.
+\sphinxcode{activity\_main.xml}.
 
-La raíz de esta jerarquía es un LinearLayout. Como elemento raíz debe especificar
+La raíz de esta jerarquía es un \sphinxcode{LinearLayout}. Como elemento raíz debe especificar
 el namespace XML de recursos de Android en \sphinxcode{http//schemas.android.com/apk/res/android}.
 
-LinearLayout ereda de una subclase de View llamada ViewGroup. Un ViewGroup es un
-widget que contiene un arreglo con otros widgets. Se utiliza LinearLayout cuando
+\sphinxcode{LinearLayout} hereda de una subclase de \sphinxcode{View} llamada ViewGroup. Un \sphinxcode{ViewGroup} es un
+widget que contiene un arreglo con otros widgets. Se utiliza \sphinxcode{LinearLayout} cuando
 se desea que un conjunto de widgets estén acomodados sobre una sola columna
-o fila. Otras subclases ViewGroup son FrameLayout, TabletLayoutm y RelativeLayout.
+o fila. Otras subclases \sphinxcode{ViewGroup} son \sphinxcode{FrameLayout}, \sphinxcode{TabletLayout} y \sphinxcode{RelativeLayout}.
 
-Cuando un widget está contenido enun ViewGroup, se dice ser su hijo. La raíz
-LinearLayout tiene dos hijos: un TextView y otro LinearLayout. Éste último
+Cuando un widget está contenido en un \sphinxcode{ViewGroup}, se dice ser su hijo. La raíz
+\sphinxcode{LinearLayout} tiene dos hijos: un \sphinxcode{TextView} y otro \sphinxcode{LinearLayout}. Éste último
 tiene dos botones hijos.
 
 
 \subparagraph{De diseños XML a objetos View}
 \label{\detokenize{dev_docs:de-disenos-xml-a-objetos-view}}
-Cuando se creó el proyecto, se generó una subclase de Activity llamada
-MainActivity. El archivo de esta clase está en el directorio \sphinxstyleemphasis{app/java} del
+Cuando se creó el proyecto, se generó una subclase de \sphinxcode{Activity} llamada
+\sphinxcode{MainActivity}. El archivo de esta clase está en el directorio \sphinxstyleemphasis{app/java} del
 proyecto. La carpeta \sphinxstyleemphasis{java} es donde se encuentra el código de java de cada
 proyecto.
 
-Mostremos el resultado final de cómo debe lucir la clase MainActivity,
+Mostremos el resultado final de cómo debe lucir la clase \sphinxcode{MainActivity},
 y después expliquemos cada parte.
 
 \fvset{hllines={, ,}}%
@@ -539,12 +463,12 @@ y después expliquemos cada parte.
 \end{sphinxVerbatim}
 
 El método \sphinxcode{onCreateBundle()} es llamado cuando una instancia de las subclase
-de Activity es creada. Cuando una actividad es creada, necesita de una IU para
-manajer. Para que está actividad tenga su propia IU, se llama el método
+de \sphinxcode{Activity} es creada. Cuando una actividad es creada, necesita de una IU para
+manejar. Para que esta actividad tenga su propia IU, se llama el método
 \sphinxcode{setContentView}. Este método \sphinxstyleemphasis{infla} un layout y lo pone en la pantalla.
 Cuando un layout es inflado, cada unos de sus widgets es instanciado como
-lo definen sus atributos. Se especifica que layout inflar pasado el identificador
-del recuros.
+lo definen sus atributos. Se especifica que layout inflar pasando el identificador
+del recurso.
 
 Cada layout es un recurso. Un recurso es una pieza de la aplicación que no es
 código, cosas como imágenes, archivos XML, etc. Estos recursos están en
@@ -552,7 +476,7 @@ el directorio \sphinxstyleemphasis{app/res}. Para acceder a un recurso desde el 
 usando su identificador (\sphinxstyleemphasis{resource ID}).
 
 Ahora, se definen dos variables miembro dentro de la clase, son de tipo
-Button, ya que se conectarán con los botones definidos en el layout.
+\sphinxcode{Button}, ya que se conectarán con los botones definidos en el layout.
 
 En una actividad se pueden obtener las referencias a un widget inflado llamando
 al método \sphinxcode{findViewById}. Este método recibe como parámetro el id del recurso
@@ -562,14 +486,11 @@ de los recursos de los botones.
 
 Finalmente se crean unos escuchadores para cada botón. Las aplicaciones en
 Android son conducidas por eventos, por lo que cuando una aplicación espera
-por un evento en específico se dice que esa «escuchando» por ese evento. La
+por un evento en específico se dice que está «escuchando» por ese evento. La
 sintaxis es extraña pero simplemente se crea implementa una clase anónima
 y se sobreescriben sus métodos para manejar las respuestas a eventos. En nuestra
 aplicación los escuchadores de los botones muestran un mensaje en la pantalla
 cuando el usuario presiona alguno de los botones.
-
-Todo esto fue una breve introducción al desarrollo de una aplicación muy simple
-para Android.
 
 
 \paragraph{SDK para Android de NAOqi}
@@ -615,7 +536,7 @@ proyecto:
 \PYG{p}{\PYGZcb{}}
 \end{sphinxVerbatim}
 
-Por último solo se agrega a las dependencias dentro del archivo \sphinxcode{buildgradle}
+Por último sólo se agrega a las dependencias dentro del archivo \sphinxcode{buildgradle}
 de la aplicación \sphinxcode{compilefiles('libs/java-naoqi-sdk-2.1.4-android.jar')}, que
 compila el SDK de NAOqi.
 
@@ -626,36 +547,38 @@ compila el SDK de NAOqi.
 % \paragraph{Añadir Firebase a un proyecto de Android}
 % \label{\detokenize{dev_docs:anadir-firebase-a-un-proyecto-de-android}}
 Para agregar Firebase a tu aplicación, necesitarás un proyecto y un archivo de
-configuración de Firebase para tu aplicación.
-\begin{enumerate}
-\item {} 
-Crea un proyecto en consola de Firebase si no lo hiciste anteriormente. Si ya tienes un proyecto de Google existente asociado con tu aplicación para dispositivos móviles, haz clic en Importar proyecto de Google. De lo contrario, haz clic en Agregar proyecto.
+configuración de Firebase para tu aplicación. Esto se crean
+entrando a la consola de Firebase y siguiendo los pasos 
+que se indican en la plataforma.
+% \begin{enumerate}
+% \item {} 
+% Crea un proyecto en consola de Firebase si no lo hiciste anteriormente. Si ya tienes un proyecto de Google existente asociado con tu aplicación para dispositivos móviles, haz clic en Importar proyecto de Google. De lo contrario, haz clic en Agregar proyecto.
 
-\item {} 
-Haz clic en Agrega Firebase a tu aplicación para Android y sigue los pasos de la configuración. Si estás importando un proyecto de Google existente, es posible que esto suceda de forma automática y solo tengas que descargar el archivo de configuración.
+% \item {} 
+% Haz clic en Agrega Firebase a tu aplicación para Android y sigue los pasos de la configuración. Si estás importando un proyecto de Google existente, es posible que esto suceda de forma automática y solo tengas que descargar el archivo de configuración.
 
-\item {} 
-Ingresa el nombre del paquete de la aplicación cuando se te solicite. Es importante que ingreses el nombre del paquete que usa tu aplicación. Esto solo se puede configurar cuando agregas una aplicación a tu proyecto de Firebase.
+% \item {} 
+% Ingresa el nombre del paquete de la aplicación cuando se te solicite. Es importante que ingreses el nombre del paquete que usa tu aplicación. Esto solo se puede configurar cuando agregas una aplicación a tu proyecto de Firebase.
 
-\item {} 
-Para finalizar el proceso, descargarás un archivo \sphinxcode{googleservices.json}.
+% \item {} 
+% Para finalizar el proceso, descargarás un archivo \sphinxcode{googleservices.json}.
 
-\item {} 
-Si aún no lo haces, copia esto en la carpeta del módulo de tu proyecto, que generalmente es \sphinxstyleemphasis{app/}.
+% \item {} 
+% Si aún no lo haces, copia esto en la carpeta del módulo de tu proyecto, que generalmente es \sphinxstyleemphasis{app/}.
 
-\end{enumerate}
+% \end{enumerate}
 
 Después de añadir ese archivo generado por la consola de Firebase a la aplicación
 se agrega el SDK para poder utilizar las bibliotecas de Firebase en el proyecto.
-Se deben agregar algunas reglas a los archivos \sphinxcode{buildgradle} del proyecto
-y de la aplicación. En el primero se incluyen el complemento \sphinxcode{googleservices}
-y el repositorio Maven de Google. En el segundo ase agrega la línea
-\sphinxcode{applyplugin} en la parte inferior del archivo para habilitar el complemento
-de Gradle.
+% Se deben agregar algunas reglas a los archivos \sphinxcode{buildgradle} del proyecto
+% y de la aplicación. En el primero se incluyen el complemento \sphinxcode{googleservices}
+% y el repositorio Maven de Google. En el segundo ase agrega la línea
+% \sphinxcode{applyplugin} en la parte inferior del archivo para habilitar el complemento
+% de Gradle.
 
-Por cada biblioteca de Firebase que se desee utilizar se añade a las dependencias.
-Por ejemplo, sumando a las dependencias de Gradle  \sphinxcode{comgoogle.firebase:firebase-database:11.6.2}
-se tiene accesoa a la base de datos en tiempo real que provee Firebase.
+Cada biblioteca de Firebase que se desee utilizar se añade a las dependencias.
+Por ejemplo, sumando a las dependencias de Gradle  \sphinxcode{com.google.firebase:firebase-database:11.6.2}
+se tiene acceso a a la base de datos en tiempo real que provee Firebase.
 
 
 \paragraph{Firebase Realtime Database}
@@ -664,8 +587,8 @@ Para comenzar a usar la Firebase Realtime Database en la aplicación,
 se debe sumar a las dependencias del archivo \sphinxcode{buildgradle}, de la aplicación,
 \sphinxcode{compile'com.google.firebase:firebase-database:11.8.0'}.
 
-Los datos de Firebase se escriben en una referencia de FirebaseDatabase;
-para recuperarlos, se debe adjuntar un agente de escucha asíncrono a la
+Los datos de Firebase se escriben en una referencia de \sphinxcode{FirebaseDatabase};
+para recuperarlos, se debe adjuntar un agente de escucha o escuchador asíncrono a la
 referencia. El agente de escucha se activa una vez para el estado inicial de los
 datos y otra vez cuando los datos cambian.
 
@@ -684,7 +607,7 @@ DatabaseReference:
 
 \subparagraph{Leer y escribir datos}
 \label{\detokenize{dev_docs:leer-y-escribir-datos}}
-Para ejecutar una escritura básica se usa \sphinxcode{setValue)} para guardar datos en
+Para ejecutar una escritura básica se usa \sphinxcode{setValue()} para guardar datos en
 una referencia que se especifique.
 
 Los tipos de datos que se pueden almacenar son los siguientes:
@@ -725,10 +648,10 @@ datos.
 \end{sphinxVerbatim}
 
 
-\subparagraph{Detectección eventos de valores.}
+\subparagraph{Detección de eventos de valores.}
 \label{\detokenize{dev_docs:detecteccion-eventos-de-valores}}
 Para leer datos en una ruta de acceso y escuchar actualizaciones, usa el
-método \sphinxcode{addValueEventListener)} o el método \sphinxcode{addListenerForSingleValueEvent()}
+método \sphinxcode{addValueEventListener()} o el método \sphinxcode{addListenerForSingleValueEvent()}
 para agregar un \sphinxcode{ValueEventListener} a un objetos \sphinxcode{DatabaseReference}.
 
 Un escuchador \sphinxcode{ValueEventListener} de una referencia de la base de datos
@@ -749,20 +672,20 @@ alamacenados en la base de datos:
 \PYG{o}{\PYGZcb{}}\PYG{o}{)}
 \end{sphinxVerbatim}
 
-El escuchador recine un objeto \sphinxcode{DataSnapshot} que contiene los datos de la
+El escuchador recibe un objeto \sphinxcode{DataSnapshot} que contiene los datos de la
 ubicación especifica al momentos del evento.
 
 La diferencia entre \sphinxcode{addValueEventListener()} y
-\sphinxcode{addListenerForSingleValueEvent()} es que el primero se suscribe a cierta
+\sphinxcode{addListenerForSingleValue\\Event()} es que el primero se suscribe a cierta
 ubicación para escuchar cambios, y el segundo lee los datos de una ubicación
 una sola vez.
 
 
 \subparagraph{Actualización o borrado de datos}
 \label{\detokenize{dev_docs:actulizacion-o-borrado-de-datos}}
-Para actualizar se llama al método \sphinxcode{updateChildren()} y para elimnar datos
+Para actualizar se llama al método \sphinxcode{update\\Children()} y para eliminar datos
 en una referencia se usa \sphinxcode{removeValue} o se pasa como parámetro un valor
-\sphinxcode{null} a \sphinxcode{setValue)}.
+\sphinxcode{null} a \sphinxcode{setValue()}.
 
 También existe el método \sphinxcode{push()} para añadir una entrada con un identificador
 único sobre una referencia.
@@ -771,12 +694,12 @@ También existe el método \sphinxcode{push()} para añadir una entrada con un i
 \paragraph{Firebase UI Authentication}
 \label{\detokenize{dev_docs:firebase-ui-authentication}}
 FirebaseUI es una biblioteca de código abierto que ofrece referencias a la IU
-de manera simple y personalizable, sobre los SDK de Firebase, para elimnar
-código repetitivo y promover mejores prácticas (en cuando a la experiencia
+de manera simple y personalizable, sobre los SDK de Firebase, para eliminar
+código repetitivo y promover mejores prácticas (en cuanto a la experiencia
 de usuario y seguridad) para la autenticación.
 
 Una API sencilla es provista para manejar el flujo del inicio de sesión con una
-dirección de correo electrónico, números de teléfono, y y a través de
+dirección de correo electrónico, números de teléfono, y a través de
 proveedores como Google Sign-In, y Facebook Login. Está construido sobre
 Firebase Authentication.
 
@@ -787,10 +710,10 @@ de la cuenta y el enlace con la cuenta que son inseguros y difíciles de impleme
 usando la API base de Firebase Authentication.
 
 
-\subparagraph{Configuración}
+\subparagraph{Configuración.}
 \label{\detokenize{dev_docs:configuracion}}
 Como prerrequisito, la aplicación debe estar configurada para utilizar Firebase.
-Desués, se agrega a la biblioteca de FirebaseUI auth en las dependencias de
+Después, se agrega a la biblioteca de FirebaseUI auth en las dependencias de
 \sphinxcode{buildgradle} de la aplicación.
 
 \fvset{hllines={, ,}}%
@@ -803,7 +726,7 @@ Desués, se agrega a la biblioteca de FirebaseUI auth en las dependencias de
 
 \subparagraph{Uso de FirebaseUI para autenticación}
 \label{\detokenize{dev_docs:uso-de-firebaseui-para-autenticacion}}
-Antes de llamar al fluje de autenticación de FirebaseUI, la aplicación debe
+Antes de llamar al flujo de autenticación de FirebaseUI, la aplicación debe
 checar que un usuario ya esté registrado de una sesión previa. Este caso
 es cuando el usuario inicio sesión y salió de la aplicación para luego regresar
 a esta.
@@ -819,15 +742,15 @@ a esta.
 \end{sphinxVerbatim}
 
 El punto de entrada para el flujo de la autenticación es la clase
-\sphinxcode{comfirebase.ui.auth.AuthUI}.
+\sphinxcode{com.firebase.ui.auth.AuthUI}.
 
 
 \subparagraph{Inicio de sesión}
 \label{\detokenize{dev_docs:inicio-de-sesion}}
 Si un usuario no ha iniciado sesión, entonces el proceso de inicio de sesión
-puede empezar creando un intent sign-in usando \sphinxcode{AuthUISignInIntentBuilder}.
+puede empezar creando un intent sign-in usando \sphinxcode{AuthUISignInIntent\\Builder}.
 Se puede recuperar una instancia del contructor llamando
-\sphinxcode{createSignInIntentBuilder()} en la instancia retomada de AuthUI.
+\sphinxcode{createSignIn\\IntentBuilder()} en la instancia retomada de AuthUI.
 
 El constructor provee las siguientes opciones de personalización para el flujo
 de la autenticación:
@@ -836,7 +759,7 @@ de la autenticación:
 El conjunto de provedores de autenticación puede especificarse (Google, Twitter, Facebook)
 
 \item {} 
-Una URL con los términos de servicio para la aplicación.
+Un URL con los términos de servicio para la aplicación.
 
 \item {} 
 Un tema personalizado puede ser especificado para el flujo, el cual se aplica a todas las actividades en el flujo para que haya consistencia de colores y tipografía.
@@ -854,7 +777,7 @@ autenticarse, el flujo del inicio de sesón comienza como sigue:
 \PYG{c+c1}{// ...}
 
 \PYG{n}{startActivityForResult}\PYG{o}{(}
-  \PYG{c+c1}{// obteien una instancia de AuthUI basado en la aplicación por defecto}
+  \PYG{c+c1}{// obtiene una instancia de AuthUI basado en la aplicación por defecto}
   \PYG{n}{AuthUI}\PYG{o}{.}\PYG{n+na}{getInstance}\PYG{o}{(}\PYG{o}{)}\PYG{o}{.}\PYG{n+na}{createSignInIntentBuilder}\PYG{o}{(}\PYG{o}{)}\PYG{o}{.}\PYG{n+na}{build}\PYG{o}{(}\PYG{o}{)}\PYG{o}{,}
   \PYG{n}{RC\PYGZus{}SIGN\PYGZus{}IN}\PYG{o}{)}\PYG{o}{;}
 \end{sphinxVerbatim}
@@ -867,7 +790,7 @@ El flujo de la autenticación suministra varios códigos de respuesta, entre
 los más comunes están:
 \begin{itemize}
 \item {} 
-\sphinxcode{ActivityRESULT\_OK}, si esl usuario inició sesión.
+\sphinxcode{ActivityRESULT\_OK}, si es el usuario inició sesión.
 
 \item {} 
 \sphinxcode{ActivityRESULT\_CANCELLED}, si el usuario canceló manualmente el inicio de sesión.
@@ -919,7 +842,7 @@ el método \sphinxcode{onActivityResult()} queda como sigue:
 \label{\detokenize{dev_docs:cierre-de-sesion}}
 AuthUI brinda un método \sphinxcode{signOut} simple que encapsula todo el proceso
 que conlleva un cierre de sesión. El método retornar una objeto \sphinxcode{Task}
-que se marca completamente una vez ue todo el proces de cierre de sesión
+que se marca completamente una vez que todo el proceso de cierre de sesión
 se ha completado.
 
 \fvset{hllines={, ,}}%
@@ -949,7 +872,7 @@ el código repetitivo, como llamar a la función \sphinxcode{findViewById}. Butt
 ayuda a enlazar atributos, métodos y views.
 
 
-\subparagraph{Configuración}
+\subparagraph{Configuración.}
 \label{\detokenize{dev_docs:id1}}
 Para comenzar a utilizar butterknife en un proyecto. Solo se agrega a Las
 dependencias del \sphinxcode{buildgradle} lo siguiente:
@@ -961,7 +884,7 @@ dependencias del \sphinxcode{buildgradle} lo siguiente:
 \end{sphinxVerbatim}
 
 
-\subparagraph{Uso}
+\subparagraph{Uso.}
 \label{\detokenize{dev_docs:uso}}
 Para entender mejor las características que tiene ButterKnife supongamos que
 tenemos una actividad con un botón que reaccione a clicks. Sin usar ButterKnife
@@ -1042,7 +965,7 @@ Personalizable, por ejemplo, se puede añadir la opción de reintentar un petici
 \end{itemize}
 
 
-\subparagraph{Configuración}
+\subparagraph{Configuración.}
 \label{\detokenize{dev_docs:id2}}
 La manera más sencilla de añadir Volley a un proyecto es a través de la dependencia
 en el \sphinxcode{buildgradle} de la aplicación.
@@ -1056,7 +979,7 @@ en el \sphinxcode{buildgradle} de la aplicación.
 \end{sphinxVerbatim}
 
 
-\subparagraph{Enviando una petición simple}
+\subparagraph{Enviando una petición simple.}
 \label{\detokenize{dev_docs:enviando-una-peticion-simple}}
 A un alto nivel, se utiliza Volley creando un objeto \sphinxcode{RequestQueue} y
 pasándole objetos \sphinxcode{Request}. \sphinxcode{RequestQueue} administra hilos trabajadores
@@ -1068,8 +991,8 @@ para su entrega.
 Volley provee una método \sphinxcode{VolleynewRequestQueue} que prepara una
 \sphinxcode{RequestQueue}, usando valores por defecto, e inicia la cola. El
 siguiente ejemplo presenta cómo se crea una nueva cola de peticiones,
-así como una simple petición GET a www.google.com, recibiendo  la respuesta
-en una cadena y mostrándola en un TextView.
+así como una simple petición \sphinxcode{GET} a \sphinxcode{www.google.com}, recibiendo  la respuesta
+en una cadena y mostrándola en un \sphinxcode{TextView}.
 
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -1097,7 +1020,7 @@ en una cadena y mostrándola en un TextView.
 \PYG{n}{queue}\PYG{o}{.}\PYG{n+na}{add}\PYG{o}{(}\PYG{n}{stringRequest}\PYG{o}{)}\PYG{o}{;}
 \end{sphinxVerbatim}
 
-Volley siempre entrea respuestas parseadas sobre el hilo principal. Ejecutarlo
+Volley siempre entrega respuestas parseadas sobre el hilo principal. Ejecutarlo
 sobre el hilo principal es conveniente para poblar elementos de la interfaz de
 usuario con los datos recibidos.
 
@@ -1121,10 +1044,10 @@ La aplicación tiene las siguientes clases principales:
 \sphinxcode{SelectRobotActivity}, la actividad que muestra los robots guardados por el usuario que inició sesión. Además aquí se pueden añadir nuevos. Escribe y lee de Firebase Realtime Database. Aquí se crea la instancia única del robot con el que se desea conectar, se crea la sesión y los proxies a los módulos de NAOqi.
 
 \item {} 
-\sphinxcode{MenuActivity}, esta actividad es un menú para elegir enntre las actividades restantes. Es un ViewPager, que reacciona al click del usuario.
+\sphinxcode{MenuActivity}, esta actividad es un menú para elegir entre las actividades restantes. Es un ViewPager, que reacciona al click del usuario.
 
 \item {} 
-\sphinxcode{RemoteControllerActivity}, la actividad que corresponde al control remoto. Utiliza módulos de NAOQi, y la base de datos de Firebase para esribir los logs.
+\sphinxcode{RemoteControllerActivity}, la actividad que corresponde al control remoto. Utiliza módulos de NAOqi, y la base de datos de Firebase para escribir los logs.
 
 \item {} 
 \sphinxcode{FaceRecognitionActivity}, la actividad que detecta rostros en una imagen. Utiliza Volley para conectarse a la API RESTful de CloudNAO.
@@ -1141,1326 +1064,1326 @@ La aplicación tiene las siguientes clases principales:
 \end{itemize}
 
 
-\textbf{SignInActivity}
-\label{\detokenize{dev_docs:signinactivity}}\index{SignInActivity (Java class)}
+% \textbf{SignInActivity}
+% \label{\detokenize{dev_docs:signinactivity}}\index{SignInActivity (Java class)}
 
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.SignInActivity}}\pysigline{public class \sphinxbfcode{SignInActivity} extends AppCompatActivity}
-La actividad para iniciar sesión en la aplicación, utiliza la biblioteca Firebae UI, para facilitar el flujo del inicio de sesión.
+% \begin{fulllineitems}
+% \phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.SignInActivity}}\pysigline{public class \sphinxbfcode{SignInActivity} extends AppCompatActivity}
+% La actividad para iniciar sesión en la aplicación, utiliza la biblioteca Firebae UI, para facilitar el flujo del inicio de sesión.
 
-\end{fulllineitems}
+% \end{fulllineitems}
 
 
 
-\textbf{Métodos}
-\label{\detokenize{dev_docs:methods}}
+% \textbf{Métodos}
+% \label{\detokenize{dev_docs:methods}}
 
-\textbf{OnClickSignInButton}
-\label{\detokenize{dev_docs:onclicksigninbutton}}\index{OnClickSignInButton() (Java method)}
+% \textbf{OnClickSignInButton}
+% \label{\detokenize{dev_docs:onclicksigninbutton}}\index{OnClickSignInButton() (Java method)}
 
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.SignInActivity.OnClickSignInButton()}}\pysiglinewithargsret{public void \sphinxbfcode{OnClickSignInButton}}{}{}
-Agrega un escuchador al botón signInButton para crear un intent sign-in. Este intent es provisto por la biblioteca de Firebase AuthUI. Esto construye una actividad sign-in, y pasa un entero RC\_SIGN\_IN, que es una variable donde se guarda la respuesta de la actividad sign-in. Cuando esa actividad finaliza su trabajo enviará de regreso onActivityResult que contiene el código de petición y otra información. Esa información es un intent, que podemos usar para descifrar que pasó.
+% \begin{fulllineitems}
+% \phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.SignInActivity.OnClickSignInButton()}}\pysiglinewithargsret{public void \sphinxbfcode{OnClickSignInButton}}{}{}
+% Agrega un escuchador al botón signInButton para crear un intent sign-in. Este intent es provisto por la biblioteca de Firebase AuthUI. Esto construye una actividad sign-in, y pasa un entero RC\_SIGN\_IN, que es una variable donde se guarda la respuesta de la actividad sign-in. Cuando esa actividad finaliza su trabajo enviará de regreso onActivityResult que contiene el código de petición y otra información. Esa información es un intent, que podemos usar para descifrar que pasó.
 
-\end{fulllineitems}
+% \end{fulllineitems}
 
 
 
-\textbf{createIntent}
-\label{\detokenize{dev_docs:createintent}}\index{createIntent(Context) (Java method)}
+% \textbf{createIntent}
+% \label{\detokenize{dev_docs:createintent}}\index{createIntent(Context) (Java method)}
 
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.SignInActivity.createIntent(Context)}}\pysiglinewithargsret{public static Intent \sphinxbfcode{createIntent}}{Context\sphinxstyleemphasis{ context}}{}
-Este método se utiliza por la actividad sign-in en caso de que no se tenga un usuario válido.
+% \begin{fulllineitems}
+% \phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.SignInActivity.createIntent(Context)}}\pysiglinewithargsret{public static Intent \sphinxbfcode{createIntent}}{Context\sphinxstyleemphasis{ context}}{}
+% Este método se utiliza por la actividad sign-in en caso de que no se tenga un usuario válido.
 
-\end{fulllineitems}
+% \end{fulllineitems}
 
 
 
-\textbf{onActivityResult}
-\label{\detokenize{dev_docs:onactivityresult}}\index{onActivityResult(int, int, Intent) (Java method)}
+% \textbf{onActivityResult}
+% \label{\detokenize{dev_docs:onactivityresult}}\index{onActivityResult(int, int, Intent) (Java method)}
 
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.SignInActivity.onActivityResult(int, int, Intent)}}\pysiglinewithargsret{protected void \sphinxbfcode{onActivityResult}}{int\sphinxstyleemphasis{ requestCode}, int\sphinxstyleemphasis{ resultCode}, Intent\sphinxstyleemphasis{ data}}{}
-Verifica y maneja el resultado enviado por la actividad sign-in
+% \begin{fulllineitems}
+% \phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.SignInActivity.onActivityResult(int, int, Intent)}}\pysiglinewithargsret{protected void \sphinxbfcode{onActivityResult}}{int\sphinxstyleemphasis{ requestCode}, int\sphinxstyleemphasis{ resultCode}, Intent\sphinxstyleemphasis{ data}}{}
+% Verifica y maneja el resultado enviado por la actividad sign-in
 
-\end{fulllineitems}
+% \end{fulllineitems}
 
 
 
-\textbf{onCreate}
-\label{\detokenize{dev_docs:oncreate}}\index{onCreate(Bundle) (Java method)}
+% \textbf{onCreate}
+% \label{\detokenize{dev_docs:oncreate}}\index{onCreate(Bundle) (Java method)}
 
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.SignInActivity.onCreate(Bundle)}}\pysiglinewithargsret{protected void \sphinxbfcode{onCreate}}{Bundle\sphinxstyleemphasis{ savedInstanceState}}{}
-Es el método que se llama al crear la actividad, si el usuario ya ha iniciado sesión ejecuta la actividad de la clase SelectRobotActivity y finaliza la actual.
+% \begin{fulllineitems}
+% \phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.SignInActivity.onCreate(Bundle)}}\pysiglinewithargsret{protected void \sphinxbfcode{onCreate}}{Bundle\sphinxstyleemphasis{ savedInstanceState}}{}
+% Es el método que se llama al crear la actividad, si el usuario ya ha iniciado sesión ejecuta la actividad de la clase SelectRobotActivity y finaliza la actual.
 
-\end{fulllineitems}
+% \end{fulllineitems}
 
 
 
-\textbf{SelectRobotActivity}
-\label{\detokenize{dev_docs:selectrobotactivity}}\index{SelectRobotActivity (Java class)}
+% \textbf{SelectRobotActivity}
+% \label{\detokenize{dev_docs:selectrobotactivity}}\index{SelectRobotActivity (Java class)}
 
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.SelectRobotActivity}}\pysigline{public class \sphinxbfcode{SelectRobotActivity} extends AppCompatActivity implements OnRobotNameClickListener}
-Actividad que muestra los robots registrados por el usuario así como la opción para añadir nuevos robots, o conectarse a uno de la lista. Implementa el método abstracto \sphinxcode{OnRobotNameClickListeneronClickRobotName(String,String)}.
+% \begin{fulllineitems}
+% \phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.SelectRobotActivity}}\pysigline{public class \sphinxbfcode{SelectRobotActivity} extends AppCompatActivity implements OnRobotNameClickListener}
+% Actividad que muestra los robots registrados por el usuario así como la opción para añadir nuevos robots, o conectarse a uno de la lista. Implementa el método abstracto \sphinxcode{OnRobotNameClickListeneronClickRobotName(String,String)}.
 
-\end{fulllineitems}
+% \end{fulllineitems}
 
 
 
-\subsubsection{Atributos}
-\label{\detokenize{dev_docs:fields}}
+% \subsubsection{Atributos}
+% \label{\detokenize{dev_docs:fields}}
 
-\paragraph{MyRobot}
-\label{\detokenize{dev_docs:myrobot}}\index{MyRobot (Java field)}
+% \paragraph{MyRobot}
+% \label{\detokenize{dev_docs:myrobot}}\index{MyRobot (Java field)}
 
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.SelectRobotActivity.MyRobot}}\pysigline{public {\hyperref[\detokenize{dev_docs:com.lar.cloudnao.Robot}]{\sphinxcrossref{Robot}}} \sphinxbfcode{MyRobot}}
-Llama a las instancia global de {\hyperref[\detokenize{dev_docs:com.lar.cloudnao.Robot}]{\sphinxcrossref{\sphinxcode{Robot}}}}
+% \begin{fulllineitems}
+% \phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.SelectRobotActivity.MyRobot}}\pysigline{public {\hyperref[\detokenize{dev_docs:com.lar.cloudnao.Robot}]{\sphinxcrossref{Robot}}} \sphinxbfcode{MyRobot}}
+% Llama a las instancia global de {\hyperref[\detokenize{dev_docs:com.lar.cloudnao.Robot}]{\sphinxcrossref{\sphinxcode{Robot}}}}
 
-\end{fulllineitems}
+% \end{fulllineitems}
 
 
 
-\paragraph{mNewRobotEditText}
-\label{\detokenize{dev_docs:mnewrobotedittext}}\index{mNewRobotEditText (Java field)}
+% \paragraph{mNewRobotEditText}
+% \label{\detokenize{dev_docs:mnewrobotedittext}}\index{mNewRobotEditText (Java field)}
 
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.SelectRobotActivity.mNewRobotEditText}}\pysigline{ EditText \sphinxbfcode{mNewRobotEditText}}
-Campo para añadir el nombre de un nuevo robot.
+% \begin{fulllineitems}
+% \phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.SelectRobotActivity.mNewRobotEditText}}\pysigline{ EditText \sphinxbfcode{mNewRobotEditText}}
+% Campo para añadir el nombre de un nuevo robot.
 
-\end{fulllineitems}
+% \end{fulllineitems}
 
 
 
-\paragraph{robotListFromFirebaseRecyclerView}
-\label{\detokenize{dev_docs:robotlistfromfirebaserecyclerview}}\index{robotListFromFirebaseRecyclerView (Java field)}
+% \paragraph{robotListFromFirebaseRecyclerView}
+% \label{\detokenize{dev_docs:robotlistfromfirebaserecyclerview}}\index{robotListFromFirebaseRecyclerView (Java field)}
 
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.SelectRobotActivity.robotListFromFirebaseRecyclerView}}\pysigline{ RecyclerView \sphinxbfcode{robotListFromFirebaseRecyclerView}}
-La lista de los robots del usuario, se llena desde Firebase.
+% \begin{fulllineitems}
+% \phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.SelectRobotActivity.robotListFromFirebaseRecyclerView}}\pysigline{ RecyclerView \sphinxbfcode{robotListFromFirebaseRecyclerView}}
+% La lista de los robots del usuario, se llena desde Firebase.
 
-\end{fulllineitems}
+% \end{fulllineitems}
 
 
 
-\subsubsection{Métodos}
-\label{\detokenize{dev_docs:id3}}
+% \subsubsection{Métodos}
+% \label{\detokenize{dev_docs:id3}}
 
-\paragraph{addNewRobot}
-\label{\detokenize{dev_docs:addnewrobot}}\index{addNewRobot() (Java method)}
+% \paragraph{addNewRobot}
+% \label{\detokenize{dev_docs:addnewrobot}}\index{addNewRobot() (Java method)}
 
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.SelectRobotActivity.addNewRobot()}}\pysiglinewithargsret{public void \sphinxbfcode{addNewRobot}}{}{}
-Escuchador para el botón que permite a los usuarios añadir un nuevo robot.
+% \begin{fulllineitems}
+% \phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.SelectRobotActivity.addNewRobot()}}\pysiglinewithargsret{public void \sphinxbfcode{addNewRobot}}{}{}
+% Escuchador para el botón que permite a los usuarios añadir un nuevo robot.
 
-\end{fulllineitems}
+% \end{fulllineitems}
 
 
 
-\paragraph{onClickRobotName}
-\label{\detokenize{dev_docs:onclickrobotname}}\index{onClickRobotName(String, String) (Java method)}
+% \paragraph{onClickRobotName}
+% \label{\detokenize{dev_docs:onclickrobotname}}\index{onClickRobotName(String, String) (Java method)}
 
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.SelectRobotActivity.onClickRobotName(String, String)}}\pysiglinewithargsret{public void \sphinxbfcode{onClickRobotName}}{\sphinxhref{http://docs.oracle.com/javase/8/docs/api/java/lang/String.html}{String}\sphinxstyleemphasis{ robotName}, \sphinxhref{http://docs.oracle.com/javase/8/docs/api/java/lang/String.html}{String}\sphinxstyleemphasis{ robotUID}}{}
-Define al método abstracto \sphinxcode{OnRobotNameClickListeneronClickRobotName(String,String)} para servir como callback cuando un usuario da clcik en un robot de la lista. Muestra un cuadro de diálogo con TextView para agregar la dirección IP del robot y ejecutar \sphinxcode{ConnectionTask}.
+% \begin{fulllineitems}
+% \phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.SelectRobotActivity.onClickRobotName(String, String)}}\pysiglinewithargsret{public void \sphinxbfcode{onClickRobotName}}{\sphinxhref{http://docs.oracle.com/javase/8/docs/api/java/lang/String.html}{String}\sphinxstyleemphasis{ robotName}, \sphinxhref{http://docs.oracle.com/javase/8/docs/api/java/lang/String.html}{String}\sphinxstyleemphasis{ robotUID}}{}
+% Define al método abstracto \sphinxcode{OnRobotNameClickListeneronClickRobotName(String,String)} para servir como callback cuando un usuario da clcik en un robot de la lista. Muestra un cuadro de diálogo con TextView para agregar la dirección IP del robot y ejecutar \sphinxcode{ConnectionTask}.
 
-\end{fulllineitems}
+% \end{fulllineitems}
 
 
 
-\paragraph{onCreate}
-\label{\detokenize{dev_docs:id4}}\index{onCreate(Bundle) (Java method)}
+% \paragraph{onCreate}
+% \label{\detokenize{dev_docs:id4}}\index{onCreate(Bundle) (Java method)}
 
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.SelectRobotActivity.onCreate(Bundle)}}\pysiglinewithargsret{protected void \sphinxbfcode{onCreate}}{Bundle\sphinxstyleemphasis{ savedInstanceState}}{}
-Inicia la actividad, verifica que el usuario haya iniciado sesión. Si el usuario es nuevo, entonces se añade a la ubicación /users en la base de datos de Firebase. Luego, agrega un escuchador a la ubicación de la base de datos que contiene a los robots del usuario. Llama al método \sphinxcode{getRobotFirebaseDataSnapshot()} para actualizar {\hyperref[\detokenize{dev_docs:com.lar.cloudnao.SelectRobotActivity.robotListFromFirebaseRecyclerView}]{\sphinxcrossref{\sphinxcode{robotListFromFirebaseRecyclerView}}}}.
+% \begin{fulllineitems}
+% \phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.SelectRobotActivity.onCreate(Bundle)}}\pysiglinewithargsret{protected void \sphinxbfcode{onCreate}}{Bundle\sphinxstyleemphasis{ savedInstanceState}}{}
+% Inicia la actividad, verifica que el usuario haya iniciado sesión. Si el usuario es nuevo, entonces se añade a la ubicación /users en la base de datos de Firebase. Luego, agrega un escuchador a la ubicación de la base de datos que contiene a los robots del usuario. Llama al método \sphinxcode{getRobotFirebaseDataSnapshot()} para actualizar {\hyperref[\detokenize{dev_docs:com.lar.cloudnao.SelectRobotActivity.robotListFromFirebaseRecyclerView}]{\sphinxcrossref{\sphinxcode{robotListFromFirebaseRecyclerView}}}}.
 
-\end{fulllineitems}
+% \end{fulllineitems}
 
 
 
-\paragraph{onCreateOptionsMenu}
-\label{\detokenize{dev_docs:oncreateoptionsmenu}}\index{onCreateOptionsMenu(Menu) (Java method)}
+% \paragraph{onCreateOptionsMenu}
+% \label{\detokenize{dev_docs:oncreateoptionsmenu}}\index{onCreateOptionsMenu(Menu) (Java method)}
 
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.SelectRobotActivity.onCreateOptionsMenu(Menu)}}\pysiglinewithargsret{public boolean \sphinxbfcode{onCreateOptionsMenu}}{Menu\sphinxstyleemphasis{ menu}}{}
-Crea un menú de opciones para que por ahora contiene un elemento, cerrar la sesión del usuario.
+% \begin{fulllineitems}
+% \phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.SelectRobotActivity.onCreateOptionsMenu(Menu)}}\pysiglinewithargsret{public boolean \sphinxbfcode{onCreateOptionsMenu}}{Menu\sphinxstyleemphasis{ menu}}{}
+% Crea un menú de opciones para que por ahora contiene un elemento, cerrar la sesión del usuario.
 
-\end{fulllineitems}
+% \end{fulllineitems}
 
 
 
-\paragraph{onOptionsItemSelected}
-\label{\detokenize{dev_docs:onoptionsitemselected}}\index{onOptionsItemSelected(MenuItem) (Java method)}
+% \paragraph{onOptionsItemSelected}
+% \label{\detokenize{dev_docs:onoptionsitemselected}}\index{onOptionsItemSelected(MenuItem) (Java method)}
 
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.SelectRobotActivity.onOptionsItemSelected(MenuItem)}}\pysiglinewithargsret{public boolean \sphinxbfcode{onOptionsItemSelected}}{MenuItem\sphinxstyleemphasis{ item}}{}
-Añade un escuchador para cuando se selecciona un elemento en el menú de opciones. Por ahora solo cerrar sesión. Llama al método {\hyperref[\detokenize{dev_docs:com.lar.cloudnao.SelectRobotActivity.signOut()}]{\sphinxcrossref{\sphinxcode{signOut()}}}}.
+% \begin{fulllineitems}
+% \phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.SelectRobotActivity.onOptionsItemSelected(MenuItem)}}\pysiglinewithargsret{public boolean \sphinxbfcode{onOptionsItemSelected}}{MenuItem\sphinxstyleemphasis{ item}}{}
+% Añade un escuchador para cuando se selecciona un elemento en el menú de opciones. Por ahora solo cerrar sesión. Llama al método {\hyperref[\detokenize{dev_docs:com.lar.cloudnao.SelectRobotActivity.signOut()}]{\sphinxcrossref{\sphinxcode{signOut()}}}}.
 
-\end{fulllineitems}
+% \end{fulllineitems}
 
 
 
-\paragraph{signOut}
-\label{\detokenize{dev_docs:signout}}\index{signOut() (Java method)}
+% \paragraph{signOut}
+% \label{\detokenize{dev_docs:signout}}\index{signOut() (Java method)}
 
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.SelectRobotActivity.signOut()}}\pysiglinewithargsret{public void \sphinxbfcode{signOut}}{}{}
-Cierra la sesión através de la biblioteca AuthUI
+% \begin{fulllineitems}
+% \phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.SelectRobotActivity.signOut()}}\pysiglinewithargsret{public void \sphinxbfcode{signOut}}{}{}
+% Cierra la sesión através de la biblioteca AuthUI
 
-\end{fulllineitems}
+% \end{fulllineitems}
 
 
 
-\textbf{MenuActivity}
-\label{\detokenize{dev_docs:menuactivity}}\index{MenuActivity (Java class)}
+% \textbf{MenuActivity}
+% \label{\detokenize{dev_docs:menuactivity}}\index{MenuActivity (Java class)}
 
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.MenuActivity}}\pysigline{public class \sphinxbfcode{MenuActivity} extends AppCompatActivity}
-La actividad que muestra el menú donde se elige entre otras actividades para interactuar con el robot. Muestra un ViewPager para navegar y elegir la actividad deseada.
+% \begin{fulllineitems}
+% \phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.MenuActivity}}\pysigline{public class \sphinxbfcode{MenuActivity} extends AppCompatActivity}
+% La actividad que muestra el menú donde se elige entre otras actividades para interactuar con el robot. Muestra un ViewPager para navegar y elegir la actividad deseada.
 
-\end{fulllineitems}
+% \end{fulllineitems}
 
 
 
-\subsubsection{Atributos}
-\label{\detokenize{dev_docs:id5}}
+% \subsubsection{Atributos}
+% \label{\detokenize{dev_docs:id5}}
 
-\paragraph{MyRobot}
-\label{\detokenize{dev_docs:id6}}\index{MyRobot (Java field)}
+% \paragraph{MyRobot}
+% \label{\detokenize{dev_docs:id6}}\index{MyRobot (Java field)}
 
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.MenuActivity.MyRobot}}\pysigline{public {\hyperref[\detokenize{dev_docs:com.lar.cloudnao.Robot}]{\sphinxcrossref{Robot}}} \sphinxbfcode{MyRobot}}
-La instancia del singleton de la clase {\hyperref[\detokenize{dev_docs:com.lar.cloudnao.Robot}]{\sphinxcrossref{\sphinxcode{Robot}}}}
+% \begin{fulllineitems}
+% \phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.MenuActivity.MyRobot}}\pysigline{public {\hyperref[\detokenize{dev_docs:com.lar.cloudnao.Robot}]{\sphinxcrossref{Robot}}} \sphinxbfcode{MyRobot}}
+% La instancia del singleton de la clase {\hyperref[\detokenize{dev_docs:com.lar.cloudnao.Robot}]{\sphinxcrossref{\sphinxcode{Robot}}}}
 
-\end{fulllineitems}
+% \end{fulllineitems}
 
 
 
-\paragraph{mCurrentPageSelected}
-\label{\detokenize{dev_docs:mcurrentpageselected}}\index{mCurrentPageSelected (Java field)}
+% \paragraph{mCurrentPageSelected}
+% \label{\detokenize{dev_docs:mcurrentpageselected}}\index{mCurrentPageSelected (Java field)}
 
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.MenuActivity.mCurrentPageSelected}}\pysigline{public int \sphinxbfcode{mCurrentPageSelected}}
-Un número que identifica la página que se muestra actualmente.
+% \begin{fulllineitems}
+% \phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.MenuActivity.mCurrentPageSelected}}\pysigline{public int \sphinxbfcode{mCurrentPageSelected}}
+% Un número que identifica la página que se muestra actualmente.
 
-\end{fulllineitems}
+% \end{fulllineitems}
 
 
 
-\subsubsection{Métodos}
-\label{\detokenize{dev_docs:id7}}
+% \subsubsection{Métodos}
+% \label{\detokenize{dev_docs:id7}}
 
-\paragraph{onClickMenuButton}
-\label{\detokenize{dev_docs:onclickmenubutton}}\index{onClickMenuButton() (Java method)}
+% \paragraph{onClickMenuButton}
+% \label{\detokenize{dev_docs:onclickmenubutton}}\index{onClickMenuButton() (Java method)}
 
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.MenuActivity.onClickMenuButton()}}\pysiglinewithargsret{public void \sphinxbfcode{onClickMenuButton}}{}{}
-Define el escuchador para el botón de selección de actividad dentro del menú de actividades.
+% \begin{fulllineitems}
+% \phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.MenuActivity.onClickMenuButton()}}\pysiglinewithargsret{public void \sphinxbfcode{onClickMenuButton}}{}{}
+% Define el escuchador para el botón de selección de actividad dentro del menú de actividades.
 
-\end{fulllineitems}
+% \end{fulllineitems}
 
 
 
-\paragraph{onCreate}
-\label{\detokenize{dev_docs:id8}}\index{onCreate(Bundle) (Java method)}
+% \paragraph{onCreate}
+% \label{\detokenize{dev_docs:id8}}\index{onCreate(Bundle) (Java method)}
 
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.MenuActivity.onCreate(Bundle)}}\pysiglinewithargsret{protected void \sphinxbfcode{onCreate}}{Bundle\sphinxstyleemphasis{ savedInstanceState}}{}
-Inicializa la actividad, el ViewPager y el Adapter para escuchar cuando se cambia de página.
+% \begin{fulllineitems}
+% \phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.MenuActivity.onCreate(Bundle)}}\pysiglinewithargsret{protected void \sphinxbfcode{onCreate}}{Bundle\sphinxstyleemphasis{ savedInstanceState}}{}
+% Inicializa la actividad, el ViewPager y el Adapter para escuchar cuando se cambia de página.
 
-\end{fulllineitems}
+% \end{fulllineitems}
 
 
 
-\paragraph{onCreateOptionsMenu}
-\label{\detokenize{dev_docs:id9}}\index{onCreateOptionsMenu(Menu) (Java method)}
+% \paragraph{onCreateOptionsMenu}
+% \label{\detokenize{dev_docs:id9}}\index{onCreateOptionsMenu(Menu) (Java method)}
 
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.MenuActivity.onCreateOptionsMenu(Menu)}}\pysiglinewithargsret{public boolean \sphinxbfcode{onCreateOptionsMenu}}{Menu\sphinxstyleemphasis{ menu}}{}
-Crea un menú de opciones, en la barra superior y contar con una opción para desconectarse del robot (cerrando la sesión de NAOqi)
+% \begin{fulllineitems}
+% \phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.MenuActivity.onCreateOptionsMenu(Menu)}}\pysiglinewithargsret{public boolean \sphinxbfcode{onCreateOptionsMenu}}{Menu\sphinxstyleemphasis{ menu}}{}
+% Crea un menú de opciones, en la barra superior y contar con una opción para desconectarse del robot (cerrando la sesión de NAOqi)
 
-\end{fulllineitems}
+% \end{fulllineitems}
 
 
 
-\paragraph{onOptionsItemSelected}
-\label{\detokenize{dev_docs:id10}}\index{onOptionsItemSelected(MenuItem) (Java method)}
+% \paragraph{onOptionsItemSelected}
+% \label{\detokenize{dev_docs:id10}}\index{onOptionsItemSelected(MenuItem) (Java method)}
 
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.MenuActivity.onOptionsItemSelected(MenuItem)}}\pysiglinewithargsret{public boolean \sphinxbfcode{onOptionsItemSelected}}{MenuItem\sphinxstyleemphasis{ item}}{}
-Ejecuta la función \sphinxcode{closeRobotConnection()} si se selecciona la opción de desconectarse del robot desde el menú de opciones.
+% \begin{fulllineitems}
+% \phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.MenuActivity.onOptionsItemSelected(MenuItem)}}\pysiglinewithargsret{public boolean \sphinxbfcode{onOptionsItemSelected}}{MenuItem\sphinxstyleemphasis{ item}}{}
+% Ejecuta la función \sphinxcode{closeRobotConnection()} si se selecciona la opción de desconectarse del robot desde el menú de opciones.
 
-\end{fulllineitems}
+% \end{fulllineitems}
 
 
 
-\paragraph{startOCRActivity}
-\label{\detokenize{dev_docs:startocractivity}}\index{startOCRActivity() (Java method)}
+% \paragraph{startOCRActivity}
+% \label{\detokenize{dev_docs:startocractivity}}\index{startOCRActivity() (Java method)}
 
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.MenuActivity.startOCRActivity()}}\pysiglinewithargsret{public void \sphinxbfcode{startOCRActivity}}{}{}
-Inicia la actividad {\hyperref[\detokenize{dev_docs:com.lar.cloudnao.OCRTranslationActivity}]{\sphinxcrossref{\sphinxcode{OCRTranslationActivity}}}}
+% \begin{fulllineitems}
+% \phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.MenuActivity.startOCRActivity()}}\pysiglinewithargsret{public void \sphinxbfcode{startOCRActivity}}{}{}
+% Inicia la actividad {\hyperref[\detokenize{dev_docs:com.lar.cloudnao.OCRTranslationActivity}]{\sphinxcrossref{\sphinxcode{OCRTranslationActivity}}}}
 
-\end{fulllineitems}
+% \end{fulllineitems}
 
 
 
-\paragraph{startObjectDetectionActivity}
-\label{\detokenize{dev_docs:startobjectdetectionactivity}}\index{startObjectDetectionActivity() (Java method)}
+% \paragraph{startObjectDetectionActivity}
+% \label{\detokenize{dev_docs:startobjectdetectionactivity}}\index{startObjectDetectionActivity() (Java method)}
 
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.MenuActivity.startObjectDetectionActivity()}}\pysiglinewithargsret{public void \sphinxbfcode{startObjectDetectionActivity}}{}{}
-Inicia la actividad {\hyperref[\detokenize{dev_docs:com.lar.cloudnao.ObjectDetectionActivity}]{\sphinxcrossref{\sphinxcode{ObjectDetectionActivity}}}}
+% \begin{fulllineitems}
+% \phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.MenuActivity.startObjectDetectionActivity()}}\pysiglinewithargsret{public void \sphinxbfcode{startObjectDetectionActivity}}{}{}
+% Inicia la actividad {\hyperref[\detokenize{dev_docs:com.lar.cloudnao.ObjectDetectionActivity}]{\sphinxcrossref{\sphinxcode{ObjectDetectionActivity}}}}
 
-\end{fulllineitems}
+% \end{fulllineitems}
 
 
 
-\textbf{RemoteControllerActivity}
-\label{\detokenize{dev_docs:remotecontrolleractivity}}\index{RemoteControllerActivity (Java class)}
+% \textbf{RemoteControllerActivity}
+% \label{\detokenize{dev_docs:remotecontrolleractivity}}\index{RemoteControllerActivity (Java class)}
 
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.RemoteControllerActivity}}\pysigline{public class \sphinxbfcode{RemoteControllerActivity} extends AppCompatActivity}
-La actividad para el control remoto del robot. Además de poder controlar algunos movimientos como el caminado o el cambio de postura, se puede visualizar una imagen en vivo de la cámara del robot, así como permite enviar valores de ALMemory a una base de datos en la nube a través de Firebase.
+% \begin{fulllineitems}
+% \phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.RemoteControllerActivity}}\pysigline{public class \sphinxbfcode{RemoteControllerActivity} extends AppCompatActivity}
+% La actividad para el control remoto del robot. Además de poder controlar algunos movimientos como el caminado o el cambio de postura, se puede visualizar una imagen en vivo de la cámara del robot, así como permite enviar valores de ALMemory a una base de datos en la nube a través de Firebase.
 
-\end{fulllineitems}
+% \end{fulllineitems}
 
 
 
-\subsubsection{Atributos}
-\label{\detokenize{dev_docs:id11}}
+% \subsubsection{Atributos}
+% \label{\detokenize{dev_docs:id11}}
 
-\paragraph{MyRobot}
-\label{\detokenize{dev_docs:id12}}\index{MyRobot (Java field)}
+% \paragraph{MyRobot}
+% \label{\detokenize{dev_docs:id12}}\index{MyRobot (Java field)}
 
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.RemoteControllerActivity.MyRobot}}\pysigline{public {\hyperref[\detokenize{dev_docs:com.lar.cloudnao.Robot}]{\sphinxcrossref{Robot}}} \sphinxbfcode{MyRobot}}
-Llama la instacia global de {\hyperref[\detokenize{dev_docs:com.lar.cloudnao.Robot}]{\sphinxcrossref{\sphinxcode{Robot}}}}
+% \begin{fulllineitems}
+% \phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.RemoteControllerActivity.MyRobot}}\pysigline{public {\hyperref[\detokenize{dev_docs:com.lar.cloudnao.Robot}]{\sphinxcrossref{Robot}}} \sphinxbfcode{MyRobot}}
+% Llama la instacia global de {\hyperref[\detokenize{dev_docs:com.lar.cloudnao.Robot}]{\sphinxcrossref{\sphinxcode{Robot}}}}
 
-\end{fulllineitems}
+% \end{fulllineitems}
 
 
 
-\paragraph{mBatteryImageView}
-\label{\detokenize{dev_docs:mbatteryimageview}}\index{mBatteryImageView (Java field)}
+% \paragraph{mBatteryImageView}
+% \label{\detokenize{dev_docs:mbatteryimageview}}\index{mBatteryImageView (Java field)}
 
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.RemoteControllerActivity.mBatteryImageView}}\pysigline{ ImageView \sphinxbfcode{mBatteryImageView}}
-Una imagen con el estado de la batería.
+% \begin{fulllineitems}
+% \phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.RemoteControllerActivity.mBatteryImageView}}\pysigline{ ImageView \sphinxbfcode{mBatteryImageView}}
+% Una imagen con el estado de la batería.
 
-\end{fulllineitems}
+% \end{fulllineitems}
 
 
 
-\paragraph{mBatteryTextView}
-\label{\detokenize{dev_docs:mbatterytextview}}\index{mBatteryTextView (Java field)}
+% \paragraph{mBatteryTextView}
+% \label{\detokenize{dev_docs:mbatterytextview}}\index{mBatteryTextView (Java field)}
 
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.RemoteControllerActivity.mBatteryTextView}}\pysigline{ TextView \sphinxbfcode{mBatteryTextView}}
-El nivel actual de batería del robot.
+% \begin{fulllineitems}
+% \phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.RemoteControllerActivity.mBatteryTextView}}\pysigline{ TextView \sphinxbfcode{mBatteryTextView}}
+% El nivel actual de batería del robot.
 
-\end{fulllineitems}
+% \end{fulllineitems}
 
 
 
-\paragraph{mBatteryWaitTimer}
-\label{\detokenize{dev_docs:mbatterywaittimer}}\index{mBatteryWaitTimer (Java field)}
+% \paragraph{mBatteryWaitTimer}
+% \label{\detokenize{dev_docs:mbatterywaittimer}}\index{mBatteryWaitTimer (Java field)}
 
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.RemoteControllerActivity.mBatteryWaitTimer}}\pysigline{ \sphinxhref{http://docs.oracle.com/javase/8/docs/api/java/util/Timer.html}{Timer} \sphinxbfcode{mBatteryWaitTimer}}
-El Timer encargado de repetir {\hyperref[\detokenize{dev_docs:com.lar.cloudnao.RemoteControllerActivity.mTimerBatteryStatusTask}]{\sphinxcrossref{\sphinxcode{mTimerBatteryStatusTask}}}}
+% \begin{fulllineitems}
+% \phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.RemoteControllerActivity.mBatteryWaitTimer}}\pysigline{ \sphinxhref{http://docs.oracle.com/javase/8/docs/api/java/util/Timer.html}{Timer} \sphinxbfcode{mBatteryWaitTimer}}
+% El Timer encargado de repetir {\hyperref[\detokenize{dev_docs:com.lar.cloudnao.RemoteControllerActivity.mTimerBatteryStatusTask}]{\sphinxcrossref{\sphinxcode{mTimerBatteryStatusTask}}}}
 
-\end{fulllineitems}
+% \end{fulllineitems}
 
 
 
-\paragraph{mCameraWaitTimer}
-\label{\detokenize{dev_docs:mcamerawaittimer}}\index{mCameraWaitTimer (Java field)}
+% \paragraph{mCameraWaitTimer}
+% \label{\detokenize{dev_docs:mcamerawaittimer}}\index{mCameraWaitTimer (Java field)}
 
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.RemoteControllerActivity.mCameraWaitTimer}}\pysigline{ \sphinxhref{http://docs.oracle.com/javase/8/docs/api/java/util/Timer.html}{Timer} \sphinxbfcode{mCameraWaitTimer}}
-Un Timer encargado de la ejecución de {\hyperref[\detokenize{dev_docs:com.lar.cloudnao.RemoteControllerActivity.mTimerTaskCamera}]{\sphinxcrossref{\sphinxcode{mTimerTaskCamera}}}}.
+% \begin{fulllineitems}
+% \phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.RemoteControllerActivity.mCameraWaitTimer}}\pysigline{ \sphinxhref{http://docs.oracle.com/javase/8/docs/api/java/util/Timer.html}{Timer} \sphinxbfcode{mCameraWaitTimer}}
+% Un Timer encargado de la ejecución de {\hyperref[\detokenize{dev_docs:com.lar.cloudnao.RemoteControllerActivity.mTimerTaskCamera}]{\sphinxcrossref{\sphinxcode{mTimerTaskCamera}}}}.
 
-\end{fulllineitems}
+% \end{fulllineitems}
 
 
 
-\paragraph{mJoystick}
-\label{\detokenize{dev_docs:mjoystick}}\index{mJoystick (Java field)}
+% \paragraph{mJoystick}
+% \label{\detokenize{dev_docs:mjoystick}}\index{mJoystick (Java field)}
 
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.RemoteControllerActivity.mJoystick}}\pysigline{public Joystick \sphinxbfcode{mJoystick}}
-Instancia del objeto Joystick importado de la biblioteca Bugstick.
+% \begin{fulllineitems}
+% \phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.RemoteControllerActivity.mJoystick}}\pysigline{public Joystick \sphinxbfcode{mJoystick}}
+% Instancia del objeto Joystick importado de la biblioteca Bugstick.
 
-\end{fulllineitems}
+% \end{fulllineitems}
 
 
 
-\paragraph{mLiveImageFromRobot}
-\label{\detokenize{dev_docs:mliveimagefromrobot}}\index{mLiveImageFromRobot (Java field)}
+% \paragraph{mLiveImageFromRobot}
+% \label{\detokenize{dev_docs:mliveimagefromrobot}}\index{mLiveImageFromRobot (Java field)}
 
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.RemoteControllerActivity.mLiveImageFromRobot}}\pysigline{ ImageView \sphinxbfcode{mLiveImageFromRobot}}
-Imagen en vivo del robot.
+% \begin{fulllineitems}
+% \phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.RemoteControllerActivity.mLiveImageFromRobot}}\pysigline{ ImageView \sphinxbfcode{mLiveImageFromRobot}}
+% Imagen en vivo del robot.
 
-\end{fulllineitems}
+% \end{fulllineitems}
 
 
 
-\paragraph{mLogsWaitTimer}
-\label{\detokenize{dev_docs:mlogswaittimer}}\index{mLogsWaitTimer (Java field)}
+% \paragraph{mLogsWaitTimer}
+% \label{\detokenize{dev_docs:mlogswaittimer}}\index{mLogsWaitTimer (Java field)}
 
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.RemoteControllerActivity.mLogsWaitTimer}}\pysigline{ \sphinxhref{http://docs.oracle.com/javase/8/docs/api/java/util/Timer.html}{Timer} \sphinxbfcode{mLogsWaitTimer}}
-El Timer encargado de repetir la {\hyperref[\detokenize{dev_docs:com.lar.cloudnao.RemoteControllerActivity.mRobotLogsTask}]{\sphinxcrossref{\sphinxcode{mRobotLogsTask}}}} cada cierto tiempo.
+% \begin{fulllineitems}
+% \phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.RemoteControllerActivity.mLogsWaitTimer}}\pysigline{ \sphinxhref{http://docs.oracle.com/javase/8/docs/api/java/util/Timer.html}{Timer} \sphinxbfcode{mLogsWaitTimer}}
+% El Timer encargado de repetir la {\hyperref[\detokenize{dev_docs:com.lar.cloudnao.RemoteControllerActivity.mRobotLogsTask}]{\sphinxcrossref{\sphinxcode{mRobotLogsTask}}}} cada cierto tiempo.
 
-\end{fulllineitems}
+% \end{fulllineitems}
 
 
 
-\paragraph{mRobotLogsTask}
-\label{\detokenize{dev_docs:mrobotlogstask}}\index{mRobotLogsTask (Java field)}
+% \paragraph{mRobotLogsTask}
+% \label{\detokenize{dev_docs:mrobotlogstask}}\index{mRobotLogsTask (Java field)}
 
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.RemoteControllerActivity.mRobotLogsTask}}\pysigline{ \sphinxhref{http://docs.oracle.com/javase/8/docs/api/java/util/TimerTask.html}{TimerTask} \sphinxbfcode{mRobotLogsTask}}
-Define una tarea para obtener datos de ALMemory y escribirlos en Firebase, con \sphinxcode{RobotLogs} y pueda ser repetida por un Timer.
+% \begin{fulllineitems}
+% \phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.RemoteControllerActivity.mRobotLogsTask}}\pysigline{ \sphinxhref{http://docs.oracle.com/javase/8/docs/api/java/util/TimerTask.html}{TimerTask} \sphinxbfcode{mRobotLogsTask}}
+% Define una tarea para obtener datos de ALMemory y escribirlos en Firebase, con \sphinxcode{RobotLogs} y pueda ser repetida por un Timer.
 
-\end{fulllineitems}
+% \end{fulllineitems}
 
 
 
-\paragraph{mTimerBatteryStatusTask}
-\label{\detokenize{dev_docs:mtimerbatterystatustask}}\index{mTimerBatteryStatusTask (Java field)}
+% \paragraph{mTimerBatteryStatusTask}
+% \label{\detokenize{dev_docs:mtimerbatterystatustask}}\index{mTimerBatteryStatusTask (Java field)}
 
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.RemoteControllerActivity.mTimerBatteryStatusTask}}\pysigline{ \sphinxhref{http://docs.oracle.com/javase/8/docs/api/java/util/TimerTask.html}{TimerTask} \sphinxbfcode{mTimerBatteryStatusTask}}
-Estable una area para obtener el nivel de batería del robot, usando \sphinxcode{BatteryStatusTask}, y depués usarla en un Timer para su ejecución.
+% \begin{fulllineitems}
+% \phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.RemoteControllerActivity.mTimerBatteryStatusTask}}\pysigline{ \sphinxhref{http://docs.oracle.com/javase/8/docs/api/java/util/TimerTask.html}{TimerTask} \sphinxbfcode{mTimerBatteryStatusTask}}
+% Estable una area para obtener el nivel de batería del robot, usando \sphinxcode{BatteryStatusTask}, y depués usarla en un Timer para su ejecución.
 
-\end{fulllineitems}
+% \end{fulllineitems}
 
 
 
-\paragraph{mTimerTaskCamera}
-\label{\detokenize{dev_docs:mtimertaskcamera}}\index{mTimerTaskCamera (Java field)}
+% \paragraph{mTimerTaskCamera}
+% \label{\detokenize{dev_docs:mtimertaskcamera}}\index{mTimerTaskCamera (Java field)}
 
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.RemoteControllerActivity.mTimerTaskCamera}}\pysigline{ \sphinxhref{http://docs.oracle.com/javase/8/docs/api/java/util/TimerTask.html}{TimerTask} \sphinxbfcode{mTimerTaskCamera}}
-Define la tarea para obtener una imagen del robot, con \sphinxcode{ImageTask}, para que pueda ser repetida por un Timer.
+% \begin{fulllineitems}
+% \phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.RemoteControllerActivity.mTimerTaskCamera}}\pysigline{ \sphinxhref{http://docs.oracle.com/javase/8/docs/api/java/util/TimerTask.html}{TimerTask} \sphinxbfcode{mTimerTaskCamera}}
+% Define la tarea para obtener una imagen del robot, con \sphinxcode{ImageTask}, para que pueda ser repetida por un Timer.
 
-\end{fulllineitems}
+% \end{fulllineitems}
 
 
 
-\paragraph{proxiesListView}
-\label{\detokenize{dev_docs:proxieslistview}}\index{proxiesListView (Java field)}
+% \paragraph{proxiesListView}
+% \label{\detokenize{dev_docs:proxieslistview}}\index{proxiesListView (Java field)}
 
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.RemoteControllerActivity.proxiesListView}}\pysigline{ ListView \sphinxbfcode{proxiesListView}}
-Lista de valores que se pueden seleccionar para guardarse en Firebase.
+% \begin{fulllineitems}
+% \phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.RemoteControllerActivity.proxiesListView}}\pysigline{ ListView \sphinxbfcode{proxiesListView}}
+% Lista de valores que se pueden seleccionar para guardarse en Firebase.
 
-\end{fulllineitems}
+% \end{fulllineitems}
 
 
 
-\paragraph{robotPostureButton}
-\label{\detokenize{dev_docs:robotposturebutton}}\index{robotPostureButton (Java field)}
+% \paragraph{robotPostureButton}
+% \label{\detokenize{dev_docs:robotposturebutton}}\index{robotPostureButton (Java field)}
 
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.RemoteControllerActivity.robotPostureButton}}\pysigline{ Button \sphinxbfcode{robotPostureButton}}
-Cambia la postura del robot de Init a Crouch o viceversa.
+% \begin{fulllineitems}
+% \phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.RemoteControllerActivity.robotPostureButton}}\pysigline{ Button \sphinxbfcode{robotPostureButton}}
+% Cambia la postura del robot de Init a Crouch o viceversa.
 
-\end{fulllineitems}
+% \end{fulllineitems}
 
 
 
-\subsubsection{Métodos}
-\label{\detokenize{dev_docs:id13}}
+% \subsubsection{Métodos}
+% \label{\detokenize{dev_docs:id13}}
 
-\paragraph{OnClickSaveLogs}
-\label{\detokenize{dev_docs:onclicksavelogs}}\index{OnClickSaveLogs() (Java method)}
+% \paragraph{OnClickSaveLogs}
+% \label{\detokenize{dev_docs:onclicksavelogs}}\index{OnClickSaveLogs() (Java method)}
 
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.RemoteControllerActivity.OnClickSaveLogs()}}\pysiglinewithargsret{public void \sphinxbfcode{OnClickSaveLogs}}{}{}
-Maneja el botón para mostrar la información que se guarda en Firebase o para detener el envío.
+% \begin{fulllineitems}
+% \phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.RemoteControllerActivity.OnClickSaveLogs()}}\pysiglinewithargsret{public void \sphinxbfcode{OnClickSaveLogs}}{}{}
+% Maneja el botón para mostrar la información que se guarda en Firebase o para detener el envío.
 
-\end{fulllineitems}
+% \end{fulllineitems}
 
 
 
-\paragraph{OnClickSelectedProxies}
-\label{\detokenize{dev_docs:onclickselectedproxies}}\index{OnClickSelectedProxies() (Java method)}
+% \paragraph{OnClickSelectedProxies}
+% \label{\detokenize{dev_docs:onclickselectedproxies}}\index{OnClickSelectedProxies() (Java method)}
 
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.RemoteControllerActivity.OnClickSelectedProxies()}}\pysiglinewithargsret{public void \sphinxbfcode{OnClickSelectedProxies}}{}{}
-Inicia el envío de valores de la memoria a Firebase, de acuerdo a la información que se desea enviar.
+% \begin{fulllineitems}
+% \phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.RemoteControllerActivity.OnClickSelectedProxies()}}\pysiglinewithargsret{public void \sphinxbfcode{OnClickSelectedProxies}}{}{}
+% Inicia el envío de valores de la memoria a Firebase, de acuerdo a la información que se desea enviar.
 
-\end{fulllineitems}
+% \end{fulllineitems}
 
 
 
-\paragraph{hideProxiesListView}
-\label{\detokenize{dev_docs:hideproxieslistview}}\index{hideProxiesListView() (Java method)}
+% \paragraph{hideProxiesListView}
+% \label{\detokenize{dev_docs:hideproxieslistview}}\index{hideProxiesListView() (Java method)}
 
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.RemoteControllerActivity.hideProxiesListView()}}\pysiglinewithargsret{public void \sphinxbfcode{hideProxiesListView}}{}{}
-Oculta el Layout con la lista de valores de la memoria del robot y muestra a {\hyperref[\detokenize{dev_docs:com.lar.cloudnao.RemoteControllerActivity.mLiveImageFromRobot}]{\sphinxcrossref{\sphinxcode{mLiveImageFromRobot}}}} y al layout con los botones para controlar al robot.
+% \begin{fulllineitems}
+% \phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.RemoteControllerActivity.hideProxiesListView()}}\pysiglinewithargsret{public void \sphinxbfcode{hideProxiesListView}}{}{}
+% Oculta el Layout con la lista de valores de la memoria del robot y muestra a {\hyperref[\detokenize{dev_docs:com.lar.cloudnao.RemoteControllerActivity.mLiveImageFromRobot}]{\sphinxcrossref{\sphinxcode{mLiveImageFromRobot}}}} y al layout con los botones para controlar al robot.
 
-\end{fulllineitems}
+% \end{fulllineitems}
 
 
 
-\paragraph{initProxiesListView}
-\label{\detokenize{dev_docs:initproxieslistview}}\index{initProxiesListView() (Java method)}
+% \paragraph{initProxiesListView}
+% \label{\detokenize{dev_docs:initproxieslistview}}\index{initProxiesListView() (Java method)}
 
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.RemoteControllerActivity.initProxiesListView()}}\pysiglinewithargsret{public void \sphinxbfcode{initProxiesListView}}{}{}
-Inicializa los objetos que servirán para llenar el ItemListAdapter que muestra una lista con la opción para seleccionar un valor de la memoria del robot que se desea enviar a los logs.
+% \begin{fulllineitems}
+% \phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.RemoteControllerActivity.initProxiesListView()}}\pysiglinewithargsret{public void \sphinxbfcode{initProxiesListView}}{}{}
+% Inicializa los objetos que servirán para llenar el ItemListAdapter que muestra una lista con la opción para seleccionar un valor de la memoria del robot que se desea enviar a los logs.
 
-\end{fulllineitems}
+% \end{fulllineitems}
 
 
 
-\paragraph{onBackPressed}
-\label{\detokenize{dev_docs:onbackpressed}}\index{onBackPressed() (Java method)}
+% \paragraph{onBackPressed}
+% \label{\detokenize{dev_docs:onbackpressed}}\index{onBackPressed() (Java method)}
 
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.RemoteControllerActivity.onBackPressed()}}\pysiglinewithargsret{public void \sphinxbfcode{onBackPressed}}{}{}
-Detiene todos los Timers cuando se presiona el botón de Regresar en el teléfono.
+% \begin{fulllineitems}
+% \phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.RemoteControllerActivity.onBackPressed()}}\pysiglinewithargsret{public void \sphinxbfcode{onBackPressed}}{}{}
+% Detiene todos los Timers cuando se presiona el botón de Regresar en el teléfono.
 
-\end{fulllineitems}
+% \end{fulllineitems}
 
 
 
-\paragraph{onClickCancelLogsSelection}
-\label{\detokenize{dev_docs:onclickcancellogsselection}}\index{onClickCancelLogsSelection() (Java method)}
+% \paragraph{onClickCancelLogsSelection}
+% \label{\detokenize{dev_docs:onclickcancellogsselection}}\index{onClickCancelLogsSelection() (Java method)}
 
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.RemoteControllerActivity.onClickCancelLogsSelection()}}\pysiglinewithargsret{public void \sphinxbfcode{onClickCancelLogsSelection}}{}{}
-Oculta el Layout con la lista de valores de la memoria que se desea registrar. Utiliza el método {\hyperref[\detokenize{dev_docs:com.lar.cloudnao.RemoteControllerActivity.hideProxiesListView()}]{\sphinxcrossref{\sphinxcode{hideProxiesListView()}}}}
+% \begin{fulllineitems}
+% \phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.RemoteControllerActivity.onClickCancelLogsSelection()}}\pysiglinewithargsret{public void \sphinxbfcode{onClickCancelLogsSelection}}{}{}
+% Oculta el Layout con la lista de valores de la memoria que se desea registrar. Utiliza el método {\hyperref[\detokenize{dev_docs:com.lar.cloudnao.RemoteControllerActivity.hideProxiesListView()}]{\sphinxcrossref{\sphinxcode{hideProxiesListView()}}}}
 
-\end{fulllineitems}
+% \end{fulllineitems}
 
 
 
-\paragraph{onClickChangeRobotPosture}
-\label{\detokenize{dev_docs:onclickchangerobotposture}}\index{onClickChangeRobotPosture() (Java method)}
+% \paragraph{onClickChangeRobotPosture}
+% \label{\detokenize{dev_docs:onclickchangerobotposture}}\index{onClickChangeRobotPosture() (Java method)}
 
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.RemoteControllerActivity.onClickChangeRobotPosture()}}\pysiglinewithargsret{public void \sphinxbfcode{onClickChangeRobotPosture}}{}{}
-El listener para el botón que al presionar el robot cambia entre la posición Init y Crouch.
+% \begin{fulllineitems}
+% \phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.RemoteControllerActivity.onClickChangeRobotPosture()}}\pysiglinewithargsret{public void \sphinxbfcode{onClickChangeRobotPosture}}{}{}
+% El listener para el botón que al presionar el robot cambia entre la posición Init y Crouch.
 
-\end{fulllineitems}
+% \end{fulllineitems}
 
 
 
-\paragraph{onClickLiveCamera}
-\label{\detokenize{dev_docs:onclicklivecamera}}\index{onClickLiveCamera() (Java method)}
+% \paragraph{onClickLiveCamera}
+% \label{\detokenize{dev_docs:onclicklivecamera}}\index{onClickLiveCamera() (Java method)}
 
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.RemoteControllerActivity.onClickLiveCamera()}}\pysiglinewithargsret{public void \sphinxbfcode{onClickLiveCamera}}{}{}
-Listener del botón que activa la cámara en vivo. Utiliza los métodos \sphinxcode{pauseCameraTimer()} y \sphinxcode{resumeCameraTimer()} para detener o activar los timers que se encargan de procesar los datos de la cámara enviados por el robot.
+% \begin{fulllineitems}
+% \phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.RemoteControllerActivity.onClickLiveCamera()}}\pysiglinewithargsret{public void \sphinxbfcode{onClickLiveCamera}}{}{}
+% Listener del botón que activa la cámara en vivo. Utiliza los métodos \sphinxcode{pauseCameraTimer()} y \sphinxcode{resumeCameraTimer()} para detener o activar los timers que se encargan de procesar los datos de la cámara enviados por el robot.
 
-\end{fulllineitems}
+% \end{fulllineitems}
 
 
 
-\paragraph{onCreate}
-\label{\detokenize{dev_docs:id14}}\index{onCreate(Bundle) (Java method)}
+% \paragraph{onCreate}
+% \label{\detokenize{dev_docs:id14}}\index{onCreate(Bundle) (Java method)}
 
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.RemoteControllerActivity.onCreate(Bundle)}}\pysiglinewithargsret{protected void \sphinxbfcode{onCreate}}{Bundle\sphinxstyleemphasis{ savedInstanceState}}{}
-Inicia la actividad, verifica que el usuario haya iniciado sesión, e inicializa el Adapter para {\hyperref[\detokenize{dev_docs:com.lar.cloudnao.RemoteControllerActivity.proxiesListView}]{\sphinxcrossref{\sphinxcode{proxiesListView}}}}. Finalmente llama al método \sphinxcode{startBatteryTimer()} para mostrar el nivel y estado de la batería del robot.
+% \begin{fulllineitems}
+% \phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.RemoteControllerActivity.onCreate(Bundle)}}\pysiglinewithargsret{protected void \sphinxbfcode{onCreate}}{Bundle\sphinxstyleemphasis{ savedInstanceState}}{}
+% Inicia la actividad, verifica que el usuario haya iniciado sesión, e inicializa el Adapter para {\hyperref[\detokenize{dev_docs:com.lar.cloudnao.RemoteControllerActivity.proxiesListView}]{\sphinxcrossref{\sphinxcode{proxiesListView}}}}. Finalmente llama al método \sphinxcode{startBatteryTimer()} para mostrar el nivel y estado de la batería del robot.
 
-\end{fulllineitems}
+% \end{fulllineitems}
 
 
 
-\paragraph{onTouchedLeftRotation}
-\label{\detokenize{dev_docs:ontouchedleftrotation}}\index{onTouchedLeftRotation(MotionEvent) (Java method)}
+% \paragraph{onTouchedLeftRotation}
+% \label{\detokenize{dev_docs:ontouchedleftrotation}}\index{onTouchedLeftRotation(MotionEvent) (Java method)}
 
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.RemoteControllerActivity.onTouchedLeftRotation(MotionEvent)}}\pysiglinewithargsret{public boolean \sphinxbfcode{onTouchedLeftRotation}}{MotionEvent\sphinxstyleemphasis{ event}}{}
-El listener del botón para girar al robot sobre su eje \sphinxstylestrong{z} a la izquierda. Mientras el usuario presione el botón, el robot girará, al soltar se detiene.
-\begin{quote}\begin{description}
-\item[{Parámetros}] \leavevmode\begin{itemize}
-\item {} 
-\sphinxstyleliteralstrong{event} \textendash{} el evento se recibe el botón.
+% \begin{fulllineitems}
+% \phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.RemoteControllerActivity.onTouchedLeftRotation(MotionEvent)}}\pysiglinewithargsret{public boolean \sphinxbfcode{onTouchedLeftRotation}}{MotionEvent\sphinxstyleemphasis{ event}}{}
+% El listener del botón para girar al robot sobre su eje \sphinxstylestrong{z} a la izquierda. Mientras el usuario presione el botón, el robot girará, al soltar se detiene.
+% \begin{quote}\begin{description}
+% \item[{Parámetros}] \leavevmode\begin{itemize}
+% \item {} 
+% \sphinxstyleliteralstrong{event} \textendash{} el evento se recibe el botón.
 
-\end{itemize}
+% \end{itemize}
 
-\end{description}\end{quote}
+% \end{description}\end{quote}
 
-\end{fulllineitems}
+% \end{fulllineitems}
 
 
 
-\paragraph{onTouchedRightRotation}
-\label{\detokenize{dev_docs:ontouchedrightrotation}}\index{onTouchedRightRotation(MotionEvent) (Java method)}
+% \paragraph{onTouchedRightRotation}
+% \label{\detokenize{dev_docs:ontouchedrightrotation}}\index{onTouchedRightRotation(MotionEvent) (Java method)}
 
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.RemoteControllerActivity.onTouchedRightRotation(MotionEvent)}}\pysiglinewithargsret{public boolean \sphinxbfcode{onTouchedRightRotation}}{MotionEvent\sphinxstyleemphasis{ event}}{}
-El listener del botón para girar al robot sobre su eje \sphinxstylestrong{z} a la derecha. Mientras el usuario presione el botón, el robot girará, al soltar se detiene.
-\begin{quote}\begin{description}
-\item[{Parámetros}] \leavevmode\begin{itemize}
-\item {} 
-\sphinxstyleliteralstrong{event} \textendash{} el evento se recibe el botón.
+% \begin{fulllineitems}
+% \phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.RemoteControllerActivity.onTouchedRightRotation(MotionEvent)}}\pysiglinewithargsret{public boolean \sphinxbfcode{onTouchedRightRotation}}{MotionEvent\sphinxstyleemphasis{ event}}{}
+% El listener del botón para girar al robot sobre su eje \sphinxstylestrong{z} a la derecha. Mientras el usuario presione el botón, el robot girará, al soltar se detiene.
+% \begin{quote}\begin{description}
+% \item[{Parámetros}] \leavevmode\begin{itemize}
+% \item {} 
+% \sphinxstyleliteralstrong{event} \textendash{} el evento se recibe el botón.
 
-\end{itemize}
+% \end{itemize}
 
-\end{description}\end{quote}
+% \end{description}\end{quote}
 
-\end{fulllineitems}
+% \end{fulllineitems}
 
 
 
-\paragraph{setMyJoystickListener}
-\label{\detokenize{dev_docs:setmyjoysticklistener}}\index{setMyJoystickListener() (Java method)}
+% \paragraph{setMyJoystickListener}
+% \label{\detokenize{dev_docs:setmyjoysticklistener}}\index{setMyJoystickListener() (Java method)}
 
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.RemoteControllerActivity.setMyJoystickListener()}}\pysiglinewithargsret{public void \sphinxbfcode{setMyJoystickListener}}{}{}
-El listener para {\hyperref[\detokenize{dev_docs:com.lar.cloudnao.RemoteControllerActivity.mJoystick}]{\sphinxcrossref{\sphinxcode{mJoystick}}}}, reacciona cuando se mueve el widget o se suelta. Cuando se arrastra el joystick se cambia las velocidad sobre los ejes con la función {\hyperref[\detokenize{dev_docs:com.lar.cloudnao.RemoteControllerActivity.setMyJoystickListener()}]{\sphinxcrossref{\sphinxcode{setMyJoystickListener()}}}} y luego se pasan como parámetros esas velocidades para hacer caminar al robot.
+% \begin{fulllineitems}
+% \phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.RemoteControllerActivity.setMyJoystickListener()}}\pysiglinewithargsret{public void \sphinxbfcode{setMyJoystickListener}}{}{}
+% El listener para {\hyperref[\detokenize{dev_docs:com.lar.cloudnao.RemoteControllerActivity.mJoystick}]{\sphinxcrossref{\sphinxcode{mJoystick}}}}, reacciona cuando se mueve el widget o se suelta. Cuando se arrastra el joystick se cambia las velocidad sobre los ejes con la función {\hyperref[\detokenize{dev_docs:com.lar.cloudnao.RemoteControllerActivity.setMyJoystickListener()}]{\sphinxcrossref{\sphinxcode{setMyJoystickListener()}}}} y luego se pasan como parámetros esas velocidades para hacer caminar al robot.
 
-\end{fulllineitems}
+% \end{fulllineitems}
 
 
 
-\paragraph{setVelocityOnAxis}
-\label{\detokenize{dev_docs:setvelocityonaxis}}\index{setVelocityOnAxis(int, float) (Java method)}
+% \paragraph{setVelocityOnAxis}
+% \label{\detokenize{dev_docs:setvelocityonaxis}}\index{setVelocityOnAxis(int, float) (Java method)}
 
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.RemoteControllerActivity.setVelocityOnAxis(int, float)}}\pysiglinewithargsret{public void \sphinxbfcode{setVelocityOnAxis}}{int\sphinxstyleemphasis{ degrees}, float\sphinxstyleemphasis{ offset}}{}
-Cambia la velocidad con la que camina sobre los ejes \sphinxstylestrong{x}, y \sphinxstylestrong{y} a partir de los parámetros recibidos en el método {\hyperref[\detokenize{dev_docs:com.lar.cloudnao.RemoteControllerActivity.setMyJoystickListener()}]{\sphinxcrossref{\sphinxcode{setMyJoystickListener()}}}} del objeto {\hyperref[\detokenize{dev_docs:com.lar.cloudnao.RemoteControllerActivity.mJoystick}]{\sphinxcrossref{\sphinxcode{mJoystick}}}}.
-\begin{quote}\begin{description}
-\item[{Parámetros}] \leavevmode\begin{itemize}
-\item {} 
-\sphinxstyleliteralstrong{degrees} \textendash{} los grados que se movió el Joystick.
+% \begin{fulllineitems}
+% \phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.RemoteControllerActivity.setVelocityOnAxis(int, float)}}\pysiglinewithargsret{public void \sphinxbfcode{setVelocityOnAxis}}{int\sphinxstyleemphasis{ degrees}, float\sphinxstyleemphasis{ offset}}{}
+% Cambia la velocidad con la que camina sobre los ejes \sphinxstylestrong{x}, y \sphinxstylestrong{y} a partir de los parámetros recibidos en el método {\hyperref[\detokenize{dev_docs:com.lar.cloudnao.RemoteControllerActivity.setMyJoystickListener()}]{\sphinxcrossref{\sphinxcode{setMyJoystickListener()}}}} del objeto {\hyperref[\detokenize{dev_docs:com.lar.cloudnao.RemoteControllerActivity.mJoystick}]{\sphinxcrossref{\sphinxcode{mJoystick}}}}.
+% \begin{quote}\begin{description}
+% \item[{Parámetros}] \leavevmode\begin{itemize}
+% \item {} 
+% \sphinxstyleliteralstrong{degrees} \textendash{} los grados que se movió el Joystick.
 
-\item {} 
-\sphinxstyleliteralstrong{offset} \textendash{} el radio desde el centro del círculo hasta donde se detectó el click.
+% \item {} 
+% \sphinxstyleliteralstrong{offset} \textendash{} el radio desde el centro del círculo hasta donde se detectó el click.
 
-\end{itemize}
+% \end{itemize}
 
-\end{description}\end{quote}
+% \end{description}\end{quote}
 
-\end{fulllineitems}
+% \end{fulllineitems}
 
 
 
-\paragraph{showProxiesListView}
-\label{\detokenize{dev_docs:showproxieslistview}}\index{showProxiesListView() (Java method)}
+% \paragraph{showProxiesListView}
+% \label{\detokenize{dev_docs:showproxieslistview}}\index{showProxiesListView() (Java method)}
 
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.RemoteControllerActivity.showProxiesListView()}}\pysiglinewithargsret{public void \sphinxbfcode{showProxiesListView}}{}{}
-Oculta el layout con la lista de valores de la memoria del robot que se envían a Firebase y se muestran {\hyperref[\detokenize{dev_docs:com.lar.cloudnao.RemoteControllerActivity.mLiveImageFromRobot}]{\sphinxcrossref{\sphinxcode{mLiveImageFromRobot}}}} y los botones para controlar remotamente al robot.
+% \begin{fulllineitems}
+% \phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.RemoteControllerActivity.showProxiesListView()}}\pysiglinewithargsret{public void \sphinxbfcode{showProxiesListView}}{}{}
+% Oculta el layout con la lista de valores de la memoria del robot que se envían a Firebase y se muestran {\hyperref[\detokenize{dev_docs:com.lar.cloudnao.RemoteControllerActivity.mLiveImageFromRobot}]{\sphinxcrossref{\sphinxcode{mLiveImageFromRobot}}}} y los botones para controlar remotamente al robot.
 
-\end{fulllineitems}
+% \end{fulllineitems}
 
 
 
-\textbf{FaceRecognitionActivity}
-\label{\detokenize{dev_docs:facerecognitionactivity}}\index{FaceRecognitionActivity (Java class)}
+% \textbf{FaceRecognitionActivity}
+% \label{\detokenize{dev_docs:facerecognitionactivity}}\index{FaceRecognitionActivity (Java class)}
 
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.FaceRecognitionActivity}}\pysigline{public class \sphinxbfcode{FaceRecognitionActivity} extends AppCompatActivity implements VisionRequestCompleted}
-La clase de la actividad que realiza el reconocimiento de rostros. Implementa la interfaz \sphinxcode{VisionRequestCompleted} para llamar a su método abstracto desde la clase \sphinxcode{VisionRESTRequestsTask}
+% \begin{fulllineitems}
+% \phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.FaceRecognitionActivity}}\pysigline{public class \sphinxbfcode{FaceRecognitionActivity} extends AppCompatActivity implements VisionRequestCompleted}
+% La clase de la actividad que realiza el reconocimiento de rostros. Implementa la interfaz \sphinxcode{VisionRequestCompleted} para llamar a su método abstracto desde la clase \sphinxcode{VisionRESTRequestsTask}
 
-\end{fulllineitems}
+% \end{fulllineitems}
 
 
 
-\subsubsection{Atributos}
-\label{\detokenize{dev_docs:id15}}
+% \subsubsection{Atributos}
+% \label{\detokenize{dev_docs:id15}}
 
-\paragraph{MyRobot}
-\label{\detokenize{dev_docs:id16}}\index{MyRobot (Java field)}
+% \paragraph{MyRobot}
+% \label{\detokenize{dev_docs:id16}}\index{MyRobot (Java field)}
 
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.FaceRecognitionActivity.MyRobot}}\pysigline{ {\hyperref[\detokenize{dev_docs:com.lar.cloudnao.Robot}]{\sphinxcrossref{Robot}}} \sphinxbfcode{MyRobot}}
-Obtiene la instancia de {\hyperref[\detokenize{dev_docs:com.lar.cloudnao.Robot}]{\sphinxcrossref{\sphinxcode{Robot}}}}.
+% \begin{fulllineitems}
+% \phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.FaceRecognitionActivity.MyRobot}}\pysigline{ {\hyperref[\detokenize{dev_docs:com.lar.cloudnao.Robot}]{\sphinxcrossref{Robot}}} \sphinxbfcode{MyRobot}}
+% Obtiene la instancia de {\hyperref[\detokenize{dev_docs:com.lar.cloudnao.Robot}]{\sphinxcrossref{\sphinxcode{Robot}}}}.
 
-\end{fulllineitems}
+% \end{fulllineitems}
 
 
 
-\paragraph{mRobotImage}
-\label{\detokenize{dev_docs:mrobotimage}}\index{mRobotImage (Java field)}
+% \paragraph{mRobotImage}
+% \label{\detokenize{dev_docs:mrobotimage}}\index{mRobotImage (Java field)}
 
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.FaceRecognitionActivity.mRobotImage}}\pysigline{ ImageView \sphinxbfcode{mRobotImage}}
-Muestra las imagen obtenida del robot.
+% \begin{fulllineitems}
+% \phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.FaceRecognitionActivity.mRobotImage}}\pysigline{ ImageView \sphinxbfcode{mRobotImage}}
+% Muestra las imagen obtenida del robot.
 
-\end{fulllineitems}
+% \end{fulllineitems}
 
 
 
-\paragraph{subjectRecognitionLV}
-\label{\detokenize{dev_docs:subjectrecognitionlv}}\index{subjectRecognitionLV (Java field)}
+% \paragraph{subjectRecognitionLV}
+% \label{\detokenize{dev_docs:subjectrecognitionlv}}\index{subjectRecognitionLV (Java field)}
 
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.FaceRecognitionActivity.subjectRecognitionLV}}\pysigline{ ListView \sphinxbfcode{subjectRecognitionLV}}
-Muestra los sujetos encontrados en la imagen.
+% \begin{fulllineitems}
+% \phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.FaceRecognitionActivity.subjectRecognitionLV}}\pysigline{ ListView \sphinxbfcode{subjectRecognitionLV}}
+% Muestra los sujetos encontrados en la imagen.
 
-\end{fulllineitems}
+% \end{fulllineitems}
 
 
 
-\subsubsection{Métodos}
-\label{\detokenize{dev_docs:id17}}
+% \subsubsection{Métodos}
+% \label{\detokenize{dev_docs:id17}}
 
-\paragraph{getImageFromRobot}
-\label{\detokenize{dev_docs:getimagefromrobot}}\index{getImageFromRobot() (Java method)}
+% \paragraph{getImageFromRobot}
+% \label{\detokenize{dev_docs:getimagefromrobot}}\index{getImageFromRobot() (Java method)}
 
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.FaceRecognitionActivity.getImageFromRobot()}}\pysiglinewithargsret{public void \sphinxbfcode{getImageFromRobot}}{}{}
-Un escuchador del botón para obtener una imagen remota del robot, usando la clase ImageTask usa la clase \sphinxcode{ImageTask}
+% \begin{fulllineitems}
+% \phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.FaceRecognitionActivity.getImageFromRobot()}}\pysiglinewithargsret{public void \sphinxbfcode{getImageFromRobot}}{}{}
+% Un escuchador del botón para obtener una imagen remota del robot, usando la clase ImageTask usa la clase \sphinxcode{ImageTask}
 
-\end{fulllineitems}
+% \end{fulllineitems}
 
 
 
-\paragraph{onClickEnrollFace}
-\label{\detokenize{dev_docs:onclickenrollface}}\index{onClickEnrollFace() (Java method)}
+% \paragraph{onClickEnrollFace}
+% \label{\detokenize{dev_docs:onclickenrollface}}\index{onClickEnrollFace() (Java method)}
 
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.FaceRecognitionActivity.onClickEnrollFace()}}\pysiglinewithargsret{public void \sphinxbfcode{onClickEnrollFace}}{}{}
-El escuchador para el botón que permite añadir un nuevo rostro a la galería de Kairos. Corre la clase \sphinxcode{VisionRESTRequestsTask}
+% \begin{fulllineitems}
+% \phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.FaceRecognitionActivity.onClickEnrollFace()}}\pysiglinewithargsret{public void \sphinxbfcode{onClickEnrollFace}}{}{}
+% El escuchador para el botón que permite añadir un nuevo rostro a la galería de Kairos. Corre la clase \sphinxcode{VisionRESTRequestsTask}
 
-\end{fulllineitems}
+% \end{fulllineitems}
 
 
 
-\paragraph{onClickFaceRecognition}
-\label{\detokenize{dev_docs:onclickfacerecognition}}\index{onClickFaceRecognition() (Java method)}
+% \paragraph{onClickFaceRecognition}
+% \label{\detokenize{dev_docs:onclickfacerecognition}}\index{onClickFaceRecognition() (Java method)}
 
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.FaceRecognitionActivity.onClickFaceRecognition()}}\pysiglinewithargsret{public void \sphinxbfcode{onClickFaceRecognition}}{}{}
-Un escuchador para el botón de reconocimiento de rostros previamente almacenados. Usa la clase \sphinxcode{VisionRESTRequestsTask}
+% \begin{fulllineitems}
+% \phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.FaceRecognitionActivity.onClickFaceRecognition()}}\pysiglinewithargsret{public void \sphinxbfcode{onClickFaceRecognition}}{}{}
+% Un escuchador para el botón de reconocimiento de rostros previamente almacenados. Usa la clase \sphinxcode{VisionRESTRequestsTask}
 
-\end{fulllineitems}
+% \end{fulllineitems}
 
 
 
-\paragraph{onCreate}
-\label{\detokenize{dev_docs:id18}}\index{onCreate(Bundle) (Java method)}
+% \paragraph{onCreate}
+% \label{\detokenize{dev_docs:id18}}\index{onCreate(Bundle) (Java method)}
 
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.FaceRecognitionActivity.onCreate(Bundle)}}\pysiglinewithargsret{protected void \sphinxbfcode{onCreate}}{Bundle\sphinxstyleemphasis{ savedInstanceState}}{}
-El método que inicia la actividad. Inicia Butterknife para poder utilizar sus métodos. Primero verifica si el usuario ha iniciado sesión, para después inicializar el Adapter y los escuchadores de la lista de sujetos.
+% \begin{fulllineitems}
+% \phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.FaceRecognitionActivity.onCreate(Bundle)}}\pysiglinewithargsret{protected void \sphinxbfcode{onCreate}}{Bundle\sphinxstyleemphasis{ savedInstanceState}}{}
+% El método que inicia la actividad. Inicia Butterknife para poder utilizar sus métodos. Primero verifica si el usuario ha iniciado sesión, para después inicializar el Adapter y los escuchadores de la lista de sujetos.
 
-\end{fulllineitems}
+% \end{fulllineitems}
 
 
 
-\paragraph{onVisionRequestCompleted}
-\label{\detokenize{dev_docs:onvisionrequestcompleted}}\index{onVisionRequestCompleted(Object) (Java method)}
+% \paragraph{onVisionRequestCompleted}
+% \label{\detokenize{dev_docs:onvisionrequestcompleted}}\index{onVisionRequestCompleted(Object) (Java method)}
 
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.FaceRecognitionActivity.onVisionRequestCompleted(Object)}}\pysiglinewithargsret{public void \sphinxbfcode{onVisionRequestCompleted}}{\sphinxhref{http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html}{Object}\sphinxstyleemphasis{ response}}{}
-El callback que maneja la respuesta de la petición a la API RESTful de CloudNAO.
+% \begin{fulllineitems}
+% \phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.FaceRecognitionActivity.onVisionRequestCompleted(Object)}}\pysiglinewithargsret{public void \sphinxbfcode{onVisionRequestCompleted}}{\sphinxhref{http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html}{Object}\sphinxstyleemphasis{ response}}{}
+% El callback que maneja la respuesta de la petición a la API RESTful de CloudNAO.
 
-\end{fulllineitems}
+% \end{fulllineitems}
 
 
 
-\paragraph{processFaceEnroll}
-\label{\detokenize{dev_docs:processfaceenroll}}\index{processFaceEnroll(JSONObject) (Java method)}
+% \paragraph{processFaceEnroll}
+% \label{\detokenize{dev_docs:processfaceenroll}}\index{processFaceEnroll(JSONObject) (Java method)}
 
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.FaceRecognitionActivity.processFaceEnroll(JSONObject)}}\pysiglinewithargsret{public void \sphinxbfcode{processFaceEnroll}}{JSONObject\sphinxstyleemphasis{ faceEnroll}}{}
-Método para procesar el nuevo rostro añadido. Agrega al nuevo sujeto a 
-\sphinxcode{mCandidatesFound}, notifica al Adapter para que actualice 
-{\hyperref[\detokenize{dev_docs:com.lar.cloudnao.FaceRecognitionActivity.subjectRecognitionLV}]{\sphinxcrossref{\sphinxcode{subjectRecognitionLV}}}} y finalmente llama 
-\sphinxcode{com.lar.cloudnao.utilities.BoundingBoxesUtils.drawBoxesFromArray(Context,ImageView,ArrayList)} pasando como parámetros \sphinxcode{mCandidatesFound} y 
-{\hyperref[\detokenize{dev_docs:com.lar.cloudnao.OCRTranslationActivity.mRobotImage}]{\sphinxcrossref{\sphinxcode{mRobotImage}}}} para dibujar sobre el nuevo rostro encontrado.
+% \begin{fulllineitems}
+% \phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.FaceRecognitionActivity.processFaceEnroll(JSONObject)}}\pysiglinewithargsret{public void \sphinxbfcode{processFaceEnroll}}{JSONObject\sphinxstyleemphasis{ faceEnroll}}{}
+% Método para procesar el nuevo rostro añadido. Agrega al nuevo sujeto a 
+% \sphinxcode{mCandidatesFound}, notifica al Adapter para que actualice 
+% {\hyperref[\detokenize{dev_docs:com.lar.cloudnao.FaceRecognitionActivity.subjectRecognitionLV}]{\sphinxcrossref{\sphinxcode{subjectRecognitionLV}}}} y finalmente llama 
+% \sphinxcode{com.lar.cloudnao.utilities.BoundingBoxesUtils.drawBoxesFromArray(Context,ImageView,ArrayList)} pasando como parámetros \sphinxcode{mCandidatesFound} y 
+% {\hyperref[\detokenize{dev_docs:com.lar.cloudnao.OCRTranslationActivity.mRobotImage}]{\sphinxcrossref{\sphinxcode{mRobotImage}}}} para dibujar sobre el nuevo rostro encontrado.
 
-\end{fulllineitems}
+% \end{fulllineitems}
 
 
 
-\paragraph{processFaceRecognitionJSONArray}
-\label{\detokenize{dev_docs:processfacerecognitionjsonarray}}\index{processFaceRecognitionJSONArray(JSONArray) (Java method)}
+% \paragraph{processFaceRecognitionJSONArray}
+% \label{\detokenize{dev_docs:processfacerecognitionjsonarray}}\index{processFaceRecognitionJSONArray(JSONArray) (Java method)}
 
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.FaceRecognitionActivity.processFaceRecognitionJSONArray(JSONArray)}}\pysiglinewithargsret{public void \sphinxbfcode{processFaceRecognitionJSONArray}}{JSONArray\sphinxstyleemphasis{ faces}}{}
-Método para procesar el arreglo de rostros encontrados en la imagen. Llena el arreglo \sphinxcode{mCandidatesFound}, notifica al Adapter para que actualice {\hyperref[\detokenize{dev_docs:com.lar.cloudnao.FaceRecognitionActivity.subjectRecognitionLV}]{\sphinxcrossref{\sphinxcode{subjectRecognitionLV}}}} y finalmente llama \sphinxcode{comlar.cloudnao.utilities.BoundingBoxesUtils} pasando como parámetros \sphinxcode{mCandidatesFound} y {\hyperref[\detokenize{dev_docs:com.lar.cloudnao.OCRTranslationActivity.mRobotImage}]{\sphinxcrossref{\sphinxcode{mRobotImage}}}} para dibujar los cuadros delimitadores sobre los rostros encontrados.
+% \begin{fulllineitems}
+% \phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.FaceRecognitionActivity.processFaceRecognitionJSONArray(JSONArray)}}\pysiglinewithargsret{public void \sphinxbfcode{processFaceRecognitionJSONArray}}{JSONArray\sphinxstyleemphasis{ faces}}{}
+% Método para procesar el arreglo de rostros encontrados en la imagen. Llena el arreglo \sphinxcode{mCandidatesFound}, notifica al Adapter para que actualice {\hyperref[\detokenize{dev_docs:com.lar.cloudnao.FaceRecognitionActivity.subjectRecognitionLV}]{\sphinxcrossref{\sphinxcode{subjectRecognitionLV}}}} y finalmente llama \sphinxcode{comlar.cloudnao.utilities.BoundingBoxesUtils} pasando como parámetros \sphinxcode{mCandidatesFound} y {\hyperref[\detokenize{dev_docs:com.lar.cloudnao.OCRTranslationActivity.mRobotImage}]{\sphinxcrossref{\sphinxcode{mRobotImage}}}} para dibujar los cuadros delimitadores sobre los rostros encontrados.
 
-\end{fulllineitems}
+% \end{fulllineitems}
 
 
 
-\paragraph{robotSayHi}
-\label{\detokenize{dev_docs:robotsayhi}}\index{robotSayHi(String) (Java method)}
+% \paragraph{robotSayHi}
+% \label{\detokenize{dev_docs:robotsayhi}}\index{robotSayHi(String) (Java method)}
 
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.FaceRecognitionActivity.robotSayHi(String)}}\pysiglinewithargsret{public void \sphinxbfcode{robotSayHi}}{\sphinxhref{http://docs.oracle.com/javase/8/docs/api/java/lang/String.html}{String}\sphinxstyleemphasis{ subjectName}}{}
-Un método auxiliar para que el robot salude al dar click a un sujeto dentro de {\hyperref[\detokenize{dev_docs:com.lar.cloudnao.FaceRecognitionActivity.subjectRecognitionLV}]{\sphinxcrossref{\sphinxcode{subjectRecognitionLV}}}}
+% \begin{fulllineitems}
+% \phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.FaceRecognitionActivity.robotSayHi(String)}}\pysiglinewithargsret{public void \sphinxbfcode{robotSayHi}}{\sphinxhref{http://docs.oracle.com/javase/8/docs/api/java/lang/String.html}{String}\sphinxstyleemphasis{ subjectName}}{}
+% Un método auxiliar para que el robot salude al dar click a un sujeto dentro de {\hyperref[\detokenize{dev_docs:com.lar.cloudnao.FaceRecognitionActivity.subjectRecognitionLV}]{\sphinxcrossref{\sphinxcode{subjectRecognitionLV}}}}
 
-\end{fulllineitems}
+% \end{fulllineitems}
 
 
 
-\textbf{OCRTranslationActivity}
-\label{\detokenize{dev_docs:ocrtranslationactivity}}\index{OCRTranslationActivity (Java class)}
+% \textbf{OCRTranslationActivity}
+% \label{\detokenize{dev_docs:ocrtranslationactivity}}\index{OCRTranslationActivity (Java class)}
 
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.OCRTranslationActivity}}\pysigline{public class \sphinxbfcode{OCRTranslationActivity} extends AppCompatActivity implements VisionRequestCompleted}
-Clase de la actividad que se encarga del procesamiento de una imagen para detección de texto y su traducción. Implenta la interfaz \sphinxcode{VisionRequestCompleted}.
+% \begin{fulllineitems}
+% \phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.OCRTranslationActivity}}\pysigline{public class \sphinxbfcode{OCRTranslationActivity} extends AppCompatActivity implements VisionRequestCompleted}
+% Clase de la actividad que se encarga del procesamiento de una imagen para detección de texto y su traducción. Implenta la interfaz \sphinxcode{VisionRequestCompleted}.
 
-\end{fulllineitems}
+% \end{fulllineitems}
 
 
 
-\subsubsection{Atributos}
-\label{\detokenize{dev_docs:id19}}
+% \subsubsection{Atributos}
+% \label{\detokenize{dev_docs:id19}}
 
-\paragraph{MyRobot}
-\label{\detokenize{dev_docs:id20}}\index{MyRobot (Java field)}
+% \paragraph{MyRobot}
+% \label{\detokenize{dev_docs:id20}}\index{MyRobot (Java field)}
 
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.OCRTranslationActivity.MyRobot}}\pysigline{ {\hyperref[\detokenize{dev_docs:com.lar.cloudnao.Robot}]{\sphinxcrossref{Robot}}} \sphinxbfcode{MyRobot}}
-Recibe la instancia global de {\hyperref[\detokenize{dev_docs:com.lar.cloudnao.Robot}]{\sphinxcrossref{\sphinxcode{Robot}}}}
+% \begin{fulllineitems}
+% \phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.OCRTranslationActivity.MyRobot}}\pysigline{ {\hyperref[\detokenize{dev_docs:com.lar.cloudnao.Robot}]{\sphinxcrossref{Robot}}} \sphinxbfcode{MyRobot}}
+% Recibe la instancia global de {\hyperref[\detokenize{dev_docs:com.lar.cloudnao.Robot}]{\sphinxcrossref{\sphinxcode{Robot}}}}
 
-\end{fulllineitems}
+% \end{fulllineitems}
 
 
 
-\paragraph{mRobotImage}
-\label{\detokenize{dev_docs:id21}}\index{mRobotImage (Java field)}
+% \paragraph{mRobotImage}
+% \label{\detokenize{dev_docs:id21}}\index{mRobotImage (Java field)}
 
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.OCRTranslationActivity.mRobotImage}}\pysigline{ ImageView \sphinxbfcode{mRobotImage}}
-La imagen obtenida desde el robot.
+% \begin{fulllineitems}
+% \phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.OCRTranslationActivity.mRobotImage}}\pysigline{ ImageView \sphinxbfcode{mRobotImage}}
+% La imagen obtenida desde el robot.
 
-\end{fulllineitems}
+% \end{fulllineitems}
 
 
 
-\paragraph{mSourceTextTV}
-\label{\detokenize{dev_docs:msourcetexttv}}\index{mSourceTextTV (Java field)}
+% \paragraph{mSourceTextTV}
+% \label{\detokenize{dev_docs:msourcetexttv}}\index{mSourceTextTV (Java field)}
 
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.OCRTranslationActivity.mSourceTextTV}}\pysigline{ TextView \sphinxbfcode{mSourceTextTV}}
-Muestra el texto original
+% \begin{fulllineitems}
+% \phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.OCRTranslationActivity.mSourceTextTV}}\pysigline{ TextView \sphinxbfcode{mSourceTextTV}}
+% Muestra el texto original
 
-\end{fulllineitems}
+% \end{fulllineitems}
 
 
 
-\paragraph{mTextTranslated}
-\label{\detokenize{dev_docs:mtexttranslated}}\index{mTextTranslated (Java field)}
+% \paragraph{mTextTranslated}
+% \label{\detokenize{dev_docs:mtexttranslated}}\index{mTextTranslated (Java field)}
 
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.OCRTranslationActivity.mTextTranslated}}\pysigline{ \sphinxhref{http://docs.oracle.com/javase/8/docs/api/java/lang/String.html}{String} \sphinxbfcode{mTextTranslated}}
-El texto traducido que el robot expresará oralmente.
+% \begin{fulllineitems}
+% \phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.OCRTranslationActivity.mTextTranslated}}\pysigline{ \sphinxhref{http://docs.oracle.com/javase/8/docs/api/java/lang/String.html}{String} \sphinxbfcode{mTextTranslated}}
+% El texto traducido que el robot expresará oralmente.
 
-\end{fulllineitems}
+% \end{fulllineitems}
 
 
 
-\paragraph{mTextTranslatedTV}
-\label{\detokenize{dev_docs:mtexttranslatedtv}}\index{mTextTranslatedTV (Java field)}
+% \paragraph{mTextTranslatedTV}
+% \label{\detokenize{dev_docs:mtexttranslatedtv}}\index{mTextTranslatedTV (Java field)}
 
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.OCRTranslationActivity.mTextTranslatedTV}}\pysigline{ TextView \sphinxbfcode{mTextTranslatedTV}}
-Muestra el texto traducido
+% \begin{fulllineitems}
+% \phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.OCRTranslationActivity.mTextTranslatedTV}}\pysigline{ TextView \sphinxbfcode{mTextTranslatedTV}}
+% Muestra el texto traducido
 
-\end{fulllineitems}
+% \end{fulllineitems}
 
 
 
-\subsubsection{Métodos}
-\label{\detokenize{dev_docs:id22}}
+% \subsubsection{Métodos}
+% \label{\detokenize{dev_docs:id22}}
 
-\paragraph{getImageFromRobot}
-\label{\detokenize{dev_docs:id23}}\index{getImageFromRobot() (Java method)}
+% \paragraph{getImageFromRobot}
+% \label{\detokenize{dev_docs:id23}}\index{getImageFromRobot() (Java method)}
 
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.OCRTranslationActivity.getImageFromRobot()}}\pysiglinewithargsret{public void \sphinxbfcode{getImageFromRobot}}{}{}
-Obtiene una image del robot usando \sphinxcode{ImageTask}
+% \begin{fulllineitems}
+% \phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.OCRTranslationActivity.getImageFromRobot()}}\pysiglinewithargsret{public void \sphinxbfcode{getImageFromRobot}}{}{}
+% Obtiene una image del robot usando \sphinxcode{ImageTask}
 
-\end{fulllineitems}
+% \end{fulllineitems}
 
 
 
-\paragraph{onClickOCRButton}
-\label{\detokenize{dev_docs:onclickocrbutton}}\index{onClickOCRButton() (Java method)}
+% \paragraph{onClickOCRButton}
+% \label{\detokenize{dev_docs:onclickocrbutton}}\index{onClickOCRButton() (Java method)}
 
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.OCRTranslationActivity.onClickOCRButton()}}\pysiglinewithargsret{public void \sphinxbfcode{onClickOCRButton}}{}{}
-Un escuchador para el botón de detección de caracteres y traducción. Hace una petción a la API a través de \sphinxcode{VisionRESTRequestsTask}.
+% \begin{fulllineitems}
+% \phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.OCRTranslationActivity.onClickOCRButton()}}\pysiglinewithargsret{public void \sphinxbfcode{onClickOCRButton}}{}{}
+% Un escuchador para el botón de detección de caracteres y traducción. Hace una petción a la API a través de \sphinxcode{VisionRESTRequestsTask}.
 
-\end{fulllineitems}
+% \end{fulllineitems}
 
 
 
-\paragraph{onClickTranslatedText}
-\label{\detokenize{dev_docs:onclicktranslatedtext}}\index{onClickTranslatedText() (Java method)}
+% \paragraph{onClickTranslatedText}
+% \label{\detokenize{dev_docs:onclicktranslatedtext}}\index{onClickTranslatedText() (Java method)}
 
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.OCRTranslationActivity.onClickTranslatedText()}}\pysiglinewithargsret{public void \sphinxbfcode{onClickTranslatedText}}{}{}
-El agente escucha que llama al método {\hyperref[\detokenize{dev_docs:com.lar.cloudnao.Robot.say(String)}]{\sphinxcrossref{\sphinxcode{Robotsay(String)}}}} cuando el usuario hace click sobre el TextView que contiene el texto traducido.
+% \begin{fulllineitems}
+% \phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.OCRTranslationActivity.onClickTranslatedText()}}\pysiglinewithargsret{public void \sphinxbfcode{onClickTranslatedText}}{}{}
+% El agente escucha que llama al método {\hyperref[\detokenize{dev_docs:com.lar.cloudnao.Robot.say(String)}]{\sphinxcrossref{\sphinxcode{Robotsay(String)}}}} cuando el usuario hace click sobre el TextView que contiene el texto traducido.
 
-\end{fulllineitems}
+% \end{fulllineitems}
 
 
 
-\paragraph{onCreate}
-\label{\detokenize{dev_docs:id24}}\index{onCreate(Bundle) (Java method)}
+% \paragraph{onCreate}
+% \label{\detokenize{dev_docs:id24}}\index{onCreate(Bundle) (Java method)}
 
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.OCRTranslationActivity.onCreate(Bundle)}}\pysiglinewithargsret{protected void \sphinxbfcode{onCreate}}{Bundle\sphinxstyleemphasis{ savedInstanceState}}{}
-Inicia la actividad y verifica que el usuario haya iniciado sesión.
+% \begin{fulllineitems}
+% \phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.OCRTranslationActivity.onCreate(Bundle)}}\pysiglinewithargsret{protected void \sphinxbfcode{onCreate}}{Bundle\sphinxstyleemphasis{ savedInstanceState}}{}
+% Inicia la actividad y verifica que el usuario haya iniciado sesión.
 
-\end{fulllineitems}
+% \end{fulllineitems}
 
 
 
-\paragraph{onVisionRequestCompleted}
-\label{\detokenize{dev_docs:id25}}\index{onVisionRequestCompleted(Object) (Java method)}
+% \paragraph{onVisionRequestCompleted}
+% \label{\detokenize{dev_docs:id25}}\index{onVisionRequestCompleted(Object) (Java method)}
 
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.OCRTranslationActivity.onVisionRequestCompleted(Object)}}\pysiglinewithargsret{public void \sphinxbfcode{onVisionRequestCompleted}}{\sphinxhref{http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html}{Object}\sphinxstyleemphasis{ response}}{}
-Define el método \sphinxcode{VisionRequestCompleted.onVisionRequestCompleted(Object)} 
-para procesar la respuesta recibida, puede ser un error o un JSON con el texto original con la traducción. Si esto último fue el caso asigna a los TextView 
-{\hyperref[\detokenize{dev_docs:com.lar.cloudnao.OCRTranslationActivity.mSourceTextTV}]
-{\sphinxcrossref{\sphinxcode{mSourceTextTV}}}} y 
-{\hyperref[\detokenize{dev_docs:com.lar.cloudnao.OCRTranslationActivity.mTextTranslatedTV}]{\sphinxcrossref{\sphinxcode{mTextTranslatedTV}}}} el texto original y el 
-traducido, respectivamente.
-\begin{quote}\begin{description}
-\item[{Parámetros}] \leavevmode\begin{itemize}
-\item {} 
-\sphinxstyleliteralstrong{response} \textendash{} El objeto con la respuesta devuelta por la API REST de CloudNAO
+% \begin{fulllineitems}
+% \phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.OCRTranslationActivity.onVisionRequestCompleted(Object)}}\pysiglinewithargsret{public void \sphinxbfcode{onVisionRequestCompleted}}{\sphinxhref{http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html}{Object}\sphinxstyleemphasis{ response}}{}
+% Define el método \sphinxcode{VisionRequestCompleted.onVisionRequestCompleted(Object)} 
+% para procesar la respuesta recibida, puede ser un error o un JSON con el texto original con la traducción. Si esto último fue el caso asigna a los TextView 
+% {\hyperref[\detokenize{dev_docs:com.lar.cloudnao.OCRTranslationActivity.mSourceTextTV}]
+% {\sphinxcrossref{\sphinxcode{mSourceTextTV}}}} y 
+% {\hyperref[\detokenize{dev_docs:com.lar.cloudnao.OCRTranslationActivity.mTextTranslatedTV}]{\sphinxcrossref{\sphinxcode{mTextTranslatedTV}}}} el texto original y el 
+% traducido, respectivamente.
+% \begin{quote}\begin{description}
+% \item[{Parámetros}] \leavevmode\begin{itemize}
+% \item {} 
+% \sphinxstyleliteralstrong{response} \textendash{} El objeto con la respuesta devuelta por la API REST de CloudNAO
 
-\end{itemize}
+% \end{itemize}
 
-\end{description}\end{quote}
+% \end{description}\end{quote}
 
-\end{fulllineitems}
+% \end{fulllineitems}
 
 
 
-\textbf{ObjectDetectionActivity}
-\label{\detokenize{dev_docs:objectdetectionactivity}}\index{ObjectDetectionActivity (Java class)}
+% \textbf{ObjectDetectionActivity}
+% \label{\detokenize{dev_docs:objectdetectionactivity}}\index{ObjectDetectionActivity (Java class)}
 
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.ObjectDetectionActivity}}\pysigline{public class \sphinxbfcode{ObjectDetectionActivity} extends AppCompatActivity implements VisionRequestCompleted}
-La actividad encargada de la funcionalidad de la detección de objetos, implementa la interfaz \sphinxcode{VisionRequestCompleted} para ejecutar su método \sphinxcode{VisionRequestCompletedonVisionRequestCompleted(Object)} como callback en \sphinxcode{VisionRESTRequestsTask}
+% \begin{fulllineitems}
+% \phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.ObjectDetectionActivity}}\pysigline{public class \sphinxbfcode{ObjectDetectionActivity} extends AppCompatActivity implements VisionRequestCompleted}
+% La actividad encargada de la funcionalidad de la detección de objetos, implementa la interfaz \sphinxcode{VisionRequestCompleted} para ejecutar su método \sphinxcode{VisionRequestCompletedonVisionRequestCompleted(Object)} como callback en \sphinxcode{VisionRESTRequestsTask}
 
-\end{fulllineitems}
+% \end{fulllineitems}
 
 
 
-\subsubsection{Atributos}
-\label{\detokenize{dev_docs:id26}}
+% \subsubsection{Atributos}
+% \label{\detokenize{dev_docs:id26}}
 
-\paragraph{MyRobot}
-\label{\detokenize{dev_docs:id27}}\index{MyRobot (Java field)}
+% \paragraph{MyRobot}
+% \label{\detokenize{dev_docs:id27}}\index{MyRobot (Java field)}
 
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.ObjectDetectionActivity.MyRobot}}\pysigline{ {\hyperref[\detokenize{dev_docs:com.lar.cloudnao.Robot}]{\sphinxcrossref{Robot}}} \sphinxbfcode{MyRobot}}
-Obtiene la instancia del singleton {\hyperref[\detokenize{dev_docs:com.lar.cloudnao.Robot}]{\sphinxcrossref{\sphinxcode{Robot}}}}
+% \begin{fulllineitems}
+% \phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.ObjectDetectionActivity.MyRobot}}\pysigline{ {\hyperref[\detokenize{dev_docs:com.lar.cloudnao.Robot}]{\sphinxcrossref{Robot}}} \sphinxbfcode{MyRobot}}
+% Obtiene la instancia del singleton {\hyperref[\detokenize{dev_docs:com.lar.cloudnao.Robot}]{\sphinxcrossref{\sphinxcode{Robot}}}}
 
-\end{fulllineitems}
+% \end{fulllineitems}
 
 
 
-\paragraph{foundObjectsLV}
-\label{\detokenize{dev_docs:foundobjectslv}}\index{foundObjectsLV (Java field)}
+% \paragraph{foundObjectsLV}
+% \label{\detokenize{dev_docs:foundobjectslv}}\index{foundObjectsLV (Java field)}
 
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.ObjectDetectionActivity.foundObjectsLV}}\pysigline{ ListView \sphinxbfcode{foundObjectsLV}}
-Muesta los objetos detectados en la imagen. El nombre del objeto y la confianza.
+% \begin{fulllineitems}
+% \phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.ObjectDetectionActivity.foundObjectsLV}}\pysigline{ ListView \sphinxbfcode{foundObjectsLV}}
+% Muesta los objetos detectados en la imagen. El nombre del objeto y la confianza.
 
-\end{fulllineitems}
+% \end{fulllineitems}
 
 
 
-\paragraph{mRobotImage}
-\label{\detokenize{dev_docs:id28}}\index{mRobotImage (Java field)}
+% \paragraph{mRobotImage}
+% \label{\detokenize{dev_docs:id28}}\index{mRobotImage (Java field)}
 
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.ObjectDetectionActivity.mRobotImage}}\pysigline{ ImageView \sphinxbfcode{mRobotImage}}
-La imagen obtenida desde el robot.
+% \begin{fulllineitems}
+% \phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.ObjectDetectionActivity.mRobotImage}}\pysigline{ ImageView \sphinxbfcode{mRobotImage}}
+% La imagen obtenida desde el robot.
 
-\end{fulllineitems}
+% \end{fulllineitems}
 
 
 
-\subsubsection{Métodos}
-\label{\detokenize{dev_docs:id29}}
+% \subsubsection{Métodos}
+% \label{\detokenize{dev_docs:id29}}
 
-\paragraph{foundObjectsToSpeech}
-\label{\detokenize{dev_docs:foundobjectstospeech}}\index{foundObjectsToSpeech() (Java method)}
+% \paragraph{foundObjectsToSpeech}
+% \label{\detokenize{dev_docs:foundobjectstospeech}}\index{foundObjectsToSpeech() (Java method)}
 
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.ObjectDetectionActivity.foundObjectsToSpeech()}}\pysiglinewithargsret{public void \sphinxbfcode{foundObjectsToSpeech}}{}{}
-Método para mapear el arreglo \sphinxcode{mFoundObjects} a una cadena que pueda decir el robot.
+% \begin{fulllineitems}
+% \phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.ObjectDetectionActivity.foundObjectsToSpeech()}}\pysiglinewithargsret{public void \sphinxbfcode{foundObjectsToSpeech}}{}{}
+% Método para mapear el arreglo \sphinxcode{mFoundObjects} a una cadena que pueda decir el robot.
 
-\end{fulllineitems}
+% \end{fulllineitems}
 
 
 
-\paragraph{getImageFromRobot}
-\label{\detokenize{dev_docs:id30}}\index{getImageFromRobot() (Java method)}
+% \paragraph{getImageFromRobot}
+% \label{\detokenize{dev_docs:id30}}\index{getImageFromRobot() (Java method)}
 
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.ObjectDetectionActivity.getImageFromRobot()}}\pysiglinewithargsret{public void \sphinxbfcode{getImageFromRobot}}{}{}
-Un escuchador del botón para obtener una imagen remota del robot, usando la clase ImageTask usa la clase \sphinxcode{ImageTask}
+% \begin{fulllineitems}
+% \phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.ObjectDetectionActivity.getImageFromRobot()}}\pysiglinewithargsret{public void \sphinxbfcode{getImageFromRobot}}{}{}
+% Un escuchador del botón para obtener una imagen remota del robot, usando la clase ImageTask usa la clase \sphinxcode{ImageTask}
 
-\end{fulllineitems}
+% \end{fulllineitems}
 
 
 
-\paragraph{onClickObjectDetection}
-\label{\detokenize{dev_docs:onclickobjectdetection}}\index{onClickObjectDetection() (Java method)}
+% \paragraph{onClickObjectDetection}
+% \label{\detokenize{dev_docs:onclickobjectdetection}}\index{onClickObjectDetection() (Java method)}
 
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.ObjectDetectionActivity.onClickObjectDetection()}}\pysiglinewithargsret{public void \sphinxbfcode{onClickObjectDetection}}{}{}
-Un escuchador para el botón de detección de objetos. Usa la clase \sphinxcode{VisionRESTRequestsTask}
+% \begin{fulllineitems}
+% \phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.ObjectDetectionActivity.onClickObjectDetection()}}\pysiglinewithargsret{public void \sphinxbfcode{onClickObjectDetection}}{}{}
+% Un escuchador para el botón de detección de objetos. Usa la clase \sphinxcode{VisionRESTRequestsTask}
 
-\end{fulllineitems}
+% \end{fulllineitems}
 
 
 
-\paragraph{onCreate}
-\label{\detokenize{dev_docs:id31}}\index{onCreate(Bundle) (Java method)}
+% \paragraph{onCreate}
+% \label{\detokenize{dev_docs:id31}}\index{onCreate(Bundle) (Java method)}
 
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.ObjectDetectionActivity.onCreate(Bundle)}}\pysiglinewithargsret{protected void \sphinxbfcode{onCreate}}{Bundle\sphinxstyleemphasis{ savedInstanceState}}{}
-Crea la actividad, verifica que el usuario haya iniciado sesión y configura el Adapter del ListView.
+% \begin{fulllineitems}
+% \phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.ObjectDetectionActivity.onCreate(Bundle)}}\pysiglinewithargsret{protected void \sphinxbfcode{onCreate}}{Bundle\sphinxstyleemphasis{ savedInstanceState}}{}
+% Crea la actividad, verifica que el usuario haya iniciado sesión y configura el Adapter del ListView.
 
-\end{fulllineitems}
+% \end{fulllineitems}
 
 
 
-\paragraph{onVisionRequestCompleted}
-\label{\detokenize{dev_docs:id32}}\index{onVisionRequestCompleted(Object) (Java method)}
+% \paragraph{onVisionRequestCompleted}
+% \label{\detokenize{dev_docs:id32}}\index{onVisionRequestCompleted(Object) (Java method)}
 
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.ObjectDetectionActivity.onVisionRequestCompleted(Object)}}\pysiglinewithargsret{public void \sphinxbfcode{onVisionRequestCompleted}}{\sphinxhref{http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html}{Object}\sphinxstyleemphasis{ response}}{}
-El callback que maneja la respuesta de la petición a la API RESTful de CloudNAO.
+% \begin{fulllineitems}
+% \phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.ObjectDetectionActivity.onVisionRequestCompleted(Object)}}\pysiglinewithargsret{public void \sphinxbfcode{onVisionRequestCompleted}}{\sphinxhref{http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html}{Object}\sphinxstyleemphasis{ response}}{}
+% El callback que maneja la respuesta de la petición a la API RESTful de CloudNAO.
 
-\end{fulllineitems}
+% \end{fulllineitems}
 
 
 
-\paragraph{processObjectDetectionJSONArray}
-\label{\detokenize{dev_docs:processobjectdetectionjsonarray}}\index{processObjectDetectionJSONArray(JSONArray) (Java method)}
+% \paragraph{processObjectDetectionJSONArray}
+% \label{\detokenize{dev_docs:processobjectdetectionjsonarray}}\index{processObjectDetectionJSONArray(JSONArray) (Java method)}
 
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.ObjectDetectionActivity.processObjectDetectionJSONArray(JSONArray)}}\pysiglinewithargsret{public void \sphinxbfcode{processObjectDetectionJSONArray}}{JSONArray\sphinxstyleemphasis{ objectsArray}}{}
-Método para procesar el arreglo de objetos encontrados en la imagen. Llena el arreglo 
-\sphinxcode{mFoundObjects}, notifica al Adapter para que actualice 
-{\hyperref[\detokenize{dev_docs:com.lar.cloudnao.ObjectDetectionActivity.foundObjectsLV}]{\sphinxcrossref{\sphinxcode{foundObjectsLV}}}} y llama 
-\sphinxcode{com.lar.cloudnao.utilities.BoundingBoxesUtils.drawBoxesFromArray(Context,ImageView,ArrayList)} pasando como parámetros \sphinxcode{mFoundObjects} y 
-{\hyperref[\detokenize{dev_docs:com.lar.cloudnao.OCRTranslationActivity.mRobotImage}]{\sphinxcrossref{\sphinxcode{mRobotImage}}}} para dibujar los cuadros delimitadores sobre los objetos encontrados. Finalmente el robot dice qué objetos encontró y cuantos de cada categoría.
+% \begin{fulllineitems}
+% \phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.ObjectDetectionActivity.processObjectDetectionJSONArray(JSONArray)}}\pysiglinewithargsret{public void \sphinxbfcode{processObjectDetectionJSONArray}}{JSONArray\sphinxstyleemphasis{ objectsArray}}{}
+% Método para procesar el arreglo de objetos encontrados en la imagen. Llena el arreglo 
+% \sphinxcode{mFoundObjects}, notifica al Adapter para que actualice 
+% {\hyperref[\detokenize{dev_docs:com.lar.cloudnao.ObjectDetectionActivity.foundObjectsLV}]{\sphinxcrossref{\sphinxcode{foundObjectsLV}}}} y llama 
+% \sphinxcode{com.lar.cloudnao.utilities.BoundingBoxesUtils.drawBoxesFromArray(Context,ImageView,ArrayList)} pasando como parámetros \sphinxcode{mFoundObjects} y 
+% {\hyperref[\detokenize{dev_docs:com.lar.cloudnao.OCRTranslationActivity.mRobotImage}]{\sphinxcrossref{\sphinxcode{mRobotImage}}}} para dibujar los cuadros delimitadores sobre los objetos encontrados. Finalmente el robot dice qué objetos encontró y cuantos de cada categoría.
 
-\end{fulllineitems}
+% \end{fulllineitems}
 
 
 
-\textbf{Robot}
-\label{\detokenize{dev_docs:robot}}\index{Robot (Java class)}
+% \textbf{Robot}
+% \label{\detokenize{dev_docs:robot}}\index{Robot (Java class)}
 
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.Robot}}\pysigline{public class \sphinxbfcode{Robot}}
-La clase pública principal para ejecutar módulos del framework de NAOqi en la aplicación. Es una interfaz para conectarse al robot y ejecutar algunos módulos de NAOqi. Usa el patrón de diseño Singleton para que solo exista una instancia del objeto y funcione como una variable global.
+% \begin{fulllineitems}
+% \phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.Robot}}\pysigline{public class \sphinxbfcode{Robot}}
+% La clase pública principal para ejecutar módulos del framework de NAOqi en la aplicación. Es una interfaz para conectarse al robot y ejecutar algunos módulos de NAOqi. Usa el patrón de diseño Singleton para que solo exista una instancia del objeto y funcione como una variable global.
 
-\end{fulllineitems}
+% \end{fulllineitems}
 
 
 
-\subsubsection{Atributos}
-\label{\detokenize{dev_docs:id33}}
+% \subsubsection{Atributos}
+% \label{\detokenize{dev_docs:id33}}
 
-\paragraph{isConnected}
-\label{\detokenize{dev_docs:isconnected}}\index{isConnected (Java field)}
+% \paragraph{isConnected}
+% \label{\detokenize{dev_docs:isconnected}}\index{isConnected (Java field)}
 
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.Robot.isConnected}}\pysigline{public boolean \sphinxbfcode{isConnected}}
-Una bandera para verificar la conexión de la aplicación con el robot.
+% \begin{fulllineitems}
+% \phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.Robot.isConnected}}\pysigline{public boolean \sphinxbfcode{isConnected}}
+% Una bandera para verificar la conexión de la aplicación con el robot.
 
-\end{fulllineitems}
+% \end{fulllineitems}
 
 
 
-\paragraph{mSonarSubscriberId}
-\label{\detokenize{dev_docs:msonarsubscriberid}}\index{mSonarSubscriberId (Java field)}
+% \paragraph{mSonarSubscriberId}
+% \label{\detokenize{dev_docs:msonarsubscriberid}}\index{mSonarSubscriberId (Java field)}
 
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.Robot.mSonarSubscriberId}}\pysigline{public final \sphinxhref{http://docs.oracle.com/javase/8/docs/api/java/lang/String.html}{String} \sphinxbfcode{mSonarSubscriberId}}
-El identificador del suscriptor al sonar.
+% \begin{fulllineitems}
+% \phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.Robot.mSonarSubscriberId}}\pysigline{public final \sphinxhref{http://docs.oracle.com/javase/8/docs/api/java/lang/String.html}{String} \sphinxbfcode{mSonarSubscriberId}}
+% El identificador del suscriptor al sonar.
 
-\end{fulllineitems}
+% \end{fulllineitems}
 
 
 
-\subsubsection{Constructors}
-\label{\detokenize{dev_docs:constructors}}
+% \subsubsection{Constructors}
+% \label{\detokenize{dev_docs:constructors}}
 
-\paragraph{Robot}
-\label{\detokenize{dev_docs:id34}}\index{Robot(Context) (Java constructor)}
+% \paragraph{Robot}
+% \label{\detokenize{dev_docs:id34}}\index{Robot(Context) (Java constructor)}
 
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.Robot.Robot(Context)}}\pysiglinewithargsret{public \sphinxbfcode{Robot}}{Context\sphinxstyleemphasis{ context}}{}
-El constructor de la clase, simplemente, recibe el contexto en el que se encuentra la aplicación.
+% \begin{fulllineitems}
+% \phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.Robot.Robot(Context)}}\pysiglinewithargsret{public \sphinxbfcode{Robot}}{Context\sphinxstyleemphasis{ context}}{}
+% El constructor de la clase, simplemente, recibe el contexto en el que se encuentra la aplicación.
 
-\end{fulllineitems}
+% \end{fulllineitems}
 
 
 
-\subsubsection{Métodos}
-\label{\detokenize{dev_docs:id35}}
+% \subsubsection{Métodos}
+% \label{\detokenize{dev_docs:id35}}
 
-\paragraph{createSessionAndProxies}
-\label{\detokenize{dev_docs:createsessionandproxies}}\index{createSessionAndProxies(String, String) (Java method)}
+% \paragraph{createSessionAndProxies}
+% \label{\detokenize{dev_docs:createsessionandproxies}}\index{createSessionAndProxies(String, String) (Java method)}
 
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.Robot.createSessionAndProxies(String, String)}}\pysiglinewithargsret{public void \sphinxbfcode{createSessionAndProxies}}{\sphinxhref{http://docs.oracle.com/javase/8/docs/api/java/lang/String.html}{String}\sphinxstyleemphasis{ robotIPAddress}, \sphinxhref{http://docs.oracle.com/javase/8/docs/api/java/lang/String.html}{String}\sphinxstyleemphasis{ robotName}}{}
-Crea la sesión que permite la conexión con el robot, e inicializa los proxies, ALVideoDevice, ALMotion, ALTextToSpeech, ALMemory y ALSonar.
-\begin{quote}\begin{description}
-\item[{Parámetros}] \leavevmode\begin{itemize}
-\item {} 
-\sphinxstyleliteralstrong{robotIPAddress} \textendash{} La dirección IP del robot.
+% \begin{fulllineitems}
+% \phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.Robot.createSessionAndProxies(String, String)}}\pysiglinewithargsret{public void \sphinxbfcode{createSessionAndProxies}}{\sphinxhref{http://docs.oracle.com/javase/8/docs/api/java/lang/String.html}{String}\sphinxstyleemphasis{ robotIPAddress}, \sphinxhref{http://docs.oracle.com/javase/8/docs/api/java/lang/String.html}{String}\sphinxstyleemphasis{ robotName}}{}
+% Crea la sesión que permite la conexión con el robot, e inicializa los proxies, ALVideoDevice, ALMotion, ALTextToSpeech, ALMemory y ALSonar.
+% \begin{quote}\begin{description}
+% \item[{Parámetros}] \leavevmode\begin{itemize}
+% \item {} 
+% \sphinxstyleliteralstrong{robotIPAddress} \textendash{} La dirección IP del robot.
 
-\item {} 
-\sphinxstyleliteralstrong{robotName} \textendash{} El identificador único del robot para guardar sus datos en Firebase.
+% \item {} 
+% \sphinxstyleliteralstrong{robotName} \textendash{} El identificador único del robot para guardar sus datos en Firebase.
 
-\end{itemize}
+% \end{itemize}
 
-\end{description}\end{quote}
+% \end{description}\end{quote}
 
-\end{fulllineitems}
+% \end{fulllineitems}
 
 
 
-\paragraph{get}
-\label{\detokenize{dev_docs:get}}\index{get(Context) (Java method)}
+% \paragraph{get}
+% \label{\detokenize{dev_docs:get}}\index{get(Context) (Java method)}
 
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.Robot.get(Context)}}\pysiglinewithargsret{public static {\hyperref[\detokenize{dev_docs:com.lar.cloudnao.Robot}]{\sphinxcrossref{Robot}}} \sphinxbfcode{get}}{Context\sphinxstyleemphasis{ context}}{}
-Una método para hacer que solo exista una instancia del objeto Robot.
+% \begin{fulllineitems}
+% \phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.Robot.get(Context)}}\pysiglinewithargsret{public static {\hyperref[\detokenize{dev_docs:com.lar.cloudnao.Robot}]{\sphinxcrossref{Robot}}} \sphinxbfcode{get}}{Context\sphinxstyleemphasis{ context}}{}
+% Una método para hacer que solo exista una instancia del objeto Robot.
 
-\end{fulllineitems}
+% \end{fulllineitems}
 
 
 
-\paragraph{getBatteryLevel}
-\label{\detokenize{dev_docs:getbatterylevel}}\index{getBatteryLevel() (Java method)}
+% \paragraph{getBatteryLevel}
+% \label{\detokenize{dev_docs:getbatterylevel}}\index{getBatteryLevel() (Java method)}
 
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.Robot.getBatteryLevel()}}\pysiglinewithargsret{public int \sphinxbfcode{getBatteryLevel}}{}{}
-Obtiene y regresa el nivel de batería del robot.
+% \begin{fulllineitems}
+% \phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.Robot.getBatteryLevel()}}\pysiglinewithargsret{public int \sphinxbfcode{getBatteryLevel}}{}{}
+% Obtiene y regresa el nivel de batería del robot.
 
-\end{fulllineitems}
+% \end{fulllineitems}
 
 
 
-\paragraph{getImageFromRobot}
-\label{\detokenize{dev_docs:id36}}\index{getImageFromRobot() (Java method)}
+% \paragraph{getImageFromRobot}
+% \label{\detokenize{dev_docs:id36}}\index{getImageFromRobot() (Java method)}
 
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.Robot.getImageFromRobot()}}\pysiglinewithargsret{public \sphinxhref{http://docs.oracle.com/javase/8/docs/api/java/util/List.html}{List}\textless{}\sphinxhref{http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html}{Object}\textgreater{} \sphinxbfcode{getImageFromRobot}}{}{}
-Obtiene la imagen del robot con el método getImageRemot de ALVideoDevice y retorna el objeto que contiene la imagen y otros atributos.
+% \begin{fulllineitems}
+% \phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.Robot.getImageFromRobot()}}\pysiglinewithargsret{public \sphinxhref{http://docs.oracle.com/javase/8/docs/api/java/util/List.html}{List}\textless{}\sphinxhref{http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html}{Object}\textgreater{} \sphinxbfcode{getImageFromRobot}}{}{}
+% Obtiene la imagen del robot con el método getImageRemot de ALVideoDevice y retorna el objeto que contiene la imagen y otros atributos.
 
-\end{fulllineitems}
+% \end{fulllineitems}
 
 
 
-\paragraph{getRobotName}
-\label{\detokenize{dev_docs:getrobotname}}\index{getRobotName() (Java method)}
+% \paragraph{getRobotName}
+% \label{\detokenize{dev_docs:getrobotname}}\index{getRobotName() (Java method)}
 
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.Robot.getRobotName()}}\pysiglinewithargsret{public \sphinxhref{http://docs.oracle.com/javase/8/docs/api/java/lang/String.html}{String} \sphinxbfcode{getRobotName}}{}{}
-Devuelve el nombre del robot. Es el identificador único generado por Firebase.
+% \begin{fulllineitems}
+% \phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.Robot.getRobotName()}}\pysiglinewithargsret{public \sphinxhref{http://docs.oracle.com/javase/8/docs/api/java/lang/String.html}{String} \sphinxbfcode{getRobotName}}{}{}
+% Devuelve el nombre del robot. Es el identificador único generado por Firebase.
 
-\end{fulllineitems}
+% \end{fulllineitems}
 
 
 
-\paragraph{getSelectedValuesFromMemory}
-\label{\detokenize{dev_docs:getselectedvaluesfrommemory}}\index{getSelectedValuesFromMemory(List) (Java method)}
+% \paragraph{getSelectedValuesFromMemory}
+% \label{\detokenize{dev_docs:getselectedvaluesfrommemory}}\index{getSelectedValuesFromMemory(List) (Java method)}
 
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.Robot.getSelectedValuesFromMemory(List)}}\pysiglinewithargsret{public \sphinxhref{http://docs.oracle.com/javase/8/docs/api/java/util/HashMap.html}{HashMap}\textless{}\sphinxhref{http://docs.oracle.com/javase/8/docs/api/java/lang/String.html}{String}, \sphinxhref{http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html}{Object}\textgreater{} \sphinxbfcode{getSelectedValuesFromMemory}}{\sphinxhref{http://docs.oracle.com/javase/8/docs/api/java/util/List.html}{List}\textless{}\sphinxhref{http://docs.oracle.com/javase/8/docs/api/java/lang/String.html}{String}\textgreater{}\sphinxstyleemphasis{ SelectedKeys}}{}
-Obtiene valores de ALMemory solicitados en la actividad del control remoto, y retorna un mapa con las llaves y valores desde ALMemory.
+% \begin{fulllineitems}
+% \phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.Robot.getSelectedValuesFromMemory(List)}}\pysiglinewithargsret{public \sphinxhref{http://docs.oracle.com/javase/8/docs/api/java/util/HashMap.html}{HashMap}\textless{}\sphinxhref{http://docs.oracle.com/javase/8/docs/api/java/lang/String.html}{String}, \sphinxhref{http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html}{Object}\textgreater{} \sphinxbfcode{getSelectedValuesFromMemory}}{\sphinxhref{http://docs.oracle.com/javase/8/docs/api/java/util/List.html}{List}\textless{}\sphinxhref{http://docs.oracle.com/javase/8/docs/api/java/lang/String.html}{String}\textgreater{}\sphinxstyleemphasis{ SelectedKeys}}{}
+% Obtiene valores de ALMemory solicitados en la actividad del control remoto, y retorna un mapa con las llaves y valores desde ALMemory.
 
-\end{fulllineitems}
+% \end{fulllineitems}
 
 
 
-\paragraph{isConnectedToCharger}
-\label{\detokenize{dev_docs:isconnectedtocharger}}\index{isConnectedToCharger() (Java method)}
+% \paragraph{isConnectedToCharger}
+% \label{\detokenize{dev_docs:isconnectedtocharger}}\index{isConnectedToCharger() (Java method)}
 
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.Robot.isConnectedToCharger()}}\pysiglinewithargsret{public boolean \sphinxbfcode{isConnectedToCharger}}{}{}
-Verifica si el robot está conectado a la corriente.
+% \begin{fulllineitems}
+% \phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.Robot.isConnectedToCharger()}}\pysiglinewithargsret{public boolean \sphinxbfcode{isConnectedToCharger}}{}{}
+% Verifica si el robot está conectado a la corriente.
 
-\end{fulllineitems}
+% \end{fulllineitems}
 
 
 
-\paragraph{moveRobot}
-\label{\detokenize{dev_docs:moverobot}}\index{moveRobot(float, float) (Java method)}
+% \paragraph{moveRobot}
+% \label{\detokenize{dev_docs:moverobot}}\index{moveRobot(float, float) (Java method)}
 
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.Robot.moveRobot(float, float)}}\pysiglinewithargsret{public void \sphinxbfcode{moveRobot}}{float\sphinxstyleemphasis{ x}, float\sphinxstyleemphasis{ y}}{}
-Hace que el robot camine a lo largo de sus ejes X y Y
+% \begin{fulllineitems}
+% \phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.Robot.moveRobot(float, float)}}\pysiglinewithargsret{public void \sphinxbfcode{moveRobot}}{float\sphinxstyleemphasis{ x}, float\sphinxstyleemphasis{ y}}{}
+% Hace que el robot camine a lo largo de sus ejes X y Y
 
-\end{fulllineitems}
+% \end{fulllineitems}
 
 
 
-\paragraph{moveRobot}
-\label{\detokenize{dev_docs:id37}}\index{moveRobot(float) (Java method)}
+% \paragraph{moveRobot}
+% \label{\detokenize{dev_docs:id37}}\index{moveRobot(float) (Java method)}
 
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.Robot.moveRobot(float)}}\pysiglinewithargsret{public void \sphinxbfcode{moveRobot}}{float\sphinxstyleemphasis{ theta}}{}
-Hace que el robot camine sobre su eje Z, gira a la derecha o izquierda dependiendo del valor del parámetro theta.
+% \begin{fulllineitems}
+% \phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.Robot.moveRobot(float)}}\pysiglinewithargsret{public void \sphinxbfcode{moveRobot}}{float\sphinxstyleemphasis{ theta}}{}
+% Hace que el robot camine sobre su eje Z, gira a la derecha o izquierda dependiendo del valor del parámetro theta.
 
-\end{fulllineitems}
+% \end{fulllineitems}
 
 
 
-\paragraph{moveRobot}
-\label{\detokenize{dev_docs:id38}}\index{moveRobot(float, float, float) (Java method)}
+% \paragraph{moveRobot}
+% \label{\detokenize{dev_docs:id38}}\index{moveRobot(float, float, float) (Java method)}
 
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.Robot.moveRobot(float, float, float)}}\pysiglinewithargsret{public void \sphinxbfcode{moveRobot}}{float\sphinxstyleemphasis{ x}, float\sphinxstyleemphasis{ y}, float\sphinxstyleemphasis{ theta}}{}
-Mueve al robot sobre sus tres ejes.
+% \begin{fulllineitems}
+% \phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.Robot.moveRobot(float, float, float)}}\pysiglinewithargsret{public void \sphinxbfcode{moveRobot}}{float\sphinxstyleemphasis{ x}, float\sphinxstyleemphasis{ y}, float\sphinxstyleemphasis{ theta}}{}
+% Mueve al robot sobre sus tres ejes.
 
-\end{fulllineitems}
+% \end{fulllineitems}
 
 
 
-\paragraph{onDisconnected}
-\label{\detokenize{dev_docs:ondisconnected}}\index{onDisconnected(Activity) (Java method)}
+% \paragraph{onDisconnected}
+% \label{\detokenize{dev_docs:ondisconnected}}\index{onDisconnected(Activity) (Java method)}
 
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.Robot.onDisconnected(Activity)}}\pysiglinewithargsret{public void \sphinxbfcode{onDisconnected}}{Activity\sphinxstyleemphasis{ currentActivity}}{}
-Cierra la conexión con el robot.
+% \begin{fulllineitems}
+% \phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.Robot.onDisconnected(Activity)}}\pysiglinewithargsret{public void \sphinxbfcode{onDisconnected}}{Activity\sphinxstyleemphasis{ currentActivity}}{}
+% Cierra la conexión con el robot.
 
-\end{fulllineitems}
+% \end{fulllineitems}
 
 
 
-\paragraph{rest}
-\label{\detokenize{dev_docs:rest}}\index{rest() (Java method)}
+% \paragraph{rest}
+% \label{\detokenize{dev_docs:rest}}\index{rest() (Java method)}
 
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.Robot.rest()}}\pysiglinewithargsret{public void \sphinxbfcode{rest}}{}{}
-Cambia de postura a Crouch
+% \begin{fulllineitems}
+% \phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.Robot.rest()}}\pysiglinewithargsret{public void \sphinxbfcode{rest}}{}{}
+% Cambia de postura a Crouch
 
-\end{fulllineitems}
+% \end{fulllineitems}
 
 
 
-\paragraph{say}
-\label{\detokenize{dev_docs:say}}\index{say(String) (Java method)}
+% \paragraph{say}
+% \label{\detokenize{dev_docs:say}}\index{say(String) (Java method)}
 
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.Robot.say(String)}}\pysiglinewithargsret{public void \sphinxbfcode{say}}{\sphinxhref{http://docs.oracle.com/javase/8/docs/api/java/lang/String.html}{String}\sphinxstyleemphasis{ textToSpeech}}{}
-El robot dice el texto pasado como argumento.
+% \begin{fulllineitems}
+% \phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.Robot.say(String)}}\pysiglinewithargsret{public void \sphinxbfcode{say}}{\sphinxhref{http://docs.oracle.com/javase/8/docs/api/java/lang/String.html}{String}\sphinxstyleemphasis{ textToSpeech}}{}
+% El robot dice el texto pasado como argumento.
 
-\end{fulllineitems}
+% \end{fulllineitems}
 
 
 
-\paragraph{sayAnnotatedAnimatedSpeech}
-\label{\detokenize{dev_docs:sayannotatedanimatedspeech}}\index{sayAnnotatedAnimatedSpeech(String) (Java method)}
+% \paragraph{sayAnnotatedAnimatedSpeech}
+% \label{\detokenize{dev_docs:sayannotatedanimatedspeech}}\index{sayAnnotatedAnimatedSpeech(String) (Java method)}
 
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.Robot.sayAnnotatedAnimatedSpeech(String)}}\pysiglinewithargsret{public void \sphinxbfcode{sayAnnotatedAnimatedSpeech}}{\sphinxhref{http://docs.oracle.com/javase/8/docs/api/java/lang/String.html}{String}\sphinxstyleemphasis{ textToSay}}{}
-Ejecuta un saludo a través de ALTextToSpeech
+% \begin{fulllineitems}
+% \phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.Robot.sayAnnotatedAnimatedSpeech(String)}}\pysiglinewithargsret{public void \sphinxbfcode{sayAnnotatedAnimatedSpeech}}{\sphinxhref{http://docs.oracle.com/javase/8/docs/api/java/lang/String.html}{String}\sphinxstyleemphasis{ textToSay}}{}
+% Ejecuta un saludo a través de ALTextToSpeech
 
-\end{fulllineitems}
+% \end{fulllineitems}
 
 
 
-\paragraph{stopMovement}
-\label{\detokenize{dev_docs:stopmovement}}\index{stopMovement() (Java method)}
+% \paragraph{stopMovement}
+% \label{\detokenize{dev_docs:stopmovement}}\index{stopMovement() (Java method)}
 
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.Robot.stopMovement()}}\pysiglinewithargsret{public void \sphinxbfcode{stopMovement}}{}{}
-Detiene los movimientos del robot
+% \begin{fulllineitems}
+% \phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.Robot.stopMovement()}}\pysiglinewithargsret{public void \sphinxbfcode{stopMovement}}{}{}
+% Detiene los movimientos del robot
 
-\end{fulllineitems}
+% \end{fulllineitems}
 
 
 
-\textbf{subscribeToCamera}
-\label{\detokenize{dev_docs:subscribetocamera}}\index{subscribeToCamera(int) (Java method)}
+% \textbf{subscribeToCamera}
+% \label{\detokenize{dev_docs:subscribetocamera}}\index{subscribeToCamera(int) (Java method)}
 
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.Robot.subscribeToCamera(int)}}\pysiglinewithargsret{public void \sphinxbfcode{subscribeToCamera}}{int\sphinxstyleemphasis{ resolution}}{}
-Se suscribe a la cámara para poder recibir imágenes de manera remota.
-\begin{quote}\begin{description}
-\item[{Parámetros}] \leavevmode\begin{itemize}
-\item {} 
-\sphinxstyleliteralstrong{resolution} \textendash{} un entero válido para la resolución de la cámara del robot.
+% \begin{fulllineitems}
+% \phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.Robot.subscribeToCamera(int)}}\pysiglinewithargsret{public void \sphinxbfcode{subscribeToCamera}}{int\sphinxstyleemphasis{ resolution}}{}
+% Se suscribe a la cámara para poder recibir imágenes de manera remota.
+% \begin{quote}\begin{description}
+% \item[{Parámetros}] \leavevmode\begin{itemize}
+% \item {} 
+% \sphinxstyleliteralstrong{resolution} \textendash{} un entero válido para la resolución de la cámara del robot.
 
-\end{itemize}
+% \end{itemize}
 
-\end{description}\end{quote}
+% \end{description}\end{quote}
 
-\end{fulllineitems}
+% \end{fulllineitems}
 
 
 
-\textbf{subscribeToCamera}
-\label{\detokenize{dev_docs:id39}}\index{subscribeToCamera() (Java method)}
+% \textbf{subscribeToCamera}
+% \label{\detokenize{dev_docs:id39}}\index{subscribeToCamera() (Java method)}
 
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.Robot.subscribeToCamera()}}\pysiglinewithargsret{public void \sphinxbfcode{subscribeToCamera}}{}{}
-Se suscribe a la cámara para recibir imágenes de manera remota, con la resolución por defecto 160 px * 120 px.
+% \begin{fulllineitems}
+% \phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.Robot.subscribeToCamera()}}\pysiglinewithargsret{public void \sphinxbfcode{subscribeToCamera}}{}{}
+% Se suscribe a la cámara para recibir imágenes de manera remota, con la resolución por defecto 160 px * 120 px.
 
-\end{fulllineitems}
+% \end{fulllineitems}
 
 
 
-\textbf{subscribeToSonar}
-\label{\detokenize{dev_docs:subscribetosonar}}\index{subscribeToSonar() (Java method)}
+% \textbf{subscribeToSonar}
+% \label{\detokenize{dev_docs:subscribetosonar}}\index{subscribeToSonar() (Java method)}
 
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.Robot.subscribeToSonar()}}\pysiglinewithargsret{public void \sphinxbfcode{subscribeToSonar}}{}{}
-Se suscribe al sonar para poder obtener valores de ALMemory
+% \begin{fulllineitems}
+% \phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.Robot.subscribeToSonar()}}\pysiglinewithargsret{public void \sphinxbfcode{subscribeToSonar}}{}{}
+% Se suscribe al sonar para poder obtener valores de ALMemory
 
-\end{fulllineitems}
+% \end{fulllineitems}
 
 
 
-\textbf{unsubscribeToCamera}
-\label{\detokenize{dev_docs:unsubscribetocamera}}\index{unsubscribeToCamera() (Java method)}
+% \textbf{unsubscribeToCamera}
+% \label{\detokenize{dev_docs:unsubscribetocamera}}\index{unsubscribeToCamera() (Java method)}
 
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.Robot.unsubscribeToCamera()}}\pysiglinewithargsret{public void \sphinxbfcode{unsubscribeToCamera}}{}{}
-Se da de baja el suscriptor de la cámara.
+% \begin{fulllineitems}
+% \phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.Robot.unsubscribeToCamera()}}\pysiglinewithargsret{public void \sphinxbfcode{unsubscribeToCamera}}{}{}
+% Se da de baja el suscriptor de la cámara.
 
-\end{fulllineitems}
+% \end{fulllineitems}
 
 
 
-\textbf{unsubsribeToSonar}
-\label{\detokenize{dev_docs:unsubsribetosonar}}\index{unsubsribeToSonar() (Java method)}
+% \textbf{unsubsribeToSonar}
+% \label{\detokenize{dev_docs:unsubsribetosonar}}\index{unsubsribeToSonar() (Java method)}
 
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.Robot.unsubsribeToSonar()}}\pysiglinewithargsret{public void \sphinxbfcode{unsubsribeToSonar}}{}{}
-Se da de baja el suscriptor del sonar.
+% \begin{fulllineitems}
+% \phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.Robot.unsubsribeToSonar()}}\pysiglinewithargsret{public void \sphinxbfcode{unsubsribeToSonar}}{}{}
+% Se da de baja el suscriptor del sonar.
 
-\end{fulllineitems}
+% \end{fulllineitems}
 
 
 
-\textbf{wakeUp}
-\label{\detokenize{dev_docs:wakeup}}\index{wakeUp() (Java method)}
+% \textbf{wakeUp}
+% \label{\detokenize{dev_docs:wakeup}}\index{wakeUp() (Java method)}
 
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.Robot.wakeUp()}}\pysiglinewithargsret{public void \sphinxbfcode{wakeUp}}{}{}
-Cambia al robot a la postura Init.
+% \begin{fulllineitems}
+% \phantomsection\label{\detokenize{dev_docs:com.lar.cloudnao.Robot.wakeUp()}}\pysiglinewithargsret{public void \sphinxbfcode{wakeUp}}{}{}
+% Cambia al robot a la postura Init.
 
-\end{fulllineitems}
+% \end{fulllineitems}
 

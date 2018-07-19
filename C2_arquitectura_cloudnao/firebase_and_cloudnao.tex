@@ -21,7 +21,7 @@ estructura del \sphinxstyleemphasis{Robot Remote Control}.
 \centering
 \capstart
 
-\noindent\sphinxincludegraphics[scale=0.5]{{realtime_database_diagram}.png}
+\noindent\sphinxincludegraphics[scale=0.3]{{realtime_database_diagram}.png}
 \caption{Diagrama de la relación entre los componentes de la arquitectura y Firebase Realtime Database}\label{\detokenize{chapter_two/desc_cloudnao:rtd-components-diagram}}\end{figure}
 
 De la \hyperref[\detokenize{chapter_two/desc_cloudnao:rtd-components-diagram}]{Figura \ref{\detokenize{chapter_two/desc_cloudnao:rtd-components-diagram}}} se muestran identificadas por un número
@@ -38,13 +38,12 @@ tecnología donde un cliente recibe actualizaciones automáticamente desde el
 servidor mediante una conexión HTTP. Con esta herramienta el robot se mantiene
 «escuchando» los cambios realizados a una ubicación en la base de datos. Al
 recibir un mensaje el robot lo maneja como un comando para ejecutar cierta
-acción, como puede ser un movimiento, enviar una imagen en vivo, o hasta ejecutar
-un programa. Esta es la parte principal del \sphinxstyleemphasis{Robot Remote Control}.
+acción, como puede ser un movimiento o enviar una imagen en vivo. Esta es la parte principal del \sphinxstyleemphasis{Robot Remote Control}.
 
 2. \sphinxstylestrong{Aplicación móvil - Robot}, utilizando el SDK de NAOqi para Java,
 específicamente para Android, se ejecutan remotamente módulos de la API de NAOqi.
 Para la parte de Realtime Database se solicitan datos de \sphinxcode{ALMemory}. El robot
-envía la información a la aplicación y esta escribe los datos en una ubicación
+envía la información a la aplicación y ésta escribe los datos en una ubicación
 única para cada robot. Esta relación es una de las partes que generan los datos
 de \sphinxstyleemphasis{Robot Log}.
 
@@ -94,17 +93,14 @@ en cuenta para estructurar los datos dentro del JSON.
 
 \end{itemize}
 
-Siguiendo estas recomendaciones, se diseño una base de datos, evitando anidar
-elementos sepárandolos como fuera conveniente y manteniendo relaciones que
+Siguiendo estas recomendaciones, se diseñó una base de datos, evitando anidar
+elementos separándolos como fuera conveniente y manteniendo relaciones que
 eran necesarias para realizar consultas de manera simple.
 
-En las siguientes secciones primero se describe la base de datos con un efoque
+En las siguientes secciones primero se describe la base de datos con un enfoque
 clásico con el modelo entidad relación y después como se puede transformar ese
-modelo base en un JSON que se pueda alamacenar en la nube.
+modelo base en un JSON que se pueda almacenar en la nube.
 
-
-\paragraph{Modelo entidad relación}
-\label{\detokenize{chapter_two/desc_cloudnao:modelo-entidad-relacion}}
 El diagrama de la \hyperref[\detokenize{chapter_two/desc_cloudnao:entity-relationship-model-cn-firebase}]{Figura \ref{\detokenize{chapter_two/desc_cloudnao:entity-relationship-model-cn-firebase}}}, muestra el
 modelo sobre el que se basa el JSON que se almacena en Firebase.
 

@@ -1352,10 +1352,15 @@ codificada en base 64.
 \end{sphinxVerbatim}
 
 \subparagraph{Cliente de servicios web de terceros (\sphinxstyleemphasis{tpa\_client\_libraries})}
-\label{\detokenize{chapter_two/desc_cloudnao:cliente-de-servicios-web-de-terceros-tpa-client-libraries}}\phantomsection\label{\detokenize{chapter_two/desc_cloudnao:module-app.tpa_client_libraries.google_cloud_translation}}\index{app.tpa\_client\_libraries.google\_cloud\_translation (módulo)}\index{GoogleCloudTranslation (clase en app.tpa\_client\_libraries.google\_cloud\_translation)}
+\label{\detokenize{chapter_two/desc_cloudnao:cliente-de-servicios-web-de-terceros-tpa-client-libraries}}\phantomsection\label{\detokenize{chapter_two/desc_cloudnao:module-app.tpa_client_libraries.google_cloud_translation}}\index{app.tpa\_client\_libraries.google\_cloud\_translation (módulo)}\index{GoogleCloudTranslation (clase en app.tpa\_client\_libraries.google\_cloud\_translation).}
 
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{chapter_two/desc_cloudnao:app.tpa_client_libraries.google_cloud_translation.GoogleCloudTranslation}}\pysigline{\sphinxbfcode{class }\sphinxcode{app.tpa\_client\_libraries.google\_cloud\_translation.}\sphinxbfcode{GoogleCloudTranslation}}
+En este paquete se encuentran los módulos para hacer las peticiones
+a las API REST de los servicios en la nube de Google Cloud, Kairos
+y Wit.ai.
+
+
+\codedocumentation{\sphinxbfcode{class }\sphinxcode{app.tpa\_client\_libraries.google\_cloud\_translation.}\sphinxbfcode{GoogleCloudTranslation}}
+
 Una clase pública que se conecta a la API de traducción de Google Cloud,
 la cual permite traducir una cadena dada en un cualquier idioma admitido.
 Hay tres métodos que provee la API; \sphinxcode{translate}, que recibe una cadena y
@@ -1368,9 +1373,9 @@ El usado es \sphinxcode{translate}, a través de un \sphinxcode{POST} a
 del mensaje HTTP debe tener al menos dos parámetros \sphinxcode{q} y \sphinxcode{target},
 el texto de entrada y el código del lenguaje al que se traducirá el texto
 de entrada, respectivamente.
-\begin{quote}\begin{description}
-\item[{Ejemplo}] \leavevmode
-\end{description}\end{quote}
+
+En el siguiente fragmento de código en una terminal de Python interactiva
+se muestra cómo utilizar este módulo.
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{k+kn}{from} \PYG{n+nn}{app}\PYG{n+nn}{.}\PYG{n+nn}{tpa\PYGZus{}client\PYGZus{}libraries}\PYG{n+nn}{.}\PYG{n+nn}{google\PYGZus{}cloud\PYGZus{}translation} \PYG{k}{import} \PYG{n}{GoogleCloudTranslation}
@@ -1380,40 +1385,11 @@ de entrada, respectivamente.
 \PYG{g+go}{\PYGZgt{}\PYGZgt{}\PYGZgt{}}
 \end{sphinxVerbatim}
 
-El constructor de la clase se encarga de cargar la API Key del archivo
-\sphinxcode{credentials.json}.
-\index{translate() (método de app.tpa\_client\_libraries.google\_cloud\_translation.GoogleCloudTranslation)}
-
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{chapter_two/desc_cloudnao:app.tpa_client_libraries.google_cloud_translation.GoogleCloudTranslation.translate}}\pysiglinewithargsret{\sphinxbfcode{translate}}{\emph{input\_text}, \emph{target\_language}}{}~
-Este método se encarga de hacer la petición y parsear la respuesta.
-\begin{quote}\begin{description}
-\item[{Parámetros}] \leavevmode\begin{itemize}
-\item {} 
-\sphinxstyleliteralstrong{input\_text} (\sphinxstyleliteralemphasis{string.}) \textendash{} Texto que se traducirá.
-
-\item {} 
-\sphinxstyleliteralstrong{target\_language} (\sphinxstyleliteralemphasis{string.}) \textendash{} Código del idioma al que se desea traducir.
-
-\end{itemize}
-
-\item[{Devuelve}] \leavevmode
-Un objeto que será la respuesta de la API REST.
-
-\item[{Rtyep}] \leavevmode
-dict.
-
-\end{description}\end{quote}
-
-\end{fulllineitems}
-
-
-\end{fulllineitems}
-
 \phantomsection\label{\detokenize{chapter_two/desc_cloudnao:module-app.tpa_client_libraries.google_cloud_vision}}\index{app.tpa\_client\_libraries.google\_cloud\_vision (módulo)}\phantomsection\label{\detokenize{chapter_two/desc_cloudnao:module-google_cloud_vision}}\index{google\_cloud\_vision (módulo)}\index{GoogleCloudVision (clase en app.tpa\_client\_libraries.google\_cloud\_vision)}
 
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{chapter_two/desc_cloudnao:app.tpa_client_libraries.google_cloud_vision.GoogleCloudVision}}\pysigline{\sphinxbfcode{class }\sphinxcode{app.tpa\_client\_libraries.google\_cloud\_vision.}\sphinxbfcode{GoogleCloudVision}}
+
+\codedocumentation{\sphinxbfcode{class }\sphinxcode{app.tpa\_client\_libraries.google\_cloud\_vision.}\sphinxbfcode{GoogleCloudVision}}
+
 Una clase pública para integrar en la aplicación dos de las características
 ofrecidas por Google Cloud Vision, el reconocimiento óptico de caracteres y
 el etiquetado de imágenes, usando su API REST.
@@ -1451,16 +1427,13 @@ debe tener la siguiente estructura.
 
 En el parámetro \sphinxcode{features} solo añadimos las dos que utilizamos. El objeto
 \sphinxcode{image} contiene la imagen que se desea analizar, y acepta la imagen codificada
-en base64 (\sphinxcode{content}) ó un URL (\sphinxcode{imageUri}).
+en base64 (\sphinxcode{content}) o un URL (\sphinxcode{imageUri}).
 
 Además de el cuerpo con la imagen es necesaria una API Key en los parámetros
 del URL.
 
 El siguiente ejemplo muestra un uso simple de esta clase cliente de la API
 de Google Cloud.
-\begin{quote}\begin{description}
-\item[{Ejemplo}] \leavevmode
-\end{description}\end{quote}
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{k+kn}{from} \PYG{n+nn}{app}\PYG{n+nn}{.}\PYG{n+nn}{tpa\PYGZus{}client\PYGZus{}libraries}\PYG{n+nn}{.}\PYG{n+nn}{google\PYGZus{}cloud\PYGZus{}vision} \PYG{k}{import} \PYG{n}{GoogleCloudVision}
@@ -1472,91 +1445,11 @@ de Google Cloud.
 \PYG{g+go}{\PYGZgt{}\PYGZgt{}\PYGZgt{}}
 \end{sphinxVerbatim}
 
-El constructor de la clase, define el URL al que se
-le harán las peticiones.
-Es necesaria una API Key, en este caso se encuentra dentro del archivo
-\sphinxcode{credentials.json}.
-\index{label\_annotations\_description() (método de app.tpa\_client\_libraries.google\_cloud\_vision.GoogleCloudVision)}
-
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{chapter_two/desc_cloudnao:app.tpa_client_libraries.google_cloud_vision.GoogleCloudVision.label_annotations_description}}\pysiglinewithargsret{\sphinxbfcode{label\_annotations\_description}}{\emph{image}, \emph{is\_url}}{}
-Hace una petición enviando en el parámetro \sphinxcode{features} la clasificación
-de imágenes (\sphinxcode{LABEL\_DETECTION}) y parsea la respuesta obtenida.
-\begin{quote}\begin{description}
-\item[{Parámetros}] \leavevmode\begin{itemize}
-\item {} 
-\sphinxstyleliteralstrong{image} (\sphinxstyleliteralemphasis{string.}) \textendash{} La imagen en base 64 o el URL.
-
-\item {} 
-\sphinxstyleliteralstrong{is\_url} (\sphinxstyleliteralemphasis{boolean.}) \textendash{} Bandera que dice si es o no un URL.
-
-\end{itemize}
-
-\item[{Devuelve}] \leavevmode
-Una lista compuesto por las categorías a las que corresponde la imagen, sino un mesaje de error.
-
-\item[{Return type}] \leavevmode
-list.
-
-\end{description}\end{quote}
-
-\end{fulllineitems}
-
-\index{set\_data() (método de app.tpa\_client\_libraries.google\_cloud\_vision.GoogleCloudVision)}
-
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{chapter_two/desc_cloudnao:app.tpa_client_libraries.google_cloud_vision.GoogleCloudVision.set_data}}\pysiglinewithargsret{\sphinxbfcode{set\_data}}{\emph{image}, \emph{is\_url}}{}
-Método para definir el formato de la imagen que se enviará en el
-cuerpo de la petición si es un URL o una cadena.
-\begin{quote}\begin{description}
-\item[{Parámetros}] \leavevmode\begin{itemize}
-\item {} 
-\sphinxstyleliteralstrong{image} (\sphinxstyleliteralemphasis{string.}) \textendash{} La cadena de la imagen en base 64 o el URL.
-
-\item {} 
-\sphinxstyleliteralstrong{is\_url} (\sphinxstyleliteralemphasis{boolean.}) \textendash{} Bandera que dice si es o no un URL.
-
-\end{itemize}
-
-\end{description}\end{quote}
-
-\end{fulllineitems}
-
-\index{text\_annotations\_description() (método de app.tpa\_client\_libraries.google\_cloud\_vision.GoogleCloudVision)}
-
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{chapter_two/desc_cloudnao:app.tpa_client_libraries.google_cloud_vision.GoogleCloudVision.text_annotations_description}}\pysiglinewithargsret{\sphinxbfcode{text\_annotations\_description}}{\emph{image}, \emph{is\_url}}{}
-Hace una petición enviando en el parámetro \sphinxcode{features} la detección
-de texto (\sphinxcode{TEXT\_DETECTION})
-y parsea la respuesta obtenida.
-\begin{quote}\begin{description}
-\item[{Parámetros}] \leavevmode\begin{itemize}
-\item {} 
-\sphinxstyleliteralstrong{image} (\sphinxstyleliteralemphasis{string.}) \textendash{} La imagen en base 64 o el URL.
-
-\item {} 
-\sphinxstyleliteralstrong{is\_url} (\sphinxstyleliteralemphasis{boolean.}) \textendash{} Bandera que dice si es o no un URL.
-
-\end{itemize}
-
-\item[{Devuelve}] \leavevmode
-El texto detectado, sino un mesaje de error.
-
-\item[{Return type}] \leavevmode
-dict.
-
-\end{description}\end{quote}
-
-\end{fulllineitems}
-
-
-\end{fulllineitems}
-
 \phantomsection\label{\detokenize{chapter_two/desc_cloudnao:module-app.tpa_client_libraries.kairos_client}}\index{app.tpa\_client\_libraries.kairos\_client (módulo)}\phantomsection\label{\detokenize{chapter_two/desc_cloudnao:module-kairos}}\index{kairos (módulo)}\index{Kairos (clase en app.tpa\_client\_libraries.kairos\_client)}
 
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{chapter_two/desc_cloudnao:app.tpa_client_libraries.kairos_client.Kairos}}\pysigline{\sphinxbfcode{class }\sphinxcode{app.tpa\_client\_libraries.kairos\_client.}\sphinxbfcode{Kairos}}
-Una clase pública que sirve como cliente para conectare a dos servicios
+\codedocumentation{\sphinxbfcode{class }\sphinxcode{app.tpa\_client\_libraries.kairos\_client.}\sphinxbfcode{Kairos}}
+
+Una clase pública que sirve como cliente para conectarse a dos servicios
 que brinda la API de Kairos, el almacenamiento de rostros en una galería en la nube, y
 la identificación de caras previamente guardadas.
 
@@ -1589,10 +1482,7 @@ comúnmente es el nombre de la persona con esa cara.
 \PYG{p}{\PYGZcb{}}
 \end{sphinxVerbatim}
 
-Un ejemplo del uso de la API:
-\begin{quote}\begin{description}
-\item[{Ejemplo}] \leavevmode
-\end{description}\end{quote}
+Un ejemplo del uso del módulo.
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{k+kn}{from} \PYG{n+nn}{app}\PYG{n+nn}{.}\PYG{n+nn}{tpa\PYGZus{}client\PYGZus{}libraries}\PYG{n+nn}{.}\PYG{n+nn}{kairos\PYGZus{}client} \PYG{k}{import} \PYG{n}{Kairos}
@@ -1604,65 +1494,12 @@ Un ejemplo del uso de la API:
 \PYG{g+go}{\PYGZgt{}\PYGZgt{}\PYGZgt{}}
 \end{sphinxVerbatim}
 
-El contructor de la clase define el URL, la galería y los encabezados.
-\index{enroll() (método de app.tpa\_client\_libraries.kairos\_client.Kairos)}
-
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{chapter_two/desc_cloudnao:app.tpa_client_libraries.kairos_client.Kairos.enroll}}\pysiglinewithargsret{\sphinxbfcode{enroll}}{\emph{image\_content}, \emph{subject\_id}}{}~
-Guarda en una galería un nuevo rostro para poder identificarlo después.
-Con la función {\hyperref[\detokenize{chapter_two/desc_cloudnao:app.utils.requests_utils.make_request}]{\sphinxcrossref{\sphinxcode{app.utils.requests\_utils.make\_request()}}}} hace el
-\sphinxcode{POST} a \sphinxcode{enroll}. Finalmente si todo ocurrió sin errores
-retorna un diccionario con las coordenadas del rostro y otro infomación.
-\begin{quote}\begin{description}
-\item[{Parámetros}] \leavevmode\begin{itemize}
-\item {} 
-\sphinxstyleliteralstrong{image\_content} (\sphinxstyleliteralemphasis{string.}) \textendash{} URL o codificación en base 64 de la imagen.
-
-\item {} 
-\sphinxstyleliteralstrong{subject\_id} (\sphinxstyleliteralemphasis{string.}) \textendash{} El identificador del rostro.
-
-\end{itemize}
-
-\item[{Devuelve}] \leavevmode
-Un diccionario que pueda enviar como respuesta la API REST de CloudNAO.
-
-\item[{Tipo del valor devuelto}] \leavevmode
-dict.
-
-\end{description}\end{quote}
-
-\end{fulllineitems}
-
-\index{recognize() (método de app.tpa\_client\_libraries.kairos\_client.Kairos)}
-
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{chapter_two/desc_cloudnao:app.tpa_client_libraries.kairos_client.Kairos.recognize}}\pysiglinewithargsret{\sphinxbfcode{recognize}}{\emph{image\_content}}{}~
-Se encarga de hacer el \sphinxcode{POST} al recurso \sphinxcode{recognize}. Utiliza la
-función {\hyperref[\detokenize{chapter_two/desc_cloudnao:app.utils.requests_utils.make_request}]{\sphinxcrossref{\sphinxcode{app.utils.requests\_utils.make\_request()}}}} y parsea la
-respuesta. Si todo fue exitoso se retorna
-un diccionario con las coordenadas del rostro y
-el identificador de la cara que se guardo previamente.
-\begin{quote}\begin{description}
-\item[{Parámetros}] \leavevmode
-\sphinxstyleliteralstrong{image\_content} (\sphinxstyleliteralemphasis{string.}) \textendash{} URL o codificación en base 64 de la imagen.
-
-\item[{Devuelve}] \leavevmode
-Un diccionario que pueda enviar como respuesta la API REST de CloudNAO.
-
-\item[{Tipo del valor devuelto}] \leavevmode
-dict.
-
-\end{description}\end{quote}
-
-\end{fulllineitems}
-
-
-\end{fulllineitems}
 
 \phantomsection\label{\detokenize{chapter_two/desc_cloudnao:module-app.tpa_client_libraries.wit_api}}\index{app.tpa\_client\_libraries.wit\_api (módulo)}\phantomsection\label{\detokenize{chapter_two/desc_cloudnao:module-wit_api}}\index{wit\_api (módulo)}\index{WitAPI (clase en app.tpa\_client\_libraries.wit\_api)}
 
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{chapter_two/desc_cloudnao:app.tpa_client_libraries.wit_api.WitAPI}}\pysigline{\sphinxbfcode{class }\sphinxcode{app.tpa\_client\_libraries.wit\_api.}\sphinxbfcode{WitAPI}}
+
+\codedocumentation{\sphinxbfcode{class }\sphinxcode{app.tpa\_client\_libraries.wit\_api.}\sphinxbfcode{WitAPI}}
+
 Una clase pública donde se hacen las peticiones HTTP
 a Wit.ai y para extraer el significado del audio o texto. Funciona como
 un módulo cliente para solicitar los recursos de \sphinxcode{/message} y \sphinxcode{/speech}.
@@ -1680,45 +1517,6 @@ enlistar las entidades encontradas en una cadena de texto.
 \PYG{g+go}{\PYGZgt{}\PYGZgt{}\PYGZgt{}}
 \end{sphinxVerbatim}
 \index{message() (método de app.tpa\_client\_libraries.wit\_api.WitAPI)}
-
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{chapter_two/desc_cloudnao:app.tpa_client_libraries.wit_api.WitAPI.message}}\pysiglinewithargsret{\sphinxbfcode{message}}{\emph{q\_sentence}}{}~
-Método que hace la petición \sphinxcode{GET} a /message y retorna el significado
-extraido de una sentencia.
-\begin{quote}\begin{description}
-\item[{Parámetros}] \leavevmode
-\sphinxstyleliteralstrong{q\_sentence} (\sphinxstyleliteralemphasis{string}) \textendash{} La oración de la que se desea obtener información.
-
-\item[{Devuelve}] \leavevmode
-Un diccionario con la respuesta enviada por Wit.ai
-
-\item[{Tipo del valor devuelto}] \leavevmode
-dict
-
-\end{description}\end{quote}
-
-\end{fulllineitems}
-
-\index{speech() (método de app.tpa\_client\_libraries.wit\_api.WitAPI)}
-
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{chapter_two/desc_cloudnao:app.tpa_client_libraries.wit_api.WitAPI.speech}}\pysiglinewithargsret{\sphinxbfcode{speech}}{\emph{audio\_file='audio\_wav'}}{}~
-Solicita el recurso /speech con un \sphinxcode{POST} y retorna la información
-encontrada en un archivo de audio, las entidades y la transcripción.
-\begin{quote}\begin{description}
-\item[{Parámetros}] \leavevmode
-\sphinxstyleliteralstrong{audio\_file} (\sphinxstyleliteralemphasis{string}) \textendash{} el nombre del archivo de audio junto con su extensión, por defecto \sphinxcode{audio.wav}.
-
-\item[{Devuelve}] \leavevmode
-La respuesta que será enviada a través del API REST.
-
-\end{description}\end{quote}
-
-\end{fulllineitems}
-
-
-\end{fulllineitems}
-
 
 
 \subparagraph{Utilidades (\sphinxstyleemphasis{utils})}
@@ -1756,67 +1554,9 @@ Programa que establece las opciones de configuración para la
 aplicación.
 \index{Config (clase en config)}
 
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{chapter_two/desc_cloudnao:config.Config}}\pysigline{\sphinxbfcode{class }\sphinxcode{config.}\sphinxbfcode{Config}}
-Superclase para definir las opciones que comparten
-todas las configuraciones.
-
-\end{fulllineitems}
-
-\index{DevelopmentConfig (clase en config)}
-
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{chapter_two/desc_cloudnao:config.DevelopmentConfig}}\pysigline{\sphinxbfcode{class }\sphinxcode{config.}\sphinxbfcode{DevelopmentConfig}}
-Configuración que se ocupara durante el desarrollo.
-Se activa el debugger y el loader.
-
-\end{fulllineitems}
-
-\index{ProductionConfig (clase en config)}
-
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{chapter_two/desc_cloudnao:config.ProductionConfig}}\pysigline{\sphinxbfcode{class }\sphinxcode{config.}\sphinxbfcode{ProductionConfig}}
-Configuración para producción. Ni el debugging ni el testing
-se activan.
-
-\end{fulllineitems}
-
-\index{TestingConfig (clase en config)}
-
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{chapter_two/desc_cloudnao:config.TestingConfig}}\pysigline{\sphinxbfcode{class }\sphinxcode{config.}\sphinxbfcode{TestingConfig}}
-Configuración para testing. La opción de TESTING está activada.
-
-\end{fulllineitems}
-
-
 
 \subparagraph{manage.py}
 \label{\detokenize{chapter_two/desc_cloudnao:module-manage}}\label{\detokenize{chapter_two/desc_cloudnao:manage-py}}\index{manage (módulo)}
 El programa que inicia la aplicación.
 \index{create\_tables() (en el módulo manage)}
-
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{chapter_two/desc_cloudnao:manage.create_tables}}\pysiglinewithargsret{\sphinxcode{manage.}\sphinxbfcode{create\_tables}}{}{}
-Crea las tablas en la base de datos, de acuerdo a los modelos
-definidos. Se ejecuta antes de recibir una petición.
-
-\end{fulllineitems}
-
-\index{make\_shell\_context() (en el módulo manage)}
-
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{chapter_two/desc_cloudnao:manage.make_shell_context}}\pysiglinewithargsret{\sphinxcode{manage.}\sphinxbfcode{make\_shell\_context}}{}{}
-Añade un nuevo comando a la interfaz de línea de comandos
-de la aplicación.
-\begin{quote}\begin{description}
-\item[{Devuelve}] \leavevmode
-Un diccionario con los módulos que se importan a la CLI de la aplicación.
-
-\item[{Tipo del valor devuelto}] \leavevmode
-dict
-
-\end{description}\end{quote}
-
-\end{fulllineitems}
 
