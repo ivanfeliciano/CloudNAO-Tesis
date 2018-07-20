@@ -253,25 +253,25 @@ Cada módulo de la aplicación contiene las siguientes carpetas:
 
 \end{itemize}
 
-
-
-\paragraph{Sistema de compilación de Gradle}
-\label{\detokenize{dev_docs:sistema-de-compilacion-de-gradle}}
-Android Studio usa Gradle como la base del sistema de compilación, con más capacidades específicas de Android a través del complemento de Android para Gradle. Este sistema de compilación se ejecuta en una herramienta integrada desde el menú de Android Studio, y lo hace independientemente de la línea de comandos. Puedes usar las funciones del sistema de compilación para lo siguiente:
-\begin{itemize}
-\item {} 
-personalizar, configurar y extender el proceso de compilación;
-
-\item {} 
-crear múltiples APK para tu aplicación, con diferentes funciones utilizando el mismo proyecto y los mismos módulos;
-
-\item {} 
-volver a usar códigos y recursos entre conjuntos de archivos de origen.
-
-\end{itemize}
-
-Recurriendo a la flexibilidad de Gradle, puedes lograr todo esto sin modificar los archivos de origen de tu app. Los archivos de compilación de Android Studio se denominan build.gradle. Son archivos de texto sin formato que usan la sintaxis Groovy para configurar la compilación con elementos proporcionados por el complemento de Android para Gradle. Cada proyecto tiene un archivo de compilación de nivel superior para todo el proyecto y archivos de compilación de nivel de módulo independientes para cada módulo. Cuando importas un proyecto existente, Android Studio genera automáticamente los archivos de compilación necesarios.
-
+%
+%
+%\paragraph{Sistema de compilación de Gradle}
+%\label{\detokenize{dev_docs:sistema-de-compilacion-de-gradle}}
+%Android Studio usa Gradle como la base del sistema de compilación, con más capacidades específicas de Android a través del complemento de Android para Gradle. Este sistema de compilación se ejecuta en una herramienta integrada desde el menú de Android Studio, y lo hace independientemente de la línea de comandos. Puedes usar las funciones del sistema de compilación para lo siguiente:
+%\begin{itemize}
+%\item {} 
+%personalizar, configurar y extender el proceso de compilación;
+%
+%\item {} 
+%crear múltiples APK para tu aplicación, con diferentes funciones utilizando el mismo proyecto y los mismos módulos;
+%
+%\item {} 
+%volver a usar códigos y recursos entre conjuntos de archivos de origen.
+%
+%\end{itemize}
+%
+%Recurriendo a la flexibilidad de Gradle, puedes lograr todo esto sin modificar los archivos de origen de tu app. Los archivos de compilación de Android Studio se denominan build.gradle. Son archivos de texto sin formato que usan la sintaxis Groovy para configurar la compilación con elementos proporcionados por el complemento de Android para Gradle. Cada proyecto tiene un archivo de compilación de nivel superior para todo el proyecto y archivos de compilación de nivel de módulo independientes para cada módulo. Cuando importas un proyecto existente, Android Studio genera automáticamente los archivos de compilación necesarios.
+%
 
 \paragraph{Ejemplo de una aplicación}
 \label{\detokenize{dev_docs:una-primera-aplicacion}}
@@ -517,12 +517,12 @@ del gradle de la aplicación y del proyecto.
 \label{\detokenize{dev_docs:configuracion-de-gradle}}
 El sistema de construcción de Android Studio está basado en Gradle, y el plugin
 de Android para Gradle adiciona varias características que están
-contruidas específicamente para aplicaciones de Android.
-\begin{quote}
+contruidas específicamente para aplicaciones de Android.\\
 
+\begin{remark}
 Gradle es un sistema de automatización de construcción de código abierto
 enfocado a la flexibilidad y desempeño.
-\end{quote}
+\end{remark}
 
 La última versión del plugin de Gradle compatible con el SDK que brinda
 Aldebaran es la 1.3.1. Por lo tanto después de sumar a nuestro directorio
@@ -548,35 +548,17 @@ compila el SDK de NAOqi.
 
 % \paragraph{Añadir Firebase a un proyecto de Android}
 % \label{\detokenize{dev_docs:anadir-firebase-a-un-proyecto-de-android}}
-Para agregar Firebase a tu aplicación, necesitarás un proyecto y un archivo de
-configuración de Firebase para tu aplicación. Esto se crean
-entrando a la consola de Firebase y siguiendo los pasos 
-que se indican en la plataforma.
-% \begin{enumerate}
-% \item {} 
-% Crea un proyecto en consola de Firebase si no lo hiciste anteriormente. Si ya tienes un proyecto de Google existente asociado con tu aplicación para dispositivos móviles, haz clic en Importar proyecto de Google. De lo contrario, haz clic en Agregar proyecto.
 
-% \item {} 
-% Haz clic en Agrega Firebase a tu aplicación para Android y sigue los pasos de la configuración. Si estás importando un proyecto de Google existente, es posible que esto suceda de forma automática y solo tengas que descargar el archivo de configuración.
+Los servicios de Firebase utilizados son Firebase Realtime Database
+y Authentication. Este último a través de la biblioteca Firebase UI.
 
-% \item {} 
-% Ingresa el nombre del paquete de la aplicación cuando se te solicite. Es importante que ingreses el nombre del paquete que usa tu aplicación. Esto solo se puede configurar cuando agregas una aplicación a tu proyecto de Firebase.
-
-% \item {} 
-% Para finalizar el proceso, descargarás un archivo \sphinxcode{googleservices.json}.
-
-% \item {} 
-% Si aún no lo haces, copia esto en la carpeta del módulo de tu proyecto, que generalmente es \sphinxstyleemphasis{app/}.
-
-% \end{enumerate}
-
-Después de añadir ese archivo generado por la consola de Firebase a la aplicación
+Antes de poder utilizar Firebase en una aplicación se debe agregar Firebase a ésta. Después de crear un proyecto en la consola 
+de Firebase se siguen los pasos que ésta nos muestra
+para añadir Firebase a nuestras aplicaciones ya sea web 
+o móviles, en nuestro caso para dispositivos Android.
+La consola genera un archivo de configuración
+que se añade a la aplicación y luego
 se agrega el SDK para poder utilizar las bibliotecas de Firebase en el proyecto.
-% Se deben agregar algunas reglas a los archivos \sphinxcode{buildgradle} del proyecto
-% y de la aplicación. En el primero se incluyen el complemento \sphinxcode{googleservices}
-% y el repositorio Maven de Google. En el segundo ase agrega la línea
-% \sphinxcode{applyplugin} en la parte inferior del archivo para habilitar el complemento
-% de Gradle.
 
 Cada biblioteca de Firebase que se desee utilizar se añade a las dependencias.
 Por ejemplo, sumando a las dependencias de Gradle  \sphinxcode{com.google.firebase:firebase-database:11.6.2}
@@ -589,16 +571,17 @@ Para comenzar a usar la Firebase Realtime Database en la aplicación,
 se debe sumar a las dependencias del archivo \sphinxcode{buildgradle}, de la aplicación,
 \sphinxcode{compile'com.google.firebase:firebase-database:11.8.0'}.
 
-Los datos de Firebase se escriben en una referencia de \sphinxcode{FirebaseDatabase};
-para recuperarlos, se debe adjuntar un agente de escucha o escuchador asíncrono a la
-referencia. El agente de escucha se activa una vez para el estado inicial de los
-datos y otra vez cuando los datos cambian.
+%Los datos de Firebase se escriben en una referencia de \sphinxcode{FirebaseDatabase};
+%para recuperarlos, se debe adjuntar un agente de escucha o escuchador asíncrono a la
+%referencia. El agente de escucha se activa una vez para el estado inicial de los
+%datos y otra vez cuando los datos cambian.
 
+%
+%\subparagraph{Obtener una DatabaseReference}
+%\label{\detokenize{dev_docs:obtener-una-databasereference}}
 
-\subparagraph{Obtener una DatabaseReference}
-\label{\detokenize{dev_docs:obtener-una-databasereference}}
 Para leer y escribir en la base de datos, necesitas una instancia de
-DatabaseReference:
+\texttt{DatabaseReference}:
 
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -607,30 +590,30 @@ DatabaseReference:
 \end{sphinxVerbatim}
 
 
-\subparagraph{Leer y escribir datos}
+\subparagraph{Leer y escribir datos.}
 \label{\detokenize{dev_docs:leer-y-escribir-datos}}
 Para ejecutar una escritura básica se usa \sphinxcode{setValue()} para guardar datos en
 una referencia que se especifique.
 
 Los tipos de datos que se pueden almacenar son los siguientes:
 \begin{itemize}
-\item {} 
-String
+\item {}
+\texttt{String}
 
-\item {} 
-Long
+\item {}
+\texttt{Long}
 
-\item {} 
-Double
+\item {}
+\texttt{Double}
 
-\item {} 
-Boolean
+\item {}
+\texttt{Boolean}
 
-\item {} 
-Map\textless{}String, Object\textgreater{}
+\item {}
+\texttt{Map\textless{}String, Object\textgreater{}}
 
-\item {} 
-List\textless{}Object\textgreater{}
+\item {}
+\texttt{List\textless{}Object\textgreater{}}
 
 \end{itemize}
 
@@ -650,7 +633,7 @@ datos.
 \end{sphinxVerbatim}
 
 
-\subparagraph{Detección de eventos de valores.}
+\subparagraph{Detección de eventos en valores.}
 \label{\detokenize{dev_docs:detecteccion-eventos-de-valores}}
 Para leer datos en una ruta de acceso y escuchar actualizaciones, usa el
 método \sphinxcode{addValueEventListener()} o el método \sphinxcode{addListenerForSingleValueEvent()}
@@ -683,7 +666,7 @@ ubicación para escuchar cambios, y el segundo lee los datos de una ubicación
 una sola vez.
 
 
-\subparagraph{Actualización o borrado de datos}
+\subparagraph{Actualización o borrado de datos.}
 \label{\detokenize{dev_docs:actulizacion-o-borrado-de-datos}}
 Para actualizar se llama al método \sphinxcode{update\\Children()} y para eliminar datos
 en una referencia se usa \sphinxcode{removeValue} o se pasa como parámetro un valor
@@ -695,21 +678,21 @@ También existe el método \sphinxcode{push()} para añadir una entrada con un i
 
 \paragraph{Firebase UI Authentication}
 \label{\detokenize{dev_docs:firebase-ui-authentication}}
-FirebaseUI es una biblioteca de código abierto que ofrece referencias a la IU
-de manera simple y personalizable, sobre los SDK de Firebase, para eliminar
-código repetitivo y promover mejores prácticas (en cuanto a la experiencia
-de usuario y seguridad) para la autenticación.
+%FirebaseUI es una biblioteca de código abierto que ofrece referencias a la IU
+%de manera simple y personalizable, sobre los SDK de Firebase, para eliminar
+%código repetitivo y promover mejores prácticas (en cuanto a la experiencia
+%de usuario y seguridad) para la autenticación.
 
-Una API sencilla es provista para manejar el flujo del inicio de sesión con una
+Es una API para manejar el flujo del inicio de sesión con una
 dirección de correo electrónico, números de teléfono, y a través de
 proveedores como Google Sign-In, y Facebook Login. Está construido sobre
 Firebase Authentication.
 
-FirebaseUI se integra con \sphinxstylestrong{Smart Lock} para guardar y recuperar credenciales,
-habilita el inicio de sesión con un solo click en una aplicación cuando el
-usuario regresa a esta. Maneja casos de uso complicados como la recuperación
-de la cuenta y el enlace con la cuenta que son inseguros y difíciles de implementar
-usando la API base de Firebase Authentication.
+%FirebaseUI se integra con \sphinxstylestrong{Smart Lock} para guardar y recuperar credenciales,
+%habilita el inicio de sesión con un solo click en una aplicación cuando el
+%usuario regresa a esta. Maneja casos de uso complicados como la recuperación
+%de la cuenta y el enlace con la cuenta que son inseguros y difíciles de implementar
+%usando la API base de Firebase Authentication.
 
 
 \subparagraph{Configuración.}
@@ -726,7 +709,7 @@ Después, se agrega a la biblioteca de FirebaseUI auth en las dependencias de
 \end{sphinxVerbatim}
 
 
-\subparagraph{Uso de FirebaseUI para autenticación}
+\subparagraph{Uso de FirebaseUI para autenticación.}
 \label{\detokenize{dev_docs:uso-de-firebaseui-para-autenticacion}}
 Antes de llamar al flujo de autenticación de FirebaseUI, la aplicación debe
 checar que un usuario ya esté registrado de una sesión previa. Este caso
@@ -747,7 +730,7 @@ El punto de entrada para el flujo de la autenticación es la clase
 \sphinxcode{com.firebase.ui.auth.AuthUI}.
 
 
-\subparagraph{Inicio de sesión}
+\subparagraph{Inicio de sesión.}
 \label{\detokenize{dev_docs:inicio-de-sesion}}
 Si un usuario no ha iniciado sesión, entonces el proceso de inicio de sesión
 puede empezar creando un intent sign-in usando \sphinxcode{AuthUISignInIntent\\Builder}.
@@ -792,16 +775,16 @@ El flujo de la autenticación suministra varios códigos de respuesta, entre
 los más comunes están:
 \begin{itemize}
 \item {} 
-\sphinxcode{ActivityRESULT\_OK}, si es el usuario inició sesión.
+\sphinxcode{Activity.RESULT\_OK}, si es el usuario inició sesión.
 
 \item {} 
-\sphinxcode{ActivityRESULT\_CANCELLED}, si el usuario canceló manualmente el inicio de sesión.
+\sphinxcode{Activity.RESULT\_CANCELLED}, si el usuario canceló manualmente el inicio de sesión.
 
 \item {} 
-\sphinxcode{ErrorCodesNO\_NETWORK}, si no hay conexión a una red.
+\sphinxcode{ErrorCodes.NO\_NETWORK}, si no hay conexión a una red.
 
 \item {} 
-\sphinxcode{ErrorCodesUNKNOWN\_ERROR},  todos los otros errores.
+\sphinxcode{ErrorCodes.UNKNOWN\_ERROR},  todos los otros errores.
 
 \end{itemize}
 
@@ -840,7 +823,7 @@ el método \sphinxcode{onActivityResult()} queda como sigue:
 \end{sphinxVerbatim}
 
 
-\subparagraph{Cierre de sesión}
+\subparagraph{Cierre de sesión.}
 \label{\detokenize{dev_docs:cierre-de-sesion}}
 AuthUI brinda un método \sphinxcode{signOut} simple que encapsula todo el proceso
 que conlleva un cierre de sesión. El método retornar una objeto \sphinxcode{Task}
@@ -1035,35 +1018,183 @@ usuario con los datos recibidos.
 % \sphinxurl{http://jakewharton.github.io/butterknife/}
 
 
-\subsubsection{Documentación para desarrolladores}
+\subsubsection{Descripción de las clases principales}
 \label{\detokenize{dev_docs:documentacion-para-desarrolladores}}
-La aplicación tiene las siguientes clases principales:
-\begin{itemize}
-\item {} 
-\sphinxcode{SignInActivity}, la actividad encargada de todo el flujo para el inicio de sesión. Utiliza FirebaseUI.
 
-\item {} 
-\sphinxcode{SelectRobotActivity}, la actividad que muestra los robots guardados por el usuario que inició sesión. Además aquí se pueden añadir nuevos. Escribe y lee de Firebase Realtime Database. Aquí se crea la instancia única del robot con el que se desea conectar, se crea la sesión y los proxies a los módulos de NAOqi.
+La aplicación está compuesta como cualquier otra, por una
+carpeta \textit{manifests}, \textit{res} y \textit{java}.
+La carpeta \textit{java} incluye los paquetes \texttt{com.lar.cloudnao.utilities} y \texttt{com.lar.cloudnao}.
 
-\item {} 
-\sphinxcode{MenuActivity}, esta actividad es un menú para elegir entre las actividades restantes. Es un ViewPager, que reacciona al click del usuario.
 
-\item {} 
-\sphinxcode{RemoteControllerActivity}, la actividad que corresponde al control remoto. Utiliza módulos de NAOqi, y la base de datos de Firebase para escribir los logs.
+\paragraph{Paquete \texttt{utilities}}
+d
+Es un paquete compuesto por clases e interfaces que tienen como
+función realizar tareas asíncronas para manejar imágenes del robot,
+enviar peticiones a la API REST, manejar la IU, etcétera.
 
-\item {} 
-\sphinxcode{FaceRecognitionActivity}, la actividad que detecta rostros en una imagen. Utiliza Volley para conectarse a la API RESTful de CloudNAO.
+\codedocumentation{\texttt{Interface }\sphinxcode{OnRobotNameClickListener}}
 
-\item {} 
-\sphinxcode{OCRTranslationActivity}, esta actividad reconoce texto en una imagen y lo traduce. Utiliza Volley para conectarse a la API RESTful de CloudNAO.
+Una interfaz con un método abstracto que sirve como callback
+cuando un usuario da click sobre alguno de los robots obtenidos desde Firebase y mostrados en un \texttt{RecyclerView}.
 
-\item {} 
-\sphinxcode{ObjectDetectionActivity}, la actividad que reconoce objetos en una imagen. Utiliza Volley para conectarse a la API RESTful de CloudNAO.
+\codedocumentation{\texttt{Interface }\sphinxcode{VisionRequestCompleted}}
 
-\item {} 
-\sphinxcode{Robot}, es la clase que define al objeto robot. Los métodos para ejecutar módulos de NAOqi, y obtener imágenes de la cámara del robot, valores de la memoria, etc.
+Interfaz con un método abstracto que se llama dentro de una tarea asíncrona para procesar un objeto que se obtiene de la respuesta
+a la solicitud del recurso \texttt{vision} de la API REST de CloudNAO.
+Hereda métodos de \texttt{AsyncTask}.
 
-\end{itemize}
+\codedocumentation{\texttt{Class }\sphinxcode{BatteryStatusTask}}
+
+Esta clase obtiene el nivel de batería actual en el robot a través de la lectura del valor en 
+\texttt{ALMemory}. Utiliza la clase \texttt{AsyncTask}.
+Muestra una \texttt{ImageView} que representa el estado de la batería y un \texttt{TextView} con el porcentaje de batería restante.
+
+\codedocumentation{\texttt{Class }\sphinxcode{BoundingBoxesUtils}}
+
+Una clase estática con un método para dibujar cuadros delimitadores 
+sobre un \texttt{ImageView}. Para dibujar el cuadro delimitador 
+recibe un arreglo con los valores necesarios para generar las 
+coordenadas que se usan para dibujar.
+
+\codedocumentation{\texttt{Class }\sphinxcode{ImageTask}}
+
+Clase pública con métodos asíncronos para obtener una imagen desde la cámara del robot de manera remota.  Obtiene un objeto que contiene la imagen, con el espacio de color por defecto del robot NAO (YUV) en un arreglo de bytes, convierte ese arreglo en una imagen jpeg, para después cargar ese objeto jpeg en un bitmap que sirve para llenar el \texttt{ImageView} que muestra la imagen enviada por el robot. Es una subclase
+de \texttt{AsyncTask}.
+
+\codedocumentation{\texttt{Class }\sphinxcode{ItemsListAdapter}}
+
+Esta clase es el \texttt{Adapter} para el \texttt{ListView} cuyos elementos 
+están compuestos por un \texttt{CheckBox} y un \texttt{TextView}. Se 
+utiliza al mostrar la lista de datos que se quieren guardar en 
+Firebase desde \texttt{ALMemory}.
+
+\codedocumentation{\texttt{Class }\sphinxcode{MyPagerAdapter}}
+
+Subclase de \texttt{PagerAdapter} para el \texttt{ViewPager} del menú
+principal de la aplicación, por ahora tiene un tamaño máximo de 4. 
+
+\codedocumentation{\texttt{Class }\sphinxcode{ProxySubscriberItem}}
+
+Clase pública para modelar los objetos de la lista con los datos de \texttt{ALMemory} que se guardarán en Firebase. \texttt{ItemsListAdapter} contiene un objeto \texttt{List} de
+instancias de \texttt{ProxySu	bscriberItem}. Los
+atributos son un  valor booleano \texttt{mChecked} y una cadena \texttt{mProxyName} para saber si un ítem está marcado y el nombre
+de la llave en \texttt{ALMemory}, respectivamente.
+
+\codedocumentation{\texttt{Class }\sphinxcode{RecyclerViewAdapter}}
+
+La clase pública del \texttt{Adapter} para el \texttt{RecyclerView} que mostrará la lista de robots obtenidos desde Firebase y que le pertenecen al
+usuario que inció sesión en la aplicación.
+
+\codedocumentation{\texttt{Class }\sphinxcode{RecyclerViewHolders}}
+
+La clase que modela a los \texttt{ViewHolders} que representan cada robot obtenido de Firebase.
+Aquí se utiliza el método abstracto \texttt{onClickRobotName} como callback para ejecutar una acción al dar click sobre un elemento del \texttt{RecyclerView}.
+
+\codedocumentation{\texttt{Class }\sphinxcode{RobotFromFirebase}}
+
+La clase que modela los objetos de la lista de robots obtenidos desde Firebase, cada objeto contiene un identificador único y el nombre que el usuario asignó.
+
+\codedocumentation{\texttt{Class }\sphinxcode{RobotLogs}}
+
+Clase con métodos asíncronos para almacenar valores de \texttt{ALMemory} en Firebase, obtiene valores del robot y los almacena en una ubicación en Firebase con un \texttt{push()}, por lo que se genera un historial de logs.
+
+\codedocumentation{\texttt{Class }\sphinxcode{ViewHolder}}
+
+Clase que modelos los \texttt{ViewHolders} de la lista de datos que se desean guardar en Firebase, están compuestos por un \texttt{CheckBox} y un \texttt{TextView} que describe a cada elemento.
+
+\codedocumentation{\texttt{Class }\sphinxcode{VisionListElement}}
+
+Clase pública que modela los objetos dentro de una lista que muestra resultados de las actividades de reconocimiento de rostros y objetos. Cada instancia tiene un identificador, que puede ser el nombre del sujeto reconocido , la confianza y las coordenadas de que delimitan al elemento encontrado (un cuadro que encierra un rostro, o un rectángulo que acota un objeto).
+
+\codedocumentation{\texttt{Class }\sphinxcode{VisionRESTRequestsTask}}
+
+La clase con métodos asíncronos para hacer peticiones a la API REST 
+de CloudNAO. Recibe la imagen desde un \texttt{ImageView}, del que obtiene un 
+bitmap y genera una cadena en base 64 que representa esa imagen. 
+Después define la estructura y valores del JSON que se envía en una 
+petición usando la biblioteca Volley. A partir de la respuesta 
+obtenida ejecuta la función callback \texttt{onVisionRequestCompleted} 
+para mostrar los resultados en el contexto de donde se solicitó.
+
+
+
+\codedocumentation{\texttt{Class }\sphinxcode{VolleyResponseUtils}}
+
+Clase estática para manejar la repuesta de \texttt{Volley}, que puede ser un error o puede ser la estructura que se espera.
+
+\codedocumentation{\texttt{Enum ModelObjectViewPager}}
+
+Un enumerado de Java que representa todas las posibles páginas del ViewPager. Se utiliza en el ménu de la aplicación. En este enumerado se almacenan el identificador del \texttt{Layout} de cada página y un título que le corresponde.
+
+
+\paragraph{Actividades de la aplicación}
+
+\codedocumentation{\texttt{Class FaceRecognitionActivity}}
+
+La clase de la actividad que realiza el reconocimiento de rostros. Implementa la interfaz \texttt{VisionRequestCompleted} para llamar a su método abstracto desde la clase \texttt{VisionRESTRequestsTask}.
+
+
+\codedocumentation{\texttt{Class MenuActivity}}
+
+La actividad que muestra el menú principal donde se elige entre otras actividades para interactuar con el robot. Muestra un \texttt{ViewPager} para navegar y elegir la actividad deseada.
+
+
+\codedocumentation{\texttt{Class ObjectDetectionActivity}}
+
+La actividad encargada de la funcionalidad de la detección de objetos, implementa la interfaz \texttt{VisionRequestCompleted} para ejecutar su método \texttt{VisionRequestCompleted.onVisionRequestComple\\ted(Object)} como callback en \texttt{VisionRESTRequestsTask}.
+
+
+\codedocumentation{\texttt{Class OCRTranslationActivity}}
+
+
+Clase de la actividad que se encarga del procesamiento de una imagen 
+para detección de texto y su traducción. Implenta la interfaz 
+\texttt{VisionRequestCompleted}.
+
+\codedocumentation{\texttt{Class RemoteControllerActivity}}
+
+La actividad para el control remoto del robot. Además de poder 
+controlar algunos movimientos como el caminado o el cambio de postura, 
+se puede visualizar una imagen en vivo de la cámara del robot, así 
+como permite enviar valores de \texttt{ALMemory} a una base de datos en la nube 
+a través de Firebase.
+
+\codedocumentation{\texttt{Class Robot}}
+
+No es una actividad pero es la clase pública principal para ejecutar módulos del framework de NAOqi en la aplicación. Es una interfaz para conectarse al robot y ejecutar algunos módulos de NAOqi. Usa el patrón de diseño Singleton para que solo exista una instancia del objeto y funcione como una variable global.
+
+
+\codedocumentation{\texttt{Class SelectRobotActivity}}
+
+Actividad que muestra los robots registrados por el usuario así como la opción para añadir nuevos robots, o conectarse a uno de la lista. Implementa el método abstracto \texttt{OnRobotNameClickListener.onClickRobotName(String, String)}.
+
+%
+%\begin{itemize}
+%\item {} 
+%\sphinxcode{SignInActivity}, la actividad encargada de todo el flujo para el inicio de sesión. Utiliza FirebaseUI.
+%
+%\item {} 
+%\sphinxcode{SelectRobotActivity}, la actividad que muestra los robots guardados por el usuario que inició sesión. Además aquí se pueden añadir nuevos. Escribe y lee de Firebase Realtime Database. Aquí se crea la instancia única del robot con el que se desea conectar, se crea la sesión y los proxies a los módulos de NAOqi.
+%
+%\item {} 
+%\sphinxcode{MenuActivity}, esta actividad es un menú para elegir entre las actividades restantes. Es un ViewPager, que reacciona al click del usuario.
+%
+%\item {} 
+%\sphinxcode{RemoteControllerActivity}, la actividad que corresponde al control remoto. Utiliza módulos de NAOqi, y la base de datos de Firebase para escribir los logs.
+%
+%\item {} 
+%\sphinxcode{FaceRecognitionActivity}, la actividad que detecta rostros en una imagen. Utiliza Volley para conectarse a la API RESTful de CloudNAO.
+%
+%\item {} 
+%\sphinxcode{OCRTranslationActivity}, esta actividad reconoce texto en una imagen y lo traduce. Utiliza Volley para conectarse a la API RESTful de CloudNAO.
+%
+%\item {} 
+%\sphinxcode{ObjectDetectionActivity}, la actividad que reconoce objetos en una imagen. Utiliza Volley para conectarse a la API RESTful de CloudNAO.
+%
+%\item {} 
+%\sphinxcode{Robot}, es la clase que define al objeto robot. Los métodos para ejecutar módulos de NAOqi, y obtener imágenes de la cámara del robot, valores de la memoria, etc.
+%
+%\end{itemize}
 
 
 % \textbf{SignInActivity}
