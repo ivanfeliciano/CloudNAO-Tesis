@@ -24,8 +24,7 @@ del robot NAO.
 
 Además de depender del SDK para Web de Firebase, otras dos dependencias están
 detrás de la aplicación, React, una biblioteca de Javascript para contruir
-interfaces de usuario y Semantic UI, esta última no se mencionará ya que
-es sólo es la encargada del diseño de la interfaz.
+interfaces de usuario y Semantic UI,.
 
 La aplicación tiene una estructura muy sencilla, cumple con los elementos
 básicos de una aplicación web moderna. Un login de usuario, registro de uno
@@ -33,8 +32,8 @@ nuevo, y un tablero donde el usuario interactúe con el robot.
 
 En las siguientes secciones se describen a detalle los elementos que confoman
 este componente, Firebase y React como herramientas de desarrollo,
-una descripción más detallada de la aplicación y finalmente la documentación
-del código de ésta.
+una descripción más detallada de la aplicación y la guía para
+los desarrolladores que mantienen la aplicación.
 
 
 %\subsubsection{Firebase para aplicaciones Web}
@@ -90,22 +89,7 @@ del código de ésta.
 %
 %\subparagraph{Usa servicios de Firebase}
 %\label{\detokenize{firebase_web:usa-servicios-de-firebase}}
-%Una \sphinxcode{\sphinxupquote{App}} de Firebase puede usar varios servicios de Firebase. Se puede acceder
-%a cada servicio desde el espacio de nombres de \sphinxcode{\sphinxupquote{firebase}}:
-%\begin{itemize}
-%\item {} 
-%\sphinxcode{\sphinxupquote{firebase.auth()}} - Authentication
-%
-%\item {} 
-%\sphinxcode{\sphinxupquote{firebase.storage()}} - Cloud Storage
-%
-%\item {} 
-%\sphinxcode{\sphinxupquote{firebase.database()}} - Realtime Database
-%
-%\item {} 
-%\sphinxcode{\sphinxupquote{firebase.firestore()}} - Cloud Firestore
-%
-%\end{itemize}
+%Una \sphinxcode{\sphinxupquote{App}} de Firebase puede usar varios servicios de Firebase. 
 %
 %
 %\subparagraph{Ejecuta un servidor web local para el desarrollo}
@@ -394,21 +378,6 @@ del código de ésta.
 %
 %\subsubsection{React}
 %\label{\detokenize{reactjs::doc}}\label{\detokenize{reactjs:react}}
-%React es una biblioteca de Javascript para crear interfaces de usuario
-%lanzada por Facebook en 2013.
-%tiene tres características que definen y distinguen las distinguen de otras
-%biblioteca o de frameworks y son:
-%\begin{itemize}
-%\item {} 
-%Es \sphinxstylestrong{declarativa}, ya que permite crear interfaces de manera sencilla. Sólo se diseña una vista para cada estado de la aplicación y React actualizará de manera eficiente y \sphinxstylestrong{rederizará} los componentes correctos cuando los datos cambian.
-%
-%\item {} 
-%Está \sphinxstylestrong{basado en componentes}, contruye componentes encapsulados que manejan su propio estado, después se integran con otros para hacer IU más complejas.
-%
-%\item {} 
-%\sphinxstylestrong{Aprende una vez, escribe donde sea}, React puede \sphinxstyleemphasis{renderizar} sobre un servidor usando node o en dispositivos móviles con React Native.
-%
-%\end{itemize}
 %
 %
 %\paragraph{Requisitos}
@@ -1258,10 +1227,10 @@ el registro de usuarios, que cada usuario pueda utilizar varios robots e
 interactuar con ellos usando un control remoto, o recibiendo valores enviados
 por el mimos Robot a Firebase.
 
-Para comenzar a utilizarla simplementes se hace lo siguiente:
 
+\paragraph{Funcionalidades}
 
-\subparagraph{Inicio de sesión}
+\subparagraph{Inicio de sesión.}
 \label{\detokenize{inicio-de-sesion}}
 Un usuario puede iniciar sesión si ya se ha registrado, sino tiene la opción
 de crear una nueva cuenta. El usuario no necesariamente debe crearse dentro
@@ -1269,7 +1238,7 @@ de la aplicación web, si se ha registrado usando la aplicación móvil, entonce
 puede usar el mismo nombre de usuario y contraseña.
 
 
-\subparagraph{Panel de inteacción con el robot}
+\subparagraph{Panel de interacción con el robot.}
 \label{\detokenize{users_docs:panel-de-inteaccion-con-el-robot}}
 La principal función de esta aplicación es conectarse remótamente a un robot
 NAO usando como intermediario a Firebase. Si se desea enviar una orden al robot
@@ -1282,7 +1251,7 @@ El panel cuenta la estructura mostrada en la fugura \hyperref[\detokenize{users_
 \centering
 \capstart
 
-\noindent\sphinxincludegraphics[scale=0.5]{{webappstruct}.png}
+\noindent\sphinxincludegraphics[scale=0.4]{{webappstruct}.png}
 \caption{Estructura del panel dentro de la aplicación}\label{\detokenize{users_docs:webappstruct}}\end{figure}
 \begin{enumerate}
 \item {} 
@@ -1306,14 +1275,11 @@ Una tabla con valores de \sphinxcode{\sphinxupquote{ALMemory}} enviados por el r
 \end{enumerate}
 
 
-\subparagraph{Cierre de sesión}
+\subparagraph{Cierre de sesión.}
 \label{\detokenize{users_docs:cierre-de-sesion}}
 El usuario puede cerrar su sesión o esta se mantiene activa en el navegador
 hasta que se desee.
 
-
-\subparagraph{Notas}
-\label{\detokenize{users_docs:notas}}
 Cabe señalar nuevamente que para usar todas las funcionalidades de esta
 aplicación se debe ejecutar el programa del lado del robot que se conecta a
 Firebase para recibir y enviar información, si esto no se lleva a cabo, sólo
@@ -1334,94 +1300,438 @@ usaron fueron React y el SDK de Firebase para la autenticación de usuarios y la
 de datos.
 
 
-\paragraph{Creación del proyecto}
-\label{\detokenize{code_docs:creacion-del-proyecto}}
-Para la creación del proyecto se utiliza la herramienta \sphinxcode{\sphinxupquote{creat-react-app}}
-que crea un proyecto con todas las dependencias de React, después de hacer un
-\sphinxcode{\sphinxupquote{create-react-app cloudnao-web}}, navegar el nuevo directorio creado y
-ejecutar \sphinxcode{\sphinxupquote{npm start}}, la aplicación está disponible en \sphinxcode{\sphinxupquote{http://localhost:3000}}.
 
-Con esto ya tenemos una aplicación de React, pero aún no se puede
-utilizar la base de datos de Firebase, la autenticación o Firebase Hosting.
+\paragraph{React}
 
-Para poder desplegar la aplicación usando Firebase Hosting se debe instalar la
-interfaz para la línea de comandos de Firebase, usando el comando
-\sphinxcode{\sphinxupquote{npm install firebase-tools}}. Después de instalar esta herramienta, se ejecuta
-\sphinxcode{\sphinxupquote{firebase init}}, que conectará nuestro proyecto local con un proyecto
-creado en Firebase.
+
+React es una biblioteca de Javascript para crear interfaces de usuario
+lanzada por Facebook en 2013.
+Tiene tres características que la definen y distinguen  de otras
+biblioteca o frameworks y son:
 \begin{itemize}
 \item {} 
-Paso uno. Seleccionar las características de Firebase que se desean utilizar.
+Es \textbf{declarativa}, ya que permite crear interfaces de manera sencilla. Sólo se diseña una vista para cada estado de la aplicación; React actualizará de manera eficiente y \sphinxstylestrong{rederizará} los componentes correctos cuando los datos cambian.
 
 \item {} 
-Paso dos. Seleccionar el proyecto correspondiente de la lista de proyectos de Firebase.
+Está \sphinxstylestrong{basado en componentes}, contruye componentes encapsulados que manejan su propio estado, después se integran con otros para hacer IU más complejas.
 
 \item {} 
-Paso tres. Mantener las reglas para la base de datos por defecto.
-
-\item {} 
-Paso cuatro. Crear y seleccionar el nombre del directorio donde se encuentra la aplicación construida para producción.
-
-\item {} 
-Paso cinco. Seleccionar la configuración de una aplicación de una sola página.
-
-\item {} 
-Paso seis. Mantener el archivo \sphinxcode{\sphinxupquote{index.html}} generado por nuestro proceso de construcción.
+React puede \sphinxstyleemphasis{renderizar} sobre un servidor usando node o en dispositivos móviles con React Native.
 
 \end{itemize}
 
-Para usar la base de datos de Firebase y la autenticación en la aplicación,
-hace falta importar la biblioteca de Firebase y configurarla con las llaves
-de la aplicación de Firebase (se encuentran en la Consola de Firebase).
-Dentro del proyecto creado se instala el paquete de Firebase con el comando
-\sphinxcode{\sphinxupquote{npm install firebase}}. Ahora ya se pueden importar la biblioteca de Firebase
-para configurarla.
 
-A partir de ahora ya se hablará de los archivos que componen al proyecto y
-que están en la carpeta \sphinxcode{\sphinxupquote{src}} generada por \sphinxcode{\sphinxupquote{creact-react-app}}.
-El primero es \sphinxcode{\sphinxupquote{fire.js}}, que es el archivo de configuración para utilizar la
-base de datos y la autenticación de Firebase.
+Los \textit{componentes} dividen la IU en piezas independientes y reutilizables; además
+permite pensar en cada una de manera aislada.
+Conceptualmente, los componentes son como funciones de Javascript. Aceptan
+entradas arbitrarias llamadas \texttt{props}, abreviación de propiedades, y regresan elementos
+de React describiendo lo que debe aparecer en la pantalla.
 
-En el archivo primero se importa firebase
+Los \textit{elementos} son los bloques más básicos en las aplicaciones de React. Un elemento
+describe todo que se quiere visualizar en la pantalla.
 
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{k+kr}{import} \PYG{o}{*} \PYG{n+nx}{as} \PYG{n+nx}{firebase} \PYG{n+nx}{from} \PYG{l+s+s1}{\PYGZsq{}firebase\PYGZsq{}}\PYG{p}{;}
+\PYG{n}{const} \PYG{n}{element} \PYG{o}{=} \PYG{o}{\PYGZlt{}}\PYG{n}{h1}\PYG{o}{\PYGZgt{}}\PYG{n}{Hola} \PYG{n}{mundo}\PYG{o}{\PYGZlt{}}\PYG{o}{/}\PYG{n}{h1}\PYG{o}{\PYGZgt{}}
 \end{sphinxVerbatim}
 
-Se define el objeto que define las opciones de configuración para la aplicación.
-Contiene llaves, y el URL de la base de datos.
+
+El método \texttt{render} regresa una descripción
+de que es lo que se quiere ver en la pantalla. React
+toma esa descripción y muestra el resultado. En
+particular, \texttt{render} retorna un elemento de React,
+que es una descripción ligera de lo que se quiere 
+renderizar.
+
+Para el desarrollo de una aplicación en React se utiliza
+una sintáxis especial llamada \textit{JSX} (JavaScript XML), que no
+es requerida, pero al ser una extensión de JavaScript que permite
+utilizar un código parecido al HTML con todo el poder de JavaScript
+se cunple el objetivo de React de no separar la lógica de renderizado
+y la de la interfaz de usuario.
+
+
+\subparagraph{Ejemplo de una aplicación.}
+
+La manera más simple para crear una aplicación en
+React es através del kit inicial sin
+configuraciones para React lanzado por Facebook
+llamadao \texttt{create-react-app}.
+
+Para iniciar con esta herramienta primero se instala a través del
+manejador de paquetes de node, \texttt{npm}:
 
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{k+kr}{const} \PYG{n+nx}{config} \PYG{o}{=} \PYG{p}{\PYGZob{}}
-  \PYG{n+nx}{apiKey}\PYG{o}{:} \PYG{l+s+s2}{\PYGZdq{}API\PYGZus{}KEY\PYGZdq{}}\PYG{p}{,}
-  \PYG{n+nx}{authDomain}\PYG{o}{:} \PYG{l+s+s2}{\PYGZdq{}nao\PYGZhy{}firebase\PYGZhy{}2a34d.firebaseapp.com\PYGZdq{}}\PYG{p}{,}
-  \PYG{n+nx}{databaseURL}\PYG{o}{:} \PYG{l+s+s2}{\PYGZdq{}https://nao\PYGZhy{}firebase\PYGZhy{}2a34d.firebaseio.com\PYGZdq{}}\PYG{p}{,}
-  \PYG{n+nx}{projectId}\PYG{o}{:} \PYG{l+s+s2}{\PYGZdq{}nao\PYGZhy{}firebase\PYGZhy{}2a34d\PYGZdq{}}\PYG{p}{,}
-  \PYG{n+nx}{storageBucket}\PYG{o}{:} \PYG{l+s+s2}{\PYGZdq{}nao\PYGZhy{}firebase\PYGZhy{}2a34d.appspot.com\PYGZdq{}}\PYG{p}{,}
-  \PYG{n+nx}{messagingSenderId}\PYG{o}{:} \PYG{l+s+s2}{\PYGZdq{}1111111111111111\PYGZdq{}}
-\PYG{p}{\PYGZcb{}}\PYG{p}{;}
+npm install \PYGZhy{}g create\PYGZhy{}react\PYGZhy{}app
 \end{sphinxVerbatim}
 
-Finalmente se definen los objetos que se ocuparán en los otros archivos,
-para eso se usa \sphinxcode{\sphinxupquote{export}}.
+
+Ahora se puede crear y lanzar una aplicación con React. 
 
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{k+kr}{export} \PYG{k+kr}{const} \PYG{n+nx}{fire} \PYG{o}{=} \PYG{n+nx}{firebase}\PYG{p}{.}\PYG{n+nx}{initializeApp}\PYG{p}{(}\PYG{n+nx}{config}\PYG{p}{)}\PYG{p}{;}
-\PYG{k+kr}{export} \PYG{k+kr}{const} \PYG{n+nx}{db} \PYG{o}{=} \PYG{n+nx}{firebase}\PYG{p}{.}\PYG{n+nx}{database}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
-\PYG{k+kr}{export} \PYG{k+kr}{const} \PYG{n+nx}{auth} \PYG{o}{=} \PYG{n+nx}{firebase}\PYG{p}{.}\PYG{n+nx}{auth}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
+create\PYGZhy{}react\PYGZhy{}app ejemplo\PYGZus{}react\PYGZus{}app
+\PYG{n+nb}{cd} react\PYGZus{}ejemplo\PYGZus{}app
 \end{sphinxVerbatim}
 
-Con esto ya se puede utilizar la base de datos y la autenticación en cualquier
-otro módulo dentro de la aplicación.
+La estructura del directorio creado es la siguiente:
+
+\fvset{hllines={, ,}}%
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+ejemplo\PYGZus{}react\PYGZus{}app/
+├── node\PYGZus{}modules
+├── package.json
+├── package\PYGZhy{}lock.json
+├── public
+│   ├── favicon.ico
+│   ├── index.html
+│   └── manifest.json
+├── README.md
+└── src
+    ├── App.css
+    ├── App.js
+    ├── App.test.js
+    ├── index.css
+    ├── index.js
+    ├── logo.svg
+    └── registerServiceWorker.js
+\end{sphinxVerbatim}
+
+\begin{itemize}
+\item {} 
+\sphinxstylestrong{node\_modules/}. Contiene todos los paquetes de node que fueron instalados vía npm. Como se usó create-react-app, algunos módulos ya fueron instalados.
+
+\item {} 
+\sphinxstylestrong{package.json}. El archivo que muestra las lista de dependecias y otras opciones de configuracón del proyecto.
+
+\item {} 
+\sphinxstylestrong{.gitignore}. Este archivo indica todos los archivos y carpetas que nos deben añadirse a un repositorio remoto cuando se usa git.
+
+\item {} 
+\sphinxstylestrong{public/}. Esta carpeta guarda todos los archivos cuando se despliega un proyecto en modo de producción.
+
+\end{itemize}
+
+En un principio todo lo que se necesita está localizado en la carpeta \sphinxstyleemphasis{src/}.
+El enfoque principal está dirigido al archivo \sphinxstyleemphasis{src/App.js} para implementar los
+componentes de React. Este se usa para implementar la aplicación, pero con el
+crecimiento de un proyecto siempre es necesario dividir los componentes en
+múltiples archivos, donde cada archivo mantiene uno o algunos componentes por
+su cuenta.
+
+La aplicación generada con \sphinxstyleemphasis{create-react-app} es un proyecto de npm. Se puede usar
+npm para instalar o eliminar paqueres de node. Además viene con los siguientes
+scripts de npm para la línea de comandos.
+
+\fvset{hllines={, ,}}%
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{\PYGZsh{} Ejecuta la aplicación en http://localhost:3000}
+npm start
+
+\PYG{c+c1}{\PYGZsh{} Ejecutar los tests}
+npm \PYG{n+nb}{test}
+
+\PYG{c+c1}{\PYGZsh{} Construye la aplicación para producción}
+npm run build
+\end{sphinxVerbatim}
+
+Esos scripts están definidos en el \sphinxstyleemphasis{package.json}.
+
+El siguiente fragmento de código muestra una subclase
+de \texttt{React.Component} llamada \texttt{PodcastsList}.
+
+
+\fvset{hllines={, ,}}%
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+class PodcastsList extends React.Component \PYGZob{}
+  render() \PYGZob{}
+    return (
+      \PYG{p}{\PYGZlt{}}\PYG{n+nt}{div} \PYG{n+na}{className}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}shopping\PYGZhy{}list\PYGZdq{}}\PYG{p}{\PYGZgt{}}
+        \PYG{p}{\PYGZlt{}}\PYG{n+nt}{h1}\PYG{p}{\PYGZgt{}}Podcasts for \PYGZob{}this.props.name\PYGZcb{}\PYG{p}{\PYGZlt{}}\PYG{p}{/}\PYG{n+nt}{h1}\PYG{p}{\PYGZgt{}}
+        \PYG{p}{\PYGZlt{}}\PYG{n+nt}{ul}\PYG{p}{\PYGZgt{}}
+          \PYG{p}{\PYGZlt{}}\PYG{n+nt}{li}\PYG{p}{\PYGZgt{}}Simulacro\PYG{p}{\PYGZlt{}}\PYG{p}{/}\PYG{n+nt}{li}\PYG{p}{\PYGZgt{}}
+          \PYG{p}{\PYGZlt{}}\PYG{n+nt}{li}\PYG{p}{\PYGZgt{}}Olallo Rubio\PYG{p}{\PYGZlt{}}\PYG{p}{/}\PYG{n+nt}{li}\PYG{p}{\PYGZgt{}}
+          \PYG{p}{\PYGZlt{}}\PYG{n+nt}{li}\PYG{p}{\PYGZgt{}}Revolver\PYG{p}{\PYGZlt{}}\PYG{p}{/}\PYG{n+nt}{li}\PYG{p}{\PYGZgt{}}
+        \PYG{p}{\PYGZlt{}}\PYG{p}{/}\PYG{n+nt}{ul}\PYG{p}{\PYGZgt{}}
+      \PYG{p}{\PYGZlt{}}\PYG{p}{/}\PYG{n+nt}{div}\PYG{p}{\PYGZgt{}}
+    );
+  \PYGZcb{}
+\PYGZcb{}
+\end{sphinxVerbatim}
+
+Una forma de añadir la clase anterior a nuestro proyecto
+en \sphinxcode{\sphinxupquote{create-react-app}} es modificando el archivo \sphinxcode{\sphinxupquote{index.js}} dentro
+de \sphinxstyleemphasis{src/} cambiando \sphinxcode{\sphinxupquote{\textless{}App \textgreater{}}} por el \sphinxcode{\sphinxupquote{\textless{} PodcastsList name="Donkey" /\textgreater{}}}, si la aplicación
+se está ejecutando solo se mostrará el mensaje y ningún otro elemento de los
+generados por \sphinxcode{\sphinxupquote{create-react-app}}.
+
+
+\begin{figure}[ht]
+\centering
+\caption{Resultado de la aplicación en un navegador.}
+\includegraphics[scale=0.3]{react_first_app}
+\end{figure}
+
+
+\subparagraph{Firebase para aplicaciones web}
+
+Para utilizar los servicios Firebase en una aplicación web
+se siguen los mismos pasos que para el caso de 
+aplicaciones para Android. Desde la consola de Firebase
+se crea el proyecto y se obtiene un fragmento de código
+de inicialización. Ese código  contiene información de inicialización para configurar el SDK de Firebase JavaScript a fin de usar Authentication, Cloud Storage, Realtime Database y Cloud Firestore.
+
+
+Se puede acceder
+a cada servicio desde el espacio de nombres de \sphinxcode{\sphinxupquote{firebase}}:
+\begin{itemize}
+\item {} 
+\sphinxcode{\sphinxupquote{firebase.auth()}} - Authentication
+
+\item {} 
+\sphinxcode{\sphinxupquote{firebase.storage()}} - Cloud Storage
+
+\item {} 
+\sphinxcode{\sphinxupquote{firebase.database()}} - Realtime Database
+
+\item {} 
+\sphinxcode{\sphinxupquote{firebase.firestore()}} - Cloud Firestore
+
+\end{itemize}
+
+El proceso para usar el servicio de Realtime Database y Authentication
+es el mismo que en Android. Los métodos de lectura y escritura
+se mantienen cambiando únicamente la sintáxis.
+
+
+\subparagraph{Firebase Realtime Database}
+\label{\detokenize{firebase_web:firebase-realtime-database}}
+
+Para leer la base de datos o escribir en ella, se necesita una instancia de
+\sphinxcode{\sphinxupquote{firebase.database.Reference}}:
+
+\fvset{hllines={, ,}}%
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{o}{/}\PYG{o}{/} \PYG{n}{Obtiene} \PYG{n}{una} \PYG{n}{referecia} \PYG{n}{al} \PYG{n}{servicio} \PYG{n}{de} \PYG{n}{la} \PYG{n}{base} \PYG{n}{de} \PYG{n}{datos}
+\PYG{n}{var} \PYG{n}{database} \PYG{o}{=} \PYG{n}{firebase}\PYG{o}{.}\PYG{n}{database}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
+\end{sphinxVerbatim}
+
+
+\subparagraph{Lectura y escritura de datos.}
+\label{\detokenize{firebase_web:lectura-y-escritura-de-datos}}
+Para recuperar los datos de Firebase, se debe agregar un escuchador
+asíncrono a \sphinxcode{\sphinxupquote{firebase.database.Reference}}. El escuchador se activa una vez para
+el estado inicial de los datos y otra vez cuando los datos cambian.
+
+
+Para ejecutar operaciones de escritura básicas, puedes usar \sphinxcode{\sphinxupquote{set()}} para guardar
+datos en una referencia que especifiques y reemplazar los datos existentes en
+esa ruta de acceso. Por ejemplo si se desea añadir un usuario a la base de datos,
+una opción es la siguiente:
+
+\fvset{hllines={, ,}}%
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{function} \PYG{n}{writeUserData}\PYG{p}{(}\PYG{n}{userId}\PYG{p}{,} \PYG{n}{name}\PYG{p}{,} \PYG{n}{email}\PYG{p}{,} \PYG{n}{imageUrl}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+\PYG{n}{firebase}\PYG{o}{.}\PYG{n}{database}\PYG{p}{(}\PYG{p}{)}\PYG{o}{.}\PYG{n}{ref}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{users/}\PYG{l+s+s1}{\PYGZsq{}} \PYG{o}{+} \PYG{n}{userId}\PYG{p}{)}\PYG{o}{.}\PYG{n}{set}\PYG{p}{(}\PYG{p}{\PYGZob{}}
+    \PYG{n}{username}\PYG{p}{:} \PYG{n}{name}\PYG{p}{,}
+    \PYG{n}{email}\PYG{p}{:} \PYG{n}{email}\PYG{p}{,}
+    \PYG{n}{profile\PYGZus{}picture} \PYG{p}{:} \PYG{n}{imageUrl}
+  \PYG{p}{\PYGZcb{}}\PYG{p}{)}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\end{sphinxVerbatim}
+
+\sphinxcode{\sphinxupquote{set()}} sobrescribe los datos en la ubicación que se especifíca, incluidos
+los nodos secundarios.
+
+
+\textbf{Detección de eventos en valores.}
+\label{\detokenize{firebase_web:detecta-eventos-en-valores}}
+Si deseas leer datos de una ruta de acceso y escuchar para detectar cambios,
+usa los métodos \sphinxcode{\sphinxupquote{on()}} o \sphinxcode{\sphinxupquote{once()}} de \sphinxcode{\sphinxupquote{firebase.database.Reference}}
+para observar eventos.
+
+El evento más común es \sphinxcode{\sphinxupquote{value}} y permite leer una instantánea estática del
+contenido de una ruta de acceso determinada, en el estado en que se encontraba
+en el momento del evento. Este método se activa cuando se vincula el escuchador
+y se vuelve a activar cada vez que cambian los datos (incluidos los de
+nivel secundario). La devolución de llamada del evento recibe una instantánea
+que contiene todos los datos de dicha ubicación, incluidos los datos
+secundarios. Si no hay datos, la instantánea tiene un valor nulo.
+
+En el siguiente ejemplo se muestra una aplicación donde se recupera el valor
+de un recurso en la vase de datos:
+
+\fvset{hllines={, ,}}%
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{var} \PYG{n}{resourceRef} \PYG{o}{=} \PYG{n}{firebase}\PYG{o}{.}\PYG{n}{database}\PYG{p}{(}\PYG{p}{)}\PYG{o}{.}\PYG{n}{ref}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{resource}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)}\PYG{p}{;}
+\PYG{n}{resourceRef}\PYG{o}{.}\PYG{n}{on}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{value}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,} \PYG{n}{function}\PYG{p}{(}\PYG{n}{snapshot}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+  \PYG{n}{showValueOnScreen}\PYG{p}{(}\PYG{n}{snapshot}\PYG{o}{.}\PYG{n}{val}\PYG{p}{(}\PYG{p}{)}\PYG{p}{)}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}\PYG{p}{)}\PYG{p}{;}
+\end{sphinxVerbatim}
+
+El escuchador recibe una \sphinxcode{\sphinxupquote{snapshot}} que contiene los datos de la ubicación
+especifíca en la base de datos en el momento del evento. Se pueden recuperar
+los datos de la \sphinxcode{\sphinxupquote{snapshot}} con el método \sphinxcode{\sphinxupquote{val()}}.
+
+
+\textbf{Actualizar o borrar datos}
+\label{\detokenize{firebase_web:actualizar-o-borrar-datos}}
+Para escribir de forma simultánea en elementos secundarios específicos de un
+nodo sin sobrescribir otros nodos secundarios, usa el método \sphinxcode{\sphinxupquote{update()}}.
+
+También existe el método \sphinxcode{\sphinxupquote{push()}} para añadir una entrada con un identificador
+único sobre una referencia.
+
+La forma más sencilla de borrar datos es llamar a \sphinxcode{\sphinxupquote{remove()}} en una referencia a
+la ubicación de los datos. Para borrar, también puedes especificar nulo como
+el valor de otra operación de escritura, como \sphinxcode{\sphinxupquote{set()}} o \sphinxcode{\sphinxupquote{update()}}.
+
+
+\paragraph{Firebase Authentication}
+
+De este servicio se utilizó la autenticación con
+correo electrónico y contraseña.
+El SDK de Firebase Authentication proporciona métodos para crear y administrar usuarios que utilizan sus direcciones de correo electrónico y sus contraseñas para acceder.
+
+Para crear una cuenta de usuario nueva se pasa la dirección de correo electrónico y la contraseña del nuevo usuario a \texttt{createUserWithEmailAndPassword} para crear la cuenta nueva.
+
+\fvset{hllines={, ,}}%
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{firebase}\PYG{o}{.}\PYG{n}{auth}\PYG{p}{(}\PYG{p}{)}\PYG{o}{.}\PYG{n}{createUserWithEmailAndPassword}\PYG{p}{(}\PYG{n}{email}\PYG{p}{,} \PYG{n}{password}\PYG{p}{)}\PYG{o}{.}\PYG{n}{catch}\PYG{p}{(}\PYG{n}{function}\PYG{p}{(}\PYG{n}{error}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+  \PYG{o}{/}\PYG{o}{/} \PYG{n}{El} \PYG{n}{manejo} \PYG{n}{de} \PYG{n}{errores} \PYG{n}{va} \PYG{n}{aquí}
+  \PYG{n}{var} \PYG{n}{errorCode} \PYG{o}{=} \PYG{n}{error}\PYG{o}{.}\PYG{n}{code}\PYG{p}{;}
+  \PYG{n}{var} \PYG{n}{errorMessage} \PYG{o}{=} \PYG{n}{error}\PYG{o}{.}\PYG{n}{message}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}\PYG{p}{)}\PYG{p}{;}
+\end{sphinxVerbatim}
+
+
+Cuando un usuario accede a tus apps, se pasan la dirección de correo electrónico y la contraseña al método \texttt{signInWithEmailAndPassword}.
+
+\fvset{hllines={, ,}}%
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{firebase}\PYG{o}{.}\PYG{n}{auth}\PYG{p}{(}\PYG{p}{)}\PYG{o}{.}\PYG{n}{signInWithEmailAndPassword}\PYG{p}{(}\PYG{n}{email}\PYG{p}{,} \PYG{n}{password}\PYG{p}{)}\PYG{o}{.}\PYG{n}{catch}\PYG{p}{(}\PYG{n}{function}\PYG{p}{(}\PYG{n}{error}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+\PYG{o}{/}\PYG{o}{/} \PYG{n}{Aquí} \PYG{n}{se} \PYG{n}{manejan} \PYG{n}{los} \PYG{n}{errores}
+\PYG{n}{var} \PYG{n}{errorCode} \PYG{o}{=} \PYG{n}{error}\PYG{o}{.}\PYG{n}{code}\PYG{p}{;}
+\PYG{n}{var} \PYG{n}{errorMessage} \PYG{o}{=} \PYG{n}{error}\PYG{o}{.}\PYG{n}{message}\PYG{p}{;}
+\PYG{o}{/}\PYG{o}{/} \PYG{o}{.}\PYG{o}{.}\PYG{o}{.}
+\PYG{p}{\PYGZcb{}}\PYG{p}{)}\PYG{p}{;}
+\end{sphinxVerbatim}
+
+La manera recomendada de obtener el usuario actual es establecer un observador en el objeto \sphinxcode{\sphinxupquote{Auth}}:
+
+\fvset{hllines={, ,}}%
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{firebase}\PYG{o}{.}\PYG{n}{auth}\PYG{p}{(}\PYG{p}{)}\PYG{o}{.}\PYG{n}{onAuthStateChanged}\PYG{p}{(}\PYG{n}{function}\PYG{p}{(}\PYG{n}{user}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+\PYG{k}{if} \PYG{p}{(}\PYG{n}{user}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+  \PYG{o}{/}\PYG{o}{/} \PYG{n}{El} \PYG{n}{usuario} \PYG{n}{ha} \PYG{n}{iniciado} \PYG{n}{sesión}
+\PYG{p}{\PYGZcb{}} \PYG{k}{else} \PYG{p}{\PYGZob{}}
+  \PYG{o}{/}\PYG{o}{/} \PYG{n}{No} \PYG{n}{hay} \PYG{n}{un} \PYG{n}{usuario} \PYG{n}{activo}
+\PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}\PYG{p}{)}\PYG{p}{;}
+\end{sphinxVerbatim}
+
+También se puede usar la propiedad \sphinxcode{\sphinxupquote{currentUser}} para obtener el usuario que
+accedió. Si un usuario no accedió a su cuenta, \sphinxcode{\sphinxupquote{currentUser}} mostrará un
+resultado nulo:
+
+\fvset{hllines={, ,}}%
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{var} \PYG{n}{user} \PYG{o}{=} \PYG{n}{firebase}\PYG{o}{.}\PYG{n}{auth}\PYG{p}{(}\PYG{p}{)}\PYG{o}{.}\PYG{n}{currentUser}\PYG{p}{;}
+\PYG{k}{if} \PYG{p}{(}\PYG{n}{user}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+  \PYG{o}{/}\PYG{o}{/} \PYG{n}{El} \PYG{n}{usuario} \PYG{n}{ha} \PYG{n}{iniciado} \PYG{n}{sesión}
+\PYG{p}{\PYGZcb{}} \PYG{k}{else} \PYG{p}{\PYGZob{}}
+  \PYG{o}{/}\PYG{o}{/} \PYG{n}{No} \PYG{n}{hay} \PYG{n}{un} \PYG{n}{usuario} \PYG{n}{activo}
+\PYG{p}{\PYGZcb{}}
+\end{sphinxVerbatim}
+
+
+Para obtener la información del perfil de un usuario, puedes usar las propiedades de una instancia de \texttt{User}. Por ejemplo:
+
+\fvset{hllines={, ,}}%
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{var} \PYG{n}{user} \PYG{o}{=} \PYG{n}{firebase}\PYG{o}{.}\PYG{n}{auth}\PYG{p}{(}\PYG{p}{)}\PYG{o}{.}\PYG{n}{currentUser}\PYG{p}{;}
+\PYG{n}{var} \PYG{n}{name}\PYG{p}{,} \PYG{n}{email}\PYG{p}{,} \PYG{n}{photoUrl}\PYG{p}{,} \PYG{n}{uid}\PYG{p}{,} \PYG{n}{emailVerified}\PYG{p}{;}
+
+\PYG{k}{if} \PYG{p}{(}\PYG{n}{user} \PYG{o}{!=} \PYG{n}{null}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+  \PYG{n}{name} \PYG{o}{=} \PYG{n}{user}\PYG{o}{.}\PYG{n}{displayName}\PYG{p}{;}
+  \PYG{n}{email} \PYG{o}{=} \PYG{n}{user}\PYG{o}{.}\PYG{n}{email}\PYG{p}{;}
+  \PYG{n}{photoUrl} \PYG{o}{=} \PYG{n}{user}\PYG{o}{.}\PYG{n}{photoURL}\PYG{p}{;}
+  \PYG{n}{emailVerified} \PYG{o}{=} \PYG{n}{user}\PYG{o}{.}\PYG{n}{emailVerified}\PYG{p}{;}
+  \PYG{n}{uid} \PYG{o}{=} \PYG{n}{user}\PYG{o}{.}\PYG{n}{uid}\PYG{p}{;}  \PYG{o}{/}\PYG{o}{/} \PYG{n}{El} \PYG{n+nb}{id} \PYG{k}{del} \PYG{n}{usuario} \PYG{n}{es} \PYG{n}{único} \PYG{n}{en} \PYG{n}{un} \PYG{n}{proyecto} \PYG{n}{de} \PYG{n}{Firebase}
+
+\PYG{p}{\PYGZcb{}}
+\end{sphinxVerbatim}
+
+
+Para salir de la sesión de un usuario, se llama a \sphinxcode{\sphinxupquote{signOut}}:
+
+\fvset{hllines={, ,}}%
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{firebase}\PYG{o}{.}\PYG{n}{auth}\PYG{p}{(}\PYG{p}{)}\PYG{o}{.}\PYG{n}{signOut}\PYG{p}{(}\PYG{p}{)}\PYG{o}{.}\PYG{n}{then}\PYG{p}{(}\PYG{n}{function}\PYG{p}{(}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+\PYG{o}{/}\PYG{o}{/} \PYG{n}{Se} \PYG{n}{cierra} \PYG{n}{la} \PYG{n}{sesión} \PYG{n}{exitosamente}
+\PYG{p}{\PYGZcb{}}\PYG{p}{)}\PYG{o}{.}\PYG{n}{catch}\PYG{p}{(}\PYG{n}{function}\PYG{p}{(}\PYG{n}{error}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+  \PYG{o}{/}\PYG{o}{/} \PYG{n}{Un} \PYG{n}{error} \PYG{n}{ocurrió}
+\PYG{p}{\PYGZcb{}}\PYG{p}{)}\PYG{p}{;}
+\end{sphinxVerbatim}
+
+
+\subparagraph{Firebase Hosting}
+\label{\detokenize{firebase_web:firebase-hosting}}
+
+Este servicio permite implementar y alojar los recursos estáticos de una aplicación
+fácilmente (HTML, CSS, JavaScript, etc.). Todo el contenido se transmite a través
+de HTTPS y está respaldado por una CDN global.
+
+La ruta de implementación se muestra en las siguientes subsecciones.
+
+
+\subparagraph{Instalar Firebase CLI.}
+\label{\detokenize{firebase_web:instalar-firebase-cli}}
+La CLI (interfaz de línea de comandos) de Firebase necesita Node.js y npm.
+
+Para instalar Firebase CLI a través de npm se escribe los siguiente:
+
+\fvset{hllines={, ,}}%
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{npm} \PYG{n}{install} \PYG{o}{\PYGZhy{}}\PYG{n}{g} \PYG{n}{firebase}\PYG{o}{\PYGZhy{}}\PYG{n}{tools}
+\end{sphinxVerbatim}
+
+Esto instala el comando \sphinxcode{\sphinxupquote{firebase}} de manera global.
+
+
+\subparagraph{Inicializar la aplicación.}
+\label{\detokenize{firebase_web:inicializar-la-aplicacion}}
+Si se ejecuta el comando \sphinxcode{\sphinxupquote{firebase init}}, se crea un archivo de configuración
+\sphinxcode{\sphinxupquote{firebase.json}} en la raíz del directorio del proyecto.
+
+
+\subparagraph{Agregar un archivo.}
+\label{\detokenize{firebase_web:agregar-un-archivo}}
+Cuando se inicializa una aplicación, se pedirá proporcionar un directorio para
+usarlo como raíz pública (el valor predeterminado es «public»). Si aún no
+se tiene un archivo index.html válido en tu directorio raíz público, se creará
+uno.
+
+
+\subparagraph{Lanzar un sitio web.}
+\label{\detokenize{firebase_web:implementar-un-sitio-web}}
+Ejecutar \sphinxcode{\sphinxupquote{firebase deploy}} implementará la aplicación en el dominio
+\sphinxcode{\sphinxupquote{\textless{}APP-DE-FIREBASE\textgreater{}.firebaseapp.com}}
 
 
 \paragraph{Descripción de los componentes}
-\label{\detokenize{code_docs:descripcion-de-los-componentes}}
-El código de la aplicación está en el directorio \sphinxcode{\sphinxupquote{src}} y éste tiene la siguiente
-estructura:
+\label{\detokenize{code_docs:creacion-del-proyecto}}
+
+La aplicación se creo utilizando la herramienta
+\sphinxcode{\sphinxupquote{create-react-app}} y 
+y después se le agregaron todos los servicios de Firebase
+que se ocuparon. 
+
+A partir de la estructura generada por \texttt{create-react-app}
+todo el código fuente se agregó a la carpeta
+\texttt{src}. Éste tiene la siguiente estructura:
+
 
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -1458,698 +1768,132 @@ src/
 
 \subparagraph{App.js}
 \label{\detokenize{code_docs:app-js}}
-Se define el componente principal de la aplicación, que se renderizará
+Se define el componente principal de la aplicación \texttt{App}, que se renderizará
 al iniciarla. Se define el elemento \sphinxcode{\sphinxupquote{Router}} de React-Router
 que define las rutas de los componentes que se renderizarán de acuerdo a lo
 elegido por el usuario.
-\index{App() (función incorporada)}
-
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{code_docs:App}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{App}}}{}{}
-El componente principal de la aplicación, se define las rutas de la aplicación
-y un menú donde el usuario selecciona un componente.
-
-\end{fulllineitems}
-
 
 
 \subparagraph{auth.js}
 \label{\detokenize{code_docs:auth-js}}
 Aquí se definen las funciones para el inicio de sesión, registro de un usuario
 y el cierre de sesión.
-\index{doCreateUserWithEmailAndPassword() (función incorporada)}
-
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{code_docs:doCreateUserWithEmailAndPassword}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{doCreateUserWithEmailAndPassword}}}{}{}
-Llama al métoodo  de Firebase para crear un usuario
-
-\end{fulllineitems}
-
-\index{doSignInWithEmailAndPassword() (función incorporada)}
-
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{code_docs:doSignInWithEmailAndPassword}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{doSignInWithEmailAndPassword}}}{}{}
-Llama al métoodo de Firebase para iniciar sesión
-
-\end{fulllineitems}
-
-\index{doSignOut() (función incorporada)}
-
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{code_docs:doSignOut}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{doSignOut}}}{}{}
-Llama al métoodo  de Firebase para cerrar la sesión del usuario
-
-\end{fulllineitems}
-
 
 
 \subparagraph{fire.js}
 \label{\detokenize{code_docs:fire-js}}
 Aquí está la configuración de Firebase para usar los servicios de la base de datos
 y de la autenticación.
-\index{config() (función incorporada)}
-
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{code_docs:config}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{config}}}{}{}
-El objeto que define las opciones de configuración para la aplicación.
-Contiene llaves, y el URL de la base de datos.
-
-\end{fulllineitems}
-
-\index{fire() (función incorporada)}
-
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{code_docs:fire}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{fire}}}{}{}~\begin{description}
-\item[{Se inicializa la aplicación y con export se permite importar en otros archivos dentro del}] \leavevmode
-proyecto.
-
-\end{description}
-
-\end{fulllineitems}
-
-\index{db() (función incorporada)}
-
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{code_docs:db}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{db}}}{}{}
-Crea el objeto para utilizar la base de datos de Firebase
-
-\end{fulllineitems}
-
-\index{auth() (función incorporada)}
-
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{code_docs:auth}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{auth}}}{}{}
-Crea el objeto para utilizar el servicio de autenticación de Firebae
-
-\end{fulllineitems}
 
 
 
 \subparagraph{index.js}
 \label{\detokenize{code_docs:index-js}}
-En este archivo se llama al método render de ReactDOM para renderizar al
+En este archivo se llama al método render de \texttt{ReactDOM} para renderizar al
 componente \sphinxcode{\sphinxupquote{App}}.
 
 
-\subparagraph{components/}
-\label{\detokenize{code_docs:components}}
+Dentro del directorio \texttt{components} están los archivos con los componentes de React para la aplicación.
 
 \textbf{dashboard.js}
 \label{\detokenize{code_docs:dashboard-js}}
-Este es el componente que muestra el panel de interacción con el robot.
+Archivo con el componente \texttt{Dashboard} que muestra el panel de interacción con el robot.
 Como estados define al usuario actual, un id y el nombre de un robot, el robot
 que se selecciona en la lista de robots.
 
-En el método \sphinxcode{\sphinxupquote{render()}} incluye otros componentes, la lista de robots del
-usuario, la cámara en vivo del robot seleccionado, sus logs, etc.
-
-\fvset{hllines={, ,}}%
-\begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{c+cm}{/**}
-\PYG{c+cm}{ * Esta clase representa al componente que muestra el panel de interacción con}
-\PYG{c+cm}{ * el robot.}
-\PYG{c+cm}{ */}
-
-\PYG{k+kr}{class} \PYG{n+nx}{Dashboard} \PYG{k+kr}{extends} \PYG{n+nx}{Component} \PYG{p}{\PYGZob{}}
-
-  \PYG{c+cm}{/**}
-\PYG{c+cm}{   * El constructor de la clase para inicializar los estados del componente.}
-\PYG{c+cm}{   */}
-  \PYG{n+nx}{constructor}\PYG{p}{(}\PYG{n+nx}{props}\PYG{p}{)} \PYG{p}{\PYGZob{}}
-    \PYG{k+kr}{super}\PYG{p}{(}\PYG{n+nx}{props}\PYG{p}{)}\PYG{p}{;}
-    \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{state} \PYG{o}{=} \PYG{p}{\PYGZob{}}
-      \PYG{n+nx}{currentUserId} \PYG{o}{:} \PYG{k+kc}{null}\PYG{p}{,}
-      \PYG{n+nx}{robotId}\PYG{o}{:} \PYG{k+kc}{null}\PYG{p}{,}
-      \PYG{n+nx}{robotName} \PYG{o}{:} \PYG{k+kc}{null}\PYG{p}{,}
-    \PYG{p}{\PYGZcb{}}\PYG{p}{;}
-  \PYG{p}{\PYGZcb{}}
-  \PYG{c+cm}{/**}
-\PYG{c+cm}{   * Una función callback para actualizar los estados que almacenas el id}
-\PYG{c+cm}{   * y el nombre del robot que se seleccionó en el componente {}`{}`RobotList{}`{}`}
-\PYG{c+cm}{   */}
-  \PYG{n+nx}{setRobotId} \PYG{o}{=} \PYG{p}{(}\PYG{n+nx}{robotIdFromRobotList}\PYG{p}{,} \PYG{n+nx}{robotNameFromRobotList}\PYG{p}{)} \PYG{p}{=\PYGZgt{}} \PYG{p}{\PYGZob{}}
-    \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{setState}\PYG{p}{(}\PYG{p}{\PYGZob{}}
-      \PYG{n+nx}{robotId}\PYG{o}{:} \PYG{n+nx}{robotIdFromRobotList}\PYG{p}{,}
-      \PYG{n+nx}{robotName} \PYG{o}{:} \PYG{n+nx}{robotNameFromRobotList}\PYG{p}{,}
-    \PYG{p}{\PYGZcb{}}\PYG{p}{,} \PYG{p}{(}\PYG{p}{)} \PYG{p}{=\PYGZgt{}} \PYG{p}{\PYGZob{}}
-      \PYG{n+nx}{console}\PYG{p}{.}\PYG{n+nx}{log}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}robotId set to \PYGZdq{}} \PYG{o}{+} \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{state}\PYG{p}{.}\PYG{n+nx}{robotId}\PYG{p}{)}\PYG{p}{;}
-    \PYG{p}{\PYGZcb{}}\PYG{p}{)}\PYG{p}{;}
-  \PYG{p}{\PYGZcb{}}
-
-  \PYG{c+cm}{/**}
-\PYG{c+cm}{   * Método del ciclo de vida del componente que se ejecuta después de montar}
-\PYG{c+cm}{   * al componente. Se asigna el valor del usuario actual a un estado del componente.}
-\PYG{c+cm}{   */}
-  \PYG{n+nx}{componentWillMount}\PYG{p}{(}\PYG{p}{)} \PYG{p}{\PYGZob{}}
-    \PYG{k+kr}{const} \PYG{n+nx}{user}\PYG{o}{=} \PYG{n+nx}{auth}\PYG{p}{.}\PYG{n+nx}{currentUser}\PYG{p}{;}
-    \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{setState}\PYG{p}{(}\PYG{p}{\PYGZob{}}\PYG{n+nx}{currentUserId} \PYG{o}{:} \PYG{n+nx}{user}\PYG{p}{.}\PYG{n+nx}{uid}\PYG{p}{\PYGZcb{}}\PYG{p}{)}\PYG{p}{;}
-  \PYG{p}{\PYGZcb{}}
-  \PYG{c+cm}{/**}
-\PYG{c+cm}{   * Renderiza los componentes que arman a este componente.}
-\PYG{c+cm}{   */}
-  \PYG{n+nx}{render}\PYG{p}{(}\PYG{p}{)} \PYG{p}{\PYGZob{}}
-      \PYG{k}{return} \PYG{p}{(}\PYG{p}{...}\PYG{p}{)}\PYG{p}{;}
-  \PYG{p}{\PYGZcb{}}
-\PYG{p}{\PYGZcb{}}
-\end{sphinxVerbatim}
+En el método \sphinxcode{\sphinxupquote{render()}} incluye otros componentes:
+\texttt{LiveImage},
+\texttt{RobotStatus},
+\texttt{Robot\\Commands},
+\texttt{TextToSpeech},
+\texttt{RobotList} y
+\texttt{RobotLogs}.
 
 
 \textbf{error\_msg.js}
 \label{\detokenize{code_docs:error-msg-js}}
-Un mensaje de error utilizado en el SignUp y SignIn del usuario, pero puede
+Exporta al componente \texttt{ErrorMessage}, un mensaje de error utilizado en el SignUp y SignIn del usuario, pero puede
 adaptarse a cualquier contexto pues simplemente recibe el texto del error
 generado.
 
-\fvset{hllines={, ,}}%
-\begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{c+cm}{/**}
-\PYG{c+cm}{ * Muestra una mensaje de error con un formato de Semantic UI}
-\PYG{c+cm}{ */}
-\PYG{k+kr}{const} \PYG{n+nx}{ErrorMessage} \PYG{o}{=} \PYG{p}{(}\PYG{n+nx}{props}\PYG{p}{)} \PYG{p}{=\PYGZgt{}} \PYG{p}{\PYGZob{}}
-    \PYG{k}{return} \PYG{p}{(}\PYG{p}{...}\PYG{p}{)}\PYG{p}{;}
-\PYG{p}{\PYGZcb{}}\PYG{p}{;}
-\end{sphinxVerbatim}
-
-
 \textbf{landing\_page.js}
 \label{\detokenize{code_docs:landing-page-js}}
-El componente que se muestra al abrir la aplicación, estando o no una sesión
+Incluye a la subclase de \texttt{React.Component} \texttt{Landing} que se muestra al abrir la aplicación, estando o no una sesión
 activa.
-
-\fvset{hllines={, ,}}%
-\begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{c+cm}{/**}
-\PYG{c+cm}{ * El componente que se muestra al iniciar la aplicación, esté o no activa la sesión de un usuario.}
-\PYG{c+cm}{ */}
-\PYG{k+kr}{class} \PYG{n+nx}{Landing} \PYG{k+kr}{extends} \PYG{n+nx}{Component} \PYG{p}{\PYGZob{}}
-  \PYG{n+nx}{render}\PYG{p}{(}\PYG{p}{)} \PYG{p}{\PYGZob{}}
-    \PYG{k}{return} \PYG{p}{(}\PYG{p}{...}\PYG{p}{)}\PYG{p}{;}
-  \PYG{p}{\PYGZcb{}}
-\PYG{p}{\PYGZcb{}}
-\end{sphinxVerbatim}
 
 
 \textbf{live\_image\_from\_robot.js}
 \label{\detokenize{code_docs:live-image-from-robot-js}}
-Muestra la última imagen enviada por la cámara del robot. Tiene una imagen por
-defecto, y espera una imagen codificada en base64 obtendida desde Firebase.
-
-\fvset{hllines={, ,}}%
-\begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{c+cm}{/**}
-\PYG{c+cm}{ * La clase del componente para obtener una imagen enviada a Firebase por el robot.}
-\PYG{c+cm}{ * Utiliza Semantic UI para el contenedor de la imagen y una referencia a la base de datos}
-\PYG{c+cm}{ * para suscribirse a la ubicación donde se recibe la imagen codificada en base 64.}
-\PYG{c+cm}{ */}
-\PYG{k+kr}{class} \PYG{n+nx}{LiveImage} \PYG{k+kr}{extends} \PYG{n+nx}{Component} \PYG{p}{\PYGZob{}}
-
-  \PYG{c+cm}{/**}
-\PYG{c+cm}{   * @constructor El constructor de la clase inicializa el estado que}
-\PYG{c+cm}{   * contiene a la imagen recibida de Firebase.}
-\PYG{c+cm}{   */}
-  \PYG{n+nx}{constructor}\PYG{p}{(}\PYG{n+nx}{props}\PYG{p}{)} \PYG{p}{\PYGZob{}}
-    \PYG{k+kr}{super}\PYG{p}{(}\PYG{n+nx}{props}\PYG{p}{)}\PYG{p}{;}
-    \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{state} \PYG{o}{=} \PYG{p}{\PYGZob{}}
-      \PYG{n+nx}{currentImage} \PYG{o}{:} \PYG{l+s+s2}{\PYGZdq{}https://semantic\PYGZhy{}ui.com/images/wireframe/image.png\PYGZdq{}}
-    \PYG{p}{\PYGZcb{}}\PYG{p}{;}
-  \PYG{p}{\PYGZcb{}}
-
-  \PYG{c+cm}{/**}
-\PYG{c+cm}{   * El método del ciclo de vida del componente que se ejecuta después de que}
-\PYG{c+cm}{   * reciba propiedades del componente padre. La única propiedad por ahora}
-\PYG{c+cm}{   * es el id del robot.}
-\PYG{c+cm}{   */}
-  \PYG{n+nx}{componentWillReceiveProps}\PYG{p}{(}\PYG{n+nx}{nextProps}\PYG{p}{)} \PYG{p}{\PYGZob{}}
-    \PYG{c+c1}{//console.log(\PYGZdq{}live image :\PYGZdq{} + nextProps.robotId);}
-    \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{setState}\PYG{p}{(}\PYG{p}{\PYGZob{}} \PYG{n+nx}{currentImage} \PYG{o}{:} \PYG{k+kc}{null} \PYG{p}{\PYGZcb{}}\PYG{p}{)}\PYG{p}{;}
-    \PYG{k+kr}{const} \PYG{n+nx}{imageFromRobotRef} \PYG{o}{=} \PYG{n+nx}{db}\PYG{p}{.}\PYG{n+nx}{ref}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}liveImages/\PYGZsq{}} \PYG{o}{+} \PYG{n+nx}{nextProps}\PYG{p}{.}\PYG{n+nx}{robotId} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}/currentImage\PYGZsq{}}\PYG{p}{)}\PYG{p}{;}
-    \PYG{n+nx}{imageFromRobotRef}\PYG{p}{.}\PYG{n+nx}{on}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}value\PYGZsq{}}\PYG{p}{,} \PYG{n+nx}{snap} \PYG{p}{=\PYGZgt{}} \PYG{p}{\PYGZob{}}
-      \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{setState}\PYG{p}{(}\PYG{p}{\PYGZob{}}
-        \PYG{n+nx}{currentImage} \PYG{o}{:} \PYG{n+nx}{snap}\PYG{p}{.}\PYG{n+nx}{val}\PYG{p}{(}\PYG{p}{)} \PYG{o}{?} \PYG{l+s+s2}{\PYGZdq{}data:image/png;base64, \PYGZdq{}} \PYG{o}{+} \PYG{n+nx}{snap}\PYG{p}{.}\PYG{n+nx}{val}\PYG{p}{(}\PYG{p}{)} \PYG{o}{:} \PYG{l+s+s2}{\PYGZdq{}https://semantic\PYGZhy{}ui.com/images/wireframe/image.png\PYGZdq{}}
-      \PYG{p}{\PYGZcb{}}\PYG{p}{)}\PYG{p}{;}
-    \PYG{p}{\PYGZcb{}}\PYG{p}{)}\PYG{p}{;}
-  \PYG{p}{\PYGZcb{}}
-
-  \PYG{c+cm}{/**}
-\PYG{c+cm}{   * Muestra en un Image de Semantic UI, el valor del estado que contiene la imagen}
-\PYG{c+cm}{   * enviada por el robot.}
-\PYG{c+cm}{   */}
-  \PYG{n+nx}{render}\PYG{p}{(}\PYG{p}{)} \PYG{p}{\PYGZob{}}
-    \PYG{k}{return} \PYG{p}{(}\PYG{p}{...}\PYG{p}{)}\PYG{p}{;}
-  \PYG{p}{\PYGZcb{}}
-\PYG{p}{\PYGZcb{}}
-\end{sphinxVerbatim}
+Define al componente \texttt{LiveImage} que muestra la última imagen enviada por la cámara del robot. Tiene una imagen por
+defecto, y espera una imagen codificada en base 64 obtendida desde Firebase.
 
 
 \textbf{log\_table.js}
 \label{\detokenize{code_docs:log-table-js}}
-Un componente que genera una tabla a partir de un JSON. Dos columnas lo
+Se define \texttt{TableFromObject}, un componente que genera una tabla a partir de un JSON. Dos columnas lo
 componen, en la primera están las llaves y en la segunda los valores de los
 atributos del objeto de javascript. Se utiliza para mostrar los logs adquiridos
 de Firebase.
 
-\fvset{hllines={, ,}}%
-\begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{c+cm}{/**}
-\PYG{c+cm}{ * Este elemento llena la tabla donde se muestran los logs del robot.}
-\PYG{c+cm}{ */}
-\PYG{k+kr}{const} \PYG{n+nx}{TableFromObject} \PYG{o}{=} \PYG{p}{(}\PYG{n+nx}{props}\PYG{p}{)} \PYG{p}{=\PYGZgt{}} \PYG{p}{\PYGZob{}}
-
-  \PYG{k+kr}{const} \PYG{n+nx}{tableItems} \PYG{o}{=} \PYG{n+nb}{Object}\PYG{p}{.}\PYG{n+nx}{keys}\PYG{p}{(}\PYG{n+nx}{props}\PYG{p}{.}\PYG{n+nx}{data}\PYG{p}{)}\PYG{p}{.}\PYG{n+nx}{map}\PYG{p}{(} \PYG{n+nx}{key} \PYG{p}{=\PYGZgt{}} \PYG{p}{\PYGZob{}}
-      \PYG{k}{return} \PYG{p}{(}\PYG{p}{...}\PYG{p}{)}\PYG{p}{;}
-  \PYG{p}{\PYGZcb{}}\PYG{p}{)}\PYG{p}{;}
-  \PYG{k}{return} \PYG{p}{(}\PYG{p}{...}\PYG{p}{)}\PYG{p}{;}
-\PYG{p}{\PYGZcb{}}\PYG{p}{;}
-\end{sphinxVerbatim}
-
-
 \textbf{navigation\_bar.js}
 \label{\detokenize{code_docs:navigation-bar-js}}
-Hay tres componentes dentro de este archivo, el menú de navegación cuando el
-usuario no ha iniciado sesión y el cuando ha iniciado sesión. El tercer
-componente muestra al menú que corresponda según el estado del usuario.
-
-\fvset{hllines={, ,}}%
-\begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{c+cm}{/**}
-\PYG{c+cm}{ * Es el menú que se muestra cuando el usuario ha iniciado sesión.}
-\PYG{c+cm}{ */}
-\PYG{k+kr}{const} \PYG{n+nx}{NavigationAuth} \PYG{o}{=} \PYG{p}{(}\PYG{p}{)} \PYG{p}{=\PYGZgt{}} \PYG{p}{\PYGZob{}}\PYG{p}{...}\PYG{p}{\PYGZcb{}}
-
-\PYG{c+cm}{/**}
-\PYG{c+cm}{ * Es el menú que se muestra cuando el usuario no ha iniciado sesión.}
-\PYG{c+cm}{ */}
-\PYG{k+kr}{const} \PYG{n+nx}{NavigationNonAuth} \PYG{o}{=} \PYG{p}{(}\PYG{p}{)} \PYG{p}{=\PYGZgt{}} \PYG{p}{\PYGZob{}}\PYG{p}{...}\PYG{p}{\PYGZcb{}}
-
-\PYG{c+cm}{/**}
-\PYG{c+cm}{ * Este componente es el menú superior en la aplicación, que permite cambiar}
-\PYG{c+cm}{ * entre las rutas de la aplicación. Elige entre NavigationAuth o NavigationNonAuth}
-\PYG{c+cm}{ * dependiendo si el usuario inició o no sesión.}
-\PYG{c+cm}{ */}
-\PYG{k+kr}{const} \PYG{n+nx}{NavigationBar} \PYG{o}{=} \PYG{p}{(}\PYG{n+nx}{props}\PYG{p}{,} \PYG{p}{\PYGZob{}} \PYG{n+nx}{authUser} \PYG{p}{\PYGZcb{}}\PYG{p}{)} \PYG{p}{=\PYGZgt{}}
-    \PYG{p}{\PYGZob{}} \PYG{n+nx}{authUser} \PYG{o}{?} \PYG{o}{\PYGZlt{}}\PYG{n+nx}{NavigationAuth} \PYG{o}{/}\PYG{o}{\PYGZgt{}} \PYG{o}{:} \PYG{o}{\PYGZlt{}}\PYG{n+nx}{NavigationNonAuth} \PYG{o}{/}\PYG{o}{\PYGZgt{}}\PYG{p}{\PYGZcb{}}
-\end{sphinxVerbatim}
+Hay tres componentes dentro de este archivo:
+\texttt{NavigationAut}, el menú de navegación cuando el
+usuario no ha iniciado sesión,
+\texttt{NavigationNonAuth}, el menú cuando ha iniciado sesión y
+\texttt{NavigationBar}, 
+el que muestra al menú que corresponde al estado del usuario.
 
 
 \textbf{robot\_commands.js}
 \label{\detokenize{code_docs:robot-commands-js}}
-Este componente es el control remoto del robot, aquí se envía información a la
+Exporta el componente \texttt{RobotCommands} que es el control remoto del robot, aquí se envía información a la
 de Firebase para que el robot realiza acciones como caminar, cambiar de postura,
 o mover la cabeza, también se pueden actualizar algunos parámetros de caminado.
 
-\fvset{hllines={, ,}}%
-\begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{c+cm}{/**}
-\PYG{c+cm}{ * El componente que envía comandos al robot a través de Firebase.}
-\PYG{c+cm}{ */}
-\PYG{k+kr}{class} \PYG{n+nx}{RobotCommands} \PYG{k+kr}{extends} \PYG{n+nx}{Component} \PYG{p}{\PYGZob{}}
-  \PYG{c+cm}{/**}
-\PYG{c+cm}{   * El constructor inicializa los estados que contendrán los valores que}
-\PYG{c+cm}{   * se guardarán en Firebase y que el robot procesará.}
-\PYG{c+cm}{   */}
-  \PYG{n+nx}{constructor}\PYG{p}{(}\PYG{n+nx}{props}\PYG{p}{)} \PYG{p}{\PYGZob{}}
-    \PYG{k+kr}{super}\PYG{p}{(}\PYG{n+nx}{props}\PYG{p}{)}\PYG{p}{;}
-    \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{state} \PYG{o}{=} \PYG{n+nx}{INITIAL\PYGZus{}STATE}\PYG{p}{;}
-    \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{moveRobot} \PYG{o}{=} \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{moveRobot}\PYG{p}{.}\PYG{n+nx}{bind}\PYG{p}{(}\PYG{k}{this}\PYG{p}{)}\PYG{p}{;}
-    \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{stopRobot} \PYG{o}{=} \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{stopRobot}\PYG{p}{.}\PYG{n+nx}{bind}\PYG{p}{(}\PYG{k}{this}\PYG{p}{)}\PYG{p}{;}
-    \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{handleJointRangeInput} \PYG{o}{=} \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{handleJointRangeInput}\PYG{p}{.}\PYG{n+nx}{bind}\PYG{p}{(}\PYG{k}{this}\PYG{p}{)}\PYG{p}{;}
-    \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{changePosture} \PYG{o}{=} \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{changePosture}\PYG{p}{.}\PYG{n+nx}{bind}\PYG{p}{(}\PYG{k}{this}\PYG{p}{)}\PYG{p}{;}
-    \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{setVelocity} \PYG{o}{=} \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{setVelocity}\PYG{p}{.}\PYG{n+nx}{bind}\PYG{p}{(}\PYG{k}{this}\PYG{p}{)}\PYG{p}{;}
-    \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{onSubmitGaitParameters} \PYG{o}{=} \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{onSubmitGaitParameters}\PYG{p}{.}\PYG{n+nx}{bind}\PYG{p}{(}\PYG{k}{this}\PYG{p}{)}\PYG{p}{;}
-  \PYG{p}{\PYGZcb{}}
-  \PYG{c+cm}{/**}
-\PYG{c+cm}{   * Maneja el evento de mantener el mouse presionado sobre un botón,}
-\PYG{c+cm}{   * si este evento ocurre escribe en la ubicación de /walk, la dirección}
-\PYG{c+cm}{   * que debe seguir el robot.}
-\PYG{c+cm}{   */}
-  \PYG{n+nx}{moveRobot}\PYG{p}{(}\PYG{n+nx}{param}\PYG{p}{,} \PYG{n+nx}{e}\PYG{p}{)} \PYG{p}{\PYGZob{}}
-    \PYG{n+nx}{e}\PYG{p}{.}\PYG{n+nx}{preventDefault}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
-    \PYG{n+nx}{db}\PYG{p}{.}\PYG{n+nx}{ref}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}commands/\PYGZsq{}} \PYG{o}{+} \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{props}\PYG{p}{.}\PYG{n+nx}{robotId} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}/walk\PYGZsq{}}\PYG{p}{)}\PYG{p}{.}\PYG{n+nx}{set}\PYG{p}{(}\PYG{n+nx}{param}\PYG{p}{)}\PYG{p}{;}
-    \PYG{n+nx}{console}\PYG{p}{.}\PYG{n+nx}{log}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Parameter\PYGZsq{}}\PYG{p}{,} \PYG{n+nx}{param}\PYG{p}{)}\PYG{p}{;}
-  \PYG{p}{\PYGZcb{}}
-
-  \PYG{c+cm}{/**}
-\PYG{c+cm}{  * Maneja el evento de soltar un botón, si eso ocurre escribe en la ubicación}
-\PYG{c+cm}{  * /walk el valor de stop para que el robot detenga sus movimientos.}
-\PYG{c+cm}{  */}
-  \PYG{n+nx}{stopRobot}\PYG{p}{(}\PYG{n+nx}{e}\PYG{p}{)} \PYG{p}{\PYGZob{}}
-    \PYG{n+nx}{e}\PYG{p}{.}\PYG{n+nx}{preventDefault}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
-    \PYG{n+nx}{db}\PYG{p}{.}\PYG{n+nx}{ref}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}commands/\PYGZsq{}} \PYG{o}{+} \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{props}\PYG{p}{.}\PYG{n+nx}{robotId} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}/walk\PYGZsq{}}\PYG{p}{)}\PYG{p}{.}\PYG{n+nx}{set}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}stop\PYGZsq{}}\PYG{p}{)}\PYG{p}{;}
-    \PYG{n+nx}{console}\PYG{p}{.}\PYG{n+nx}{log}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}stopRobot\PYGZsq{}}\PYG{p}{)}\PYG{p}{;}
-  \PYG{p}{\PYGZcb{}}
-  \PYG{c+cm}{/**}
-\PYG{c+cm}{   * Maneja los cambios en el input range, si este cambia, escribe los nuevos}
-\PYG{c+cm}{   * valores en Firebase, donde corresponda a la articulación de la cabeza que}
-\PYG{c+cm}{   * se seleccionó.}
-\PYG{c+cm}{   */}
-  \PYG{n+nx}{handleJointRangeInput}\PYG{p}{(}\PYG{n+nx}{jointName}\PYG{p}{,} \PYG{n+nx}{e}\PYG{p}{)} \PYG{p}{\PYGZob{}}
-    \PYG{n+nx}{db}\PYG{p}{.}\PYG{n+nx}{ref}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}commands/\PYGZsq{}} \PYG{o}{+} \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{props}\PYG{p}{.}\PYG{n+nx}{robotId} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}/moveJoint/\PYGZsq{}} \PYG{o}{+} \PYG{n+nx}{jointName}\PYG{p}{)}\PYG{p}{.}\PYG{n+nx}{set}\PYG{p}{(}\PYG{n+nx}{e}\PYG{p}{.}\PYG{n+nx}{target}\PYG{p}{.}\PYG{n+nx}{value}\PYG{p}{)}\PYG{p}{;}
-    \PYG{n+nx}{console}\PYG{p}{.}\PYG{n+nx}{log}\PYG{p}{(}\PYG{n+nx}{e}\PYG{p}{.}\PYG{n+nx}{target}\PYG{p}{.}\PYG{n+nx}{value}\PYG{p}{)}\PYG{p}{;}
-  \PYG{p}{\PYGZcb{}}
-
-  \PYG{c+cm}{/**}
-\PYG{c+cm}{   * Maneja los eventos de los botones que cambian la postura del robot.}
-\PYG{c+cm}{   */}
-  \PYG{n+nx}{changePosture}\PYG{p}{(}\PYG{n+nx}{posture}\PYG{p}{,} \PYG{n+nx}{e}\PYG{p}{)} \PYG{p}{\PYGZob{}}
-    \PYG{n+nx}{e}\PYG{p}{.}\PYG{n+nx}{preventDefault}\PYG{p}{(}\PYG{p}{)}
-    \PYG{n+nx}{db}\PYG{p}{.}\PYG{n+nx}{ref}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}commands/\PYGZsq{}} \PYG{o}{+} \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{props}\PYG{p}{.}\PYG{n+nx}{robotId} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}/changePosture\PYGZsq{}}\PYG{p}{)}\PYG{p}{.}\PYG{n+nx}{set}\PYG{p}{(}\PYG{n+nx}{posture}\PYG{p}{)}\PYG{p}{;}
-  \PYG{p}{\PYGZcb{}}
-  \PYG{c+cm}{/**}
-\PYG{c+cm}{   * Escribe en la base de datos el valor de la velocidad que se configuró}
-\PYG{c+cm}{   * en el input range correspondiente.}
-\PYG{c+cm}{   */}
-  \PYG{n+nx}{setVelocity}\PYG{p}{(}\PYG{n+nx}{e}\PYG{p}{)} \PYG{p}{\PYGZob{}}
-    \PYG{n+nx}{db}\PYG{p}{.}\PYG{n+nx}{ref}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}commands/\PYGZsq{}} \PYG{o}{+} \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{props}\PYG{p}{.}\PYG{n+nx}{robotId} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}/walkSpeed\PYGZsq{}}\PYG{p}{)}\PYG{p}{.}\PYG{n+nx}{set}\PYG{p}{(}\PYG{n+nx}{e}\PYG{p}{.}\PYG{n+nx}{target}\PYG{p}{.}\PYG{n+nx}{value}\PYG{p}{)}\PYG{p}{;}
-  \PYG{p}{\PYGZcb{}}
-
-  \PYG{c+cm}{/**}
-\PYG{c+cm}{   * Maneja el submit que actualiza los parámetros de caminado del robot.}
-\PYG{c+cm}{   */}
-  \PYG{n+nx}{onSubmitGaitParameters} \PYG{o}{=} \PYG{p}{(}\PYG{n+nx}{e}\PYG{p}{)} \PYG{p}{=\PYGZgt{}} \PYG{p}{\PYGZob{}}
-    \PYG{n+nx}{e}\PYG{p}{.}\PYG{n+nx}{preventDefault}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
-    \PYG{n+nx}{db}\PYG{p}{.}\PYG{n+nx}{ref}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}commands/\PYGZsq{}} \PYG{o}{+} \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{props}\PYG{p}{.}\PYG{n+nx}{robotId} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}/gaitParameters\PYGZsq{}}\PYG{p}{)}\PYG{p}{.}\PYG{n+nx}{update}\PYG{p}{(}\PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{state}\PYG{p}{)}
-
-  \PYG{p}{\PYGZcb{}}
-  \PYG{c+cm}{/**}
-\PYG{c+cm}{   * Métod del ciclo de vida que se llamará justo después de que se reciban}
-\PYG{c+cm}{   * propiedades del componente padre. Inicializa los estados.}
-\PYG{c+cm}{   */}
-  \PYG{n+nx}{componentWillReceiveProps}\PYG{p}{(}\PYG{n+nx}{nextProps}\PYG{p}{)} \PYG{p}{\PYGZob{}}
-    \PYG{n+nx}{console}\PYG{p}{.}\PYG{n+nx}{log}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}Robot commands \PYGZdq{}} \PYG{o}{+} \PYG{n+nx}{nextProps}\PYG{p}{.}\PYG{n+nx}{robotId}\PYG{p}{)}\PYG{p}{;}
-    \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{setState}\PYG{p}{(}\PYG{n+nx}{INITIAL\PYGZus{}STATE}\PYG{p}{)}\PYG{p}{;}
-  \PYG{p}{\PYGZcb{}}
-
-  \PYG{c+cm}{/**}
-\PYG{c+cm}{   * Renderiza al componente}
-\PYG{c+cm}{   */}
-  \PYG{n+nx}{render}\PYG{p}{(}\PYG{p}{)} \PYG{p}{\PYGZob{}}
-
-    \PYG{k}{return} \PYG{p}{(}\PYG{p}{...}\PYG{p}{)}\PYG{p}{;}
-  \PYG{p}{\PYGZcb{}}
-\PYG{p}{\PYGZcb{}}
-\end{sphinxVerbatim}
-
-
 \textbf{robot\_log.js}
 \label{\detokenize{code_docs:robot-log-js}}
-Este componente renderiza la tabla de logs con la información que se obtiene de
+Define a la clase \texttt{RobotLogs}, subclase de \texttt{React.Component}, que renderiza la tabla de logs con la información que se obtiene de
 Firebase, también permite descargar el historial completo de logs para cada
 robot.
-
-\fvset{hllines={, ,}}%
-\begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{c+cm}{/**}
-\PYG{c+cm}{ * El componente que muestra una tabla con los últimos logs enviados por el robot.}
-\PYG{c+cm}{ * También permite descargar el historial completo de todos lo registros almacenados.}
-\PYG{c+cm}{ */}
-\PYG{k+kr}{class} \PYG{n+nx}{RobotLogs} \PYG{k+kr}{extends} \PYG{n+nx}{Component} \PYG{p}{\PYGZob{}}
-  \PYG{n+nx}{constructor}\PYG{p}{(}\PYG{n+nx}{props}\PYG{p}{)} \PYG{p}{\PYGZob{}}
-    \PYG{k+kr}{super}\PYG{p}{(}\PYG{n+nx}{props}\PYG{p}{)}\PYG{p}{;}
-    \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{state} \PYG{o}{=} \PYG{p}{\PYGZob{}}
-      \PYG{n+nx}{valuesFromRobot} \PYG{o}{:} \PYG{p}{\PYGZob{}}\PYG{p}{\PYGZcb{}}\PYG{p}{,}
-      \PYG{n+nx}{robotId} \PYG{o}{:} \PYG{k+kc}{null}\PYG{p}{,}
-      \PYG{n+nx}{logsHistory} \PYG{o}{:} \PYG{k+kc}{null}\PYG{p}{,}
-      \PYG{n+nx}{loadingJsonFile} \PYG{o}{:} \PYG{k+kc}{null}\PYG{p}{,}
-    \PYG{p}{\PYGZcb{}}\PYG{p}{;}
-    \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{prepareDowload} \PYG{o}{=} \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{prepareDowload}\PYG{p}{.}\PYG{n+nx}{bind}\PYG{p}{(}\PYG{k}{this}\PYG{p}{)}\PYG{p}{;}
-  \PYG{p}{\PYGZcb{}}
-  \PYG{c+cm}{/**}
-\PYG{c+cm}{   * Método del ciclo de vida del componente que se ejecuta una vez que recibió}
-\PYG{c+cm}{   * el id del robot. Se suscribe a la ubicación de los logs del robot seleccionado.}
-\PYG{c+cm}{   */}
-  \PYG{n+nx}{componentWillReceiveProps}\PYG{p}{(}\PYG{n+nx}{nextProps}\PYG{p}{)} \PYG{p}{\PYGZob{}}
-    \PYG{n+nx}{console}\PYG{p}{.}\PYG{n+nx}{log}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}logs\PYGZdq{}} \PYG{o}{+} \PYG{n+nx}{nextProps}\PYG{p}{.}\PYG{n+nx}{robotId}\PYG{p}{)}\PYG{p}{;}
-    \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{setState}\PYG{p}{(}\PYG{p}{\PYGZob{}}\PYG{n+nx}{valuesFromRobot} \PYG{o}{:} \PYG{p}{\PYGZob{}}\PYG{p}{\PYGZcb{}}\PYG{p}{,} \PYG{n+nx}{robotId} \PYG{o}{:} \PYG{n+nx}{nextProps}\PYG{p}{.}\PYG{n+nx}{robotId}\PYG{p}{,} \PYG{n+nx}{logsHistory} \PYG{o}{:} \PYG{k+kc}{null}\PYG{p}{\PYGZcb{}}\PYG{p}{)}\PYG{p}{;}
-    \PYG{k+kr}{const} \PYG{n+nx}{myLogsRootRef} \PYG{o}{=} \PYG{n+nx}{db}\PYG{p}{.}\PYG{n+nx}{ref}\PYG{p}{(}\PYG{p}{)}\PYG{p}{.}\PYG{n+nx}{child}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}logs/\PYGZsq{}}\PYG{o}{+} \PYG{n+nx}{nextProps}\PYG{p}{.}\PYG{n+nx}{robotId}\PYG{p}{)}
-                          \PYG{p}{.}\PYG{n+nx}{orderByKey}\PYG{p}{(}\PYG{p}{)}\PYG{p}{.}\PYG{n+nx}{limitToLast}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{)}\PYG{p}{;}
-    \PYG{n+nx}{myLogsRootRef}\PYG{p}{.}\PYG{n+nx}{on}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}child\PYGZus{}added\PYGZsq{}}\PYG{p}{,} \PYG{n+nx}{snap} \PYG{p}{=\PYGZgt{}} \PYG{p}{\PYGZob{}}
-      \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{setState}\PYG{p}{(}\PYG{p}{\PYGZob{}}
-        \PYG{n+nx}{valuesFromRobot} \PYG{o}{:} \PYG{n+nx}{snap}\PYG{p}{.}\PYG{n+nx}{val}\PYG{p}{(}\PYG{p}{)}
-      \PYG{p}{\PYGZcb{}}\PYG{p}{)}\PYG{p}{;}
-    \PYG{p}{\PYGZcb{}}\PYG{p}{)}\PYG{p}{;}
-  \PYG{p}{\PYGZcb{}}
-  \PYG{c+cm}{/**}
-\PYG{c+cm}{   * Obtiene todo el historial de logs guardados en Firebase, y permite su descarga.}
-\PYG{c+cm}{   */}
-  \PYG{n+nx}{prepareDowload}\PYG{p}{(}\PYG{p}{)} \PYG{p}{\PYGZob{}}
-    \PYG{k+kd}{let} \PYG{n+nx}{data} \PYG{o}{=} \PYG{l+s+s2}{\PYGZdq{}\PYGZdq{}}\PYG{p}{;}
-    \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{setState}\PYG{p}{(}\PYG{p}{\PYGZob{}}\PYG{n+nx}{loadingJsonFile} \PYG{o}{:} \PYG{k+kc}{true}\PYG{p}{\PYGZcb{}}\PYG{p}{)}\PYG{p}{;}
-    \PYG{n+nx}{db}\PYG{p}{.}\PYG{n+nx}{ref}\PYG{p}{(}\PYG{p}{)}\PYG{p}{.}\PYG{n+nx}{child}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}logs/\PYGZsq{}}\PYG{o}{+} \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{state}\PYG{p}{.}\PYG{n+nx}{robotId}\PYG{p}{)}\PYG{p}{.}\PYG{n+nx}{once}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}value\PYGZsq{}}\PYG{p}{)}\PYG{p}{.}\PYG{n+nx}{then}\PYG{p}{(}\PYG{p}{(}\PYG{n+nx}{snapshot}\PYG{p}{)} \PYG{p}{=\PYGZgt{}} \PYG{p}{\PYGZob{}}
-      \PYG{n+nx}{data} \PYG{o}{=} \PYG{l+s+s2}{\PYGZdq{}data:text/json;charset=utf\PYGZhy{}8,\PYGZdq{}} \PYG{o}{+} \PYG{n+nb}{encodeURIComponent}\PYG{p}{(}\PYG{n+nx}{JSON}\PYG{p}{.}\PYG{n+nx}{stringify}\PYG{p}{(}\PYG{n+nx}{snapshot}\PYG{p}{.}\PYG{n+nx}{val}\PYG{p}{(}\PYG{p}{)}\PYG{p}{)}\PYG{p}{)}\PYG{p}{;}
-      \PYG{n+nx}{console}\PYG{p}{.}\PYG{n+nx}{log}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}data\PYGZdq{}} \PYG{o}{+} \PYG{n+nx}{data}\PYG{p}{)}\PYG{p}{;}
-      \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{setState}\PYG{p}{(}\PYG{p}{\PYGZob{}}\PYG{n+nx}{logsHistory} \PYG{o}{:} \PYG{n+nx}{data}\PYG{p}{,} \PYG{n+nx}{loadingJsonFile} \PYG{o}{:} \PYG{k+kc}{false}\PYG{p}{\PYGZcb{}}\PYG{p}{)}\PYG{p}{;}
-    \PYG{p}{\PYGZcb{}}\PYG{p}{)}\PYG{p}{;}
-  \PYG{p}{\PYGZcb{}}
-  \PYG{c+cm}{/**}
-\PYG{c+cm}{   * Renderiza el componente}
-\PYG{c+cm}{   */}
-  \PYG{n+nx}{render}\PYG{p}{(}\PYG{p}{)}\PYG{p}{\PYGZob{}}\PYG{p}{...}\PYG{p}{\PYGZcb{}}\PYG{p}{;}
-  \PYG{p}{\PYGZcb{}}
-\PYG{p}{\PYGZcb{}}
-\end{sphinxVerbatim}
 
 
 \textbf{robot\_selection.js}
 \label{\detokenize{code_docs:robot-selection-js}}
-Este componente es quien maneja la selección de un robot y actualiza al
+Se define al componente \texttt{RobotList} el cual maneja la selección de un robot y actualiza al
 \sphinxcode{\sphinxupquote{Dashboard}} para que envíe a sus hijos el id del robot seleccionado.
 
-\fvset{hllines={, ,}}%
-\begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{k+kr}{class} \PYG{n+nx}{RobotList} \PYG{k+kr}{extends} \PYG{n+nx}{Component} \PYG{p}{\PYGZob{}}
+\textbf{robot\_status.js}
 
-  \PYG{n+nx}{robotsToList} \PYG{o}{=} \PYG{p}{(}\PYG{n+nx}{data}\PYG{p}{)} \PYG{p}{=\PYGZgt{}} \PYG{p}{\PYGZob{}}
-    \PYG{k}{return} \PYG{n+nb}{Object}\PYG{p}{.}\PYG{n+nx}{keys}\PYG{p}{(}\PYG{n+nx}{data}\PYG{p}{)}\PYG{p}{.}\PYG{n+nx}{map}\PYG{p}{(}\PYG{n+nx}{key} \PYG{p}{=\PYGZgt{}} \PYG{p}{\PYGZob{}}
-      \PYG{k}{return} \PYG{p}{(}\PYG{p}{...}\PYG{p}{)}\PYG{p}{;}
-    \PYG{p}{\PYGZcb{}}\PYG{p}{)}\PYG{p}{;}
-  \PYG{p}{\PYGZcb{}}
-
-  \PYG{n+nx}{constructor}\PYG{p}{(}\PYG{n+nx}{props}\PYG{p}{)} \PYG{p}{\PYGZob{}}
-    \PYG{k+kr}{super}\PYG{p}{(}\PYG{n+nx}{props}\PYG{p}{)}\PYG{p}{;}
-    \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{state} \PYG{o}{=} \PYG{p}{\PYGZob{}}
-      \PYG{n+nx}{newRobot} \PYG{o}{:} \PYG{l+s+s1}{\PYGZsq{}\PYGZsq{}}\PYG{p}{,}
-      \PYG{n+nx}{listOfRobots}\PYG{o}{:} \PYG{p}{\PYGZob{}}\PYG{p}{\PYGZcb{}}\PYG{p}{,}
-      \PYG{n+nx}{currentRobot} \PYG{o}{:} \PYG{k+kc}{null}\PYG{p}{,}
-    \PYG{p}{\PYGZcb{}}\PYG{p}{;}
-    \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{robotSelectionHandler} \PYG{o}{=} \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{robotSelectionHandler}\PYG{p}{.}\PYG{n+nx}{bind}\PYG{p}{(}\PYG{k}{this}\PYG{p}{)}\PYG{p}{;}
-    \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{addNewRobot} \PYG{o}{=} \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{addNewRobot}\PYG{p}{.}\PYG{n+nx}{bind}\PYG{p}{(}\PYG{k}{this}\PYG{p}{)}\PYG{p}{;}
-  \PYG{p}{\PYGZcb{}}
-
-  \PYG{n+nx}{robotSelectionHandler} \PYG{o}{=} \PYG{p}{(}\PYG{n+nx}{robotKey}\PYG{p}{,} \PYG{n+nx}{robotName}\PYG{p}{,} \PYG{n+nx}{e}\PYG{p}{)} \PYG{p}{=\PYGZgt{}} \PYG{p}{\PYGZob{}}
-    \PYG{n+nx}{e}\PYG{p}{.}\PYG{n+nx}{preventDefault}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
-    \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{setState}\PYG{p}{(}\PYG{p}{\PYGZob{}}\PYG{n+nx}{currentRobot} \PYG{o}{:} \PYG{n+nx}{robotName}\PYG{p}{\PYGZcb{}}\PYG{p}{)}\PYG{p}{;}
-    \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{props}\PYG{p}{.}\PYG{n+nx}{robotSelection}\PYG{p}{(}\PYG{n+nx}{robotKey}\PYG{p}{,} \PYG{n+nx}{robotName}\PYG{p}{)}\PYG{p}{;}
-  \PYG{p}{\PYGZcb{}}
-
-  \PYG{n+nx}{addNewRobot} \PYG{o}{=} \PYG{p}{(}\PYG{n+nx}{e}\PYG{p}{)} \PYG{p}{=\PYGZgt{}} \PYG{p}{\PYGZob{}}
-    \PYG{n+nx}{e}\PYG{p}{.}\PYG{n+nx}{preventDefault}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
-    \PYG{k}{if} \PYG{p}{(}\PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{state}\PYG{p}{.}\PYG{n+nx}{newRobot} \PYG{o}{\PYGZam{}\PYGZam{}} \PYG{n+nx}{auth}\PYG{p}{.}\PYG{n+nx}{currentUser}\PYG{p}{)} \PYG{p}{\PYGZob{}}
-      \PYG{k+kr}{const} \PYG{n+nx}{robotName} \PYG{o}{=} \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{state}\PYG{p}{.}\PYG{n+nx}{newRobot}\PYG{p}{;}
-      \PYG{n+nx}{db}\PYG{p}{.}\PYG{n+nx}{ref}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}robots\PYGZsq{}}\PYG{p}{)}\PYG{p}{.}\PYG{n+nx}{push}\PYG{p}{(}\PYG{p}{\PYGZob{}} \PYG{n+nx}{name} \PYG{o}{:} \PYG{n+nx}{robotName}\PYG{p}{\PYGZcb{}}\PYG{p}{)}
-        \PYG{p}{.}\PYG{n+nx}{then}\PYG{p}{(}\PYG{p}{(}\PYG{n+nx}{snap}\PYG{p}{)} \PYG{p}{=\PYGZgt{}} \PYG{p}{\PYGZob{}}
-          \PYG{k+kr}{const} \PYG{n+nx}{newRobotkey} \PYG{o}{=} \PYG{n+nx}{snap}\PYG{p}{.}\PYG{n+nx}{key}\PYG{p}{;}
-          \PYG{n+nx}{db}\PYG{p}{.}\PYG{n+nx}{ref}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}users/\PYGZsq{}} \PYG{o}{+} \PYG{n+nx}{auth}\PYG{p}{.}\PYG{n+nx}{currentUser}\PYG{p}{.}\PYG{n+nx}{uid} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}/robots/\PYGZsq{}} \PYG{o}{+} \PYG{n+nx}{newRobotkey}\PYG{p}{)}
-            \PYG{p}{.}\PYG{n+nx}{set}\PYG{p}{(}\PYG{n+nx}{robotName}\PYG{p}{)}\PYG{p}{;}
-      \PYG{p}{\PYGZcb{}}\PYG{p}{)}\PYG{p}{;}
-    \PYG{p}{\PYGZcb{}}
-    \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{setState}\PYG{p}{(}\PYG{p}{\PYGZob{}} \PYG{n+nx}{newRobot} \PYG{o}{:} \PYG{l+s+s1}{\PYGZsq{}\PYGZsq{}} \PYG{p}{\PYGZcb{}}\PYG{p}{)}
-  \PYG{p}{\PYGZcb{}}
-
-  \PYG{n+nx}{componentDidMount}\PYG{p}{(}\PYG{p}{)} \PYG{p}{\PYGZob{}}
-    \PYG{n+nx}{console}\PYG{p}{.}\PYG{n+nx}{log}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}robot sele \PYGZdq{}} \PYG{o}{+} \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{props}\PYG{p}{.}\PYG{n+nx}{robotId}\PYG{p}{)}\PYG{p}{;}
-    \PYG{n+nx}{db}\PYG{p}{.}\PYG{n+nx}{ref}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}users/\PYGZsq{}} \PYG{o}{+} \PYG{n+nx}{auth}\PYG{p}{.}\PYG{n+nx}{currentUser}\PYG{p}{.}\PYG{n+nx}{uid} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}/robots\PYGZsq{}}\PYG{p}{)}
-      \PYG{p}{.}\PYG{n+nx}{on}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}value\PYGZsq{}}\PYG{p}{,} \PYG{n+nx}{snap} \PYG{p}{=\PYGZgt{}} \PYG{p}{\PYGZob{}}
-        \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{setState}\PYG{p}{(}\PYG{p}{\PYGZob{}} \PYG{n+nx}{listOfRobots} \PYG{o}{:} \PYG{n+nx}{snap}\PYG{p}{.}\PYG{n+nx}{val}\PYG{p}{(}\PYG{p}{)} \PYG{p}{\PYGZcb{}}\PYG{p}{)}
-      \PYG{p}{\PYGZcb{}}
-    \PYG{p}{)}\PYG{p}{;}
-  \PYG{p}{\PYGZcb{}}
-
-  \PYG{n+nx}{render}\PYG{p}{(}\PYG{p}{)} \PYG{p}{\PYGZob{}}\PYG{p}{...}\PYG{p}{\PYGZcb{}}
-\PYG{p}{\PYGZcb{}}
-\end{sphinxVerbatim}
-
+Contiene al componente \texttt{RobotStatus} que muestra la batería y el estado de la conexión con el robot.
 
 \textbf{signin.js}
 \label{\detokenize{code_docs:signin-js}}
-Este componente maneja el inicio de sesión de un usuario, utiliza al
+Se encuentra la clase \texttt{SignIn}, el componente que maneja el inicio de sesión de un usuario, utiliza al
 objeto \sphinxcode{\sphinxupquote{auth}} para que el usuario utilice su dirección de correo y una
 contraseña.
-
-\fvset{hllines={, ,}}%
-\begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{c+cm}{/**}
-\PYG{c+cm}{ * El componente que se encarga del inicio de sesión de un usuario.}
-\PYG{c+cm}{ */}
-\PYG{k+kr}{class} \PYG{n+nx}{SignIn} \PYG{k+kr}{extends} \PYG{n+nx}{Component} \PYG{p}{\PYGZob{}}
-
-  \PYG{n+nx}{constructor}\PYG{p}{(}\PYG{n+nx}{props}\PYG{p}{)} \PYG{p}{\PYGZob{}}
-    \PYG{k+kr}{super}\PYG{p}{(}\PYG{n+nx}{props}\PYG{p}{)}\PYG{p}{;}
-    \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{state} \PYG{o}{=} \PYG{p}{\PYGZob{}}
-      \PYG{n+nx}{INITIAL\PYGZus{}STATE}
-    \PYG{p}{\PYGZcb{}}
-  \PYG{p}{\PYGZcb{}}
-  \PYG{c+cm}{/**}
-\PYG{c+cm}{   * La función que se ejecuta al subir el formulario con el nombre de usuario}
-\PYG{c+cm}{   * y la contraseña de este.}
-\PYG{c+cm}{   */}
-  \PYG{n+nx}{onSubmit} \PYG{o}{=} \PYG{p}{(}\PYG{n+nx}{event}\PYG{p}{)} \PYG{p}{=\PYGZgt{}} \PYG{p}{\PYGZob{}}
-    \PYG{n+nx}{event}\PYG{p}{.}\PYG{n+nx}{preventDefault}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
-    \PYG{k+kr}{const} \PYG{n+nx}{history} \PYG{o}{=} \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{props}\PYG{p}{.}\PYG{n+nx}{history}\PYG{p}{;}
-
-    \PYG{n+nx}{auth}\PYG{p}{.}\PYG{n+nx}{doSignInWithEmailAndPassword}\PYG{p}{(}\PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{state}\PYG{p}{.}\PYG{n+nx}{email}\PYG{p}{,} \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{state}\PYG{p}{.}\PYG{n+nx}{password}\PYG{p}{)}
-      \PYG{p}{.}\PYG{n+nx}{then}\PYG{p}{(}\PYG{p}{(}\PYG{p}{)} \PYG{p}{=\PYGZgt{}} \PYG{p}{\PYGZob{}}
-        \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{setState}\PYG{p}{(}\PYG{p}{(}\PYG{p}{)} \PYG{p}{=\PYGZgt{}} \PYG{p}{(}\PYG{p}{\PYGZob{}} \PYG{n+nx}{INITIAL\PYGZus{}STATE} \PYG{p}{\PYGZcb{}}\PYG{p}{)}\PYG{p}{)}\PYG{p}{;}
-        \PYG{n+nx}{history}\PYG{p}{.}\PYG{n+nx}{push}\PYG{p}{(}\PYG{n+nx}{routes}\PYG{p}{.}\PYG{n+nx}{ROBOTS}\PYG{p}{)}\PYG{p}{;}
-      \PYG{p}{\PYGZcb{}}\PYG{p}{)}
-      \PYG{p}{.}\PYG{k}{catch}\PYG{p}{(}\PYG{n+nx}{error} \PYG{p}{=\PYGZgt{}} \PYG{p}{\PYGZob{}}
-        \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{setState}\PYG{p}{(}\PYG{p}{\PYGZob{}} \PYG{n+nx}{error} \PYG{o}{:} \PYG{n+nx}{error} \PYG{p}{\PYGZcb{}}\PYG{p}{)}\PYG{p}{;}
-      \PYG{p}{\PYGZcb{}}\PYG{p}{)}\PYG{p}{;}
-  \PYG{p}{\PYGZcb{}}
-  \PYG{c+cm}{/**}
-\PYG{c+cm}{   * Renderiza al componente}
-\PYG{c+cm}{   */}
-  \PYG{n+nx}{render}\PYG{p}{(}\PYG{p}{)} \PYG{p}{\PYGZob{}}
-    \PYG{k}{return} \PYG{p}{(}\PYG{p}{...}\PYG{p}{)}\PYG{p}{;}
-  \PYG{p}{\PYGZcb{}}
-\PYG{p}{\PYGZcb{}}
-\end{sphinxVerbatim}
 
 
 \textbf{signout.js}
 \label{\detokenize{code_docs:signout-js}}
-Es un componente dentro del menú de navegación para cerrar la sesión del usuario.
-
-\fvset{hllines={, ,}}%
-\begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{c+cm}{/**}
-\PYG{c+cm}{ * El componente en el menú para cerrar la sesión del usuario.}
-\PYG{c+cm}{ */}
-\PYG{k+kr}{const} \PYG{n+nx}{SignOutMenuItem} \PYG{o}{=} \PYG{p}{(}\PYG{p}{)} \PYG{p}{=\PYGZgt{}}
-  \PYG{p}{\PYGZob{}}\PYG{p}{...}\PYG{p}{\PYGZcb{}}
-\end{sphinxVerbatim}
+Define al componente \texttt{SignOutMenuItem} encargado de cerrar la sesión del usuario.
 
 
 \textbf{signup.js}
 \label{\detokenize{code_docs:signup-js}}
-El componente donde un nuevo usuario se registra, utiliza las funciones
+Contiene al componente \texttt{SignUp} en el que un nuevo usuario se registra. Utiliza las funciones
 de autenticación de Firebase y además almacena al nuevo usuario a la base de
 datos.
 
-\fvset{hllines={, ,}}%
-\begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{c+cm}{/**}
-\PYG{c+cm}{ * Componente cuya función es el registro de un nuevo usuario.}
-\PYG{c+cm}{ */}
-\PYG{k+kr}{class} \PYG{n+nx}{SignUp} \PYG{k+kr}{extends} \PYG{n+nx}{Component} \PYG{p}{\PYGZob{}}
-
-  \PYG{n+nx}{constructor}\PYG{p}{(}\PYG{n+nx}{props}\PYG{p}{)} \PYG{p}{\PYGZob{}}
-    \PYG{k+kr}{super}\PYG{p}{(}\PYG{n+nx}{props}\PYG{p}{)}\PYG{p}{;}
-    \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{state} \PYG{o}{=} \PYG{p}{\PYGZob{}}
-      \PYG{n+nx}{INITIAL\PYGZus{}STATE}
-    \PYG{p}{\PYGZcb{}}
-  \PYG{p}{\PYGZcb{}}
-  \PYG{c+cm}{/**}
-\PYG{c+cm}{   * Verifica que las dos contraseñas que se solicitan no estén vacías y}
-\PYG{c+cm}{   * sean la misma cadena.}
-\PYG{c+cm}{   */}
-  \PYG{n+nx}{isValid}\PYG{p}{(}\PYG{p}{)} \PYG{p}{\PYGZob{}}
-    \PYG{k}{if} \PYG{p}{(}\PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{state}\PYG{p}{.}\PYG{n+nx}{passwordOne} \PYG{o}{\PYGZam{}\PYGZam{}} \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{state}\PYG{p}{.}\PYG{n+nx}{passwordTwo}\PYG{p}{)} \PYG{p}{\PYGZob{}}
-      \PYG{k}{if} \PYG{p}{(}\PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{state}\PYG{p}{.}\PYG{n+nx}{passwordTwo} \PYG{o}{!==} \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{state}\PYG{p}{.}\PYG{n+nx}{passwordOne}\PYG{p}{)} \PYG{p}{\PYGZob{}}
-        \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{setState}\PYG{p}{(}\PYG{p}{\PYGZob{}}\PYG{n+nx}{error} \PYG{o}{:} \PYG{p}{\PYGZob{}}\PYG{n+nx}{message} \PYG{o}{:} \PYG{l+s+s2}{\PYGZdq{}Passwords must match\PYGZdq{}}\PYG{p}{\PYGZcb{}}\PYG{p}{\PYGZcb{}}\PYG{p}{)}\PYG{p}{;}
-        \PYG{k}{return} \PYG{k+kc}{false}\PYG{p}{;}
-      \PYG{p}{\PYGZcb{}}
-      \PYG{k}{return} \PYG{k+kc}{true}\PYG{p}{;}
-    \PYG{p}{\PYGZcb{}}
-    \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{setState}\PYG{p}{(}\PYG{p}{\PYGZob{}}\PYG{n+nx}{error} \PYG{o}{:} \PYG{p}{\PYGZob{}}\PYG{n+nx}{message} \PYG{o}{:} \PYG{l+s+s2}{\PYGZdq{}Invalid password\PYGZdq{}}\PYG{p}{\PYGZcb{}}\PYG{p}{\PYGZcb{}}\PYG{p}{)}\PYG{p}{;}
-    \PYG{k}{return} \PYG{k+kc}{false}\PYG{p}{;}
-  \PYG{p}{\PYGZcb{}}
-  \PYG{c+cm}{/**}
-\PYG{c+cm}{   * Método que maneja al evento de subir el formulario de registro}
-\PYG{c+cm}{   */}
-  \PYG{n+nx}{onSubmit} \PYG{o}{=} \PYG{p}{(}\PYG{n+nx}{event}\PYG{p}{)} \PYG{p}{=\PYGZgt{}} \PYG{p}{\PYGZob{}}
-    \PYG{n+nx}{event}\PYG{p}{.}\PYG{n+nx}{preventDefault}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
-    \PYG{k+kr}{const} \PYG{n+nx}{history} \PYG{o}{=} \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{props}\PYG{p}{.}\PYG{n+nx}{history}\PYG{p}{;}
-    \PYG{k+kr}{const} \PYG{n+nx}{email} \PYG{o}{=} \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{state}\PYG{p}{.}\PYG{n+nx}{email}\PYG{p}{;}
-    \PYG{k}{if} \PYG{p}{(}\PYG{o}{!}\PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{isValid}\PYG{p}{(}\PYG{p}{)}\PYG{p}{)} \PYG{p}{\PYGZob{}}
-      \PYG{k}{return}\PYG{p}{;}
-    \PYG{p}{\PYGZcb{}}
-
-    \PYG{n+nx}{auth}\PYG{p}{.}\PYG{n+nx}{doCreateUserWithEmailAndPassword}\PYG{p}{(}\PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{state}\PYG{p}{.}\PYG{n+nx}{email}\PYG{p}{,} \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{state}\PYG{p}{.}\PYG{n+nx}{passwordOne}\PYG{p}{)}
-      \PYG{p}{.}\PYG{n+nx}{then}\PYG{p}{(}\PYG{n+nx}{authUser} \PYG{p}{=\PYGZgt{}} \PYG{p}{\PYGZob{}}
-        \PYG{n+nx}{db}\PYG{p}{.}\PYG{n+nx}{ref}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}users/\PYGZsq{}} \PYG{o}{+} \PYG{n+nx}{authUser}\PYG{p}{.}\PYG{n+nx}{uid}\PYG{p}{)}\PYG{p}{.}\PYG{n+nx}{set}\PYG{p}{(}\PYG{p}{\PYGZob{}}\PYG{n+nx}{email} \PYG{o}{:} \PYG{n+nx}{email}\PYG{p}{\PYGZcb{}}\PYG{p}{)}
-          \PYG{p}{.}\PYG{n+nx}{then}\PYG{p}{(}\PYG{p}{(}\PYG{p}{)} \PYG{p}{=\PYGZgt{}} \PYG{p}{\PYGZob{}}
-            \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{setState}\PYG{p}{(}\PYG{p}{(}\PYG{p}{)} \PYG{p}{=\PYGZgt{}} \PYG{p}{(}\PYG{p}{\PYGZob{}} \PYG{n+nx}{INITIAL\PYGZus{}STATE} \PYG{p}{\PYGZcb{}}\PYG{p}{)}\PYG{p}{)}\PYG{p}{;}
-            \PYG{n+nx}{history}\PYG{p}{.}\PYG{n+nx}{push}\PYG{p}{(}\PYG{n+nx}{routes}\PYG{p}{.}\PYG{n+nx}{ROBOTS}\PYG{p}{)}\PYG{p}{;}
-          \PYG{p}{\PYGZcb{}}\PYG{p}{)}
-          \PYG{p}{.}\PYG{k}{catch}\PYG{p}{(}\PYG{n+nx}{error} \PYG{p}{=\PYGZgt{}} \PYG{p}{\PYGZob{}}
-            \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{setState}\PYG{p}{(}\PYG{p}{\PYGZob{}} \PYG{n+nx}{error} \PYG{o}{:} \PYG{n+nx}{error} \PYG{p}{\PYGZcb{}}\PYG{p}{)}\PYG{p}{;}
-          \PYG{p}{\PYGZcb{}}\PYG{p}{)}
-      \PYG{p}{\PYGZcb{}}\PYG{p}{)}
-      \PYG{p}{.}\PYG{k}{catch}\PYG{p}{(}\PYG{n+nx}{error} \PYG{p}{=\PYGZgt{}} \PYG{p}{\PYGZob{}}
-        \PYG{n+nx}{console}\PYG{p}{.}\PYG{n+nx}{log}\PYG{p}{(}\PYG{n+nx}{error}\PYG{p}{)}\PYG{p}{;}
-        \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{setState}\PYG{p}{(}\PYG{p}{\PYGZob{}} \PYG{n+nx}{error} \PYG{o}{:} \PYG{n+nx}{error} \PYG{p}{\PYGZcb{}}\PYG{p}{)}\PYG{p}{;}
-      \PYG{p}{\PYGZcb{}}\PYG{p}{)}\PYG{p}{;}
-
-  \PYG{p}{\PYGZcb{}}
-  \PYG{c+cm}{/**}
-\PYG{c+cm}{   * Renderiza al componente}
-\PYG{c+cm}{   */}
-  \PYG{n+nx}{render}\PYG{p}{(}\PYG{p}{)} \PYG{p}{\PYGZob{}}
-    \PYG{k}{return} \PYG{p}{(}\PYG{p}{...}\PYG{p}{)}\PYG{p}{;}
-  \PYG{p}{\PYGZcb{}}
-\PYG{p}{\PYGZcb{}}
-\end{sphinxVerbatim}
-
-
 \textbf{text\_to\_speech.js}
 \label{\detokenize{code_docs:text-to-speech-js}}
-Este componente envía una cadena de texto a Firebase para que el robot la
+Define la clase \texttt{TextToSpeech}, el componente que envía una cadena de texto a Firebase para que el robot la
 replique oralmente.
 
-\fvset{hllines={, ,}}%
-\begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{c+cm}{/**}
-\PYG{c+cm}{ * Componente que envía el texto que debe repetir el robot.}
-\PYG{c+cm}{ */}
-\PYG{k+kr}{class} \PYG{n+nx}{TextToSpeech} \PYG{k+kr}{extends} \PYG{n+nx}{Component} \PYG{p}{\PYGZob{}}
-
-  \PYG{n+nx}{constructor}\PYG{p}{(}\PYG{n+nx}{props}\PYG{p}{)} \PYG{p}{\PYGZob{}}
-    \PYG{k+kr}{super}\PYG{p}{(}\PYG{n+nx}{props}\PYG{p}{)}\PYG{p}{;}
-    \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{state} \PYG{o}{=} \PYG{p}{\PYGZob{}}
-      \PYG{n+nx}{robotId} \PYG{o}{:} \PYG{k+kc}{null}\PYG{p}{,}
-    \PYG{p}{\PYGZcb{}}\PYG{p}{;}
-    \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{sendSpeech} \PYG{o}{=} \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{sendSpeech}\PYG{p}{.}\PYG{n+nx}{bind}\PYG{p}{(}\PYG{k}{this}\PYG{p}{)}\PYG{p}{;}
-  \PYG{p}{\PYGZcb{}}
-  \PYG{c+cm}{/**}
-\PYG{c+cm}{   * Maneja el evento de que el usuario escriba en el input el texto que el robot}
-\PYG{c+cm}{   * debe decir.}
-\PYG{c+cm}{   */}
-  \PYG{n+nx}{sendSpeech}\PYG{p}{(}\PYG{n+nx}{e}\PYG{p}{)} \PYG{p}{\PYGZob{}}
-    \PYG{k}{if} \PYG{p}{(}\PYG{n+nx}{e}\PYG{p}{.}\PYG{n+nx}{keyCode} \PYG{o}{===} \PYG{l+m+mi}{13}\PYG{p}{)} \PYG{p}{\PYGZob{}}
-      \PYG{k}{if} \PYG{p}{(}\PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{state}\PYG{p}{.}\PYG{n+nx}{robotId}\PYG{p}{)} \PYG{p}{\PYGZob{}}
-        \PYG{n+nx}{db}\PYG{p}{.}\PYG{n+nx}{ref}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}commands/\PYGZsq{}} \PYG{o}{+} \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{state}\PYG{p}{.}\PYG{n+nx}{robotId} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}/speech\PYGZsq{}}\PYG{p}{)}\PYG{p}{.}\PYG{n+nx}{set}\PYG{p}{(}\PYG{n+nx}{e}\PYG{p}{.}\PYG{n+nx}{target}\PYG{p}{.}\PYG{n+nx}{value}\PYG{p}{)}\PYG{p}{;}
-      \PYG{p}{\PYGZcb{}}
-      \PYG{n+nx}{e}\PYG{p}{.}\PYG{n+nx}{target}\PYG{p}{.}\PYG{n+nx}{value} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}\PYGZsq{}}\PYG{p}{;}
-    \PYG{p}{\PYGZcb{}}
-  \PYG{p}{\PYGZcb{}}
-  \PYG{c+cm}{/**}
-\PYG{c+cm}{   * Actualiza el id del robot, para escribir en la ubicación de Firebase que}
-\PYG{c+cm}{   * le corresponde.}
-\PYG{c+cm}{   */}
-  \PYG{n+nx}{componentWillReceiveProps}\PYG{p}{(}\PYG{n+nx}{nextProps}\PYG{p}{)} \PYG{p}{\PYGZob{}}
-    \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{setState}\PYG{p}{(}\PYG{p}{\PYGZob{}}\PYG{n+nx}{robotId} \PYG{o}{:} \PYG{n+nx}{nextProps}\PYG{p}{.}\PYG{n+nx}{robotId}\PYG{p}{\PYGZcb{}}\PYG{p}{)}\PYG{p}{;}
-  \PYG{p}{\PYGZcb{}}
-  \PYG{c+cm}{/**}
-\PYG{c+cm}{   * Renderiza el componente}
-\PYG{c+cm}{   */}
-  \PYG{n+nx}{render}\PYG{p}{(}\PYG{p}{)} \PYG{p}{\PYGZob{}}\PYG{p}{...}\PYG{p}{\PYGZcb{}}
-\PYG{p}{\PYGZcb{}}
-\end{sphinxVerbatim}
-
-
-\subparagraph{constants/}
+\subparagraph{constants/routes.js}
 \label{\detokenize{code_docs:constants}}
-En este directorio contiene el archivo de las rutas que tendrá la aplicación
+
+Este archivo contiene las rutas de la aplicación.
 
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -2159,139 +1903,11 @@ En este directorio contiene el archivo de las rutas que tendrá la aplicación
 \PYG{k+kr}{export} \PYG{k+kr}{const} \PYG{n+nx}{ROBOTS} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}/robots\PYGZsq{}}\PYG{p}{;}
 \end{sphinxVerbatim}
 
+
 La aplicación inicia mostrando el componente de la ruta \sphinxcode{\sphinxupquote{LANDING}}, que es
-\sphinxcode{\sphinxupquote{\textless{}Landing /\textgreater{}}}, el usuario selecciona \sphinxcode{\sphinxupquote{Sign In}} en el menú de navegación
+\sphinxcode{\sphinxupquote{Landing}}, el usuario selecciona \sphinxcode{\sphinxupquote{Sign In}} en el menú de navegación
 se direcciona a la ruta \sphinxcode{\sphinxupquote{SIGN\_IN}}, si es un nuevo usuario puede dar click
 en el botón que envía a la ruta \sphinxcode{\sphinxupquote{SIGN\_UP}}. Después de realzar un inicio de
 sesión de cualquiera de las dos formas anteriores se redirecciona a la ruta
-\sphinxcode{\sphinxupquote{ROBOTS}} que muestra al componente \sphinxcode{\sphinxupquote{\textless{}Dashboard /\textgreater{}}}
-
-
-\paragraph{Manejo de sesiones y autorización de usuarios}
-\label{\detokenize{code_docs:manejo-de-sesiones-y-autorizacion-de-usuarios}}
-Para manejar las sesión de un usuario, es decir, verificar que si este ha
-iniciado sesión y así saber qué componentes se pueden mostrar, se utilizan
-\sphinxstylestrong{componentes de alto orden} y el patrón proveedor de React.
-
-Los componentes de alto nivel de cumplen con una sola función. Separa la lógica
-del negocio de los componentes. Así, un componente se mantiene ligero.
-
-El patrón proveedor de React es un concepto que ayuda a pasar propiedades
-en la aplicación usando el contexto de React. Permite pasar propiedades
-implícitamente entre componentes sin importar su jerarquía.
-
-Utilizando un HOC, se envuelve al componente \sphinxcode{\sphinxupquote{App}} para mejorarlo y
-añadir la funcionalidad del manejo de sesión.
-
-El componente de alto nivel está dentro del directorio \sphinxcode{\sphinxupquote{components}} en el
-archivo \sphinxcode{\sphinxupquote{with\_authentication}}.
-
-\fvset{hllines={, ,}}%
-\begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{c+cm}{/**}
-\PYG{c+cm}{ * El componente de alto nivel para manejar el inicio de sesión y enviar al}
-\PYG{c+cm}{ * usuario actual a otros componentes.}
-\PYG{c+cm}{ */}
-\PYG{k+kr}{const} \PYG{n+nx}{withAuthentication} \PYG{o}{=} \PYG{p}{(}\PYG{n+nx}{MyComponent}\PYG{p}{)} \PYG{p}{=\PYGZgt{}} \PYG{p}{\PYGZob{}}
-  \PYG{k+kr}{class} \PYG{n+nx}{WithAuthentication} \PYG{k+kr}{extends} \PYG{n+nx}{Component} \PYG{p}{\PYGZob{}}
-    \PYG{n+nx}{constructor}\PYG{p}{(}\PYG{n+nx}{props}\PYG{p}{)} \PYG{p}{\PYGZob{}}
-      \PYG{k+kr}{super}\PYG{p}{(}\PYG{n+nx}{props}\PYG{p}{)}\PYG{p}{;}
-      \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{state} \PYG{o}{=} \PYG{p}{\PYGZob{}}
-        \PYG{n+nx}{authUser}\PYG{o}{:} \PYG{k+kc}{null}
-      \PYG{p}{\PYGZcb{}}
-    \PYG{p}{\PYGZcb{}}
-    \PYG{c+cm}{/**}
-\PYG{c+cm}{     * Permite enviar a los componentes hijos el objeto que contiene al usuario}
-\PYG{c+cm}{     * activo}
-\PYG{c+cm}{     */}
-    \PYG{n+nx}{getChildContext}\PYG{p}{(}\PYG{p}{)} \PYG{p}{\PYGZob{}}
-      \PYG{k}{return} \PYG{p}{\PYGZob{}}\PYG{n+nx}{authUser}\PYG{o}{:} \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{state}\PYG{p}{.}\PYG{n+nx}{authUser}\PYG{p}{\PYGZcb{}}\PYG{p}{;}
-    \PYG{p}{\PYGZcb{}}
-
-    \PYG{n+nx}{componentDidMount}\PYG{p}{(}\PYG{p}{)} \PYG{p}{\PYGZob{}}
-      \PYG{n+nx}{auth}\PYG{p}{.}\PYG{n+nx}{onAuthStateChanged}\PYG{p}{(}\PYG{n+nx}{user} \PYG{p}{=\PYGZgt{}} \PYG{p}{\PYGZob{}}
-        \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{setState}\PYG{p}{(}\PYG{p}{\PYGZob{}}
-          \PYG{n+nx}{authUser}\PYG{o}{:} \PYG{n+nx}{user}
-            \PYG{o}{?} \PYG{n+nx}{user}
-            \PYG{o}{:} \PYG{k+kc}{null}
-        \PYG{p}{\PYGZcb{}}\PYG{p}{)}\PYG{p}{;}
-      \PYG{p}{\PYGZcb{}}\PYG{p}{)}
-    \PYG{p}{\PYGZcb{}}
-
-    \PYG{n+nx}{render}\PYG{p}{(}\PYG{p}{)} \PYG{p}{\PYGZob{}}
-      \PYG{k}{return} \PYG{p}{(}\PYG{o}{\PYGZlt{}}\PYG{n+nx}{MyComponent}\PYG{o}{/}\PYG{o}{\PYGZgt{}}\PYG{p}{)}\PYG{p}{;}
-    \PYG{p}{\PYGZcb{}}
-  \PYG{p}{\PYGZcb{}}
-  \PYG{c+cm}{/**}
-\PYG{c+cm}{   * Parte del patrón proveedor de React con el objeto context}
-\PYG{c+cm}{   */}
-  \PYG{n+nx}{WithAuthentication}\PYG{p}{.}\PYG{n+nx}{childContextTypes} \PYG{o}{=} \PYG{p}{\PYGZob{}}
-    \PYG{n+nx}{authUser}\PYG{o}{:} \PYG{n+nx}{PropTypes}\PYG{p}{.}\PYG{n+nx}{object}
-  \PYG{p}{\PYGZcb{}}\PYG{p}{;}
-
-  \PYG{k}{return} \PYG{n+nx}{WithAuthentication}\PYG{p}{;}
-\PYG{p}{\PYGZcb{}}
-
-\PYG{k+kr}{export} \PYG{k}{default} \PYG{n+nx}{withAuthentication}\PYG{p}{;}
-\end{sphinxVerbatim}
-
-Para la parte de la autorización que se utliza para proteger las rutas a las que el usuario no puede a menos que haya inciado sesión
-se vuelve a usar un compoente de alto nivel, en este caso no «mejora» al componente \sphinxcode{\sphinxupquote{App}}, pero si a \sphinxcode{\sphinxupquote{Dashboard}}.
-
-\fvset{hllines={, ,}}%
-\begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{k+kr}{const} \PYG{n+nx}{withAuthorization} \PYG{o}{=} \PYG{p}{(}\PYG{n+nx}{authCondition}\PYG{p}{)} \PYG{p}{=\PYGZgt{}} \PYG{p}{(}\PYG{n+nx}{MyComponent}\PYG{p}{)} \PYG{p}{=\PYGZgt{}} \PYG{p}{\PYGZob{}}
-  \PYG{k+kr}{class} \PYG{n+nx}{WithAuthorization} \PYG{k+kr}{extends} \PYG{n+nx}{Component} \PYG{p}{\PYGZob{}}
-
-    \PYG{c+cm}{/**}
-\PYG{c+cm}{     * Cada vez que el usuario cambia de estado, verifica la condición de autenticación (authCondition).}
-\PYG{c+cm}{     * Si la autorización falla el HOC redirecciona a la pagína de inicio de sesión.}
-\PYG{c+cm}{     */}
-    \PYG{n+nx}{componentDidMount}\PYG{p}{(}\PYG{p}{)} \PYG{p}{\PYGZob{}}
-      \PYG{n+nx}{auth}\PYG{p}{.}\PYG{n+nx}{onAuthStateChanged}\PYG{p}{(}\PYG{n+nx}{authUser} \PYG{p}{=\PYGZgt{}} \PYG{p}{\PYGZob{}}
-        \PYG{k}{if} \PYG{p}{(}\PYG{o}{!}\PYG{n+nx}{authCondition}\PYG{p}{(}\PYG{n+nx}{authUser}\PYG{p}{)}\PYG{p}{)} \PYG{p}{\PYGZob{}}
-          \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{props}\PYG{p}{.}\PYG{n+nx}{history}\PYG{p}{.}\PYG{n+nx}{push}\PYG{p}{(}\PYG{n+nx}{routes}\PYG{p}{.}\PYG{n+nx}{SIGN\PYGZus{}IN}\PYG{p}{)}\PYG{p}{;}
-        \PYG{p}{\PYGZcb{}}
-      \PYG{p}{\PYGZcb{}}\PYG{p}{)}\PYG{p}{;}
-    \PYG{p}{\PYGZcb{}}
-    \PYG{c+cm}{/**}
-\PYG{c+cm}{     * Rederiza al componente que se pasa como parámetro (Dashboard por ejemplo) o nada.}
-\PYG{c+cm}{     */}
-    \PYG{n+nx}{render}\PYG{p}{(}\PYG{p}{)} \PYG{p}{\PYGZob{}}
-      \PYG{k}{return} \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{context}\PYG{p}{.}\PYG{n+nx}{authUser} \PYG{o}{?} \PYG{o}{\PYGZlt{}}\PYG{n+nx}{MyComponent} \PYG{o}{/}\PYG{o}{\PYGZgt{}} \PYG{o}{:} \PYG{k+kc}{null}\PYG{p}{;}
-    \PYG{p}{\PYGZcb{}}
-  \PYG{p}{\PYGZcb{}}
-
-  \PYG{n+nx}{WithAuthorization}\PYG{p}{.}\PYG{n+nx}{contextTypes} \PYG{o}{=} \PYG{p}{\PYGZob{}}
-    \PYG{n+nx}{authUser}\PYG{o}{:} \PYG{n+nx}{PropTypes}\PYG{p}{.}\PYG{n+nx}{object}\PYG{p}{,}
-  \PYG{p}{\PYGZcb{}}\PYG{p}{;}
-
-  \PYG{k}{return} \PYG{n+nx}{withRouter}\PYG{p}{(}\PYG{n+nx}{WithAuthorization}\PYG{p}{)}\PYG{p}{;}
-\PYG{p}{\PYGZcb{}}
-\end{sphinxVerbatim}
-
-Con este HOC de autorización se puede definir una condiciaón de autorización, que es que el objeto que representa al usuario actual
-no sea nulo.
-
-Finalmente se añade la funcionalidad de autorización en el componente \sphinxcode{\sphinxupquote{Dashboard}}
-con la condición de que el usuario no sea nulo.
-
-\fvset{hllines={, ,}}%
-\begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{k+kr}{const} \PYG{n+nx}{authCondition} \PYG{o}{=} \PYG{p}{(}\PYG{n+nx}{authUser}\PYG{p}{)} \PYG{p}{=\PYGZgt{}} \PYG{o}{!}\PYG{o}{!}\PYG{n+nx}{authUser}\PYG{p}{;}
-\PYG{k+kr}{export} \PYG{k}{default} \PYG{n+nx}{withAuthorization}\PYG{p}{(}\PYG{n+nx}{authCondition}\PYG{p}{)}\PYG{p}{(}\PYG{n+nx}{Dashboard}\PYG{p}{)}\PYG{p}{;}
-\end{sphinxVerbatim}
-
-
-\paragraph{Despliegue de la aplicación en Firebase Hosting}
-\label{\detokenize{code_docs:despliegue-de-la-aplicacion-en-firebase-hosting}}
-Para implementar la aplicación a Firebase Hosting son dos simples comandos los
-que se ejecutan, el primero contruye la aplicación para producción y
-el segundo envía los archivos de la carpeta \sphinxcode{\sphinxupquote{build/}} al sevicio de alojamiento:
-
-\fvset{hllines={, ,}}%
-\begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{npm} \PYG{n}{run} \PYG{n}{build}
-\PYG{n}{firebase} \PYG{n}{deploy}
-\end{sphinxVerbatim}
+\sphinxcode{\sphinxupquote{ROBOTS}} que muestra al componente \sphinxcode{\sphinxupquote{Dashboard}}.
 

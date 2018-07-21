@@ -323,7 +323,148 @@ Descripción                                   & Escenario reconocido.          
 \end{longtable}
 
 
-\subparagraph{Ejemplo de una petición a la API con CURL}
+\subparagraph{Ejemplo de una petición a la API con cURL.}
+
+cURL es una herramienta en la línea de comandos para transferir
+datos usando diferentes protocolos. Por facilidad,
+se muestra el uso de la API a través de esta herramienta.
+Para solicitar el recurso para procesamiento de imágenes, \texttt{vision} se necesita un token de acceso. El token
+se obtiene creando un usuario haciendo una petición al recurso
+\texttt{register}. El código para solicitar este servicio con
+\texttt{cURL} es el siguiente:
+
+\fvset{hllines={, ,}}%
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+curl \PYGZhy{}X POST \PYG{l+s+se}{\PYGZbs{}}
+http://132.248.180.17/register \PYG{l+s+se}{\PYGZbs{}}
+\PYGZhy{}H \PYG{l+s+s1}{\PYGZsq{}content\PYGZhy{}type: application/json\PYGZsq{}}\PYG{l+s+se}{\PYGZbs{}}
+\PYGZhy{}d \PYG{l+s+s1}{\PYGZsq{}\PYGZob{}}
+\PYG{l+s+s1}{    \PYGZdq{}username\PYGZdq{} : \PYGZdq{}mock\PYGZus{}user@gmailcom\PYGZdq{},}
+\PYG{l+s+s1}{    \PYGZdq{}password\PYGZdq{} : \PYGZdq{}p45sw0rd\PYGZdq{}}
+\PYG{l+s+s1}{    \PYGZcb{}\PYGZsq{}}
+\end{sphinxVerbatim}
+
+La respuesta de la API es un JSON como el que sigue:
+
+\fvset{hllines={, ,}}%
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{p}{\PYGZob{}}
+    \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{message}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{User created successfully.}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}
+    \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{token}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{OFdT6v23Tnw95S8BX2yNR8Os8RB6L4HAnvhTTrfjmxB5UyMaef}\PYG{l+s+s2}{\PYGZdq{}}
+\PYG{p}{\PYGZcb{}}
+\end{sphinxVerbatim}
+
+Con el token se pueden hacer las peticiones que se deseen al recurso
+\sphinxcode{\sphinxupquote{visión}}. Supongamos que queremos analizar una imagen para encontrar rostros, objetos, etiquetas, traducción 
+de texto y clasificación de escenarios. El código para generar la 
+petición es el siguiente:
+
+\fvset{hllines={, ,}}%
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+curl \PYGZhy{}X POST \PYG{l+s+se}{\PYGZbs{}}
+http://132.248.180.17/vision \PYG{l+s+se}{\PYGZbs{}}
+\PYGZhy{}H \PYG{l+s+s1}{\PYGZsq{}authorization: OFdT6v23Tnw95S8BX2yNR8Os8RB6L4HAnvhTTrfjmxB5UyMaef\PYGZsq{}} \PYG{l+s+se}{\PYGZbs{}}
+\PYGZhy{}H \PYG{l+s+s1}{\PYGZsq{}content\PYGZhy{}type: application/json\PYGZsq{}} \PYG{l+s+se}{\PYGZbs{}}
+\PYGZhy{}d \PYG{l+s+s1}{\PYGZsq{}\PYGZob{}}
+\PYG{l+s+s1}{\PYGZdq{}imageSource\PYGZdq{} : \PYGZdq{}https://www.robotshop.com/blog/en/files/NAO\PYGZhy{}Hanover.jpg\PYGZdq{},}
+\PYG{l+s+s1}{   \PYGZdq{}features\PYGZdq{} : [}
+\PYG{l+s+s1}{      \PYGZob{}}
+\PYG{l+s+s1}{        \PYGZdq{}type\PYGZdq{}: \PYGZdq{}FACE\PYGZus{}RECOGNITION\PYGZdq{}}
+\PYG{l+s+s1}{      \PYGZcb{},}
+\PYG{l+s+s1}{      \PYGZob{}}
+\PYG{l+s+s1}{        \PYGZdq{}type\PYGZdq{} : \PYGZdq{}OBJECT\PYGZus{}DETECTION\PYGZdq{}}
+\PYG{l+s+s1}{      \PYGZcb{},}
+\PYG{l+s+s1}{      \PYGZob{}}
+\PYG{l+s+s1}{        \PYGZdq{}type\PYGZdq{} : \PYGZdq{}LABELS\PYGZus{}DETECTION\PYGZdq{}}
+\PYG{l+s+s1}{      \PYGZcb{},}
+\PYG{l+s+s1}{      \PYGZob{}}
+\PYG{l+s+s1}{        \PYGZdq{}type\PYGZdq{} : \PYGZdq{}OCR\PYGZus{}TRANSLATION\PYGZdq{}}
+\PYG{l+s+s1}{      \PYGZcb{},}
+\PYG{l+s+s1}{      \PYGZob{}}
+\PYG{l+s+s1}{        \PYGZdq{}type\PYGZdq{} : \PYGZdq{}CLASSIFY\PYGZus{}INDOOR\PYGZus{}SCENES\PYGZdq{}}
+\PYG{l+s+s1}{      \PYGZcb{}}
+\PYG{l+s+s1}{   ]}
+\PYG{l+s+s1}{\PYGZcb{}\PYGZsq{}}
+\end{sphinxVerbatim}
+
+La respuesta de la API de CloudNAO envía como respuesta el 
+subsecuente JSON:
+
+\fvset{hllines={, ,}}%
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{p}{\PYGZob{}}
+    \PYG{l+s+s2}{\PYGZdq{}features\PYGZdq{}}\PYG{o}{:} \PYG{p}{\PYGZob{}}
+        \PYG{l+s+s2}{\PYGZdq{}labelsDetection\PYGZdq{}}\PYG{o}{:} \PYG{p}{[}
+            \PYG{p}{\PYGZob{}}
+                \PYG{l+s+s2}{\PYGZdq{}confidence\PYGZdq{}}\PYG{o}{:} \PYG{l+m+mf}{0.9718034}\PYG{p}{,}
+                \PYG{l+s+s2}{\PYGZdq{}name\PYGZdq{}}\PYG{o}{:} \PYG{l+s+s2}{\PYGZdq{}robot\PYGZdq{}}
+            \PYG{p}{\PYGZcb{}}\PYG{p}{,}
+            \PYG{p}{\PYGZob{}}
+                \PYG{l+s+s2}{\PYGZdq{}confidence\PYGZdq{}}\PYG{o}{:} \PYG{l+m+mf}{0.94625956}\PYG{p}{,}
+                \PYG{l+s+s2}{\PYGZdq{}name\PYGZdq{}}\PYG{o}{:} \PYG{l+s+s2}{\PYGZdq{}sport venue\PYGZdq{}}
+            \PYG{p}{\PYGZcb{}}\PYG{p}{,}
+            \PYG{p}{\PYGZob{}}
+                \PYG{l+s+s2}{\PYGZdq{}confidence\PYGZdq{}}\PYG{o}{:} \PYG{l+m+mf}{0.9407438}\PYG{p}{,}
+                \PYG{l+s+s2}{\PYGZdq{}name\PYGZdq{}}\PYG{o}{:} \PYG{l+s+s2}{\PYGZdq{}technology\PYGZdq{}}
+            \PYG{p}{\PYGZcb{}}\PYG{p}{,}
+            \PYG{p}{\PYGZob{}}
+                \PYG{l+s+s2}{\PYGZdq{}confidence\PYGZdq{}}\PYG{o}{:} \PYG{l+m+mf}{0.8791277}\PYG{p}{,}
+                \PYG{l+s+s2}{\PYGZdq{}name\PYGZdq{}}\PYG{o}{:} \PYG{l+s+s2}{\PYGZdq{}machine\PYGZdq{}}
+            \PYG{p}{\PYGZcb{}}\PYG{p}{,}
+            \PYG{p}{\PYGZob{}}
+                \PYG{l+s+s2}{\PYGZdq{}confidence\PYGZdq{}}\PYG{o}{:} \PYG{l+m+mf}{0.76215124}\PYG{p}{,}
+                \PYG{l+s+s2}{\PYGZdq{}name\PYGZdq{}}\PYG{o}{:} \PYG{l+s+s2}{\PYGZdq{}arena football\PYGZdq{}}
+            \PYG{p}{\PYGZcb{}}\PYG{p}{,}
+        \PYG{p}{]}\PYG{p}{,}
+        \PYG{l+s+s2}{\PYGZdq{}objectDetection\PYGZdq{}}\PYG{o}{:} \PYG{p}{[}
+            \PYG{p}{\PYGZob{}}
+                \PYG{l+s+s2}{\PYGZdq{}confidence\PYGZdq{}}\PYG{o}{:} \PYG{l+m+mf}{0.9916030764579773}\PYG{p}{,}
+                \PYG{l+s+s2}{\PYGZdq{}category\PYGZdq{}}\PYG{o}{:} \PYG{l+s+s2}{\PYGZdq{}person\PYGZdq{}}\PYG{p}{,}
+                \PYG{l+s+s2}{\PYGZdq{}topLeftY\PYGZdq{}}\PYG{o}{:} \PYG{l+m+mi}{42}\PYG{p}{,}
+                \PYG{l+s+s2}{\PYGZdq{}height\PYGZdq{}}\PYG{o}{:} \PYG{l+m+mi}{158}\PYG{p}{,}
+                \PYG{l+s+s2}{\PYGZdq{}topLeftX\PYGZdq{}}\PYG{o}{:} \PYG{l+m+mi}{430}\PYG{p}{,}
+                \PYG{l+s+s2}{\PYGZdq{}width\PYGZdq{}}\PYG{o}{:} \PYG{l+m+mi}{50}
+            \PYG{p}{\PYGZcb{}}\PYG{p}{,}
+            \PYG{p}{\PYGZob{}}
+                \PYG{l+s+s2}{\PYGZdq{}confidence\PYGZdq{}}\PYG{o}{:} \PYG{l+m+mf}{0.9870478510856628}\PYG{p}{,}
+                \PYG{l+s+s2}{\PYGZdq{}category\PYGZdq{}}\PYG{o}{:} \PYG{l+s+s2}{\PYGZdq{}person\PYGZdq{}}\PYG{p}{,}
+                \PYG{l+s+s2}{\PYGZdq{}topLeftY\PYGZdq{}}\PYG{o}{:} \PYG{l+m+mi}{79}\PYG{p}{,}
+                \PYG{l+s+s2}{\PYGZdq{}height\PYGZdq{}}\PYG{o}{:} \PYG{l+m+mi}{115}\PYG{p}{,}
+                \PYG{l+s+s2}{\PYGZdq{}topLeftX\PYGZdq{}}\PYG{o}{:} \PYG{l+m+mi}{253}\PYG{p}{,}
+                \PYG{l+s+s2}{\PYGZdq{}width\PYGZdq{}}\PYG{o}{:} \PYG{l+m+mi}{49}
+            \PYG{p}{\PYGZcb{}}\PYG{p}{,}
+            \PYG{p}{\PYGZob{}}
+                \PYG{l+s+s2}{\PYGZdq{}confidence\PYGZdq{}}\PYG{o}{:} \PYG{l+m+mf}{0.9252263307571411}\PYG{p}{,}
+                \PYG{l+s+s2}{\PYGZdq{}category\PYGZdq{}}\PYG{o}{:} \PYG{l+s+s2}{\PYGZdq{}person\PYGZdq{}}\PYG{p}{,}
+                \PYG{l+s+s2}{\PYGZdq{}topLeftY\PYGZdq{}}\PYG{o}{:} \PYG{l+m+mi}{11}\PYG{p}{,}
+                \PYG{l+s+s2}{\PYGZdq{}height\PYGZdq{}}\PYG{o}{:} \PYG{l+m+mi}{148}\PYG{p}{,}
+                \PYG{l+s+s2}{\PYGZdq{}topLeftX\PYGZdq{}}\PYG{o}{:} \PYG{l+m+mi}{2}\PYG{p}{,}
+                \PYG{l+s+s2}{\PYGZdq{}width\PYGZdq{}}\PYG{o}{:} \PYG{l+m+mi}{53}
+            \PYG{p}{\PYGZcb{}}\PYG{p}{,}
+            \PYG{p}{\PYGZob{}}
+                \PYG{l+s+s2}{\PYGZdq{}confidence\PYGZdq{}}\PYG{o}{:} \PYG{l+m+mf}{0.9083054661750793}\PYG{p}{,}
+                \PYG{l+s+s2}{\PYGZdq{}category\PYGZdq{}}\PYG{o}{:} \PYG{l+s+s2}{\PYGZdq{}sports ball\PYGZdq{}}\PYG{p}{,}
+                \PYG{l+s+s2}{\PYGZdq{}topLeftY\PYGZdq{}}\PYG{o}{:} \PYG{l+m+mi}{248}\PYG{p}{,}
+                \PYG{l+s+s2}{\PYGZdq{}height\PYGZdq{}}\PYG{o}{:} \PYG{l+m+mi}{50}\PYG{p}{,}
+                \PYG{l+s+s2}{\PYGZdq{}topLeftX\PYGZdq{}}\PYG{o}{:} \PYG{l+m+mi}{219}\PYG{p}{,}
+                \PYG{l+s+s2}{\PYGZdq{}width\PYGZdq{}}\PYG{o}{:} \PYG{l+m+mi}{49}
+            \PYG{p}{\PYGZcb{}}\PYG{p}{,}
+        \PYG{p}{]}\PYG{p}{,}
+        \PYG{l+s+s2}{\PYGZdq{}indoorScenesClassify\PYGZdq{}}\PYG{o}{:} \PYG{p}{\PYGZob{}}
+            \PYG{l+s+s2}{\PYGZdq{}indoor\PYGZus{}scene\PYGZdq{}}\PYG{o}{:} \PYG{l+s+s2}{\PYGZdq{}soccer\PYGZus{}court\PYGZdq{}}
+        \PYG{p}{\PYGZcb{}}
+    \PYG{p}{\PYGZcb{}}\PYG{p}{,}
+    \PYG{l+s+s2}{\PYGZdq{}errors\PYGZdq{}}\PYG{o}{:} \PYG{p}{\PYGZob{}}
+        \PYG{l+s+s2}{\PYGZdq{}faceRecognition\PYGZdq{}}\PYG{o}{:} \PYG{p}{\PYGZob{}}
+            \PYG{l+s+s2}{\PYGZdq{}message\PYGZdq{}}\PYG{o}{:} \PYG{l+s+s2}{\PYGZdq{}invalid url was sent\PYGZdq{}}
+        \PYG{p}{\PYGZcb{}}\PYG{p}{,}
+        \PYG{l+s+s2}{\PYGZdq{}ocrTranslation\PYGZdq{}}\PYG{o}{:} \PYG{p}{\PYGZob{}}
+            \PYG{l+s+s2}{\PYGZdq{}message\PYGZdq{}}\PYG{o}{:} \PYG{l+s+s2}{\PYGZdq{}Text not found\PYGZdq{}}
+        \PYG{p}{\PYGZcb{}}
+    \PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+\end{sphinxVerbatim}
+
 
 
 
@@ -916,25 +1057,25 @@ del lado de los muchos en la relación.
 
 \begin{itemize}
 \item
-Crear tablas:\sphinxcode{db.create\_all()}.
+Crear tablas: \sphinxcode{db.create\_all()}.
 Crea la base de datos basándose en las clases modelos.
 \item
-Borrar tablas:\sphinxcode{db.drop\_all()}.
+Borrar tablas: \sphinxcode{db.drop\_all()}.
 Destruye los datos en la base de datos.
 \item
-Añadir tuplas:\sphinxcode{db.session.add(Objeto){}`}.
+Añadir tuplas: \sphinxcode{db.session.add(Objeto){}`}.
 Los cambios  se manejan a través de una \sphinxcode{session} en la base de datos. Se pasa como parámetro un objeto del modelo.
 \item
-Escrubir cambios:\sphinxcode{db.session.commit()}.
+Escrubir cambios: \sphinxcode{db.session.commit()}.
 Para guardar los objetos en la base de datos, las sesiones necesitan ser \sphinxstyleemphasis{confirmadas}.
 \item
-Modificar tupas:\sphinxcode{Objeto.atributo\_a\_actualizar = nuevo\_valor} \sphinxcode{db.session.add(Objeto)}.
+Modificar tupas: \sphinxcode{Objeto.atributo\_a\_actualizar = nuevo\_valor} \sphinxcode{db.session.add(Objeto)}.
 El método \sphinxcode{add} también se puede usar para actualizar los modelos.
 \item
-Eliminar tuplas:\sphinxcode{db.session.delete(Objeto)}.
+Eliminar tuplas: \sphinxcode{db.session.delete(Objeto)}.
 El método \sphinxcode{delete} recibe como parámetro al objeto que desea eliminarse.
 \item
-Consultas:\sphinxcode{Modelo.query.all()} \sphinxcode{Modelo.query.filter\_by(Criterio)}.
+Consultas: \sphinxcode{Modelo.query.all()} \sphinxcode{Modelo.query.filter\_by(Criterio)}.
 La consulta más básica retorna todo el contenido de la tabla correspondiente \sphinxcode{Modelo.query.all()}.Se puden usar \sphinxstyleemphasis{filtros} para buscar elementos más específicos en la base de datos.
 \end{itemize}
 
