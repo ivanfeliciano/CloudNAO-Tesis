@@ -50,16 +50,31 @@ y contraseña. La aplicación cuenta con la opción de registro, si el usuario
 es nuevo.
 
 
-\subparagraph{Los usuarios pueden añadir nuevos robots.}
+\begin{figure}[!h]
+    \centering
+    \subfloat{\includegraphics[scale=.1]{signin}}%
+    \qquad
+    \subfloat{\includegraphics[scale=.1]{signin1}}%
+    \qquad
+    \subfloat{\includegraphics[scale=.1]{signin2}}%
+\end{figure}
+
+\subparagraph{Selección y adición de robots a la aplicación.}
 \label{\detokenize{users_docs:los-usuarios-pueden-anadir-nuevos-robots}}
 Para llevar un control de los robots que tiene un usuario se le permite añadir
 los robots que sean necesarios.
+Además el usuario cuenta con una lista que le muestra los robots disponibles
+que previamente creó.
 
+\begin{figure}[!h]
+    \centering
+    \subfloat{\includegraphics[scale=.1]{add_robot1}}%
+    \qquad
+    \subfloat{\includegraphics[scale=.1]{add_robot2}}%
+    \qquad
+    \subfloat{\includegraphics[scale=.1]{add_robot3}}%
+\end{figure}
 
-\subparagraph{Selección de robots previamente guardados.}
-\label{\detokenize{users_docs:seleccion-de-robots-previamente-guardados}}
-El usuario cuenta con una lista que le muestra los robots disponibles
-que previamente creo.
 
 
 \subparagraph{Conexión con un robot seleccionado.}
@@ -70,18 +85,49 @@ red. Con esto, es posible acceder a todas las características disponibles en la
 aplicación.
 
 
-\subparagraph{Control remoto para el robot.}
+\begin{figure}[!h]
+    \centering
+    \subfloat{\includegraphics[scale=.1]{robot_connection_app1}}%
+    \qquad
+    \subfloat{\includegraphics[scale=.1]{robot_connection_app2}}%
+
+\end{figure}
+
+
+\subparagraph{Menú intuitivo.}
+Las actividades que se pueden realizar después de conectar
+la aplicación con el robot se muestran en un menú intuitivo.
+
+\begin{figure}[!h]
+    \centering
+    \caption{La pantallas del menú de la aplicación.}
+    \subfloat{\includegraphics[scale=.09]{menu_rc}}%
+    \qquad
+    \subfloat{\includegraphics[scale=.09]{menu_face}}%
+    \qquad
+    \subfloat{\includegraphics[scale=.09]{menu_ocr}}%
+    \qquad
+    \subfloat{\includegraphics[scale=.09]{menu_objects}}%
+\end{figure}
+
+
+
+\subparagraph{Control remoto.}
 \label{\detokenize{users_docs:control-remoto-para-el-robot}}
 Una primera necesidad que se encontró y por la que surgió todo el proyecto
 fue crear un control remoto para el robot NAO. Es muy básico pero admite
 comandos para hacer al robot caminar sobre sus tres ejes y cambiar entre dos
-posturas.
+posturas. El control remoto incluye una imagen en vivo de la
+cámara del robot.
 
+\begin{figure}[!h]
+    \centering
+    \caption{El control remoto muestra una imagen en vivo si se desea, el estado del batería y un joystick para mover al robot.}
+    \subfloat{\includegraphics[scale=.1]{rc_image}}%
+    \qquad
+    \subfloat{\includegraphics[scale=.1]{rc_no_image}}%
 
-\subparagraph{Imagen en vivo de la cámara del robot.}
-\label{\detokenize{users_docs:imagen-en-vivo-de-la-camara-del-robot}}
-Esta característica está integrada con el control remoto, para poder ver lo
-que ve el robot a través de su cámara.
+\end{figure}
 
 
 \subparagraph{Guarda valores de ALMemory en la nube.}
@@ -91,6 +137,17 @@ valores de la memoria del robot en la nube, para consultarlos o descargarlos
 después en la aplicación web. El conjunto de valores que por ahora
 están disponibles para su almacenamiento son los siguientes:
 rightUSSensorValue, leftUSSensorValue, rightFootTotalWeight, RightBumperPressed, leftFootTotalWeight, ChestButtonPressed, RearTactilTouched, leftFootContact, LeftBumperPressed, footContact, FrontTactilTouched, BatteryChargeChanged, PostureChanged, rightFootContact, MiddleTactilTouched, GyrometerX, GyrometerY, AccelerometerX, AccelerometerY, AccelerometerZ, TorsoAngleX, TorsoAngleY.
+
+\begin{figure}[!h]
+    \centering
+    \caption{Después de dar clic en el botón START LOG se abre una pantalla para elegir los valores de la memoría que se desean guardar
+    en Firebase.}
+    \subfloat{\includegraphics[scale=.1]{memory_list_checked}}%
+    \qquad
+    \subfloat{\includegraphics[scale=.1]{memory_list_unchecked}}%
+    \qquad
+    \subfloat{\includegraphics[scale=.1]{rc_image3}}
+\end{figure}
 
 
 \subparagraph{Detección de rostros en una fotografía enviada por el robot.}
@@ -116,6 +173,13 @@ de que el robot ejecute una animación y diga un breve saludo a cada persona
 encontrada.
 
 
+\begin{figure}[!h]
+    \centering
+    \subfloat{\includegraphics[scale=.1]{face}}%
+
+\end{figure}
+
+
 \subparagraph{Detección de objectos de entre 80 categorías en una imagen de la cámara del robot.}
 \label{\detokenize{users_docs:deteccion-de-objectos-de-entre-80-categorias-en-una-imagen-de-la-camara-del-robot}}
 Funciona de manera similar a la detección de rostros. Envía una imagen capturada
@@ -126,6 +190,14 @@ recuadros delimitadores sobre los objectos detectados así como una etiqueta
 con el nombre que le corresponde. El robot simplemente
 dice la cantidad de objetos que ve de acuerdo a las categorías válidas.
 
+\begin{figure}[!h]
+    \centering
+    \subfloat{\includegraphics[scale=.1]{object}}%
+    \qquad
+    \subfloat{\includegraphics[scale=.1]{object2}}%
+
+\end{figure}
+
 
 \subparagraph{Reconocimiento óptico de caracteres y traducción de texto encontrados en una imagen enviada por el robot.}
 \label{\detokenize{users_docs:reconocimiento-optico-de-caracteres-y-traduccion-de-texto-encontrados-en-una-imagen-enviada-por-el-robot}}
@@ -135,6 +207,14 @@ Se buscan caracteres dentro de la imagen, para su posterior traducción.
 El resultado se muestra en dos partes, una es el texto original y el otro
 es el texto traducido al español. El robot tiene la opción de convertir la
 traducción en un discurso oral.
+
+\begin{figure}[!h]
+    \centering
+    \subfloat{\includegraphics[scale=.1]{ocr_before}}%
+    \qquad
+    \subfloat{\includegraphics[scale=.1]{ocr_after}}%
+
+\end{figure}
 
 
 % \subsubsection{Demostración de la aplicación funcionando}
@@ -319,9 +399,7 @@ los archivos para construir una aplicación.
 
 Para crear un nuevo proyecto, simplemente se sigue el guía que provee Android
 Studio, basta con dar siguiente a todo por ahora.
-
-Las pantallas que se muestran en la figura ilustran cada página o ventana
-que se crea al seguir las instrucciones. En resumen, se define el nombre
+En resumen, se define el nombre
 de la aplicación, se especifica que dispositivos podrán ejecutar la aplicación,
 y se elige una actividad que servirá como punto de partida.
 
@@ -385,7 +463,7 @@ Modificando el archivo debe quedar como sigue:
 \PYG{n+nt}{\PYGZlt{}/LinearLayout\PYGZgt{}}
 \end{sphinxVerbatim}
 
-Comparando el XML con la figura :: cada widget tiene un elemento XML, y el
+Comparando el XML con la figura \ref{fig:quiz_app} cada widget tiene un elemento XML, y el
 nombre del elemento es el tipo de widget.
 
 Cada elemento tiene un conjunto de atributos XML. Cada atrbuto es una instrucción
@@ -494,6 +572,15 @@ y se sobreescriben sus métodos para manejar las respuestas a eventos. En nuestr
 aplicación los escuchadores de los botones muestran un mensaje en la pantalla
 cuando el usuario presiona alguno de los botones.
 
+
+\begin{figure}%
+    \centering
+    \subfloat[La vista de la actividad principal de la aplicación.]{\includegraphics[scale=.1]{quiz_app}}%
+    \qquad
+    \subfloat[Se muestra el \texttt{Toast} con el mensaje después de dar clic sobre el prime botón]{\includegraphics[scale=.1]{quiz_app_clicked} }%
+    \caption{Capturas de la ejecución de la aplicación  Data Structures Quiz.}
+    \label{fig:quiz_app}%
+\end{figure}
 
 \paragraph{SDK para Android de NAOqi}
 \label{\detokenize{dev_docs:sdk-para-android-de-naoqi}}
