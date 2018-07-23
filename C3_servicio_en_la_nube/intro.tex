@@ -9,7 +9,7 @@
 Para completar la arquitectura CloudNAO falta implementar un modelo de aprendizaje 
 profundo que se brinde como un servicio web para ser consumido por robots NAO.
 A pesar de que el servicio de detección de objetos es mantenido por el LAR, y 
-se adaptó para ser consumido a través de la API RESTful, no fue construido
+se adaptó para ser consumido a través de la API REST, no fue construido
 desde cero ya que es parte de la API de detección de objetos de Tensorflow.
 Es por eso que como parte final del proyecto se desarrolló un modelo para que 
 resuelva la tarea de clasificar imágenes.
@@ -42,12 +42,10 @@ Centro de Desarrollo Tecnológico de la FES Acatlán. Se eligieron las siguiente
 
 
 En este capítulo se describe con detalle la confección del
-conjunto de datos, además de cómo se eligió una arquitectura de la red 
-convolucional que tuviera un buen desempeño a través de pruebas
-de diferentes estrucuturas modificando diversos parámetros, la implementación
-de las múltiples redes utilizando Python y TensorFlow, los resultados obtenidos
-y finalmente cómo se integra dentro de la API de CloudNAO el modelo
-de aprendizaje profundo obtenido.
+conjunto de datos, la arquitectura de la red 
+convolucional, la implementación
+del modelo utilizando Python y TensorFlow, los resultados obtenidos
+y finalmente cómo se integra este modelo dentro de la API de CloudNAO 
 
 %
 %\end{document}

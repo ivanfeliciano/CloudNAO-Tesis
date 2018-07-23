@@ -1,7 +1,8 @@
 
 
 \subsection{API REST de CloudNAO}
-\label{\detokenize{chapter_two/desc_cloudnao:api-rest-de-cloudnao}}
+\label{chapter_two/desc_cloudnao:api-rest-de-cloudnao}
+
 Esta interfaz es el producto de la integración de modelos de aprendizaje
 automático
 enfocados a casos de uso relacionados con la robótica.
@@ -1488,7 +1489,7 @@ codificada en base 64.
 \end{figure}
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{k+kn}{from} \PYG{n+nn}{app}\PYG{n+nn}{.}\PYG{n+nn}{tf\PYGZus{}models}\PYG{n+nn}{.}\PYG{n+nn}{object\PYGZus{}detection} \PYG{k}{import} \PYG{n}{ImageClassifier}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{k+kn}{from} \PYG{n+nn}{app}\PYG{n+nn}{.}\PYG{n+nn}{tf\PYGZus{}models}\PYG{n+nn}{.}\PYG{n+nn}{indoor\_scenes\_classifier} \PYG{k}{import} \PYG{n}{ImageClassifier}
 \PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{n}{test\PYGZus{}image} \PYG{o}{=} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{/9j/4AAQSkZJRgABAQAAAQABAAD/2...}\PYG{l+s+s2}{\PYGZdq{}}
 \PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{n}{clasifier} \PYG{o}{=} \PYG{n}{ImageClassifier}\PYG{p}{(}\PYG{p}{)}
 \PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{n}{classifier}\PYG{o}{.}\PYG{n}{classify\PYGZus{}image}\PYG{p}{(}\PYG{n}{test\PYGZus{}image}\PYG{p}{)}

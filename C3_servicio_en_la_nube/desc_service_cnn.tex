@@ -7,14 +7,17 @@
 %
 %
 %\begin{document}
-En esta sección se describe la preparación del conjunto de datos, 
-la selección de la estructura y los parámetros del modelo de aprendizaje profundo.
+%En esta sección se describe la preparación del conjunto de datos, 
+%la selección de la estructura y los parámetros del modelo de aprendizaje profundo.
+
+\section{Descripción del servicio sobre CloudNAO}
+
 
 \subsection{Descripción del conjunto de datos\label{sec:dataset-def}}
 
-Como ya se mencionó, son cuatro las categorías en las que se quiere
-clasificar una imagen obtenida por el robot son: el cubículo,
-la salida de emergencia, la cancha de fútbol y zona de trabajo.
+Son cuatro las categorías en las que se quiere
+clasificar una imagen obtenida por el robot: el cubículo,
+la salida de emergencia, la cancha de fútbol y la zona de trabajo.
 
 \begin{figure}[ht]
     \centering
@@ -25,18 +28,18 @@ la salida de emergencia, la cancha de fútbol y zona de trabajo.
     \label{fig:scenes}
 \end{figure}
 
-Las imágenes se obtuvieron desde el robot usando el módulo de\\
+Las imágenes se obtuvieron desde el robot usando el módulo de
 \texttt{ALVideoRecorder},
 el cual permite guardar secuencias de video utilizando las cámaras del robot y guardarlas 
-en el disco. De los videos algunos fotogramas, no todos para evitar
+en su disco. De los videos se extrajeron algunos fotogramas, no todos para evitar
 redundancias, los cuales se separaron en carpetas
 de acuerdo al lugar (categoría) que pertenecían. Después de este proceso
 de obtención de imágenes a partir de video y de su separación en cada clase, se
 generaron dos conjuntos, el de entrenamiento y el de prueba. El conjunto 
 de entrenamiento está compuesto por $6000$ imágenes, $1500$ por cada clase.
 El conjunto de prueba contiene $2112$ imágenes, $528$ por cada categoría.
-En ambos conjuntos cada imagen es de 60 pixeles de largo y 80 de ancho,
-además de tres canales por ser imágenes en el modelo de color RGB.
+En ambos conjuntos cada imagen es de $60 \times  80$ pixeles y de tres canales por ser imágenes en el modelo de color RGB.
+
 
 
 \subsection{Arquitectura de la CNN}
@@ -76,7 +79,7 @@ capa de convolución y $16$ y $32$ para la segunda.
 Queremos mantener el tamaño de los mapas de
 características del mismo que el de las entradas de la convolución,
 esto se logra con un borde de ceros llamado \textit{same}, 
-el cual se asegura que el las salidas y entradas tengan las mismas dimensiones. 
+el cual se asegura que las salidas y entradas tengan las mismas dimensiones. 
 La zancada o stride se mantiene constante con un valor de $1$.
 Para la parte del pooling queremos ir disminuyendo las 
 dimensiones de las entradas a la mitad después de cada
@@ -100,24 +103,36 @@ por una función de activación ReLU. Para la salida
 de la red, queremos una distribución de probabilidad
 sobre un conjunto de etiquetas mutuamente excluyentes.
 Esto es, queremos que la salida de la unidad $i$ en la capa
-de salida nos de la probabilidad $p_i$ de que una imagen que alimenta
+de salida nos de la probabilidad $p_i$ de que una imagen que
+entra
 a la red pertenezca a la categoría $i$. Para nuestro caso en específico
 la salida sería un vector $\mathbf{p} = (p_1, p_2, p_3, p_4)$ donde $\sum_{i = 1}^4 p_i = 1$.
-El cálculo de los valores de $\mathbf{p}$  se logra usando una la función \textit{softmax}.
+El cálculo de los valores de $\mathbf{p}$  se logra usando una la función \textit{softmax}.\\
+
+\begin{remark}
+
+La función sofmax se emplea para mapear un vector $\mathbf{z} \in \mathbb{R}^k$,  en un vector $\sigma(\mathbf{z})$ de dimensión $k$ de valores reales en el rango $(0, 1]$ cuya suma es igual a $1$. La función está dada por: 
+\end{remark}
 
 \[
-p_i = \frac{e^{\hat{p}_n}}{\sum_k e^{\hat{p}_k}}
+\sigma : \mathbb{R}^k \rightarrow \bigg \{ \sigma \in \mathbb{R}^k | \sigma_i > 0, \sum_{i=1}^k \sigma_i = 1 \bigg \}
 \]
 
-donde $\hat{p}_n$ es el resultado de la unidad de cómputo antes de pasarlo
-por una función de activación, es decir, no normalizado. Es claro
-que para esta función se necesitan los valores no normalizados
-de las otras unidades en la misma capa.
+\[
+\sigma(\mathbf{z})_j = \frac{e^{z_j}}{\sum_{i=1}^k e^{z_i}} \text{ para  } j=1,\dots,k
+\]
+%
+%donde $\hat{p}_n$ es el resultado de la unidad de cómputo antes de pasarlo
+%por una función de activación, es decir, no normalizado. Es claro
+%que para esta función se necesitan los valores no normalizados
+%de las otras unidades en la misma capa.
 
 El tipo de función de costo depende principalmente de la tarea a realizar,
 para nosotros una tarea de clasificación en múltiples clases. La función
-de costo asociada con este problema es la \textit{entropía cruzada},
-que mide la diferencia entre dos distribuciones de probabilidad,
+de costo asociada con este problema es la \textit{entropía cruzada}.\\
+
+\begin{remark}
+La entropía cruzada mide la diferencia entre dos distribuciones de probabilidad, y está
 definida como sigue:
 
 \[
@@ -127,10 +142,12 @@ L(\mathbf{y}, \mathbf{p}) = - \sum_{n} y_n log(p_n) \text{		} n \in [1,N]
 donde $\mathbf{y}$ denota la salida deseada y $\mathbf{p}$ contiene las probabilidades
 para categoría. Si hay $N$ unidades en la capa de salida, entonces
 $\mathbf{p}, \mathbf{y} \in \mathbb{R}^N$. $\mathbf{y}$ y $\mathbf{p}$ deben ser dos distribuciones de probabilidad.
+\end{remark}
+
 
 Por último se utiliza el algoritmo de retropropagación para
 minimizar el error actualizando los pesos de los kernels y de las capas
-completamente conectada. El modo de actualización es por lotes, 
+completamente conectadas. El modo de actualización es por lotes, 
 donde el tamaño de los lotes fue de elegido entre los valores 
 $100$, $200$ y $300$; y
 para el número de épocas entre $500$, $1000$ y $2000$.
@@ -149,12 +166,12 @@ Capas                    & \begin{tabular}[c]{@{}l@{}}1 convolución 1 completa 
 \multicolumn{2}{|l|}{Capas de convolución}                                                                                                                             \\ \hline
 Tamaño del kernel        & $7 \times 7$, $5 \times 5$, $3 \times 3$                                                                                                   \\ \hline
 Borde de ceros                & Same                                                                                                                                        \\ \hline
-Stride                   & 1                                                                                                                                           \\ \hline
+Zancada                   & 1                                                                                                                                           \\ \hline
 Mapas de características & 8, 16, 32                                                                                                                               \\ \hline
 Pooling                  & \begin{tabular}[c]{@{}l@{}}Agrupamiento máximo (vecindades de \\ $2 \times 2$).\end{tabular}                                                \\ \hline
 Función de activación    & ReLU                                                                                                                                        \\ \hline
 \multicolumn{2}{|l|}{Capas completamente conectadas}                                                                                                                   \\ \hline
-Salidas                  & 1024, 512, 128 y 4                                                                                                                               \\ \hline
+Salidas                  & 1024, 512, 128, 4                                                                                                                               \\ \hline
 Funciones de activación  & ReLU y Softmax                                                                                                                              \\ \hline
 \multicolumn{2}{|l|}{Aprendizaje}                                                                                                                                      \\ \hline
 Función de costo         & Entropía cruzada                                                                                                                            \\ \hline
