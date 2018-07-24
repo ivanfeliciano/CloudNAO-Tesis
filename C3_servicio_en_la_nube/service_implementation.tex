@@ -529,10 +529,10 @@ de $5 \times 5$.
 %%\end{document}
 
 
-\subsection{Modelo en la API REST de CloudNAO}
+\subsection{Pruebas sobre el robot NAO}
 
 Para finalizar la implementación del modelo sobre la arquitectura
-se debe integrar uno de los cinco descritos en la tabla \ref{table:models_results} sobre la API REST de CloudNAO.
+se debe integrar uno de los cinco modelos descritos en la tabla \ref{table:models_results} sobre la API REST de CloudNAO y luego hacer peticiones con el robot a ésta.
 Los modelos elaborados en TensorFlow contienen la gráfica de cómputo
 y los valores de los parámetros que se han entrenado. Estos datos
 están contenidos en varios archivos que se pueden guardar para
@@ -549,11 +549,28 @@ tiempo de entrenamiento que es el modelo (1).
 %TensorFlow, los otros tres almacenan los valores de las variables.
 %Después de guardar, simplemente se restaura el modelo
 %y se puedan hacer inferencias al alimentarlo con una imagen.
-Dentro de la API TEST la clase que se encargar de restaurar la gráfica y valores del modelo
+Dentro de la API REST, la clase que se encarga de restaurar la gráfica y valores del modelo
 es \texttt{ImageClasssfier} dentro del módulo \texttt{indoor\_scenes\_classsifier} del paquete \texttt{tf\_models}.
 En el apartado \textit{Modelos de Tensorflow (tf\_models)}
 de la sección \ref{chapter_two/desc_cloudnao:api-rest-de-cloudnao}
 se describe cómo utilizar esta clase.
+
+Por otra parte el robot NAO o cualquier otro
+dispositivo cliente se comunica con la API a través
+de una biblioteca que permita hacer peticiones 
+HTTP. En el caso del robot ocupamos la biblioteca
+\texttt{requests} de Python. Para obtener una imagen 
+del robot codificada en base 64 se utilizó la clase \texttt{Robot}
+del módulo \texttt{nao\_robot} descrito en la sección
+\ref{\detokenize{firebase-nao-robot}}. Es la cadena
+que representa la imagen la que se envía a la API REST usando
+\texttt{requests}.
+
+A continuación se muestran algunas imagenes y las
+respuestas enviadas por el servicio de clasificación
+de escenarios dentro del recurso \texttt{vision} de la
+API REST de CloudNAO.
+
 
 
 
