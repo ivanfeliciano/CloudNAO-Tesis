@@ -46,19 +46,24 @@ En ambos conjuntos cada imagen es de $60 \times  80$ pixeles y de tres canales p
 
 La selección de una arquitectura para la CNN y de sus parámetros se
 realizó a través de pruebas. Se tomó como base 
-la arquitectura LeNet (una de las primeras CNN que operaba sobre el 
+la arquitectura LeNet-5 (una variante de la arquitectura LeNet  que fue una de las primeras CNN que operaba sobre el 
 conjunto MNIST de dígitos escritos a mano) y se probó cambiando
-diversos parámetros como el tamaño de los kernels, el número de
-mapas de características, entre otros.
+diversos parámetros como el número y tamaño de los kernels, la tasa de aprendizaje y el número de unidades en las capas completamente conectadas.
 
 El primer parámetro importante son las dimensiones de
 la entrada de la red. El valor de éste se mantuvo del
-modelo LeNet donde las imágenes tiene tamaño de $32 \times 32$,
+modelo LeNet-5 donde las imágenes tiene tamaño de $32 \times 32$,
 con la adición de que las imágenes en nuestra red
 tienen tres canales porque se encuentran en el espacio de 
 color RGB.
 
-LeNet consiste de dos capas de convolución seguidas de dos
+\begin{figure}[!ht]
+\centering
+\caption{Arquitectura LeNet-5}
+\includegraphics[scale=0.4]{lenet}
+\end{figure}
+
+LeNet-5 consiste de dos capas de convolución seguidas de dos
 capas completamente conectadas, donde la última produce
 la salida de la red.
 Por facilidad sólo se experimentó con modelos de una y dos capas
@@ -111,7 +116,7 @@ El cálculo de los valores de $\mathbf{p}$  se logra usando una la función \tex
 
 \begin{remark}
 
-La función sofmax se emplea para mapear un vector $\mathbf{z} \in \mathbb{R}^k$,  en un vector $\sigma(\mathbf{z})$ de dimensión $k$ de valores reales en el rango $(0, 1]$ cuya suma es igual a $1$. La función está dada por: 
+La función softmax se emplea para mapear un vector $\mathbf{z} \in \mathbb{R}^k$,  en un vector $\sigma(\mathbf{z})$ de dimensión $k$ de valores reales en el rango $(0, 1]$ cuya suma es igual a $1$. La función está dada por: 
 \end{remark}
 
 \[
@@ -204,6 +209,13 @@ de $2 \times 2 \times 3 \times 3 \times 3 \times 3 = 324$ modelos posibles.
 Para los siguientes casos: dos capas de convolución y una capa completamente conectada, una capa de convolución y dos capas completamente conectadas y
 una capa de convolución y una capa completamente conectada, haciendo las
 mismas operaciones tenemos $108$, $243$ y $81$ respectivamente.
-Un ejemplo de una de las posibles arquitecturas se muestra en la figura.
+Un ejemplo de una de las posibles arquitecturas se muestra en la figura \ref{fig:cnn_topo_example}.
 
+\begin{figure}[!ht]
+\centering
+\caption{Ejemplo de una CNN con dos capas de convolucionales y dos completamente conectadas. El tamaño de los kernels en la primera capa de convolución es de $5 \times 5$ y de la segunda de
+$3 \times 3$. Los mapas de características que se obtienen de la primera y segunda capa de convolución son $8$ y $16$, respectivamente. Se utiliza un agrupamiento máximo
+para reducir el tamaño de la imagen de entrada hasta un $75$ porciento. Finalmente la capa oculta conectada con la capa de salida cuenta con $1024$ unidades.\label{fig:cnn_topo_example}}
+\includegraphics[scale=0.4]{cnn_topology_example}
+\end{figure}
 %\end{document}

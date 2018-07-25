@@ -96,7 +96,7 @@ diferentes arquitecturas fue un equipo con las siguientes características:
 Como ya se explicó, la biblioteca para desarrollar el modelo en Python fue TensorFlow, la cual cuenta
 con soporte para la plataforma de cómputo paralelo CUDA (Arquitectura
 Unificada de Dispositivos de Cómputo), desarrollada por NVIDIA.
-La versión de CUDA y de TensorFlow (con sopore para GPU) fueron 8.0 y 1.4.0.
+La versión de CUDA y de TensorFlow (con sopore para GPU) fueron 8.0 y 1.4.0, respectivamente.
 
 Además de TensorFlow, las otras dos bibliotecas importantes son 
 \texttt{numpy} y \texttt{opencv}, principalmente para la carga de
@@ -324,16 +324,17 @@ además de que en sus kernels aparece al menos uno con una dimensión
 de $5 \times 5$.
 
 \begin{figure}[!ht]
+\renewcommand*\thesubfigure{\arabic{subfigure}} 
   \centering
-\subfloat[Modelo (1) 2 Convo 2 FC]{\includegraphics[scale=0.3]{model1}}
+\subfloat[2 Convo 2 FC]{\includegraphics[scale=0.3]{model1}}
 \qquad
-\subfloat[Modelo (2) 2 Convo 2 FC]{\includegraphics[scale=0.3]{model2}}
+\subfloat[2 Convo 2 FC]{\includegraphics[scale=0.3]{model2}}
 \qquad
-\subfloat[Modelo (3) 2 Convo 1 FC]{\includegraphics[scale=0.3]{model3}}
+\subfloat[2 Convo 1 FC]{\includegraphics[scale=0.3]{model3}}
 \qquad
-\subfloat[Modelo (4) 1 Convo 2 FC]{\includegraphics[scale=0.3]{model4}}
+\subfloat[1 Convo 2 FC]{\includegraphics[scale=0.3]{model4}}
 \qquad
-\subfloat[Modelo (5) 1 Convo 1 FC]{\includegraphics[scale=0.3]{model5}}
+\subfloat[1 Convo 1 FC]{\includegraphics[scale=0.3]{model5}}
 \caption{La precisión de cada modelo con respecto a las épocas.}
 \end{figure}
 
@@ -529,7 +530,7 @@ de $5 \times 5$.
 %%\end{document}
 
 
-\subsection{Pruebas sobre el robot NAO}
+\subsubsection{Pruebas sobre el robot NAO}
 
 Para finalizar la implementación del modelo sobre la arquitectura
 se debe integrar uno de los cinco modelos descritos en la tabla \ref{table:models_results} sobre la API REST de CloudNAO y luego hacer peticiones con el robot a ésta.
