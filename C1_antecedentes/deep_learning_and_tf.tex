@@ -880,8 +880,7 @@ los pasos básicos del algoritmo son los siguientes:
 % aleatoria de los pesos.
 
 
-\paragraph{Propagación hacia adelante.}
-
+\paragraph{Propagación hacia adelante}
 Por simplicidad, supongamos que los nodos están indexados tal que $i < j$ implica que 
 el nodo $j$ sigue al nodo $i$ en términos de dependencia. Esto quiere decir que,
 el estado del nodo $j$ puede depender, quizás indirectamente, del estado 
@@ -960,8 +959,7 @@ la cual se actualiza con las salidas de la última capa oculta.
 % Normalmente $g$ es la función sigmoide, sin embargo, existen otras funciones
 % de activación. 
 
-\paragraph{Cálculo del error.}
-
+\paragraph{Cálculo del error}
 A menos que la red esté perfectamente entrenada, las salidas de la red diferirán de
 las salidas deseadas. Como ya vimos, para medir esa diferencia, se utiliza una función de costo, 
 que por ahora será la \textit{suma de cuadrados del error} o \textit{SSE} (por sus 
@@ -986,8 +984,7 @@ donde
 E_p = \frac{1}{2} \sum_k (t_{pk} - y_{pk})^2
 \]
 
-\paragraph{Cálculo de las derivadas.}
-
+\paragraph{Cálculo de las derivadas}
 Después de obtener las salidas y de haber calculado el error, el siguiente paso es
 calcular la derivada del error con respecto de los pesos. Recordando que $E = \sum_p E_p$
 es la suma de los error individuales de los patrones, entonces la derivada total
@@ -1184,8 +1181,7 @@ es la salida de la unidad $i$ que será la entrada del nodo $j$.
     del feedforward y las líneas discontinuas muestras la propagación hacia atrás de los valores $\delta$.}
     \label{fig:backprop}
 \end{figure}
-\paragraph{Actualización de los pesos.}
-
+\paragraph{Actualización de los pesos}
 Después de obtener las derivadas, el siguiente paso es actualizar los pesos
 para disminuir el error. Como se dijo al principio, el término 
 de retropropagación se refiere al método eficiente para calcular las 
