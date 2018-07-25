@@ -567,12 +567,26 @@ del módulo \texttt{nao\_robot} descrito en la sección
 que representa la imagen la que se envía a la API REST usando
 \texttt{requests}.
 
-A continuación se muestran algunas imagenes y las
+En la figura \ref{nao_api_images} se muestran algunas imagenes 
+de $160 \times 120$ pixeles y las
 respuestas enviadas por el servicio de clasificación
 de escenarios dentro del recurso \texttt{vision} de la
 API REST de CloudNAO.
 
 
+\begin{figure}[!ht] 
+  \centering
+  
+\subfloat[Clase = zona de trabajo, predicción = zona de trabajo. Tiempo = 3.02]{\includegraphics{nao_api_desk}}
+\qquad
+\subfloat[Clase = salida, predicción = salida. Tiempo = 3.12]{\includegraphics{nao_api_exit}}
+\qquad
+\subfloat[Clase = oficina, predicción = salida. Tiempo = 2.78]{\includegraphics{nao_api_office}}
+\qquad
+\subfloat[Clase = cancha, predicción = cancha. Tiempo = 3.57]{\includegraphics{nao_api_soccer}}
+\caption{Predicciones hechas enviando imágenes del robot a la API REST. El tiempo son los
+segundos que se tardó en enviar la solicitud y en recibir la respuesa. \label{nao_api_images}}
+\end{figure}
 
 
 
