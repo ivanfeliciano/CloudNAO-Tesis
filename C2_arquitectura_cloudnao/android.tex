@@ -146,28 +146,13 @@ rightUSSensorValue, leftUSSensorValue, rightFootTotalWeight, RightBumperPressed,
 \end{figure}
 
 
-\subparagraph{Detección de rostros en una fotografía enviada por el robot.}
+\subparagraph{Detección de rostros y reconocimiento de sujetos en una fotografía enviada por el robot.}
 \label{\detokenize{users_docs:deteccion-de-rostros-en-una-fotografia-enviada-por-el-robot}}
-La detección  de rostros es un problema levemente resuelto por el equipo
-de Aldebaran; existe un módulo dentro de NAOqi para seguir rostros o detectarlos,
-así como reconocer algunos antes guardados. Sin embargo, los modelos de visión
-que utilizan no son lo suficientemente potentes, ya que deben ejecutarse dentro
-del robot. Esta funcionalidad dentro de la aplicación, muestra la facilidad con
-la que se puede hacer procesamiento de imágenes con solo una petición HTTP.
-El usuario simplemente toma una fotografía con la cámara del robot, añade
-la etiqueta de la persona que se encuentra en esa imagen y esto se envía
-a la API de CloudNAO que a la vez se conecta con la de Kairos. Si todo fue
-exitoso un nuevo rostro se conserva para su futuro reconocimiento.
-
-
-\subparagraph{Reconocimiento de rostros previamente almacenados.}
-\label{\detokenize{users_docs:reconocimiento-de-rostros-previamente-almacenados}}
-Es la continuación de la característica mencionada anteriormente, reconoce
-a sujetos antes guardados a través de una foto de sus rostros. Cuando
-la aplicación ha detectado los rostros y reconocido, brinda la posibilidad
-de que el robot ejecute una animación y diga un breve saludo a cada persona
-encontrada.
-
+Esta funcionalidad permite a un usuario
+capturar una fotografía con la cámara del robot, añadir
+una etiqueta a un rostro si fue encontrado y guardar esa cara para su futuro reconocimiento.
+Cuando detecta a un sujeto previamente guardado el robot ejecuta 
+un gesto de saludo.
 
 \begin{figure}[!h]
     \centering
