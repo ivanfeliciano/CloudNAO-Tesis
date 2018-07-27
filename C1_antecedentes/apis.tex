@@ -307,14 +307,14 @@ de una sentencia o de un discurso de audio. Por ahora nos enfocaremos
 al segundo caso, cómo solicitar y cuál es la respuesta al enviar audio
 para su procesamiento.
 
-Wit trabaja con \sphinxstyleemphasis{intents} y \sphinxstyleemphasis{entities}. Las intents se usan para entender
-el significado en general de una oración. Por ejemplo la intent
+Wit trabaja con \sphinxstyleemphasis{intenciones} y \sphinxstyleemphasis{entidades}. Las intenciones se usan para entender
+el significado en general de una oración. Por ejemplo la intención
 de la oración «¿A qué hora abren la bibloteca central de CU?»
-puede ser las horas de apertura de un lugar. Las entities
+puede ser las horas de apertura de un lugar. Las entidades
 proveen más información para contestar correctamente. Siguiente el ejemplo,
 el usuario no está preguntando a qué hora abren todas las bibliotecas,
 sino en específico la biblioteca central de CU, por lo que
-una entity sería el lugar del que se desear obtener la hora de apertura.
+una entidad sería el lugar del que se desear obtener la hora de apertura.
 
 La API cuenta con el URL base \sphinxcode{htttps://api.wit.ai/} y el recurso que
 solicitamos es \sphinxcode{/speech}. A través de un POST a \sphinxcode{htttps://api.wit.ai/speech}
@@ -361,14 +361,14 @@ es un JSON con la siguiente estructura:
 
 \sphinxcode{msg\_id} es el id de la respuesta. \sphinxcode{\_text} es la trancripción
 del discurso de audio en texto. \sphinxcode{entities} es un objeto con las
-entities e intents que se encontraron. Si es una intent
+entidades e intenciones que se encontraron. Si es una intención
 el objeto tiene como llave la cadena \sphinxcode{"intent"} y como
 valores los campos \sphinxcode{value} y \sphinxcode{confidence}, donde el primero
-es el valor con el que se definió la intent y el segundo es la
-probabilidad de que sea tal intent. Si es una
-entity la llave del objeto es el nombre de la entity y como valor
+es el valor con el que se definió la intención y el segundo es la
+probabilidad de que sea tal intención. Si es una
+entidad la llave del objeto es el nombre de la entidad y como valor
 tiene un arreglo de las diferentes apariciones que tiene
-esa entity en el mensaje. Cada entity tiene los campos de
+esa entidad en el mensaje. Cada entidad tiene los campos de
 \sphinxcode{value} y \sphinxcode{confidence}.
 
 

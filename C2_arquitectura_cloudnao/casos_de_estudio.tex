@@ -34,34 +34,110 @@ un movimiento de saludo diciendo una frase simple con el nombre de la persona.
 
 \begin{figure}[!h]
 \centering
-\caption{El flujo de el reconocimiento de personas.}
+\caption{El flujo de el reconocimiento de personas. 1) El usuario presiona el botón para capturar una imagen desde el robot. 2) El robot envía la imagen a la 
+aplicación. 3) El usuario presiona el botón Reconoce personas y envía la imagen a la API REST de CloudNAO. 4) La API de CloudNAO solicita el recuros \texttt{recognize} de Kairos. 5) Kairos envía un JSON como respuesta. 6) La API 
+de CloudNAO envía un JSON a la aplicación móvil. 7) La aplicación envía ejecuta el remotamente el módulo de NAOqi para realizar el discurso animado.}
 \includegraphics[scale=0.6]{study_case_kairos}
 \end{figure}
 
-\subsubsection{Reconocimiento óptico de caracteres con la API de Google Cloud Vision}
+\subsubsection{Reconocimiento óptico de caracteres y traducción de texto con Google Cloud Vision y Google Cloud Translation}
 
-El reconocimiento óptico de caracteres (OCR por sus siglas en inglés) es 
-el proceso de detectar y extraer texto de imágenes para luego
-almacenarlo en un formato que una máquina pueda entender.
+El reconocimiento óptico de caracteres (OCR por sus siglas en inglés) permite detectar y extraer texto de imágenes para luego
+almacenarlo en un formato que una máquina pueda "entender".
 La API de Vision de Google Cloud ofrece el servicio de OCR
-que además de incluye la detección del idioma en que se encuentra escrito
+que además incluye la detección del idioma en que se encuentra escrito.
+Google Cloud cuenta también con una API para traducción de 
+texto.
+En la API REST de CloudNAO se combinan estos dos servicios
+para añadir al robot NAO la funcionalidad de extracción y traducción de texto en imágenes. 
+
+Esta característica dentro de CloudNAO sólo
+se usa en la aplicación móvil, sin embargo, al igual que
+la el reconocimiento de rostros, se puede utilizar directamente
+sobre el robot. El usuario simplemente adquiere una fotografía
+capturada por la cámara del robot y se hace la petición
+a la API REST de CloudNAO que utiliza los servicios
+de Google Cloud Vision y Translation para obtener el texto
+y hacer la traducción, respectivamente.
+Si existe texto en la imagen y fue correctamente procesado por
+la API de Vision, éste se traduce, el resultado se muestra
+en la aplicación y el robot repite oralmente
+el texto traducido.
+
+\subsubsection{Reconocimiento de voz con la API de Wit.ai}
+
+Una aplicación interesante de tecnologías que realizan el 
+procesamiento de lenguaje natural es la creación de bots conversacionales
+o asistentes por voz. Wit.ai provee una API para contruir aplicaciones
+con las que los usuarios se puedan comunicar a través de voz o texto.
+El robot NAO es una plataforma con las características 
+para interactuar de manera amigable, que a pesar de contar con un
+módulo de reconocimiento de voz (\texttt{ALSpeechRecognition}), éste es muy 
+básico y limitado.
+
+Las aplicaciones desarrollados con Wit.ai aprenden conforme reciban más 
+información, se vuelven más inteligentes con cada interacción de los usuarios.
+En cambio, una aplicación usando sólo el módulo de \texttt{ALSpeechRecongnition} es estática.
+
+Por todas estas razones se creó una aplicación sencilla
+para interactuar con el robot usando el servicio \texttt{speech} de
+Wit.ai.
+Dentro de la API REST de CloudNAO existe un módulo para hacer las peticiones
+a la API de Wit.ai; éste también puede usarse directamente sobre
+el robot, evitando un intermediario.
+Se solicita el recurso \texttt{speech} de la API de Wit.ai 
+enviando
+un archivo de audio generado por el robot. La API
+envía como respuesta un JSON con la transcripción del audio 
+en texto, las entidades e intenciones encontradas.
+El robot es quien se encarga de manejar el flujo de
+acciones dependiendo de las entidades.
+
+Las entidades de una aplicación se definen en la plataforma
+web de Wit.ai. Ésta cuenta con una herramienta para
+crear entidades a partir de oraciones que el usuario
+posiblemente enviará en un mensaje. Por ejemplo,
+cuando el usuario inicie una conversación posiblemente
+se con un "Hola", por lo que podemos definir una
+entidad \texttt{saludo} con el valor \texttt{hola}.
+Se pueden añadir más sentencias que el usuario
+pueda decir cuando quiera saludar como "Buenas tardes",
+"Buena día" y la entidad seguirá siendo saludo.
+A partir de esto podemos definir acciones muy simples
+para el robot guiadas por las entidades. En la
+siguiente lista se describen las entidades que se
+definieron para esta aplicación, qué acción realiza el robot
+y un ejemplo de lo que puede decir el usuario para ejecutarla:
 
 
-\paragraph{Traducción de texto encontrado en una imagen}
+\begin{itemize}
+\item  \texttt{walk}: El robot camina una pequeña distancia. "Levántate y anda."
+\item \texttt{restPosition}: El robot cambia a una posición de descanso (crouch). "Descansa robot".
+\item \texttt{greeting}: El robot realiza un gesto y saluda al usuario."Hola robot".
+\item \texttt{photography}: El robot toma una fotografía y la almacena en su disco. "Toma una foto de lo que ves".
+\item \texttt{sayGoodbye}: El robot se despide del usuario y termina la aplicación. "Adiós robot".
+\item \texttt{animation}: El robot ejecuta una animación aleatoria.
+"Robot, dame un movimiento sorpresa".
+\item \texttt{textDetection}: Utilizando la API de Vision de Google Cloud
+el robot extrae texto de una imagen y lo expresa oralmente. "Lee que dice
+aquí".
+\end{itemize}
 
-\subsubsection{Control por voz del robot con la API de Wit.ai}
+La aplicación se puede volver tan compleja como se desee,
+el añadir más entidades hace más interesante intectuar con el
+robot. Podemos agregar otros servicios para
+que cada vez se parezca más a un asistente por voz,
+como los calendarios y contactos de Google, la búsqueda de lugares y
+zonas de interés con servicios como Foursquare o los Mapas de Google,
+uso de la la gráfica de conocimiento de Google o de Wolfram Alpha, 
+servicios de noticias, etc.
 
+\begin{figure}[!h]
+\centering
+\caption{El funcionamiento de la interacción con el robot a través de un discurso
+oral. 1) El usuario envía un mensaje que el robot graba en un archivo de audio
+con unos cuantos segundo de duración. 2) El robot procesa envía el archivo de audio
+a la API de Wit.ai. 3) Wit.ai envía un JSON con las entidades encontradas. El robot realiza una acción dependiendo de las entidades.}
+\includegraphics{study_case_wit}
+\end{figure}
 
-Aquí debo describir cada elemento de la aplicación móvil
-Descrito a detalle, cómo se combinan los servicios para que el robot
-haga algo.
-
-La detección  de rostros es un problema levemente resuelto por el equipo
-de Aldebaran; existe un módulo dentro de NAOqi para seguir rostros o detectarlos,
-así como reconocer algunos antes guardados. Sin embargo, los modelos de visión
-que utilizan no son lo suficientemente potentes, ya que deben ejecutarse dentro
-del robot. 
-
-Recuerda ser más creativo para que no quede toda la tesis 
-desproporcionada. Mover a los anexos si es necesario.
-Agregar al capítulo 3 cosas de TF y DL.
