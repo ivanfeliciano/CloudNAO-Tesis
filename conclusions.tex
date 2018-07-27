@@ -3,47 +3,44 @@
 \addcontentsline{toc}{chapter}{Conclusiones}
 
 
-La arquitectura CloudNAO permite
-la integración de tecnologías que cada vez se vuelven
-más comunes entre los usuarios; la nube, la inteligencia artificial
-y las apps. 
-Los elementos principales de este 
-trabajo son: la conexión y acceso
-entre múltiples dispositivos a un	 sistema
-utilizando Firebase, la solución de problemas relativos al campo 
-de la inteligencia artificial utilizando modelos
-de aprendizaje profundo para procesamiento de imágenes y de lenguaje natural, 
-y la entrega de esos modelos como un servicio de cómputo en la nube.
+El objetivo fundamental de la tesis fue el diseño e implementación de
+la arquitectura sobre la cual robots NAO pueden
+utilizar tecnologías emergentes como son el cómputo en la nube y
+la inteligencia artifical, en específico el aprendizaje profundo.
 
+Una pregunta que inspiró el trabajo
+fue si se podían integrar servicios en la nube
+en el robot NAO para conectarse a bases de datos, realizar tareas como el procesamiento de imágenes y de lenguaje natural. En la aplicación
+móvil se muestran algunos casos de uso de estos servicios
+sin necesidad de ejecutar un programa de manera local
+en el robot. Sin embargo, un problema pendiente de ésta
+es la compatibilidad del SDK de NAOqi con nuevos sistemas
+Android.
 
+Otra parte fundamental del trabajo fue el desarrollo
+de una red neuronal convolucional para la clasificación
+de imágenes en diferentes escenarios dentro del laboratorio.
+Aunque se cumplió el objetivo de implementar un modelo
+de aprendizaje profundo y de lanzarlo como un servicio, 
+a partir del tiempo de entrenamiento y la precisión de las
+distintas arquitecturas de la red experimentadas,
+parece exagerado utilizar bibliotecas como TensorFlow 
+y que además el robot acceda al modelo como
+un servicio.
+Encontramos modelos
+cuya precisión es muy alta, que aunque no significa que sean excelentes clasificadores,
+las pruebas sobre el robot funcionarion correctamente.
+TensorFlow hace simples y eficientes
+las definición y entrenamiento de modelos de aprendizaje automático,
+dejando la nueva pregunta de si podríamos implementar un modelo 
+directamente sobre el robot, sin la dependencia a una conexión
+a internet para solicitar recursos. Si bien TensorFlow
+no tiene soporte para plataformas como el robot NAO, podríamos
+desarrollar una herramienta específica para éstos. 
 
-1) Se debe enfatizar el mensaje principal y los
-resultados que lo soportan; en relación con el resultado(s) 
-principal se establece la conclusión (es). Se describen
-las ideas importantes del estudio.
-
-2 y 3) Comparar los resultados principales  con estudios
-publicados por otros autores estableciendo su postura;
-otorgar crédito a otros autores de publicaciones previas cuyo trabajo
-ha sido confirmado. Ser justo con los autores cuyos resultados difieren de
-su estudio y explique, si es posible, las
-diferencias con imparcialidad.
-
-4) Se describen los resultados secundarios, que son hallazfos sin relación directa con el mensaje principal; con frecuencia los resultados
-secundarios ofrecen la oportunidad para realizar otras investigaciones.
-Los resultados secundarios también deben compararse con lo
-publicado por otros autores.
-
-5) Se deben hacer explícitas las fortalezas y debilidades del 
-estudio.
-
-6) El último párrafo debe referirse a las conclusiones 
-del estudio relacionadas con el mensaje principal, así como 
-las recomendaciones para aplicar los resultados de la investigación
-y /o la necesidad de estudio futuros.; se deben evitar hacer conclusines
-insuficientemente soportadas por los datos, en particular,
-las afirmaciones sobre beneficios económics a menos que su 
-manuscrito incluya datos económicos y el análisis apropiado.
-Proponga nuevas hipótesis cuando esté justificado, pero identificándolas
-claramente como tales. Igual que en el 
-primer párrafo se describen las ideas importantes del estudio.
+Como nota final puedo decir que las tecnologías empleadas
+facilitan la adición
+de nuevas funcionalidades sobre una plataforma con recursos
+limitados como los son, los robots NAO, y aunque existen desventajas,
+permiten la introducción
+del robot a otros campos de estudio.

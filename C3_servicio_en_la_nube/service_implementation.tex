@@ -125,9 +125,9 @@ Esta codificación se puede intepretar como una distribución de probabilidad
 sobre las cuatro clases.
 
 Se definió un módulo \texttt{cnn\_indoor\_classifier\_model} con 
-una clase \texttt{CNNClassifierLAR}
+una clase \texttt{CNNClassifier\\LAR}
 que encapsula los métodos para la carga de las imágenes, su 
-procesamiento, la definición de la gráfica de cómputo y la ejecución 
+procesamiento, la definición de la gráfica de cómputo y la ejecución.
 Dentro de la clase el método \texttt{get\_training\_and\_test\_images()}
 carga y procesa las imágenes para definir los conjuntos de entrenamiento
 y de prueba para nuestro modelo.
@@ -135,7 +135,7 @@ Primero se obtiene la ruta de cada imagen y se crea la lista con las etiquetas
 (vectores one-hot)
 de cada imagen dependiendo de la carpeta donde se encontraba, luego con
 \sphinxcode{\sphinxupquote{opencv}} se cargan las imágenes a la memoria como arreglos de
-\sphinxcode{\sphinxupquote{numpy}}, se redimensionan a un tamaño de 32 * 32 y se normalizan
+\sphinxcode{\sphinxupquote{numpy}}, se redimensionan a un tamaño de $32 \times 32$ y se normalizan
 los valores de los pixeles. Al final se tienen dos arreglos de \sphinxcode{\sphinxupquote{numpy}}
 donde cada elemento es un arreglo de tres dimensiones que
 representa una imagen. El código de las operaciones dentro del método
@@ -196,7 +196,7 @@ crear la gráfica con dos capas de convolución.
 \item La creación de la primera de convolución, recibe como entradas el placeholder
 con las imágenes y a la función se le pasan como parámetros una lista con las dimensiones
 de los kernels que se aplican y el número de mapas de características. Por ejemplo
-un lista \sphinxcode{\sphinxupquote{{[}5, 5, 3, 16{]}}} indica que se deben aplicar kernels de 5*5 a
+un lista \sphinxcode{\sphinxupquote{{[}5, 5, 3, 16{]}}} indica que se deben aplicar kernels de $5 \times 5$ a
 una entrada con 3 canales (la imagen RGB), para obtener
 16 mapas de características, después se aplica un agrupamiento para disminuir las
 dimensiones de los 16 mapas a la mitad:
@@ -268,7 +268,7 @@ dos capas de convolución y dos capas completamente conectadas.
 La red está creada para específicamente aceptar entradas de dimensiones
 de 32 pixeles por 32 pixeles por 3 canales. El constructor recibe tres parámetros
 una lista con las dimensiones de los kernels, entradas de la convolución y
-número de mapas de características, un entero con el número de unidades en lax
+número de mapas de características, un entero con el número de unidades en la
 capa oculta y un valor flotante que es la tasa de aprendizaje.
 En el siguiente ejemplo se crea una red con dos capas de convolución,
 una capa oculta con 2048 unidades y una tasa de aprendizaje de 0.01. La ejecución de la gráfica
@@ -294,12 +294,8 @@ el tamaño del lote y el número de épocas, respectivamente.
 
 \subsection{Resultados}
 
-Debo poner qué parámetros influyen  y cuales no
-las épocas la tasa de aprendizaje el tamaño de los kernels.
-De verdad importan unas decimas de precisión, aunque incluya
-aprender más parámetros.
-
-Los modelos con la precisión más alta de cada una de las cuatro estructuras mencionadas previamente se resumen en la tabla \ref{table:models_results}. Las abreviaciones Convo y FC denotan
+Después del entrenamiento de los $756$ modelos posibles,
+se eligieron aquellos con la precisión más alta de cada una de las cuatro estructuras mencionadas previamente. Éstos se resumen en la tabla \ref{table:models_results}. Las abreviaciones Convo y FC denotan
 a capas convolucionales y completamente conectadas, respectivamente.
 $\gamma$ denota la tasa de aprendizaje, y el tiempo es la duración
 del entrenamiento en segundos.
@@ -321,12 +317,30 @@ Modelo                                                           & Épocas & $\g
 
 \end{table}
 
-Los modelos con la mayor precisión sobre todos son el modelo uno y
-dos con una proporción de valores correctamente clasificados de
+Los modelos con la mayor precisión sobre todos son el modelo (1) y
+(2) con una proporción de valores correctamente clasificados de
 0.97917. Se puede ver que los parámetros que comparten todas
 las arquitecturas son el número de épocas y la tasa de aprendizaje,
 además de que en sus kernels aparece al menos uno con una dimensión 
-de $5 \times 5$.
+de $5 \times 5$. Los mapas de carcaterísticas producidos 
+por las capas de convolución no son menores a $16$, lo que podría
+indicar que podríamos añadir más mapas para mejorar el modelo.
+
+La diferencia entre tiempo y la precisión entre los cinco modelos
+no es significativa. Todos están por arriba del $0.96$
+en cuanto a la precisión. La diferenca del tiempo de entrenamiento 
+entre los modelos es mínima, un par de minutos entre el modelo (2) y (5),
+lo que no es nada en comparación a modelos más complejos que tardan horas
+sobre sistemas con un gran poder de cómputo.
+
+
+En la figura \ref{fig:results_acc_epochs}
+podemos ver que la precisión de cada modelo, a pesar de que 
+sí mejora con respecto a las épocas, converge muy rápidamente.
+Aproximandamente desde la época $300$,
+el incremento de la precición es lento pero está por arriba
+del $0.95$.
+
 
 \begin{figure}[!ht]
 \renewcommand*\thesubfigure{\arabic{subfigure}} 
@@ -340,7 +354,7 @@ de $5 \times 5$.
 \subfloat[1 Convo 2 FC]{\includegraphics[scale=0.3]{model4}}
 \qquad
 \subfloat[1 Convo 1 FC]{\includegraphics[scale=0.3]{model5}}
-\caption{La precisión de cada modelo con respecto a las épocas.}
+\caption{La precisión de cada modelo con respecto a las épocas.\label{fig:results_acc_epochs}}
 \end{figure}
 
 
