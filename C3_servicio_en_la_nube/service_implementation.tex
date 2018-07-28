@@ -68,7 +68,7 @@ describe la implementación de las CNN, su entrenamiento, evaluación
 y lanzamiento sobre la API REST de CloudNAO.
 
 
-El programa en TensorFlow encargado del entrenamiendo de la CNN se puede dividir en tres partes principales; la primera es la carga las imágenes de cada conjunto a partir de su ruta y su etiquetado, en la segunda
+El programa en TensorFlow encargado del entrenamiento de la CNN se puede dividir en tres partes principales; la primera es la carga las imágenes de cada conjunto a partir de su ruta y su etiquetado, en la segunda
 se crean las gráficas de cómputo y por último se ejecutan esas gráficas de cómputo.
 
 Para agregar el modelo a la API de CloudNAO sólo se añadió un nuevo módulo
@@ -96,7 +96,7 @@ diferentes arquitecturas fue un equipo con las siguientes características:
 Como ya se explicó, la biblioteca para desarrollar el modelo en Python fue TensorFlow, la cual cuenta
 con soporte para la plataforma de cómputo paralelo CUDA (Arquitectura
 Unificada de Dispositivos de Cómputo), desarrollada por NVIDIA.
-La versión de CUDA y de TensorFlow (con sopore para GPU) fueron 8.0 y 1.4.0, respectivamente.
+La versión de CUDA y de TensorFlow (con soporte para GPU) fueron 8.0 y 1.4.0, respectivamente.
 
 Además de TensorFlow, las otras dos bibliotecas importantes son 
 \texttt{numpy} y \texttt{opencv}, principalmente para la carga de
@@ -121,7 +121,7 @@ demás casos. Los vectores posibles de acuerdo las cuatro categorías son los si
 \item $(0, 0, 0, 1)$ si la imagen es de la categoría \textit{cancha}.
 \end{itemize}
 
-Esta codificación se puede intepretar como una distribución de probabilidad
+Esta codificación se puede interpretar como una distribución de probabilidad
 sobre las cuatro clases.
 
 Se definió un módulo \texttt{cnn\_indoor\_classifier\_model} con 
@@ -170,7 +170,7 @@ Para la implementación de la CNN en TensorFlow
 se utilizó una clase que representara una
 arquitectura. Esto fue para que experimentar con
 una estructura y parámetros diferentes sólo
-implicara instaciar un objeto de la clase.
+implicara instanciar un objeto de la clase.
 La clase se llama \sphinxcode{\sphinxupquote{CNNClassifierLAR}} y
 está dentro del módulo {\hyperref[\detokenize{model_desc:module-cnn\_indoor\_classifier\_model}]{\sphinxcrossref{\sphinxcode{\sphinxupquote{cnn\_indoor\_classifier\_model}}}}}.
 El módulo anterior además de la clase contiene múltiples
@@ -179,14 +179,14 @@ de los parámetros de aprendizaje, la operaciones entre los
 tensores, la obtención de las rutas de las imágenes
 y la generación de los vectores one-hot de sus etiquetas.
 
-Se pueden contruir hasta cuatro tipos distintos de
+Se pueden construir hasta cuatro tipos distintos de
 arquitecturas, con dos capas convolucionales con una o dos
 completamente conectadas, y con una capa de convolución
 y uno o dos completamente conectadas.
 La construcción de éstas se hace con los métodos
 \texttt{create\_graph\_2\_convo\_layers()}
 y \texttt{create\_graph\_1\_convo\_layer()}
-que reciben como argumento una bandera para contruir su gráfica
+que reciben como argumento una bandera para construir su gráfica
 de cómputo con dos o una capa completamente conectada. A
 continuación se desglosan los pasos del método para
 crear la gráfica con dos capas de convolución.
@@ -322,13 +322,13 @@ Los modelos con la mayor precisión sobre todos son el modelo (1) y
 0.97917. Se puede ver que los parámetros que comparten todas
 las arquitecturas son el número de épocas y la tasa de aprendizaje,
 además de que en sus kernels aparece al menos uno con una dimensión 
-de $5 \times 5$. Los mapas de carcaterísticas producidos 
+de $5 \times 5$. Los mapas de características producidos 
 por las capas de convolución no son menores a $16$, lo que podría
 indicar que podríamos añadir más mapas para mejorar el modelo.
 
 La diferencia entre tiempo y la precisión entre los cinco modelos
 no es significativa. Todos están por arriba del $0.96$
-en cuanto a la precisión. La diferenca del tiempo de entrenamiento 
+en cuanto a la precisión. La diferencia del tiempo de entrenamiento 
 entre los modelos es mínima, un par de minutos entre el modelo (2) y (5),
 lo que no es nada en comparación a modelos más complejos que tardan horas
 sobre sistemas con un gran poder de cómputo.
@@ -337,8 +337,8 @@ sobre sistemas con un gran poder de cómputo.
 En la figura \ref{fig:results_acc_epochs}
 podemos ver que la precisión de cada modelo, a pesar de que 
 sí mejora con respecto a las épocas, converge muy rápidamente.
-Aproximandamente desde la época $300$,
-el incremento de la precición es lento pero está por arriba
+Aproximadamente desde la época $300$,
+el incremento de la precisión es lento pero está por arriba
 del $0.95$.
 
 
@@ -571,7 +571,7 @@ tiempo de entrenamiento que es el modelo (1).
 %y se puedan hacer inferencias al alimentarlo con una imagen.
 Dentro de la API REST, la clase que se encarga de restaurar la gráfica y valores del modelo
 es \texttt{ImageClasssfier} dentro del módulo \texttt{indoor\_scenes\_classsifier} del paquete \texttt{tf\_models}.
-En el apartado \textit{Modelos de Tensorflow (tf\_models)}
+En el apartado \textit{Modelos de TensorFlow (tf\_models)}
 de la sección \ref{chapter_two/desc_cloudnao:api-rest-de-cloudnao}
 se describe cómo utilizar esta clase.
 
@@ -586,7 +586,7 @@ del módulo \texttt{nao\_robot} descrito en la sección
 que representa la imagen la que se envía a la API REST usando
 \texttt{requests}.
 
-En la figura \ref{nao_api_images} se muestran algunas imagenes 
+En la figura \ref{nao_api_images} se muestran algunas imágenes 
 de $160 \times 120$ pixeles y las
 respuestas enviadas por el servicio de clasificación
 de escenarios dentro del recurso \texttt{vision} de la

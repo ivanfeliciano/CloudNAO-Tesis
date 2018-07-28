@@ -23,14 +23,14 @@ Firebase todo a través de una interfaz gráfica sencilla para los usuarios
 del robot NAO.
 
 Además de depender del SDK para Web de Firebase, otras dos dependencias están
-detrás de la aplicación, React, una biblioteca de Javascript para contruir
+detrás de la aplicación, React, una biblioteca de Javascript para construir
 interfaces de usuario y Semantic UI,.
 
 La aplicación tiene una estructura muy sencilla, cumple con los elementos
 básicos de una aplicación web moderna. Un login de usuario, registro de uno
 nuevo, y un tablero donde el usuario interactúe con el robot.
 
-En las siguientes secciones se describen a detalle los elementos que confoman
+En las siguientes secciones se describen a detalle los elementos que conforman
 este componente, Firebase y React como herramientas de desarrollo,
 una descripción más detallada de la aplicación y la guía para
 los desarrolladores que mantienen la aplicación.
@@ -1240,12 +1240,12 @@ puede usar el mismo nombre de usuario y contraseña.
 
 \subparagraph{Panel de interacción con el robot.}
 \label{\detokenize{users_docs:panel-de-inteaccion-con-el-robot}}
-La principal función de esta aplicación es conectarse remótamente a un robot
+La principal función de esta aplicación es conectarse remotamente a un robot
 NAO usando como intermediario a Firebase. Si se desea enviar una orden al robot
 primero se escribe esa orden en una ubicación en la base de datos, el robot
 recibe dicha actualización y la procesa para ejecutar tal comando.
 
-El panel cuenta la estructura mostrada en la fugura \hyperref[\detokenize{users_docs:webappstruct}]{Figura \ref{\detokenize{users_docs:webappstruct}}}:
+El panel cuenta la estructura mostrada en la figura \hyperref[\detokenize{users_docs:webappstruct}]{Figura \ref{\detokenize{users_docs:webappstruct}}}:
 
 \begin{figure}[htbp]
 \centering
@@ -1264,7 +1264,7 @@ Aquí el usuario puede escribir un texto breve para que el robot lo repita oralm
 Control remoto del robot para realizar algunos movimientos como caminar, cambiar entre dos posturas y mover las articulaciones de la cabeza. Se puede cambiar la velocidad con la que camina y otros parámetros de caminado definidos por la API de NAOqi.
 
 \item {} 
-Muestra una imagen tomada con la cámara superior del robot, funciona para obtener una imágen en vivo enviada por el robot cuando éste está conectado a Firebase.
+Muestra una imagen tomada con la cámara superior del robot, funciona para obtener una imagen en vivo enviada por el robot cuando éste está conectado a Firebase.
 
 \item {} 
 Aquí aparece el estado de la conexión con el robot, si el robot ha ejecutado el programa que se conecta a Firebase, se muestra un estado en línea y el nivel de la batería.
@@ -1313,7 +1313,7 @@ biblioteca o frameworks y son:
 Es \textbf{declarativa}, ya que permite crear interfaces de manera sencilla. Sólo se diseña una vista para cada estado de la aplicación; React actualizará de manera eficiente y \sphinxstylestrong{rederizará} los componentes correctos cuando los datos cambian.
 
 \item {} 
-Está \sphinxstylestrong{basado en componentes}, contruye componentes encapsulados que manejan su propio estado, después se integran con otros para hacer IU más complejas.
+Está \sphinxstylestrong{basado en componentes}, construye componentes encapsulados que manejan su propio estado, después se integran con otros para hacer IU más complejas.
 
 \item {} 
 React puede \sphinxstyleemphasis{renderizar} sobre un servidor usando node o en dispositivos móviles con React Native.
@@ -1344,19 +1344,19 @@ que es una descripción ligera de lo que se quiere
 renderizar.
 
 Para el desarrollo de una aplicación en React se utiliza
-una sintáxis especial llamada \textit{JSX} (JavaScript XML), que no
+una sintaxis especial llamada \textit{JSX} (JavaScript XML), que no
 es requerida, pero al ser una extensión de JavaScript que permite
 utilizar un código parecido al HTML con todo el poder de JavaScript
-se cunple el objetivo de React de no separar la lógica de renderizado
+se cumple el objetivo de React de no separar la lógica de renderizado
 y la de la interfaz de usuario.
 
 
 \subparagraph{Ejemplo de una aplicación.}
 
 La manera más simple para crear una aplicación en
-React es através del kit inicial sin
+React es a través del kit inicial sin
 configuraciones para React lanzado por Facebook
-llamadao \texttt{create-react-app}.
+llamado \texttt{create-react-app}.
 
 Para iniciar con esta herramienta primero se instala a través del
 manejador de paquetes de node, \texttt{npm}:
@@ -1403,7 +1403,7 @@ ejemplo\PYGZus{}react\PYGZus{}app/
 \sphinxstylestrong{node\_modules/}. Contiene todos los paquetes de node que fueron instalados vía npm. Como se usó create-react-app, algunos módulos ya fueron instalados.
 
 \item {} 
-\sphinxstylestrong{package.json}. El archivo que muestra las lista de dependecias y otras opciones de configuracón del proyecto.
+\sphinxstylestrong{package.json}. El archivo que muestra las lista de dependencias y otras opciones de configuración del proyecto.
 
 \item {} 
 \sphinxstylestrong{.gitignore}. Este archivo indica todos los archivos y carpetas que nos deben añadirse a un repositorio remoto cuando se usa git.
@@ -1421,7 +1421,7 @@ múltiples archivos, donde cada archivo mantiene uno o algunos componentes por
 su cuenta.
 
 La aplicación generada con \sphinxstyleemphasis{create-react-app} es un proyecto de npm. Se puede usar
-npm para instalar o eliminar paqueres de node. Además viene con los siguientes
+npm para instalar o eliminar paquetes de node. Además viene con los siguientes
 scripts de npm para la línea de comandos.
 
 \fvset{hllines={, ,}}%
@@ -1447,7 +1447,7 @@ de \texttt{React.Component} llamada \texttt{PodcastsList}.
 class PodcastsList extends React.Component \PYGZob{}
   render() \PYGZob{}
     return (
-      \PYG{p}{\PYGZlt{}}\PYG{n+nt}{div} \PYG{n+na}{className}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}shopping\PYGZhy{}list\PYGZdq{}}\PYG{p}{\PYGZgt{}}
+      \PYG{p}{\PYGZlt{}}\PYG{n+nt}{div} \PYG{n+na}{className}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}podcast\PYGZhy{}list\PYGZdq{}}\PYG{p}{\PYGZgt{}}
         \PYG{p}{\PYGZlt{}}\PYG{n+nt}{h1}\PYG{p}{\PYGZgt{}}Podcasts for \PYGZob{}this.props.name\PYGZcb{}\PYG{p}{\PYGZlt{}}\PYG{p}{/}\PYG{n+nt}{h1}\PYG{p}{\PYGZgt{}}
         \PYG{p}{\PYGZlt{}}\PYG{n+nt}{ul}\PYG{p}{\PYGZgt{}}
           \PYG{p}{\PYGZlt{}}\PYG{n+nt}{li}\PYG{p}{\PYGZgt{}}Simulacro\PYG{p}{\PYGZlt{}}\PYG{p}{/}\PYG{n+nt}{li}\PYG{p}{\PYGZgt{}}
@@ -1502,7 +1502,7 @@ a cada servicio desde el espacio de nombres de \sphinxcode{\sphinxupquote{fireba
 
 El proceso para usar el servicio de Realtime Database y Authentication
 es el mismo que en Android. Los métodos de lectura y escritura
-se mantienen cambiando únicamente la sintáxis.
+se mantienen cambiando únicamente la sintaxis.
 
 
 \subparagraph{Firebase Realtime Database}
@@ -1513,7 +1513,7 @@ Para leer la base de datos o escribir en ella, se necesita una instancia de
 
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{o}{/}\PYG{o}{/} \PYG{n}{Obtiene} \PYG{n}{una} \PYG{n}{referecia} \PYG{n}{al} \PYG{n}{servicio} \PYG{n}{de} \PYG{n}{la} \PYG{n}{base} \PYG{n}{de} \PYG{n}{datos}
+\PYG{o}{/}\PYG{o}{/} \PYG{n}{Obtiene} \PYG{n}{una} \PYG{n}{referencia} \PYG{n}{al} \PYG{n}{servicio} \PYG{n}{de} \PYG{n}{la} \PYG{n}{base} \PYG{n}{de} \PYG{n}{datos}
 \PYG{n}{var} \PYG{n}{database} \PYG{o}{=} \PYG{n}{firebase}\PYG{o}{.}\PYG{n}{database}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
 \end{sphinxVerbatim}
 
@@ -1541,7 +1541,7 @@ una opción es la siguiente:
 \PYG{p}{\PYGZcb{}}
 \end{sphinxVerbatim}
 
-\sphinxcode{\sphinxupquote{set()}} sobrescribe los datos en la ubicación que se especifíca, incluidos
+\sphinxcode{\sphinxupquote{set()}} sobrescribe los datos en la ubicación que se especifica, incluidos
 los nodos secundarios.
 
 
@@ -1560,7 +1560,7 @@ que contiene todos los datos de dicha ubicación, incluidos los datos
 secundarios. Si no hay datos, la instantánea tiene un valor nulo.
 
 En el siguiente ejemplo se muestra una aplicación donde se recupera el valor
-de un recurso en la vase de datos:
+de un recurso en la base de datos:
 
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -1571,7 +1571,7 @@ de un recurso en la vase de datos:
 \end{sphinxVerbatim}
 
 El escuchador recibe una \sphinxcode{\sphinxupquote{snapshot}} que contiene los datos de la ubicación
-especifíca en la base de datos en el momento del evento. Se pueden recuperar
+especifica en la base de datos en el momento del evento. Se pueden recuperar
 los datos de la \sphinxcode{\sphinxupquote{snapshot}} con el método \sphinxcode{\sphinxupquote{val()}}.
 
 
@@ -1825,7 +1825,7 @@ activa.
 \textbf{live\_image\_from\_robot.js}
 \label{\detokenize{code_docs:live-image-from-robot-js}}
 Define al componente \texttt{LiveImage} que muestra la última imagen enviada por la cámara del robot. Tiene una imagen por
-defecto, y espera una imagen codificada en base 64 obtendida desde Firebase.
+defecto, y espera una imagen codificada en base 64 obtenida desde Firebase.
 
 
 \textbf{log\_table.js}
@@ -1906,7 +1906,7 @@ Este archivo contiene las rutas de la aplicación.
 
 La aplicación inicia mostrando el componente de la ruta \sphinxcode{\sphinxupquote{LANDING}}, que es
 \sphinxcode{\sphinxupquote{Landing}}, el usuario selecciona \sphinxcode{\sphinxupquote{Sign In}} en el menú de navegación
-se direcciona a la ruta \sphinxcode{\sphinxupquote{SIGN\_IN}}, si es un nuevo usuario puede dar click
+se direcciona a la ruta \sphinxcode{\sphinxupquote{SIGN\_IN}}, si es un nuevo usuario puede dar clic
 en el botón que envía a la ruta \sphinxcode{\sphinxupquote{SIGN\_UP}}. Después de realzar un inicio de
 sesión de cualquiera de las dos formas anteriores se redirecciona a la ruta
 \sphinxcode{\sphinxupquote{ROBOTS}} que muestra al componente \sphinxcode{\sphinxupquote{Dashboard}}.

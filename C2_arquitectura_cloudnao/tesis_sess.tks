@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TexmakerSession quickmode="3">
+    <document bookmark1="0" bookmark3="0" bookmark2="0" line="0" hasfocus="false" file="/home/ivan/Documentos/CloudNAO-Tesis/main.tex" master="false"/>
+    <document bookmark1="0" bookmark3="0" bookmark2="0" line="0" hasfocus="false" file="/home/ivan/Documentos/CloudNAO-Tesis/C3_servicio_en_la_nube/desc_service_cnn.tex" master="false"/>
+    <document bookmark1="0" bookmark3="0" bookmark2="0" line="0" hasfocus="false" file="/home/ivan/Documentos/CloudNAO-Tesis/C1_antecedentes/baas_firebase.tex" master="false"/>
+    <document bookmark1="0" bookmark3="0" bookmark2="0" line="0" hasfocus="false" file="/home/ivan/Documentos/CloudNAO-Tesis/C2_arquitectura_cloudnao/web_app_docs.tex" master="false"/>
+    <document bookmark1="0" bookmark3="0" bookmark2="0" line="0" hasfocus="false" file="/home/ivan/Documentos/CloudNAO-Tesis/C2_arquitectura_cloudnao/android.tex" master="false"/>
+    <document bookmark1="0" bookmark3="0" bookmark2="0" line="0" hasfocus="false" file="/home/ivan/Documentos/CloudNAO-Tesis/C3_servicio_en_la_nube/service_implementation.tex" master="false"/>
+    <document bookmark1="0" bookmark3="0" bookmark2="0" line="0" hasfocus="false" file="/home/ivan/Documentos/CloudNAO-Tesis/C2_arquitectura_cloudnao/api_rest_cloudnao.tex" master="false"/>
+    <document bookmark1="0" bookmark3="0" bookmark2="0" line="0" hasfocus="false" file="/home/ivan/Documentos/CloudNAO-Tesis/conclusions.tex" master="false"/>
+    <document bookmark1="0" bookmark3="0" bookmark2="0" line="0" hasfocus="false" file="/home/ivan/Documentos/CloudNAO-Tesis/C2_arquitectura_cloudnao/robot_firebase_docs.tex" master="false"/>
+    <document bookmark1="0" bookmark3="0" bookmark2="0" line="0" hasfocus="false" file="/home/ivan/Documentos/CloudNAO-Tesis/C1_antecedentes/deep_learning_and_tf.tex" master="false"/>
+    <document bookmark1="0" bookmark3="0" bookmark2="0" line="0" hasfocus="false" file="/home/ivan/Documentos/CloudNAO-Tesis/referencias.bib" master="false"/>
+    <document bookmark1="0" bookmark3="0" bookmark2="0" line="0" hasfocus="false" file="/home/ivan/Documentos/CloudNAO-Tesis/intro.tex" master="false"/>
+    <document bookmark1="0" bookmark3="0" bookmark2="0" line="0" hasfocus="false" file="/home/ivan/Documentos/CloudNAO-Tesis/anexos.tex" master="false"/>
+    <document bookmark1="0" bookmark3="0" bookmark2="0" line="0" hasfocus="false" file="/home/ivan/Documentos/CloudNAO-Tesis/C1_antecedentes/apis.tex" master="false"/>
+    <document bookmark1="0" bookmark3="0" bookmark2="0" line="0" hasfocus="true" file="/home/ivan/Documentos/CloudNAO-Tesis/C2_arquitectura_cloudnao/casos_de_estudio.tex" master="false"/>
+</TexmakerSession>

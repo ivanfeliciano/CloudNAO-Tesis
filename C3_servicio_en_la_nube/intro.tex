@@ -10,7 +10,7 @@ Para completar la arquitectura CloudNAO falta implementar un modelo de aprendiza
 profundo que se brinde como un servicio web para ser consumido por robots NAO.
 A pesar de que el servicio de detección de objetos es mantenido por el LAR, y 
 se adaptó para ser consumido a través de la API REST, no fue construido
-desde cero ya que es parte de la API de detección de objetos de Tensorflow.
+desde cero ya que es parte de la API de detección de objetos de TensorFlow.
 Es por eso que como parte final del proyecto se desarrolló un modelo para que 
 resuelva la tarea de clasificar imágenes.
 
@@ -27,7 +27,7 @@ Lo anterior nos inspiró en la creación de un modelo que clasificara imágenes
 de algunos lugares sobre los que podría navegar el robot NAO. 
 Como solución a este problema de clasificación se propuso usar 
 una red neuronal convolucional, que recibiera como entrada un arreglo con los
-píxeles de una imagen tomada por el robot, y la salida fuera la categoría
+pixeles de una imagen tomada por el robot, y la salida fuera la categoría
 a la que pertenece esa imagen. 
 Las clases en las que se desea clasificar las imágenes son lugares alrededor
 del Laboratorio de Algoritmos para la Robótica, que se ubica en el cubículo $15$ del

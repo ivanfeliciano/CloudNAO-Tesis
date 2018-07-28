@@ -21,7 +21,7 @@ la tarea de \textbf{Reconocimiento de personas} se muestra una pantalla
 con tres botones, uno para obtener una fotografía del robot, otro para
 detectar rostros de nuevas personas, y el tercero para reconocer sujetos
 ya almacenados. Si el usuario desea añadir a una nueva persona, se abre un
-formulario emegente con un campo para agregar el nombre de la persona y
+formulario emergente con un campo para agregar el nombre de la persona y
 si no hay errores y la detección se realizó correctamente,
 la cara de la persona queda almacenada y se pueden realizar futuros reconocimientos.
 
@@ -35,7 +35,7 @@ un movimiento de saludo diciendo una frase simple con el nombre de la persona.
 \begin{figure}[!h]
 \centering
 \caption{El flujo de el reconocimiento de personas. 1) El usuario presiona el botón para capturar una imagen desde el robot. 2) El robot envía la imagen a la 
-aplicación. 3) El usuario presiona el botón Reconoce personas y envía la imagen a la API REST de CloudNAO. 4) La API de CloudNAO solicita el recuros \texttt{recognize} de Kairos. 5) Kairos envía un JSON como respuesta. 6) La API 
+aplicación. 3) El usuario presiona el botón Reconoce personas y envía la imagen a la API REST de CloudNAO. 4) La API de CloudNAO solicita el recurso \texttt{recognize} de Kairos. 5) Kairos envía un JSON como respuesta. 6) La API 
 de CloudNAO envía un JSON a la aplicación móvil. 7) La aplicación envía ejecuta el remotamente el módulo de NAOqi para realizar el discurso animado.}
 \includegraphics[scale=0.6]{study_case_kairos}
 \end{figure}
@@ -68,7 +68,7 @@ el texto traducido.
 
 Una aplicación interesante de tecnologías que realizan el 
 procesamiento de lenguaje natural es la creación de bots conversacionales
-o asistentes por voz. Wit.ai provee una API para contruir aplicaciones
+o asistentes por voz. Wit.ai provee una API para construir aplicaciones
 con las que los usuarios se puedan comunicar a través de voz o texto.
 El robot NAO es una plataforma con las características 
 para interactuar de manera amigable, que a pesar de contar con un
@@ -77,7 +77,7 @@ básico y limitado.
 
 Las aplicaciones desarrollados con Wit.ai aprenden conforme reciban más 
 información, se vuelven más inteligentes con cada interacción de los usuarios.
-En cambio, una aplicación usando sólo el módulo de \texttt{ALSpeechRecongnition} es estática.
+En cambio, una aplicación usando sólo el módulo de \texttt{ALSpeechRecognition} es estática.
 
 Por todas estas razones se creó una aplicación sencilla
 para interactuar con el robot usando el servicio \texttt{speech} de

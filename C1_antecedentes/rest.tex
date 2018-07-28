@@ -139,7 +139,7 @@ Indica que el cliente debe realizar acciones adicionales para completar la petic
 Esta categoría es para casos en las que el cliente parece haberse equivocado.
 \\
 \hline
-5xx: Error del servdor
+5xx: Error del servidor
 &
 El servidor tomar responsabilidad del error.
 \\
@@ -170,9 +170,9 @@ coma. Los encabezados terminan con un espacio en blanco.
 
 \item[{Cuerpo.}] \leavevmode
 Después del espacio en blanco sigue un cuerpo del mensaje opcional
-que contien cualquier tipo de datos. Los cuerpos de la petición
+que contiene cualquier tipo de datos. Los cuerpos de la petición
 llevan datos al servidor web; los cuerpos de la respuesta cargan
-datis de regreso al cliente. A diferencia de la línea inicial y los
+datos de regreso al cliente. A diferencia de la línea inicial y los
 encabezados, el cuerpo puede contener datos binarios arbitrarios
 (imágenes, videos, audio, aplicaciones, etc.).
 
@@ -197,7 +197,7 @@ siglas en inglés). En diciembre de 1990, Tim Bernes-Lee comenzó este proyecto,
 donde inventó e implementó, entre otras cosas:
 \begin{itemize}
 \item {} 
-El Identificador de Recursos Uniforme, una sintáxis que asigna a cada documento web una dirección única.
+El Identificador de Recursos Uniforme, una sintaxis que asigna a cada documento web una dirección única.
 
 \item {} 
 El Protocolo de Transferencia de Hipertexto (HTTP), un lenguaje basado en mensajes que las computadoras pueden usar para comunicarse a través de Internet.
@@ -268,7 +268,7 @@ de petición del cliente. El estado actual de un recurso puede estar representad
 dentro del mensaje de respuesta por parte del servidor.
 Los mensajes autodescriptivos pueden incluir metadatos para comunicar
 detalles adicionales con respecto al estado del recurso, el formato
-de representacion y tamaño, y el mensaje mismo.
+de representación y tamaño, y el mensaje mismo.
 Un mensaje HTTP provee \sphinxstyleemphasis{encabezados} para organizar varios tipos de
 de metadatos en campos uniformes.
 
@@ -374,11 +374,11 @@ recursos entrelazados.
 REST es una arquitectura basada en recursos. Se accede a un recurso a través
 de una interfaz común basada en los métodos estándar de HTTP. REST
 solicita a los desarrolladores usar métodos HTTP explícitamente
-y de una forma que sea consistente con la definción del protocolo.
+y de una forma que sea consistente con la definición del protocolo.
 Cada recurso se identifica con un URL. Todos los recursos deben soportar
 las operaciones HTTP más comunes, además REST permite que ese recurso
 tenga diferentes representaciones, por ejemplo, texto, xml, json, etc.
-El cliente REST puede solicitar una representacion en específico por
+El cliente REST puede solicitar una representación en específico por
 medio del protocolo HTTP. La \hyperref[\detokenize{chapter_one/rest:rest-struct}]{Tabla \ref{\detokenize{chapter_one/rest:rest-struct}}} describe
 los elementos usados en REST.
 \end{remark}

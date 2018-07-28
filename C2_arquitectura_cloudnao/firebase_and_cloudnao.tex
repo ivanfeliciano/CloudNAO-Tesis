@@ -73,7 +73,7 @@ NAO, la aplicación móvil y la web.
 Es muy importante estructurar de manera correcta la información en una base
 de datos de Firebase.
 
-Los datos dentro de la Firebase Realtime Database se alamacenan como objetos
+Los datos dentro de la Firebase Realtime Database se almacenan como objetos
 JSON. La base de datos puede conceptualizarse como un árbol JSON alojado en la
 nube. A diferencia de una base de datos de SQL, no hay tablas ni registros.
 Cuando le agregas datos al árbol JSON, estos se convierten en un nodo de la
@@ -89,7 +89,7 @@ en cuenta para estructurar los datos dentro del JSON.
 \sphinxstylestrong{Compactar las estructuras de datos}. Si los datos se dividen en rutas de acceso independientes, que también se conocen como no normalizadas, se pueden descargar de manera eficaz en llamadas separadas, según sea necesario.
 
 \item {} 
-\sphinxstylestrong{Crear datos escalables}. Siempre es mejor desgar un subconjunto de una lista de registros.
+\sphinxstylestrong{Crear datos escalables}. Siempre es mejor descargar un subconjunto de una lista de registros.
 
 \end{itemize}
 
@@ -106,7 +106,7 @@ modelo sobre el que se basa el JSON que se almacena en Firebase.
 
 Un usuario puede tener varios robots, cada robot cuenta está relacionado
 con otras entidades como: un texto que representa el discurso que tiene que decir,
-la última imágen enviada por el robot, un largo historial de
+la última imagen enviada por el robot, un largo historial de
 logs con valores de \sphinxcode{ALMemory}, el estado del robot (el nivel de batería y
 su conexión a la red), y comandos para ejecutar ciertas tareas.
 
@@ -121,7 +121,7 @@ su conexión a la red), y comandos para ejecutar ciertas tareas.
 \paragraph{Estructura del JSON para Firebase}
 \label{\detokenize{chapter_two/desc_cloudnao:estructura-del-json-para-firebase}}
 La estructura de la base de datos descrita en el modelo de la \hyperref[\detokenize{chapter_two/desc_cloudnao:entity-relationship-model-cn-firebase}]{Figura \ref{\detokenize{chapter_two/desc_cloudnao:entity-relationship-model-cn-firebase}}}
-es la base del JSON y es por eso que puede no cumplir los requistitos de normalización,
+es la base del JSON y es por eso que puede no cumplir los requisitos de normalización,
 simplemente ilustra el diseño de la base de datos para que sea más simple su
 visualización.
 
@@ -135,9 +135,9 @@ del JSON, pueden cambiar: eliminándolos, agregando nuevos, etcétera.
 \capstart
 
 \noindent\sphinxincludegraphics[scale=0.50]{{Json_structure}.png}
-\caption{La estructura del JSON donde se alamacenan los datos}\label{\detokenize{chapter_two/desc_cloudnao:json-structure}}\end{figure}
+\caption{La estructura del JSON donde se almacenan los datos}\label{\detokenize{chapter_two/desc_cloudnao:json-structure}}\end{figure}
 
-Para entender mejor el JSON de la \hyperref[\detokenize{chapter_two/desc_cloudnao:json-structure}]{Figura \ref{\detokenize{chapter_two/desc_cloudnao:json-structure}}}, se decriben
+Para entender mejor el JSON de la \hyperref[\detokenize{chapter_two/desc_cloudnao:json-structure}]{Figura \ref{\detokenize{chapter_two/desc_cloudnao:json-structure}}}, se describen
 algunos de sus principales atributos:
 \begin{itemize}
 \item {} 
@@ -147,7 +147,7 @@ algunos de sus principales atributos:
 \sphinxstylestrong{commands}, es parte del segundo nivel, los robots se suscriben esta ubicación para manejar actualizaciones. Está compuesto por objetos que corresponde a cada robot.
 
 \item {} 
-\sphinxstylestrong{liveImages}, es parte del segundo nivel, y almacena imagenes enviadas por cada robot. Está compuesto por objetos que corresponde a cada robot.
+\sphinxstylestrong{liveImages}, es parte del segundo nivel, y almacena imágenes enviadas por cada robot. Está compuesto por objetos que corresponde a cada robot.
 
 \item {} 
 \sphinxstylestrong{logs}, está en el segundo nivel, y aquí se encuentra el historial de logs de \sphinxcode{ALMemory} de cada robot. Está compuesto por objetos que corresponde a cada robot.

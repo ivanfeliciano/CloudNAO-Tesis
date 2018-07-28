@@ -1641,7 +1641,7 @@ capas de las unidades de cómputo.
 
 
 \subsection{Aprendizaje profundo}
-El \textit{aprendizaje profundo} permite a las computadoras contruir conceptos complejos
+El \textit{aprendizaje profundo} permite a las computadoras construir conceptos complejos
 a partir de conceptos más simples. La figura 
 \ref{fig:deeplearning_person} muestra como un sistema de aprendizaje profundo
 puede representar el concepto de la imagen de una persona al combinar conceptos más simples, tales
@@ -1779,7 +1779,7 @@ lo tanto, por conveniencia llamaremos a ambas operaciones convolución.
 En la figura \ref{fig:convolution_example} para calcular
 cada valor en la salida, el kernel se mueve con un paso 
 de tamaño uno sobre el eje horizontal y vertical. Este paso
-se conoce como \textit{zancanda} o \textit{stride} (en inglés).
+se conoce como \textit{zancada} o \textit{stride} (en inglés).
 El valor de la zancada puede ser diferente de uno, según 
 convenga. El tamaño de $I * K$ para una imagen $I$ de tamaño
 $h \times w$ y un filtro de tamaño $f \times f$ depende también de
@@ -1869,14 +1869,14 @@ aproximadamente invariante a pequeñas traslaciones de
 la entrada. La \textit{invarianza a las traslaciones} significa 
 que si trasladamos la entrada por una pequeña cantidad, los
 valores de la mayoría de las salidas agrupadas no cambian.
-La invariaza a traslaciones locales puede ser muy útil cuando
+La invarianza a traslaciones locales puede ser muy útil cuando
 nos importa si una característica está presente y no 
 exactamente donde.
 
 A las capas que pasan por las tres etapas las llamaremos \textit{capas
 de convolución}, aunque para algunos autores, cada etapa es una capa
 diferente, la primera es de convolución, la segunda de pooling y la 
-tercera de no linealidad. Por simplicidad elejimos el término
+tercera de no linealidad. Por simplicidad elegimos el término
 de capa de convolución.
 
 % La capa de convolución es el componente más importante de una CNN. Esta capa realiza la 
@@ -1984,21 +1984,21 @@ que está compuesta por un conjunto de nodos y aristas.
 La gráfica representa un cálculo de flujo de datos (un modelo
 de programación para cómputo paralelo).
 \end{remark}
-A menudo los clientes contruyen la gráfica de cómputo usando uno de los
+A menudo los clientes construyen la gráfica de cómputo usando uno de los
 lenguajes de frontend soportados (C++ o Python). Todos los ejemplos
 que se muestran en esta sección están desarrollados en Python.
 
 En una gráfica de TensorFlow los nodos representan instancias de \textit{operaciones}, tiene cero o más entradas y
 cero o más salidas. Los valores que fluyen sobre las aristas en la gráfica son
 \textit{tensores}. Estos últimos son arreglos de dimensiones arbitrarias donde el tipo
-de sus elementos se especifíca o infiere durante la construcción de la gráfica.
+de sus elementos se especifica o infiere durante la construcción de la gráfica.
 
 Una \textit{operación} tiene un nombre y representa un cálculo abstracto, por ejemplo,
 una multiplicación de matrices o una suma. 
 
 Los programas clientes interactúan con el sistema de TensorFlow creando una
 \textit{Session}. El objeto Session es una interfaz para la gráfica de cómputo,
-es quien permite su ejecución a través del su operacion primaria
+es quien permite su ejecución a través del su operación primaria
 \textit{Run}, la cual toma un conjunto de nodos de la gráfica que necesitan ser
 calculados, así como un conjunto de tensores que necesitan alimentar a la 
 gráfica para poder obtener las salidas de ciertos nodos. TensorFlow puede calcular
@@ -2025,7 +2025,7 @@ Operaciones con arreglos & Concat, Slice, Split, Constant, Rank, Shape, Shuffle,
 \hline 
 Operaciones con matrices & MatMul, MatrixInverse, MatrixDeterminant, ... \\ 
 \hline 
-Contrucción de redes neuronales & SoftMax, Sigmoid, ReLU, Convolution2D, MaxPool \\ 
+Construcción de redes neuronales & SoftMax, Sigmoid, ReLU, Convolution2D, MaxPool \\ 
 \hline 
 Operaciones de puntos de control & Save, Restore \\ 
 \hline 
@@ -2052,7 +2052,7 @@ se utilice por primera vez.
 \item Podemos utilizar métodos de optimización como el del descenso del gradiente 
 para modificar las variables después de cada iteración para ajustar los 
 parámetros óptimos del modelo.
-\item Podemos guardar en el disco los valores de las variables y restauralos
+\item Podemos guardar en el disco los valores de las variables y restaurarlos
 para su uso posterior.
 
 \end{itemize}
@@ -2083,7 +2083,7 @@ la gráfica de cómputo.
 Por defecto las variables son entrenables,
 lo que quiere decir que cuando utilizamos algo
 como el descenso del gradiente, las variables
-autómaticamente cambian sus valores.
+automáticamente cambian sus valores.
 
 
 \subsubsection{PlaceHolder}
@@ -2120,7 +2120,7 @@ multiplicación corresponde a multiplicar \sphinxcode{W}
 con el patrón i.
 
 Así como las variables se inicializan la primera vez
-que se contruye la gráfica, los placeholder necesitan
+que se construye la gráfica, los placeholder necesitan
 llenarse cada vez que se ejecuta la gráfica o una
 subgráfica de cómputo.
 
@@ -2164,7 +2164,7 @@ $X_1$ & $X_2$ & $Y = X_1 \oplus X2$ \\
 La arquitectura de nuestra red es la siguiente: una capa de entrada con dos unidades
 de entrada $X_1$ y $X_2$. Una capa oculta con dos unidades, que tienen como función
 de activación la sigmoide. Por último una unidad de salida con la función sigmoide.
-De manera gráfica esto se pueder en la figura \ref{image:xor_net}.
+De manera gráfica esto se puede ver en la figura \ref{image:xor_net}.
 
 \begin{figure}[ht]
 \centering
@@ -2256,7 +2256,7 @@ Elegimos el optimizador de la red para minimizar el error cambiando los parámet
 
 \paragraph{Ejecución de la gráfica de cómputo}
 
-Finalmente se ejecuta la gráfica de TensorFlow. Se crea una instacia de \sphinxcode{Session} e iteramos ejecutando el método \sphinxcode{run}
+Finalmente se ejecuta la gráfica de TensorFlow. Se crea una instancia de \sphinxcode{Session} e iteramos ejecutando el método \sphinxcode{run}
 que ejecuta el entrenamiento del modelo.
 
 

@@ -27,7 +27,7 @@ se debe a la forma en que se compiló el archivo
 \sphinxstyleemphasis{java-naoqi-sdk-2.1.4-android.jar}.
 
 
-\paragraph{Fucionalidades}
+\paragraph{Funcionalidades}
 \label{\detokenize{users_docs:fucionalidades}}
 La aplicación ofrece algunas características que más que nada sirven para
 mostrar casos de uso para algunos recursos dentro de la API RESTful
@@ -80,7 +80,7 @@ que previamente creó.
 \subparagraph{Conexión con un robot seleccionado.}
 \label{\detokenize{users_docs:conexion-con-un-robot-seleccionado}}
 Al elegir un robot entre los que el usuario posee, simplemente escribe la
-dirección IP del robot, y se crea una conexión eon éste dentro de la misma
+dirección IP del robot, y se crea una conexión con éste dentro de la misma
 red. Con esto, es posible acceder a todas las características disponibles en la
 aplicación.
 
@@ -138,7 +138,7 @@ rightUSSensorValue, leftUSSensorValue, rightFootTotalWeight, RightBumperPressed,
 
 \begin{figure}[!h]
     \centering
-    \caption{Después de dar clic en el botón START LOG se abre una pantalla para elegir los valores de la memoría que se desean guardar
+    \caption{Después de dar clic en el botón START LOG se abre una pantalla para elegir los valores de la memoria que se desean guardar
     en Firebase.}
     \subfloat{\includegraphics[scale=.1]{memory_list}}%
     \qquad
@@ -165,7 +165,7 @@ un gesto de saludo.
 \label{\detokenize{users_docs:deteccion-de-objectos-de-entre-80-categorias-en-una-imagen-de-la-camara-del-robot}}
 Funciona de manera similar a la detección de rostros. Envía una imagen capturada
 con la cámara del robot a la API RESTful de CloudNAO, que ejecuta un módulo
-con la API de detección de objectos de Tensorflow y se procesa la respuesta para
+con la API de detección de objectos de TensorFlow y se procesa la respuesta para
 que en la pantalla se dibujen unos
 recuadros delimitadores sobre los objectos detectados así como una etiqueta
 con el nombre que le corresponde. El robot simplemente
@@ -270,10 +270,10 @@ La instalación de Android Studio incluye:
 El Android SDK
 
 \item {} 
-Herramientas del Android SDK y herramientas de plataforma. Intrumentos para el debugging y el testing de tus aplicaciones.
+Herramientas del Android SDK y herramientas de plataforma. Instrumentos para el debugging y el testing de tus aplicaciones.
 
 \item {} 
-Una imagen del sistema para el emulador de Android. Permite crear y probar aplicaciones sobre dispositivos virutales diferentes.
+Una imagen del sistema para el emulador de Android. Permite crear y probar aplicaciones sobre dispositivos virtuales diferentes.
 
 \end{itemize}
 
@@ -415,7 +415,7 @@ Modificando el archivo debe quedar como sigue:
       \PYG{n+na}{android:layout\PYGZus{}width=}\PYG{l+s}{\PYGZdq{}wrap\PYGZus{}content\PYGZdq{}}
       \PYG{n+na}{android:layout\PYGZus{}height=}\PYG{l+s}{\PYGZdq{}wrap\PYGZus{}content\PYGZdq{}}
       \PYG{n+na}{android:padding=}\PYG{l+s}{\PYGZdq{}24dp\PYGZdq{}}
-      \PYG{n+na}{android:text=}\PYG{l+s}{\PYGZdq{}La búsqueda sobre un árbolo binario de búsqueda, ¿qué complejidad tiene? (Caso promedio)\PYGZdq{}} \PYG{n+nt}{/\PYGZgt{}}
+      \PYG{n+na}{android:text=}\PYG{l+s}{\PYGZdq{}La búsqueda sobre un árbol binario de búsqueda, ¿qué complejidad tiene? (Caso promedio)\PYGZdq{}} \PYG{n+nt}{/\PYGZgt{}}
 
   \PYG{n+nt}{\PYGZlt{}LinearLayout}
       \PYG{n+na}{android:layout\PYGZus{}width=}\PYG{l+s}{\PYGZdq{}wrap\PYGZus{}content\PYGZdq{}}
@@ -442,7 +442,7 @@ Modificando el archivo debe quedar como sigue:
 Comparando el XML con la figura \ref{fig:quiz_app} cada widget tiene un elemento XML, y el
 nombre del elemento es el tipo de widget.
 
-Cada elemento tiene un conjunto de atributos XML. Cada atrbuto es una instrucción
+Cada elemento tiene un conjunto de atributos XML. Cada atributo es una instrucción
 sobre cómo debe configurarse el widget.
 
 
@@ -544,7 +544,7 @@ Finalmente se crean unos escuchadores para cada botón. Las aplicaciones en
 Android son conducidas por eventos, por lo que cuando una aplicación espera
 por un evento en específico se dice que está «escuchando» por ese evento. La
 sintaxis es extraña pero simplemente se crea implementa una clase anónima
-y se sobreescriben sus métodos para manejar las respuestas a eventos. En nuestra
+y se sobrescriben sus métodos para manejar las respuestas a eventos. En nuestra
 aplicación los escuchadores de los botones muestran un mensaje en la pantalla
 cuando el usuario presiona alguno de los botones.
 
@@ -580,7 +580,7 @@ del gradle de la aplicación y del proyecto.
 \label{\detokenize{dev_docs:configuracion-de-gradle}}
 El sistema de construcción de Android Studio está basado en Gradle, y el plugin
 de Android para Gradle adiciona varias características que están
-contruidas específicamente para aplicaciones de Android.\\
+construidas específicamente para aplicaciones de Android.\\
 
 \begin{remark}
 Gradle es un sistema de automatización de construcción de código abierto
@@ -706,8 +706,8 @@ Un escuchador \sphinxcode{ValueEventListener} de una referencia de la base de da
 tiene una método callback \sphinxcode{onDataChange()} que obtiene una captura estática
 del contiene en la ruta determinada.
 
-El ejemplo siguiente demuestra como un aplicación que muestra mensajes
-alamacenados en la base de datos:
+El ejemplo siguiente es parte de una aplicación que muestra mensajes
+almacenados en la base de datos:
 
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -797,14 +797,14 @@ El punto de entrada para el flujo de la autenticación es la clase
 \label{\detokenize{dev_docs:inicio-de-sesion}}
 Si un usuario no ha iniciado sesión, entonces el proceso de inicio de sesión
 puede empezar creando un intent sign-in usando \sphinxcode{AuthUISignInIntent\\Builder}.
-Se puede recuperar una instancia del contructor llamando
+Se puede recuperar una instancia del constructor llamando
 \sphinxcode{createSignIn\\IntentBuilder()} en la instancia retomada de AuthUI.
 
 El constructor provee las siguientes opciones de personalización para el flujo
 de la autenticación:
 \begin{itemize}
 \item {} 
-El conjunto de provedores de autenticación puede especificarse (Google, Twitter, Facebook)
+El conjunto de proveedores de autenticación puede especificarse (Google, Twitter, Facebook)
 
 \item {} 
 Un URL con los términos de servicio para la aplicación.
@@ -815,7 +815,7 @@ Un tema personalizado puede ser especificado para el flujo, el cual se aplica a 
 \end{itemize}
 
 Si no se requiere personalizar , y solo se necesita el correo electrónico para
-autenticarse, el flujo del inicio de sesón comienza como sigue:
+autenticarse, el flujo del inicio de sesión comienza como sigue:
 
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -935,7 +935,7 @@ dependencias del \sphinxcode{buildgradle} lo siguiente:
 \subparagraph{Uso.}
 \label{\detokenize{dev_docs:uso}}
 Para entender mejor las características que tiene ButterKnife supongamos que
-tenemos una actividad con un botón que reaccione a clicks. Sin usar ButterKnife
+tenemos una actividad con un botón que reaccione a clics. Sin usar ButterKnife
 la actividad queda como sigue:
 
 \fvset{hllines={, ,}}%
@@ -1047,7 +1047,7 @@ en una cadena y mostrándola en un \sphinxcode{TextView}.
 \PYG{n+nd}{@BindView}\PYG{o}{(}\PYG{n}{R}\PYG{o}{.}\PYG{n+na}{id}\PYG{o}{.}\PYG{n+na}{text}\PYG{o}{)}
 \PYG{n}{TextView} \PYG{n}{mTextView}\PYG{o}{;}
 
-\PYG{c+c1}{// Instancia a la cola de peticones}
+\PYG{c+c1}{// Instancia a la cola de peticiones}
 \PYG{n}{RequestQueue} \PYG{n}{queue} \PYG{o}{=} \PYG{n}{Volley}\PYG{o}{.}\PYG{n+na}{newRequestQueue}\PYG{o}{(}\PYG{k}{this}\PYG{o}{)}\PYG{o}{;}
 \PYG{n}{String} \PYG{n}{url} \PYG{o}{=}\PYG{l+s}{\PYGZdq{}http://www.google.com\PYGZdq{}}\PYG{o}{;}
 
@@ -1098,7 +1098,7 @@ enviar peticiones a la API REST, manejar la IU, etcétera.
 \codedocumentation{\texttt{Interface }\sphinxcode{OnRobotNameClickListener}}
 
 Una interfaz con un método abstracto que sirve como callback
-cuando un usuario da click sobre alguno de los robots obtenidos desde Firebase y mostrados en un \texttt{RecyclerView}.
+cuando un usuario da clic sobre alguno de los robots obtenidos desde Firebase y mostrados en un \texttt{RecyclerView}.
 
 \codedocumentation{\texttt{Interface }\sphinxcode{VisionRequestCompleted}}
 
@@ -1146,12 +1146,12 @@ de la llave en \texttt{ALMemory}, respectivamente.
 \codedocumentation{\texttt{Class }\sphinxcode{RecyclerViewAdapter}}
 
 La clase pública del \texttt{Adapter} para el \texttt{RecyclerView} que mostrará la lista de robots obtenidos desde Firebase y que le pertenecen al
-usuario que inció sesión en la aplicación.
+usuario que inició sesión en la aplicación.
 
 \codedocumentation{\texttt{Class }\sphinxcode{RecyclerViewHolders}}
 
 La clase que modela a los \texttt{ViewHolders} que representan cada robot obtenido de Firebase.
-Aquí se utiliza el método abstracto \texttt{onClickRobotName} como callback para ejecutar una acción al dar click sobre un elemento del \texttt{RecyclerView}.
+Aquí se utiliza el método abstracto \texttt{onClickRobotName} como callback para ejecutar una acción al dar clic sobre un elemento del \texttt{RecyclerView}.
 
 \codedocumentation{\texttt{Class }\sphinxcode{RobotFromFirebase}}
 
@@ -1187,7 +1187,7 @@ Clase estática para manejar la repuesta de \texttt{Volley}, que puede ser un er
 
 \codedocumentation{\texttt{Enum ModelObjectViewPager}}
 
-Un enumerado de Java que representa todas las posibles páginas del ViewPager. Se utiliza en el ménu de la aplicación. En este enumerado se almacenan el identificador del \texttt{Layout} de cada página y un título que le corresponde.
+Un enumerado de Java que representa todas las posibles páginas del ViewPager. Se utiliza en el menú de la aplicación. En este enumerado se almacenan el identificador del \texttt{Layout} de cada página y un título que le corresponde.
 
 
 \paragraph{Actividades de la aplicación}
@@ -1211,7 +1211,7 @@ La actividad encargada de la funcionalidad de la detección de objetos, implemen
 
 
 Clase de la actividad que se encarga del procesamiento de una imagen 
-para detección de texto y su traducción. Implenta la interfaz 
+para detección de texto y su traducción. Implementa la interfaz 
 \texttt{VisionRequestCompleted}.
 
 \codedocumentation{\texttt{Class RemoteControllerActivity}}

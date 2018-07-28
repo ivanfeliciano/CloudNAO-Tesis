@@ -20,8 +20,8 @@ y la respuesta sea inmediata, Ese intermediario es Firebase, que sirve como
 backend para conectar estas plataformas.
 
 El robot es una plataforma con recursos muy limitados, no hay un SDK
-específicamente hecho para el robot. Por lo anterior, se utilza la API REST
-de Firebase Realtime Database para envíar y recibir información a través de
+específicamente hecho para el robot. Por lo anterior, se utiliza la API REST
+de Firebase Realtime Database para enviar y recibir información a través de
 internet. Sin embargo, a pesar de ser una API REST, fue necesaria la creación
 de un módulo escrito en Python que sirviera como una interfaz de alto nivel,
 donde hacer una petición HTTP fuera igual de sencillo que llamar una función en
@@ -54,7 +54,7 @@ abandonar correctamente el streaming.
 \codedocumentation{{\sphinxbfcode{\sphinxupquote{class }}\sphinxcode{\sphinxupquote{firebase.}}\sphinxbfcode{\sphinxupquote{FirebaseDatabase}}}(\emph{url})}
 
 Una clase para usar utilizar la API REST de Firebase con métodos de alto nivel.
-Sirve para crear algo similar a las \sphinxstyleemphasis{Referencias} denifidas por Firebase.
+Sirve para crear algo similar a las \sphinxstyleemphasis{Referencias} definidas por Firebase.
 Un objeto de esta clase representa una ubicación específica en la base de datos.
 Con los métodos se realizan operaciones de escritura y lectura sobre esa ubicación.
 
@@ -125,7 +125,7 @@ Elimina todos los datos en la ubicación actual.
 
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{nao_firebase:firebase.FirebaseDatabase.set}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{set}}}{\emph{data}}{}~
-Escribe datos en la ubicación actual. Esto sobreescribe cualquier información
+Escribe datos en la ubicación actual. Esto sobrescribe cualquier información
 que contenga.
 Hace un \sphinxcode{\sphinxupquote{PUT}} sobre la ubicación actual.
 :param data: Los datos que se envían en la petición.
@@ -137,7 +137,7 @@ Hace un \sphinxcode{\sphinxupquote{PUT}} sobre la ubicación actual.
 
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{nao_firebase:firebase.FirebaseDatabase.update}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{update}}}{\emph{data}}{}~
-Escribe multiples valores en la ubicación actual de la base de datos. A diferencia
+Escribe múltiples valores en la ubicación actual de la base de datos. A diferencia
 de {\hyperref[\detokenize{nao_firebase:firebase.FirebaseDatabase.set}]{\sphinxcrossref{\sphinxcode{\sphinxupquote{set()}}}}} solo actualiza los valores que se desean de acuerdo a la ubicación
 actual. Se hace un \sphinxcode{\sphinxupquote{PATCH}} al URL.
 
@@ -222,7 +222,7 @@ con sus llaves y valores.
 
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{nao_firebase:nao_robot.Robot.move_joint}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{move\_joint}}}{\emph{joint\_name}, \emph{angle}}{}
-Mueve una articulación del robot con respecto a la posción inicial de una
+Mueve una articulación del robot con respecto a la posición inicial de una
 articulación. Primero activa la rigidez del motor que mueve la articulación, realiza el movimiento en dos
 segundos y luego desactiva la rigidez del motor.
 
@@ -345,7 +345,7 @@ de los argumentos enviados en la línea de comandos, luego llama a la función
 
 \subsubsection{confg.py}
 \label{\detokenize{nao_firebase:confg-py}}
-Este archivo unicamente tiene un diccionario con la configuración para Firebase
+Este archivo únicamente tiene un diccionario con la configuración para Firebase
 con la siguiente estructura:
 
 \fvset{hllines={, ,}}%

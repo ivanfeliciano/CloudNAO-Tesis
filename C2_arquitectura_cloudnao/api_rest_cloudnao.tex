@@ -203,11 +203,11 @@ en la} \\
 \subparagraph{\sphinxstylestrong{Respuesta}}
 \label{\detokenize{chapter_two/desc_cloudnao:respuesta}}
 
-\subparagraph{\sphinxstylestrong{Cuepo.}}
+\subparagraph{\sphinxstylestrong{Cuerpo.}}
 \label{\detokenize{chapter_two/desc_cloudnao:id1}}
 En el cuerpo del mensaje de respuesta si se obtiene un código 200
 se obtiene un JSON con las características encontradas. En éste también
-se incluyen mensajes de error que no pertencen al estándar del protocolo HTTP.
+se incluyen mensajes de error que no pertenecen al estándar del protocolo HTTP.
 En la tabla \ref{tab:json_schema_response} se describen los atributos del JSON.
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -482,7 +482,7 @@ Flask. La siguiente lista muestra las dependencias más importantes:
 \sphinxstylestrong{Flask}, un microframework para desarrollar aplicaciones web, y extensiones de éste como:
 \begin{itemize}
 \item {} 
-\sphinxstylestrong{Flask-RESTful}, para contruir rápidamente una API REST.
+\sphinxstylestrong{Flask-RESTful}, para construir rápidamente una API REST.
 
 \item {} 
 \sphinxstylestrong{Flask-SQLAlchemy}, Es una biblioteca que implementa la técnica ORM (Mapeador Relacional de Objetos), la cual permite consultar y manipular datos de una base de datos usando el paradigma orientado a objetos.
@@ -516,10 +516,10 @@ configuración e instalación, así como su despliegue en un servidor.
 Flask es un micro framework para desarrollo web. Fue diseñado para ser un
 framework extensible, sólo provee un núcleo sólido con servicios básicos,
 mientras que las extensiones brindan el resto. Esto quiere decir que Flask,
-te da la posibilidad de como desarrollador contar sólo con las dependecias que
+te da la posibilidad de como desarrollador contar sólo con las dependencias que
 necesitas.
 
-Tiene dos dependecias principales, \sphinxstylestrong{Werkzeug} y \sphinxstylestrong{Jinja2}.
+Tiene dos dependencias principales, \sphinxstylestrong{Werkzeug} y \sphinxstylestrong{Jinja2}.
 El enrutamiento, debugging y WSGI tienen procedencia de Werkzeug.
 Jinga2 ofrece el soporte para el manejo de plantillas. Para nuestra
 aplicación solamente hacemos uso de la primera.
@@ -543,7 +543,7 @@ paquetes o ejecución de programas se hace dentro de un ambiente virtual.
 
 \subparagraph{Inicialización.}
 \label{\detokenize{chapter_two/desc_cloudnao:inicializacion}}
-Todas las aplicaciones de Flask deben crear una \sphinxstyleemphasis{instacia de la aplicación}. Este
+Todas las aplicaciones de Flask deben crear una \sphinxstyleemphasis{instancia de la aplicación}. Este
 objeto maneja todas las peticiones que recibe el servidor web, usando
 la especificación WSGI.
 La instancia de la aplicación es un objeto de la clase Flask,
@@ -554,7 +554,7 @@ se crea de la siguiente manera:
 \PYG{n}{app} \PYG{o}{=} \PYG{n}{Flask}\PYG{p}{(}\PYG{n+nv+vm}{\PYGZus{}\PYGZus{}name\PYGZus{}\PYGZus{}}\PYG{p}{)}
 \end{sphinxVerbatim}
 
-El único argumento requerido para el contructor de la clase Flask es el nombre
+El único argumento requerido para el constructor de la clase Flask es el nombre
 del módulo o paquete de la aplicación. Para la mayoría de los casos,
 la variable de Python \sphinxcode{\_\_name\_\_} es el valor correcto. Flask usa este argumento
 para determinar la ruta raíz de la aplicación, para que después pueda encontrar
@@ -564,7 +564,7 @@ los archivos de los recursos relativos a la ubicación de la aplicación.
 \subparagraph{Rutas.}
 \label{\detokenize{chapter_two/desc_cloudnao:rutas}}
 Los clientes envían peticiones al servidor web, que a su vez las envía a la
-instancia de la aplicación de Flask. La instacia de la aplicación necesita saber
+instancia de la aplicación de Flask. La instancia de la aplicación necesita saber
 qué código debe regresar para cada URL solicitado, así que mantiene un mapeo de
 los URL a funciones de Python. La asociación entre el URL y la función que se
 la maneja se llama \sphinxstyleemphasis{ruta}.
@@ -589,7 +589,7 @@ En este caso el navegador mostrará \sphinxcode{Hola mundo}.
 \end{sphinxVerbatim}
 
 Flask soporta los tipos de URL con componentes dinámicos utilizando
-una sintáxis especial en el decorador \sphinxcode{route}. En el siguiente ejemplo se
+una sintaxis especial en el decorador \sphinxcode{route}. En el siguiente ejemplo se
 muestra el nombre de usuario como componente dinámico.
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -814,9 +814,9 @@ Esto se hace pasando el argumento \sphinxcode{debug} igual a \sphinxcode{True} .
 
 \paragraph{Extensiones de Flask}
 \label{\detokenize{chapter_two/desc_cloudnao:extensiones-de-flask}}
-Flask está diseñado para extenderse. Funcionalidaes como la autenticación y
-bases de datos son funciones que el framework deja fuera intencionalmene,
-dando la libertidad de elegir los paquetes que se ajusten mejor a la aplicación.
+Flask está diseñado para extenderse. Funcionalidades como la autenticación y
+bases de datos son funciones que el framework deja fuera intencionalmente,
+dando la libertad de elegir los paquetes que se ajusten mejor a la aplicación.
 
 A continuación se describen las extensiones más importantes usadas en esta
 aplicación.
@@ -873,9 +873,9 @@ entre otros.
 \subparagraph{Flask-RESTful.}
 \label{\detokenize{chapter_two/desc_cloudnao:flask-restful}}
 Flask-RESTful es una extensión para Flask que añade soporte para la rápida
-construcción de una API REST. Las características básicas de esta extensón
+construcción de una API REST. Las características básicas de esta extensión
 que se necesitan conocer
-son el \sphinxstyleemphasis{enrutamiento de recursos}, los \sphinxstyleemphasis{endpoints} y el \sphinxstyleemphasis{parseo de agumentos}
+son el \sphinxstyleemphasis{enrutamiento de recursos}, los \sphinxstyleemphasis{endpoints} y el \sphinxstyleemphasis{parseo de argumentos}
 
 El componente principal que provee Flask-RESTful es la clase \sphinxcode{Resource}.
 Esta brinda un fácil acceso a múltiples métodos HTTP definiendo
@@ -933,7 +933,7 @@ programa usando esta extensión.
         \PYG{k}{return} \PYG{n}{task}\PYG{p}{,} \PYG{l+m+mi}{201}
 
 
-\PYG{c+c1}{\PYGZsh{} mustra una lista con todas las tareas y permite crear una nueva con POST}
+\PYG{c+c1}{\PYGZsh{} muestra una lista con todas las tareas y permite crear una nueva con POST}
 \PYG{k}{class} \PYG{n+nc}{TaskList}\PYG{p}{(}\PYG{n}{Resource}\PYG{p}{)}\PYG{p}{:}
     \PYG{k}{def} \PYG{n+nf}{get}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{)}\PYG{p}{:}
         \PYG{k}{return} \PYG{n}{TASKS}
@@ -991,7 +991,7 @@ El término \sphinxstyleemphasis{modelo} es usado para referirse a entidades per
 aplicación. En el contexto de un ORM, un modelo es una clase de Python con
 atributos que son iguales a las columnas de la tabla de una base de datos.
 
-La instacia de una base de datos en Flask-SQLAlchemy tiene una clase base
+La instancia de una base de datos en Flask-SQLAlchemy tiene una clase base
 para los modelos así como un conjunto de clases y funciones auxiliares que
 ayudan a definir su estructura. Para el siguiente ejemplo definiremos una
 base de datos muy simple con una tabla de \sphinxcode{Usuarios} y otra de \sphinxcode{Recursos},
@@ -1067,7 +1067,7 @@ Destruye los datos en la base de datos.
 Añadir tuplas: \sphinxcode{db.session.add(Objeto){}`}.
 Los cambios  se manejan a través de una \sphinxcode{session} en la base de datos. Se pasa como parámetro un objeto del modelo.
 \item
-Escrubir cambios: \sphinxcode{db.session.commit()}.
+Escribir cambios: \sphinxcode{db.session.commit()}.
 Para guardar los objetos en la base de datos, las sesiones necesitan ser \sphinxstyleemphasis{confirmadas}.
 \item
 Modificar tupas: \sphinxcode{Objeto.atributo\_a\_actualizar = nuevo\_valor} \sphinxcode{db.session.add(Objeto)}.
@@ -1077,7 +1077,7 @@ Eliminar tuplas: \sphinxcode{db.session.delete(Objeto)}.
 El método \sphinxcode{delete} recibe como parámetro al objeto que desea eliminarse.
 \item
 Consultas: \sphinxcode{Modelo.query.all()} \sphinxcode{Modelo.query.filter\_by(Criterio)}.
-La consulta más básica retorna todo el contenido de la tabla correspondiente \sphinxcode{Modelo.query.all()}.Se puden usar \sphinxstyleemphasis{filtros} para buscar elementos más específicos en la base de datos.
+La consulta más básica retorna todo el contenido de la tabla correspondiente \sphinxcode{Modelo.query.all()}.Se pueden usar \sphinxstyleemphasis{filtros} para buscar elementos más específicos en la base de datos.
 \end{itemize}
 
 \subparagraph{Requests.}
@@ -1191,7 +1191,7 @@ El archivo que almacena las opciones de configuración \sphinxstyleemphasis{conf
 El script que ejecuta al aplicación \sphinxstyleemphasis{manage.py}.
 
 \item {} 
-Los archivos \sphinxstyleemphasis{README.md} y \sphinxstyleemphasis{requirements.txt}, y la carpeta \sphinxstyleemphasis{venv}, contienen una breve descripción del proyecto, la lista de dependecias y el ambiente virtual de Python, respectivamente.
+Los archivos \sphinxstyleemphasis{README.md} y \sphinxstyleemphasis{requirements.txt}, y la carpeta \sphinxstyleemphasis{venv}, contienen una breve descripción del proyecto, la lista de dependencias y el ambiente virtual de Python, respectivamente.
 
 \end{itemize}
 
@@ -1301,7 +1301,7 @@ POST, para la creación de usuarios.
 
 Son dos los argumentos requeridos para poder solicitar este recurso,
 \sphinxcode{username}, el nombre del usuario, y \sphinxcode{password}, la contraseña. Si alguno
-de estos dos no es enviado, la instacia de \sphinxcode{RequestParser} envía un mensaje
+de estos dos no es enviado, la instancia de \sphinxcode{RequestParser} envía un mensaje
 de error.
 \index{post() (método de app.resources.user.UserRegister)}
 
@@ -1602,7 +1602,7 @@ la identificación de caras previamente guardadas.
 Para ocupar estos servicios la API de Kairos provee los recursos \sphinxcode{enroll} y
 \sphinxcode{recognize}, los cuales soportan el método \sphinxcode{POST} y tienen como
 URL base \sphinxcode{http://api.kairos.com/}. Para hacer estas peticiones se
-necesita una forma de autenticación, y esta es através de los encabezados
+necesita una forma de autenticación, y esta es a través de los encabezados
 del mensaje HTTP, enviando en estos un id y una llave de la aplicación.
 
 El cuerpo del \sphinxcode{POST} a \sphinxcode{recognize} tiene necesita al dos parámetros; la

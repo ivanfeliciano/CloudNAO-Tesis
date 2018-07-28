@@ -418,7 +418,7 @@ Las notificaciones son manejadas por una threadpool (localmente), o por un
 hilo único de notificación (remotamente).
 
 
-Para acceder a los valores almacendos en \sphinxcode{ALMemory}, su usan las funciones:
+Para acceder a los valores almacenados en \sphinxcode{ALMemory}, su usan las funciones:
 \begin{itemize}
 \item {} 
 \sphinxcode{getDataPtr()}, que provee un acceso rápido al puntero. Sin embargo, no hay seguridad en el hilo.
@@ -527,12 +527,12 @@ para la detección y localización de sonidos,  y para el manejo del lenguaje.
 \label{\detokenize{chapter_one/naoqi:altexttospeech}}
 Este módulo permite al robot hablar. Envía órdenes a un componente que
 convierte texto a un discurso hablado, y autoriza la personalización de la voz.
-El resultado de la síntesis es envíado a las bocinas del robot.
+El resultado de la síntesis es enviado a las bocinas del robot.
 
 
 \subparagraph{ALAnimatedSpeech}
 \label{\detokenize{chapter_one/naoqi:alanimatedspeech}}
-El módulo \sphinxcode{ALAnimatedSpeech} brinda la posibildad de hacer que el robot hable
+El módulo \sphinxcode{ALAnimatedSpeech} brinda la posibilidad de hacer que el robot hable
 de una manera expresiva.
 
 El funcionamiento de este módulo es como sigue:
@@ -553,7 +553,7 @@ Cualquier parte del texto que no esté anotado con animaciones se llena con \sph
 El módulo prepara al robot para ejecutar cada instrucción para que estas sean llamadas tan pronto como se necesiten. Esto permite que el discurso y las instrucciones estén sincronizados.
 
 \item {} 
-\sphinxcode{ALAnimatedSpeech} hace que el robot diga el texto y se mantenga al tanto del discurspo para lanzar las instrucciones en el momento correcto.
+\sphinxcode{ALAnimatedSpeech} hace que el robot diga el texto y se mantenga al tanto del discurso para lanzar las instrucciones en el momento correcto.
 
 \end{enumerate}
 
@@ -619,7 +619,7 @@ un canal (anterior, posterior, izquierda o derecha) para OGG y WAV.
 Los módulos de visión provistos por NAOqi se encargan del manejo de video e
 imágenes, detección de objectos predefinidos en video, y cuenta con herramientas
 para crear una memoria visual donde aprenda y reconozca ciertos patrones,
-y herramientas para navegación, usar una imágen como brújula, entre otras.
+y herramientas para navegación, usar una imagen como brújula, entre otras.
 
 
 \subparagraph{ALVideoDevice}
@@ -637,10 +637,10 @@ Para empezar a utilizar este módulo es necesario seguir los siguientes pasos:
 Hacer que tu módulo de visión se suscriba al proxy de \sphinxcode{ALVideoDevice}, llamando el método \sphinxcode{subscribeCamera()} y pasando como parámetros la resolución, espacio de color y tasa de fotogramas.
 
 \item {} 
-En el bucle del proceso principal, obtener una imágen llamando a los métodos \sphinxcode{getImageLocal()} o \sphinxcode{getImageRemote()} (dependiedo si el módulo es local o remoto).
+En el bucle del proceso principal, obtener una imagen llamando a los métodos \sphinxcode{getImageLocal()} o \sphinxcode{getImageRemote()} (dependiendo si el módulo es local o remoto).
 
 \item {} 
-Liberar la imágen llamando \sphinxcode{releaseImage()}.
+Liberar la imagen llamando \sphinxcode{releaseImage()}.
 
 \item {} 
 Cuando se detiene el módulo, se llama \sphinxcode{unsubscribe()} después de salir de bucle principal.
@@ -725,7 +725,7 @@ del método \sphinxcode{getData()} de \sphinxcode{ALMemory}.
 \subparagraph{Uso}
 \label{\detokenize{chapter_one/naoqi:id3}}
 El hardware de los sensores no se inicia de manera automática. Para empezar,
-es necesario suscribirse al módulo de \sphinxcode{ALSonar} a traveś del método \sphinxcode{subscribe()}.
+es necesario suscribirse al módulo de \sphinxcode{ALSonar} a través del método \sphinxcode{subscribe()}.
 Hacer esto prende los sensores ultrasónicos.
 
 Para apagar los sensores, se debe cancelar la suscripción con el método
@@ -768,7 +768,7 @@ excepto los de audio y las cámaras.
 
 \subsubsection{El marco de trabajo qi}
 \label{\detokenize{chapter_one/naoqi:el-marco-de-trabajo-qi}}
-Es una nueva arquitectura, que permite utilizar la API de NAOqi con una sintáxis
+Es una nueva arquitectura, que permite utilizar la API de NAOqi con una sintaxis
 nueva y sencilla.
 
 En vez de crear un proxy a un módulo, se crea una sesión y se solicita un
@@ -788,7 +788,7 @@ crear módulos de Python que puedan ejecutarse remotamente o localmente en el ro
 
 \end{itemize}
 
-Un programa muy básico en Python para los robots tiene la siguiente estrucutura:
+Un programa muy básico en Python para los robots tiene la siguiente estructura:
 \begin{itemize}
 \item {} 
 Primero importar \sphinxcode{ALProxy}
@@ -838,7 +838,7 @@ El SDK está basado en la biblioteca \sphinxstylestrong{libqi-java}, la cual uti
 \begin{savenotes}\sphinxattablestart
 \centering
 \sphinxcapstartof{table}
-\sphinxcaption{Sitemas operativos compatibles con el SDK de Java}
+\sphinxcaption{Sistemas operativos compatibles con el SDK de Java}
 \sphinxaftercaption
 
 \begin{tabulary}{\linewidth}[t]{|T|T|}
@@ -895,13 +895,13 @@ java \PYGZhy{}cp /ruta/a/java\PYGZhy{}naoqi\PYGZhy{}sdk\PYGZhy{}\PYGZlt{}version
 Hay dos conceptos importantes que se deben conocer que permiten la comunicación
 con el robot: \sphinxcode{Application} y \sphinxcode{Session}.
 
-Una \sphinxcode{Application} es responsable de incializar el marco de trabajo
+Una \sphinxcode{Application} es responsable de inicializar el marco de trabajo
 y conectarse a una sesión. Una \sphinxcode{Session} es lo que permite conectarse a
 servicios local o remotamente.
 
 Por defecto, el URL de la sesión está configurado para ser
 \sphinxcode{tcp://127.0.0.1:9559}. Pero éste se puede cambiar en los argumentos del
-contructor de \sphinxcode{Application}.
+constructor de \sphinxcode{Application}.
 
 En el SDK de Java, existen clases para cada servicio. Esto último significa
 que se debe crear una instancia de cada servicio que se desea para que sea
@@ -918,7 +918,7 @@ El siguiente ejemplo muestra como hacer que el robot diga la frase
   \PYG{k}{try}\PYG{o}{\PYGZob{}}
       \PYG{c+c1}{// Se inicial la aplicación y se genera una sesión}
       \PYG{n}{application}\PYG{o}{.}\PYG{n+na}{start}\PYG{o}{(}\PYG{o}{)}\PYG{o}{;}
-      \PYG{c+c1}{// La sesión puede recuperarse a través del metodo siguiente}
+      \PYG{c+c1}{// La sesión puede recuperarse a través del método siguiente}
       \PYG{c+c1}{// application.session();}
       \PYG{c+c1}{// Crear un objeto de ALTextToSpeech y lo enlaza con la sesión actual}
       \PYG{n}{ALTextToSpeech} \PYG{n}{tts} \PYG{o}{=} \PYG{k}{new} \PYG{n}{ALTextToSpeech}\PYG{o}{(}\PYG{n}{application}\PYG{o}{.}\PYG{n+na}{session}\PYG{o}{(}\PYG{o}{)}\PYG{o}{)}\PYG{o}{;}
