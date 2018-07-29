@@ -150,7 +150,7 @@ Tipo de dato & \multicolumn{1}{l|}{string}                                      
 Descripción  & \multicolumn{1}{l|}{Imagen codificada en base 64.}                                                                                                                                                                               \\ \hline
 \multicolumn{2}{|l|}{imageSource}                                                                                                                                                                                                               \\ \hline
 Tipo de dato & \multicolumn{1}{l|}{string}                                                                                                                                                                                                      \\ \hline
-Descripción  & \multicolumn{1}{l|}{URL pública de la imagen.}                                                                                                                                                                                   \\ \hline
+Descripción  & \multicolumn{1}{l|}{URL público de la imagen.}                                                                                                                                                                                   \\ \hline
 \multicolumn{2}{|l|}{features}                                                                                                                                                                                                                  \\ \hline
 Tipo de dato & \multicolumn{1}{l|}{array}                                                                                                                                                                                                       \\ \hline
 \multirow{4}{*}{Descripción}  & 
@@ -493,7 +493,7 @@ Flask. La siguiente lista muestra las dependencias más importantes:
 \end{itemize}
 
 \item {} 
-\sphinxstylestrong{Tensorflow},  una biblioteca de código abierto para cómputo numérico usando gráficas de flujos de datos.
+\sphinxstylestrong{TensorFlow},  una biblioteca de código abierto para cómputo numérico usando gráficas de flujos de datos.
 
 \item {} 
 \sphinxstylestrong{numpy}, una biblioteca para cómputo científico.
@@ -1080,7 +1080,7 @@ Consultas: \sphinxcode{Modelo.query.all()} \sphinxcode{Modelo.query.filter\_by(C
 La consulta más básica retorna todo el contenido de la tabla correspondiente \sphinxcode{Modelo.query.all()}.Se pueden usar \sphinxstyleemphasis{filtros} para buscar elementos más específicos en la base de datos.
 \end{itemize}
 
-\subparagraph{Requests.}
+\paragraph{Requests}
 \label{\detokenize{chapter_two/desc_cloudnao:requests}}
 Requests permite hacer peticiones HTTP de una manera muy sencilla. Un petición
 de tipo GET se convierte en algo simple como lo siguiente:
@@ -1104,22 +1104,22 @@ y tiene  como valor de retorno un objeto \sphinxcode{Response}.
 A continuación de los parámetros más comunes del método \sphinxcode{requests.request(method, url, **kwargs)}
 \begin{itemize}
 \item {} 
-\sphinxstyleemphasis{method}, (obligatorio) el método de la petición, una cadena con valor \sphinxcode{post}, \sphinxcode{get}, etc.
+\texttt{method}, (obligatorio) el método de la petición, una cadena con valor \sphinxcode{post}, \sphinxcode{get}, etc.
 
 \item {} 
-\sphinxstyleemphasis{url}, (obligatorio) la URL a la que se hace la petición.
+\texttt{url}, (obligatorio) la URL a la que se hace la petición.
 
 \item {} 
-\sphinxstyleemphasis{params}, (opcional) diccionario o bytes enviados en la URL.
+\texttt{params}, (opcional) diccionario o bytes enviados en la URL.
 
 \item {} 
-\sphinxstyleemphasis{data}, (opcional)  diccionario o lista de tuplas \sphinxcode{{[}(llave, valor){]}}, bytes u objeto similar a un archivo.
+\texttt{data}, (opcional)  diccionario o lista de tuplas \sphinxcode{{[}(llave, valor){]}}, bytes u objeto similar a un archivo.
 
 \item {} 
-\sphinxstyleemphasis{json}, (opcional) json a enviar en el cuerpo de la petición.
+\texttt{json}, (opcional) json a enviar en el cuerpo de la petición.
 
 \item {} 
-\sphinxstyleemphasis{headers}, (opcional) un diccionario con los headers HTTP que se enviarán.
+\texttt{headers}, (opcional) un diccionario con los headers HTTP que se enviarán.
 
 \end{itemize}
 

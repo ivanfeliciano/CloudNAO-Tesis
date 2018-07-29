@@ -155,7 +155,7 @@ es una colección de muestras, que a su vez son colecciones de \textit{caracter�
 \end{remark}
 
 
-%\subsubsection{Algoritmos de aprendizaje no supervisados}
+\subsubsection{Algoritmos de aprendizaje no supervisados}
 
 \begin{remark}
 Los algoritmos de aprendizaje no supervisados experimentan un conjunto
@@ -867,7 +867,7 @@ los pasos básicos del algoritmo son los siguientes:
 
 \begin{enumerate}
     \item Inicializar los pesos de manera aleatoria con valores pequeños.
-    \item Presentarle a la red una muestra del conjunto de entrenamiento para obtener las salidas. Este paso 
+    \item Alimentar a la red con una muestra del conjunto de entrenamiento para obtener las salidas. Este paso 
     también es conocido como feedforward o propagación hacia adelante.
     \item Comparar las salidas con los valores deseados y calcular el error.
     \item Calcular las derivadas del error con respecto a cada uno de los pesos $\frac{\partial E}{\partial w_{ij}}$.
@@ -1786,11 +1786,11 @@ $h \times w$ y un filtro de tamaño $f \times f$ depende también de
 la zancada $s$.
 
 \[
-h' = \lfloor\frac{h-f-s}{s}\rfloor
+h' = \lfloor\frac{h-f+s}{s}\rfloor
 \]
 
 \[
-w' = \lfloor\frac{w-f-s}{s}\rfloor
+w' = \lfloor\frac{w-f+s}{s}\rfloor
 \]
 
 donde $h'$ y $w'$ son las dimensiones del resultado.
@@ -1806,11 +1806,11 @@ forma:
 
 
 \[
-h' = \lfloor\frac{h-f-s+p}{s}\rfloor
+h' = \lfloor\frac{h-f+s+p}{s}\rfloor
 \]
 
 \[
-w' = \lfloor\frac{w-f-s+p}{s}\rfloor
+w' = \lfloor\frac{w-f+s+p}{s}\rfloor
 \]
 
 % \subsubsection{Motivación}
@@ -1979,7 +1979,7 @@ para llevar a cabo investigaciones en áreas como la visión computacional,
 robótica, procesamiento de lenguaje natural, etcétera.\\ 
 
 \begin{remark}
-Los cálculos en TensorFlow son descritos por una gráfica dirigida,
+Los cálculos en TensorFlow son descritos por una gráfica dirigida
 que está compuesta por un conjunto de nodos y aristas.
 La gráfica representa un cálculo de flujo de datos (un modelo
 de programación para cómputo paralelo).

@@ -325,31 +325,31 @@ Llamadas sin bloqueo (non-blocking call): Usando el objeto \sphinxcode{post} de 
 \end{itemize}
 
 
-\subsubsection{Memoria}
-\label{\detokenize{chapter_one/naoqi:memoria}}
-\sphinxcode{ALMemory} es la memoria del robot. Todos los módulos pueden leer o escribir
-datos, suscribirse a eventos de tal forma que sean llamados cuando el evento
-sea lanzado. \sphinxcode{ALMemory} no es una herramienta de sincronización en tiempo real.
-
-
-\paragraph{ALMemory.}
-\label{\detokenize{chapter_one/naoqi:almemory}}
-Es un arreglo de \sphinxcode{ALValues}. El acceso a la variable es de hilo seguro.
-Se usan secciones críticas de lectura/escritura para evitar un mal desempeño
-cuando se lee la memoria.
-
-\sphinxcode{ALMemory} contiene tres tipos de datos:
-\begin{itemize}
-\item {} 
-Datos de actuadores y sensores
-
-\item {} 
-Eventos
-
-\item {} 
-Micro eventos
-
-\end{itemize}
+%\subsubsection{Memoria}
+%\label{\detokenize{chapter_one/naoqi:memoria}}
+%\sphinxcode{ALMemory} es la memoria del robot. Todos los módulos pueden leer o escribir
+%datos, suscribirse a eventos de tal forma que sean llamados cuando el evento
+%sea lanzado. \sphinxcode{ALMemory} no es una herramienta de sincronización en tiempo real.
+%
+%
+%\paragraph{ALMemory.}
+%\label{\detokenize{chapter_one/naoqi:almemory}}
+%Es un arreglo de \sphinxcode{ALValues}. El acceso a la variable es de hilo seguro.
+%Se usan secciones críticas de lectura/escritura para evitar un mal desempeño
+%cuando se lee la memoria.
+%
+%\sphinxcode{ALMemory} contiene tres tipos de datos:
+%\begin{itemize}
+%\item {} 
+%Datos de actuadores y sensores
+%
+%\item {} 
+%Eventos
+%
+%\item {} 
+%Micro eventos
+%
+%\end{itemize}
 
 
 \subsubsection{Reacción a eventos}
@@ -369,8 +369,8 @@ que una cara sea detectada, se llame al callback \sphinxcode{onFaceDetected}.
 \subsubsection{Interfaces de programación de aplicaciones (API) de NAOqi}
 \label{\detokenize{chapter_one/naoqi:interfaces-de-programacion-de-aplicaciones-api-de-naoqi}}
 NAOqi cuenta con bastantes API divididas en grupos de acuerdo a las
-funcionalidades que ofrecen. A continuación se enlistan estas
-categorías, sin embargo, sólo se describen de manera breve aquellas API,
+funcionalidades que ofrecen. A continuación se enlistan algunos grupos
+y sólo se describen de manera breve aquellas API,
 que se utilizaron en el desarrollo de este proyecto.
 
 NAOqi viene con una lista de módulos centrales que están disponibles siempre.
@@ -440,7 +440,7 @@ realizar movimientos de forma autónoma y hasta generar movimientos
 personalizados.
 
 
-\subparagraph{ALMotion}
+\subparagraph{ALMotion.}
 \label{\detokenize{chapter_one/naoqi:almotion}}
 Es la principal herramienta para permitir que el robot se mueva.
 
@@ -523,14 +523,14 @@ manejar la salida o entrada a través de sus bocinas y micrófonos,
 para la detección y localización de sonidos,  y para el manejo del lenguaje.
 
 
-\subparagraph{ALTextToSpeech}
+\subparagraph{ALTextToSpeech.}
 \label{\detokenize{chapter_one/naoqi:altexttospeech}}
 Este módulo permite al robot hablar. Envía órdenes a un componente que
 convierte texto a un discurso hablado, y autoriza la personalización de la voz.
 El resultado de la síntesis es enviado a las bocinas del robot.
 
 
-\subparagraph{ALAnimatedSpeech}
+\subparagraph{ALAnimatedSpeech.}
 \label{\detokenize{chapter_one/naoqi:alanimatedspeech}}
 El módulo \sphinxcode{ALAnimatedSpeech} brinda la posibilidad de hacer que el robot hable
 de una manera expresiva.
@@ -538,7 +538,7 @@ de una manera expresiva.
 El funcionamiento de este módulo es como sigue:
 \begin{enumerate}
 \item {} 
-\sphinxcode{ALAnimatedSpeech} recibe texto que puede ser \sphinxstylestrong{anotado} con instrucciones.
+\sphinxcode{ALAnimatedSpeech} recibe texto que puede ser \textit{anotado} con \textit{instrucciones}.
 
 \item {} 
 Divide el texto en subcadenas de menor tamaño a la original.
@@ -547,7 +547,7 @@ Divide el texto en subcadenas de menor tamaño a la original.
 Analiza el texto y anota las cosas que reconoce para realizar movimientos de acuerdo al contexto.
 
 \item {} 
-Cualquier parte del texto que no esté anotado con animaciones se llena con \sphinxstylestrong{modos de lenguaje corporal}.
+Cualquier parte del texto que no esté anotado con animaciones se llena con \textit{modos de lenguaje corporal}.
 
 \item {} 
 El módulo prepara al robot para ejecutar cada instrucción para que estas sean llamadas tan pronto como se necesiten. Esto permite que el discurso y las instrucciones estén sincronizados.
@@ -559,7 +559,7 @@ El módulo prepara al robot para ejecutar cada instrucción para que estas sean 
 
 % \subparagraph{Texto anotado}
 % \label{\detokenize{chapter_one/naoqi:texto-anotado}}
-El texto anotado es una cadena combinando texto que se dirá e \sphinxstylestrong{instrucciones}
+El \textit{texto anotado} es una cadena combinando texto que se dirá e \textit{instrucciones}
 que manejan comportamientos.
 
 Por ejemplo, puedes enviar:
@@ -581,7 +581,7 @@ Si se desea esperar a que termine la animación basta con añadir la instrucció
 
 % \subparagraph{Modos de lenguaje corporal}
 % \label{\detokenize{chapter_one/naoqi:modos-de-lenguaje-corporal}}
-En cuanto a los modos del lenguaje corporal existen tres:
+Existen tres \textit{modos del lenguaje corporal}:
 \begin{itemize}
 \item {} 
 \sphinxstylestrong{disabled}, el lenguaje corporal nunca lanza una animación.
@@ -595,7 +595,7 @@ En cuanto a los modos del lenguaje corporal existen tres:
 \end{itemize}
 
 
-\subparagraph{ALAudioRecorder}
+\subparagraph{ALAudioRecorder.}
 \label{\detokenize{chapter_one/naoqi:alaudiorecorder}}
 \sphinxcode{ALAudioRecorder} provee servicios de grabación en archivos «WAV»
 u «OGG» a partir de las señales recibidas de los micrófonos del robot.
@@ -622,7 +622,7 @@ para crear una memoria visual donde aprenda y reconozca ciertos patrones,
 y herramientas para navegación, usar una imagen como brújula, entre otras.
 
 
-\subparagraph{ALVideoDevice}
+\subparagraph{ALVideoDevice.}
 \label{\detokenize{chapter_one/naoqi:alvideodevice}}
 Este módulo es responsable de proveer, de una manera eficiente, imágenes de la
 cámara del robot a todos los módulos que las procesan, como \sphinxcode{ALFaceDetection}
@@ -654,7 +654,7 @@ con el robot a través de algunos de ellos, o manejar eventos cuando estos
 cambian valores.
 
 
-\subparagraph{ALSonar}
+\subparagraph{ALSonar.}
 \label{\detokenize{chapter_one/naoqi:alsonar}}
 El módulo de \sphinxcode{ALSonar} obtiene valores de los sensores ultrasónicos desde
 \sphinxcode{ALMemory}, procesa esa información y lanza eventos de acuerdo con la situación.
@@ -722,8 +722,8 @@ Los valores actuales de los sensores se pueden recuperar desde \sphinxcode{ALMem
 del método \sphinxcode{getData()} de \sphinxcode{ALMemory}.
 
 
-\subparagraph{Uso}
-\label{\detokenize{chapter_one/naoqi:id3}}
+%\subparagraph{Uso}
+%\label{\detokenize{chapter_one/naoqi:id3}}
 El hardware de los sensores no se inicia de manera automática. Para empezar,
 es necesario suscribirse al módulo de \sphinxcode{ALSonar} a través del método \sphinxcode{subscribe()}.
 Hacer esto prende los sensores ultrasónicos.
@@ -877,8 +877,8 @@ Para ARM
 \sphinxattableend\end{savenotes}
 \end{quote}
 
-Existe un archivo \sphinxcode{.jar} por cada plataforma y versión de NAOqi. Este
-archivo \sphinxcode{.jar} permite usar la API de C++ de Aldebaran o crear servicios
+Existe un archivo \sphinxcode{.jar} por cada plataforma y versión de NAOqi. Éste
+permite usar la API de C++ de Aldebaran o crear servicios
 personalizados, y ejecutarlos desde un dispositivo remoto o directamente en el
 robot.
 
