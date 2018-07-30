@@ -73,6 +73,9 @@ que previamente creó.
     \subfloat{\includegraphics[scale=.1]{add_robot2}}%
     \qquad
     \subfloat{\includegraphics[scale=.1]{add_robot3}}%
+    \caption{La aplicación se conecta con Firebase para obtener los
+    robot creados y al crear uno se añade a la Firebase Realtime Database.}
+    
 \end{figure}
 
 
@@ -90,7 +93,9 @@ aplicación.
     \subfloat{\includegraphics[scale=.1]{robot_connection_app1}}%
     \qquad
     \subfloat{\includegraphics[scale=.1]{robot_connection_app2}}%
-
+    \caption{Para conectarse con un robot simplemente se ingresa la dirección
+    IP de éste.}
+    
 \end{figure}
 
 
@@ -100,7 +105,7 @@ la aplicación con el robot se muestran en un menú intuitivo.
 
 \begin{figure}[!h]
     \centering
-    \caption{La pantallas del menú de la aplicación.}
+
     \subfloat{\includegraphics[scale=.09]{menu_rc}}%
     \qquad
     \subfloat{\includegraphics[scale=.09]{menu_face}}%
@@ -108,6 +113,7 @@ la aplicación con el robot se muestran en un menú intuitivo.
     \subfloat{\includegraphics[scale=.09]{menu_ocr}}%
     \qquad
     \subfloat{\includegraphics[scale=.09]{menu_objects}}%
+    \caption{La pantallas del menú de la aplicación.}
 \end{figure}
 
 
@@ -122,9 +128,8 @@ cámara del robot.
 
 \begin{figure}[!h]
     \centering
-    \caption{El control remoto muestra una imagen en vivo si se desea, el estado del batería y un joystick para mover al robot.}
-\includegraphics[scale=.1]{rc_image}
-
+	\includegraphics[scale=.1]{rc_image}
+	\caption{El control remoto muestra una imagen en vivo si se desea, el estado del batería y un joystick para mover al robot.}
 \end{figure}
 
 
@@ -138,11 +143,11 @@ rightUSSensorValue, leftUSSensorValue, rightFootTotalWeight, RightBumperPressed,
 
 \begin{figure}[!h]
     \centering
-    \caption{Después de dar clic en el botón START LOG se abre una pantalla para elegir los valores de la memoria que se desean guardar
-    en Firebase.}
     \subfloat{\includegraphics[scale=.1]{memory_list}}%
     \qquad
     \subfloat{\includegraphics[scale=.1]{rc_image3}}
+    \caption{Después de dar clic en el botón START LOG se abre una pantalla para elegir los valores de la memoria que se desean guardar
+    en Firebase.}
 \end{figure}
 
 
@@ -156,9 +161,9 @@ un gesto de saludo.
 
 \begin{figure}[!h]
     \centering
-    \caption{Ejemplo de el reconocimiento de una persona que antes fue detectada.}
+    
     \subfloat{\includegraphics[scale=.1]{face}}%
-
+\caption{Ejemplo de el reconocimiento de una persona que antes fue detectada.}
 \end{figure}
 
 
@@ -175,6 +180,8 @@ dice la cantidad de objetos que ve de acuerdo a las categorías válidas.
 \begin{figure}[!h]
     \centering
 	\includegraphics[scale=.1]{object}%
+	\caption{Después de detectar los objetos el robot da una lista enumerada
+	de éstos.}
 \end{figure}
 
 
@@ -190,7 +197,8 @@ traducción en un discurso oral.
 \begin{figure}[!h]
     \centering
     \includegraphics[scale=.1]{ocr_before}
-
+    \caption{Al presionar el texto traducido el robot repite oralmente la cadena
+    de caracteres.}
 \end{figure}
 
 
@@ -281,84 +289,83 @@ La carpeta \textit{java} incluye los paquetes \texttt{com.lar.cloudnao.utilities
 
 Es un paquete compuesto por clases e interfaces que tienen como
 función realizar tareas asíncronas para manejar imágenes del robot,
-enviar peticiones a la API REST, manejar la IU, etcétera.
+enviar peticiones a la API REST, manejar la IU, etcétera.\\
 
 \codedocumentation{\texttt{Interface }\sphinxcode{OnRobotNameClickListener}}
-
 Una interfaz con un método abstracto que sirve como callback
 cuando un usuario da clic sobre alguno de los robots obtenidos desde Firebase y mostrados en un \texttt{RecyclerView}.
+\newline
 
 \codedocumentation{\texttt{Interface }\sphinxcode{VisionRequestCompleted}}
-
 Interfaz con un método abstracto que se llama dentro de una tarea asíncrona para procesar un objeto que se obtiene de la respuesta
 a la solicitud del recurso \texttt{vision} de la API REST de CloudNAO.
 Hereda métodos de \texttt{AsyncTask}.
+\newline
 
 \codedocumentation{\texttt{Class }\sphinxcode{BatteryStatusTask}}
-
 Esta clase obtiene el nivel de batería actual en el robot a través de la lectura del valor en 
 \texttt{ALMemory}. Utiliza la clase \texttt{AsyncTask}.
 Muestra una \texttt{ImageView} que representa el estado de la batería y un \texttt{TextView} con el porcentaje de batería restante.
+\newline
 
 \codedocumentation{\texttt{Class }\sphinxcode{BoundingBoxesUtils}}
-
 Una clase estática con un método para dibujar cuadros delimitadores 
 sobre un \texttt{ImageView}. Para dibujar el cuadro delimitador 
 recibe un arreglo con los valores necesarios para generar las 
 coordenadas que se usan para dibujar.
+\newline
 
 \codedocumentation{\texttt{Class }\sphinxcode{ImageTask}}
-
 Clase pública con métodos asíncronos para obtener una imagen desde la cámara del robot de manera remota.  Obtiene un objeto que contiene la imagen, con el espacio de color por defecto del robot NAO (YUV) en un arreglo de bytes, convierte ese arreglo en una imagen jpeg, para después cargar ese objeto jpeg en un bitmap que sirve para llenar el \texttt{ImageView} que muestra la imagen enviada por el robot. Es una subclase
 de \texttt{AsyncTask}.
+\newline
 
 \codedocumentation{\texttt{Class }\sphinxcode{ItemsListAdapter}}
-
 Esta clase es el \texttt{Adapter} para el \texttt{ListView} cuyos elementos 
 están compuestos por un \texttt{CheckBox} y un \texttt{TextView}. Se 
 utiliza al mostrar la lista de datos que se quieren guardar en 
 Firebase desde \texttt{ALMemory}.
+\newline
 
 \codedocumentation{\texttt{Class }\sphinxcode{MyPagerAdapter}}
-
 Subclase de \texttt{PagerAdapter} para el \texttt{ViewPager} del menú
 principal de la aplicación, por ahora tiene un tamaño máximo de 4. 
+\newline
 
 \codedocumentation{\texttt{Class }\sphinxcode{ProxySubscriberItem}}
-
 Clase pública para modelar los objetos de la lista con los datos de \texttt{ALMemory} que se guardarán en Firebase. \texttt{ItemsListAdapter} contiene un objeto \texttt{List} de
 instancias de \texttt{ProxySu	bscriberItem}. Los
 atributos son un  valor booleano \texttt{mChecked} y una cadena \texttt{mProxyName} para saber si un ítem está marcado y el nombre
 de la llave en \texttt{ALMemory}, respectivamente.
+\newline
 
 \codedocumentation{\texttt{Class }\sphinxcode{RecyclerViewAdapter}}
-
 La clase pública del \texttt{Adapter} para el \texttt{RecyclerView} que mostrará la lista de robots obtenidos desde Firebase y que le pertenecen al
 usuario que inició sesión en la aplicación.
+\newline
 
 \codedocumentation{\texttt{Class }\sphinxcode{RecyclerViewHolders}}
-
 La clase que modela a los \texttt{ViewHolders} que representan cada robot obtenido de Firebase.
 Aquí se utiliza el método abstracto \texttt{onClickRobotName} como callback para ejecutar una acción al dar clic sobre un elemento del \texttt{RecyclerView}.
+\newline
 
 \codedocumentation{\texttt{Class }\sphinxcode{RobotFromFirebase}}
-
 La clase que modela los objetos de la lista de robots obtenidos desde Firebase, cada objeto contiene un identificador único y el nombre que el usuario asignó.
+\newline
 
 \codedocumentation{\texttt{Class }\sphinxcode{RobotLogs}}
-
 Clase con métodos asíncronos para almacenar valores de \texttt{ALMemory} en Firebase, obtiene valores del robot y los almacena en una ubicación en Firebase con un \texttt{push()}, por lo que se genera un historial de logs.
+\newline
 
 \codedocumentation{\texttt{Class }\sphinxcode{ViewHolder}}
-
 Clase que modelos los \texttt{ViewHolders} de la lista de datos que se desean guardar en Firebase, están compuestos por un \texttt{CheckBox} y un \texttt{TextView} que describe a cada elemento.
+\newline
 
 \codedocumentation{\texttt{Class }\sphinxcode{VisionListElement}}
-
 Clase pública que modela los objetos dentro de una lista que muestra resultados de las actividades de reconocimiento de rostros y objetos. Cada instancia tiene un identificador, que puede ser el nombre del sujeto reconocido , la confianza y las coordenadas de que delimitan al elemento encontrado (un cuadro que encierra un rostro, o un rectángulo que acota un objeto).
+\newline
 
 \codedocumentation{\texttt{Class }\sphinxcode{VisionRESTRequestsTask}}
-
 La clase con métodos asíncronos para hacer peticiones a la API REST 
 de CloudNAO. Recibe la imagen desde un \texttt{ImageView}, del que obtiene un 
 bitmap y genera una cadena en base 64 que representa esa imagen. 
@@ -366,57 +373,49 @@ Después define la estructura y valores del JSON que se envía en una
 petición usando la biblioteca Volley. A partir de la respuesta 
 obtenida ejecuta la función callback \texttt{onVisionRequestCompleted} 
 para mostrar los resultados en el contexto de donde se solicitó.
-
-
+\newline
 
 \codedocumentation{\texttt{Class }\sphinxcode{VolleyResponseUtils}}
-
 Clase estática para manejar la repuesta de \texttt{Volley}, que puede ser un error o puede ser la estructura que se espera.
+\newline
 
 \codedocumentation{\texttt{Enum ModelObjectViewPager}}
-
 Un enumerado de Java que representa todas las posibles páginas del ViewPager. Se utiliza en el menú de la aplicación. En este enumerado se almacenan el identificador del \texttt{Layout} de cada página y un título que le corresponde.
 
 
 \paragraph{Actividades de la aplicación}
 
 \codedocumentation{\texttt{Class FaceRecognitionActivity}}
-
 La clase de la actividad que realiza el reconocimiento de rostros. Implementa la interfaz \texttt{VisionRequestCompleted} para llamar a su método abstracto desde la clase \texttt{VisionRESTRequestsTask}.
-
+\newline
 
 \codedocumentation{\texttt{Class MenuActivity}}
-
 La actividad que muestra el menú principal donde se elige entre otras actividades para interactuar con el robot. Muestra un \texttt{ViewPager} para navegar y elegir la actividad deseada.
-
+\newline
 
 \codedocumentation{\texttt{Class ObjectDetectionActivity}}
-
 La actividad encargada de la funcionalidad de la detección de objetos, implementa la interfaz \texttt{VisionRequestCompleted} para ejecutar su método \texttt{VisionRequest\\Completed.onVisionRequestComple\\ted(Object)} como callback en \texttt{VisionRESTRequestsTask}.
 
 
 \codedocumentation{\texttt{Class OCRTranslationActivity}}
-
-
 Clase de la actividad que se encarga del procesamiento de una imagen 
 para detección de texto y su traducción. Implementa la interfaz 
 \texttt{VisionRequestCompleted}.
+\newline
 
 \codedocumentation{\texttt{Class RemoteControllerActivity}}
-
 La actividad para el control remoto del robot. Además de poder 
 controlar algunos movimientos como el caminado o el cambio de postura, 
 se puede visualizar una imagen en vivo de la cámara del robot, así 
 como permite enviar valores de \texttt{ALMemory} a una base de datos en la nube 
 a través de Firebase.
+\newline
 
 \codedocumentation{\texttt{Class Robot}}
-
 No es una actividad pero es la clase pública principal para ejecutar módulos del framework de NAOqi en la aplicación. Es una interfaz para conectarse al robot y ejecutar algunos módulos de NAOqi. Usa el patrón de diseño Singleton para que solo exista una instancia del objeto y funcione como una variable global.
-
+\newline
 
 \codedocumentation{\texttt{Class SelectRobotActivity}}
-
 Actividad que muestra los robots registrados por el usuario así como la opción para añadir nuevos robots, o conectarse a uno de la lista. Implementa el método abstracto \texttt{OnRobotNameClickListener.onClickRobotName(String, String)}.
 
 %

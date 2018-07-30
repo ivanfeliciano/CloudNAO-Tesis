@@ -1770,7 +1770,7 @@ lo tanto, por conveniencia llamaremos a ambas operaciones convolución.
 
 \begin{figure}[h]
     \centering
-    \includegraphics{conv_operation.png}
+    \includegraphics[scale=0.5]{conv_operation.png}
     \caption{Convolución entre una imagen
     $I$ y un kernel $K$ sin rotarlo 180 grados.}
     \label{fig:convolution_example}
@@ -2019,15 +2019,15 @@ para poder calcular las salidas que fueron solicitadas en los argumentos de \tex
 \hline 
 Categoría & Ejemplo \\ 
 \hline 
-Operaciones matemáticas a nivel de elementos & Add, Sub, Mul, Div, Exp, Log, Greater, Less, Equal,... \\ 
+Operaciones matemáticas a nivel de elementos & \texttt{Add, Sub, Mul, Div, Exp, Log, Greater, Less, Equal, ...} \\ 
 \hline 
-Operaciones con arreglos & Concat, Slice, Split, Constant, Rank, Shape, Shuffle, ... \\ 
+Operaciones con arreglos & \texttt{Concat, Slice, Split, Constant, Rank, Shape, Shuffle, ...} \\ 
 \hline 
-Operaciones con matrices & MatMul, MatrixInverse, MatrixDeterminant, ... \\ 
+Operaciones con matrices & \texttt{MatMul, MatrixInverse, MatrixDeterminant, ...} \\ 
 \hline 
-Construcción de redes neuronales & SoftMax, Sigmoid, ReLU, Convolution2D, MaxPool \\ 
+Construcción de redes neuronales & \texttt{SoftMax, Sigmoid, ReLU, Convolution2D, MaxPool} \\ 
 \hline 
-Operaciones de puntos de control & Save, Restore \\ 
+Operaciones de puntos de control & \texttt{Save, Restore} \\ 
 \hline 
 \end{tabulary} 
 
@@ -2266,10 +2266,8 @@ que ejecuta el entrenamiento del modelo.
     \PYG{n}{sess}\PYG{o}{.}\PYG{n}{run}\PYG{p}{(}\PYG{n}{tf}\PYG{o}{.}\PYG{n}{global\PYGZus{}variables\PYGZus{}initializer}\PYG{p}{(}\PYG{p}{)}\PYG{p}{)} \PYG{c+c1}{\PYGZsh{}inicializa las Variables}
     \PYG{n}{epocas} \PYG{o}{=} \PYG{l+m+mi}{10000}
     \PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Salida de la red antes del entrenamiento:}\PYG{l+s+si}{\PYGZob{}\PYGZcb{}}\PYG{l+s+s2}{\PYGZdq{}}\PYG{o}{.}\PYG{n}{format}\PYG{p}{(}\PYG{n}{sess}\PYG{o}{.}\PYG{n}{run}\PYG{p}{(}\PYG{n}{network\PYGZus{}output}\PYG{p}{,} \PYG{n}{feed\PYGZus{}dict}\PYG{o}{=}\PYG{p}{\PYGZob{}}\PYG{n}{entrada\PYGZus{}de\PYGZus{}la\PYGZus{}red} \PYG{p}{:} \PYG{n}{datos\PYGZus{}de\PYGZus{}entrada}\PYG{p}{,} \PYG{n}{salidas\PYGZus{}correctas} \PYG{p}{:} \PYG{n}{y}\PYG{p}{\PYGZcb{}}\PYG{p}{)}\PYG{p}{)}\PYG{p}{)}
-
     \PYG{k}{for} \PYG{n}{i} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{n}{epocas}\PYG{p}{)}\PYG{p}{:}
         \PYG{n}{sess}\PYG{o}{.}\PYG{n}{run}\PYG{p}{(}\PYG{n}{train}\PYG{p}{,} \PYG{n}{feed\PYGZus{}dict}\PYG{o}{=}\PYG{p}{\PYGZob{}}\PYG{n}{entrada\PYGZus{}de\PYGZus{}la\PYGZus{}red}\PYG{p}{:} \PYG{n}{datos\PYGZus{}de\PYGZus{}entrada}\PYG{p}{,} \PYG{n}{salidas\PYGZus{}correctas}\PYG{p}{:} \PYG{n}{y}\PYG{p}{\PYGZcb{}}\PYG{p}{)}
-
     \PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Salida de la red después del entrenamiento:}\PYG{l+s+si}{\PYGZob{}\PYGZcb{}}\PYG{l+s+s2}{\PYGZdq{}}\PYG{o}{.}\PYG{n}{format}\PYG{p}{(}\PYG{n}{sess}\PYG{o}{.}\PYG{n}{run}\PYG{p}{(}\PYG{n}{network\PYGZus{}output}\PYG{p}{,} \PYG{n}{feed\PYGZus{}dict}\PYG{o}{=}\PYG{p}{\PYGZob{}}\PYG{n}{entrada\PYGZus{}de\PYGZus{}la\PYGZus{}red} \PYG{p}{:} \PYG{n}{datos\PYGZus{}de\PYGZus{}entrada}\PYG{p}{,} \PYG{n}{salidas\PYGZus{}correctas} \PYG{p}{:} \PYG{n}{y}\PYG{p}{\PYGZcb{}}\PYG{p}{)}\PYG{p}{)}\PYG{p}{)}
 \end{sphinxVerbatim}
 

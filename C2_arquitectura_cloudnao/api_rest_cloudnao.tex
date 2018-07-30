@@ -141,14 +141,14 @@ En el cuerpo del mensaje se envía un JSON con la siguiente estructura. En la ta
 
 
 \begin{table}[h!]
-\caption{Descripción del los elementos del JSON del cuerpo de la solicitud.\label{tab:body_json_schema_request}}
+\caption{Descripción de los elementos del JSON del cuerpo de la solicitud.\label{tab:body_json_schema_request}}
 \begin{tabular}{|l|l}
 \hline
-\multicolumn{2}{|l|}{\textbf{Propiedades}}                                                                                                                                                                                                      \\ \hline
-\multicolumn{2}{|l|}{imageContent}                                                                                                                                                                                                              \\ \hline
+\multicolumn{2}{|l|}{\cellcolor[HTML]{68CBD0}\textbf{Propiedades}}                                                                                                                                                                                                      \\ \hline
+\multicolumn{2}{|l|}{\cellcolor[HTML]{68CBD0}imageContent}                                                                                                                                                                                                              \\ \hline
 Tipo de dato & \multicolumn{1}{l|}{string}                                                                                                                                                                                                      \\ \hline
 Descripción  & \multicolumn{1}{l|}{Imagen codificada en base 64.}                                                                                                                                                                               \\ \hline
-\multicolumn{2}{|l|}{imageSource}                                                                                                                                                                                                               \\ \hline
+\multicolumn{2}{|l|}{\cellcolor[HTML]{68CBD0}imageSource}                                                                                                                                                                                                               \\ \hline
 Tipo de dato & \multicolumn{1}{l|}{string}                                                                                                                                                                                                      \\ \hline
 Descripción  & \multicolumn{1}{l|}{URL público de la imagen.}                                                                                                                                                                                   \\ \hline
 \multicolumn{2}{|l|}{features}                                                                                                                                                                                                                  \\ \hline
@@ -164,7 +164,7 @@ en la} \\
 
 
 \\ \hline
-\multicolumn{2}{|l|}{\textbf{Campos obligatorios}}                                                                                                                                                                                              \\ \hline
+\multicolumn{2}{|l|}{\cellcolor[HTML]{68CBD0}\textbf{Campos obligatorios}}                                                                                                                                                                                              \\ \hline
 \multicolumn{2}{|l|}{imageContent}                                                                                                                                                                                                              \\
 \multicolumn{2}{|l|}{imageSource}                                                                                                                                                                                                               \\
 \multicolumn{2}{|l|}{features}                                                                                                                                                                                                                  \\ \hline
@@ -587,15 +587,12 @@ terceros, modelos de Tensorflow y módulos auxiliares.
 \subparagraph{Modelos (\sphinxstyleemphasis{models}).}
 \label{\detokenize{chapter_two/desc_cloudnao:module-app.models}}\label{\detokenize{chapter_two/desc_cloudnao:modelos-models}}\index{app.models (módulo)}
 Este paquete contiene los modelos de la base de datos, usando SQLAlchemy.
+\newline
 \phantomsection\label{\detokenize{chapter_two/desc_cloudnao:module-app.models.user_model}}\index{app.models.user\_model (módulo)}\phantomsection\label{\detokenize{chapter_two/desc_cloudnao:module-user_model}}\index{user\_model (módulo)}\index{UserModel (clase en app.models.user\_model)}
 
-%
-%\begin{fulllineitems}
-%\phantomsection\label{\detokenize{chapter_two/desc_cloudnao:app.models.user_model.UserModel}}
 
 \codedocumentation{
 \sphinxbfcode{class }\sphinxcode{app.models.user\_model.}\sphinxbfcode{UserModel}{(\emph{username}, \emph{password}})}
-
 Una clase pública para el modelo del usuario que se almacena en la base
 de datos.
 El nombre de la tabla en la base de datos es \sphinxcode{users}. Los atributos de esta
@@ -666,11 +663,11 @@ base de datos.
 En este paquete se definen los recursos que representan a los servicios que
 la API estará brindando. Desde el registro de un usuario, obtención de un nuevo
 token de acceso, hasta el procesamiento de imágenes.
+\newline
 \phantomsection\label{\detokenize{chapter_two/desc_cloudnao:module-app.resources.user}}\index{app.resources.user (módulo)}\phantomsection\label{\detokenize{chapter_two/desc_cloudnao:module-user}}\index{user (módulo)}\index{UserRegister (clase en app.resources.user)}
 
 \codedocumentation{
 \sphinxbfcode{class }\sphinxcode{app.resources.user.}\sphinxbfcode{UserRegister}}
-
 Una clase pública que representa un recurso de la API REST, para el
 almacenamiento de nuevos usuarios. Hereda de la clase \sphinxcode{Resource} de
 \sphinxcode{flask\_restful} y usa un objeto de la clase \sphinxcode{RequestParser} para definir
@@ -718,7 +715,6 @@ continuación:
 
 \codedocumentation{
 \sphinxbfcode{class }\sphinxcode{app.resources.token.}\sphinxbfcode{Token}}
-
 Clase pública que representa un token en la API REST. Permite la obtención
 de un nuevo token de acceso a la API, usando un método POST y enviado en el
 mensaje el nombre de usuario y la contraseña. Todo
@@ -761,7 +757,6 @@ siguientes:
 
 \codedocumentation{
 \sphinxbfcode{class }\sphinxcode{app.resources.vision.}\sphinxbfcode{Vision}}
-
 Clase pública del recurso de la API REST para solicitar el procesamiento
 de imágenes. Acepta peticiones de tipo \sphinxcode{POST} en cuyo cuerpo van las
 características que se desean computar. Las aceptadas son las siguientes:
@@ -805,10 +800,8 @@ Aquí se unen en una sola las respuestas de los módulos dentro de
 En este paquete se encuentran los módulos encargados de la 
 detección de objetos y la clasificación de escenarios usando
 TensorFlow.
-
+\newline
 \codedocumentation{\sphinxbfcode{class }\sphinxcode{app.tf\_models.object\_detection.}\sphinxbfcode{ObjectDetectionTensorflow}}
-
-
 Una clase pública que utiliza un modelo pre-entrenado para la detección
 de múltiples objetos en una imagen. El modelo utilizado es
 \sphinxcode{ssd\_mobilenet\_v1\_\\coco} provisto por la API de TensorFlow y entrenado con el
@@ -839,7 +832,6 @@ muestra un simple uso de la clase.
 
 
 \codedocumentation{\sphinxbfcode{class }\sphinxcode{app.tf\_models.indoor\_scenes\_classifier.}\sphinxbfcode{ImageClassifier}}
-
 Una clase pública que utiliza que utiliza una red neuronal
 convolucional implementada en Tensorflow para clasificar en cuatro
 clases una imagen. Las clases son:
@@ -881,7 +873,7 @@ codificada en base 64.
 En este paquete se encuentran los módulos para hacer las peticiones
 a las API REST de los servicios en la nube de Google Cloud, Kairos
 y Wit.ai.
-
+\newline
 
 \codedocumentation{\sphinxbfcode{class }\sphinxcode{app.tpa\_client\_libraries.google\_cloud\_translation.}\sphinxbfcode{GoogleCloudTranslation}}
 
@@ -972,7 +964,6 @@ de Google Cloud.
 \phantomsection\label{\detokenize{chapter_two/desc_cloudnao:module-app.tpa_client_libraries.kairos_client}}\index{app.tpa\_client\_libraries.kairos\_client (módulo)}\phantomsection\label{\detokenize{chapter_two/desc_cloudnao:module-kairos}}\index{kairos (módulo)}\index{Kairos (clase en app.tpa\_client\_libraries.kairos\_client)}
 
 \codedocumentation{\sphinxbfcode{class }\sphinxcode{app.tpa\_client\_libraries.kairos\_client.}\sphinxbfcode{Kairos}}
-
 Una clase pública que sirve como cliente para conectarse a dos servicios
 que brinda la API de Kairos, el almacenamiento de rostros en una galería en la nube, y
 la identificación de caras previamente guardadas.
@@ -1023,7 +1014,6 @@ Un ejemplo del uso del módulo.
 
 
 \codedocumentation{\sphinxbfcode{class }\sphinxcode{app.tpa\_client\_libraries.wit\_api.}\sphinxbfcode{WitAPI}}
-
 Una clase pública donde se hacen las peticiones HTTP
 a Wit.ai y para extraer el significado del audio o texto. Funciona como
 un módulo cliente para solicitar los recursos de \sphinxcode{/message} y \sphinxcode{/speech}.
