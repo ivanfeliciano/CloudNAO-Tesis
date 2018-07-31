@@ -46,7 +46,8 @@
 \usepackage{subfig}
 \usepackage{url}
 \usepackage{natbib}
-\usepackage{apalike}
+
+%\usepackage{apalike}
 %\usepackage{setspace}
 %\doublespacing
 
@@ -178,11 +179,13 @@ cómputo en la nube con robots NAO}
 \input{C3_servicio_en_la_nube/service_implementation}
 
 \input{conclusions}
-\input{anexos}
+
+
+\include{anexos}
 
 \nocite{*}
 \addcontentsline{toc}{chapter}{Bibliografía}
-\bibliographystyle{apalike}
+\bibliographystyle{unsrt}
 \bibliography{referencias}
 
 \end{document}
