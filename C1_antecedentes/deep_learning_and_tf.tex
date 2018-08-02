@@ -130,7 +130,7 @@ produce la salida incorrecta.
 % error como la pérdida $0-1$. La pérdida $0-1$ sobre una muestra en
 % particular es $0$ si está clasificada correctamente y $1$ si no.
 
-Usualmente estamos interesados cómo se desempeña un algoritmo de
+Usualmente estamos interesados en cómo se desempeña un algoritmo de
 aprendizaje automático sobre datos que no ha visto,
 ya que determina que tan bien trabajará cuando se lance al mundo real.
 Por lo tanto evaluamos estas medidas de desempeño usando un \textit{conjunto de
@@ -163,10 +163,10 @@ de datos que contiene una gran cantidad de características, entonces aprenden a
 propiedades útiles de la estructura del conjunto de datos. 
 \end{remark}
 
-Algunos
-algoritmos no supervisados realizan papeles, como el de agrupamiento,
-que consiste en dividir el conjunto de datos en grupos de muestras
-similares.\\
+Algunos algoritmos no supervisados realizan papeles como el 
+de agrupamiento, que consiste en dividir el conjunto de 
+datos en grupos de muestras similares.\\
+
 
 \begin{remark}
 El aprendizaje no supervisado involucra observar
@@ -221,7 +221,7 @@ muestras que fueron recolectadas de manera separada del conjunto de
 entrenamiento.
 
 ¿Cómo se puede afectar el desempeño sobre el conjunto de pruebas cuando
-solo se ha observado el conjunto de entrenamiento? 
+sólo se ha observado el conjunto de entrenamiento? 
 % El campo de la
 % \textit{teoría del aprendizaje estadístico} provee varias respuestas.
 % Si el conjunto de entrenamiento y el de prueba son recolectados de manera
@@ -316,7 +316,7 @@ algoritmo de aprendizaje no encuentra la mejor función, pero sí una que
 reduce el error de entrenamiento significativamente. Estas limitantes
 adicionales como la imperfección del algoritmo de optimización,
 significan que la capacidad efectiva puede ser menor que la capacidad
-representacional de familia del modelo.
+representacional de la familia del modelo.
 
 
 \subsubsection{Optimización basada en el gradiente}
@@ -366,13 +366,13 @@ del aprendizaje profundo, se optimizan funciones que
 pueden tener mínimos locales que no son óptimos, y puntos de silla 
 atrapados por regiones planas. Esto hace el proceso de optimización
 muy complicado, especialmente si la función es multidimensional.
-Por esto usualmente se busca un valor de $f$ muy bajo, pero
+Por esto, usualmente se busca un valor de $f$ muy bajo, pero
 no necesariamente el mínimo en un sentido formal.
 
 Comúnmente se minimizan funciones que tienen múltiples entradas 
 $f: \mathbb{R}^n \rightarrow \mathbb{R}$. Para funciones con varias entradas,
 se hace uso del concepto de \textit{derivada parcial}. La derivada
-parcial $\frac{\partial}{\partial x_i} f(\mathbf{x})$ mide cómo
+parcial $\frac{\partial f(\mathbf{x})}{\partial x_i} $ mide cómo
 cambia $f$ cuando sólo la variable $x_i$ se incrementa en el punto $\mathbf{x}$.\\
 
 \begin{remark}
@@ -454,7 +454,7 @@ posiblemente alcanzar un mínimo global.
 \subsubsection{Terminología}
 
 A continuación se definen diferentes términos que se utilizan a lo
-largo del documento.
+largo del trabajo.
 
 \begin{itemize}
 
@@ -532,14 +532,14 @@ y actúa como entrada a otras unidades de procesamiento.
 
 Por sí mismo, un elemento de procesamiento no es muy poderoso; el poder
 del sistema surge de la combinación de muchas unidades en una red.
-Una red está especializada en implementar diferentes funciones cambiando las 
+Una red está especializada en implementar diferentes funciones cambiando la 
 topología de las conexiones en la red y los valores de las
 conexiones ponderadas.
 
 Las unidades de procesamiento tienen respuestas como
 
 \begin{equation}\label{eq:neuron-output}
-y = f(\sum_k w_k x_k)    
+y = f\bigg (\sum_k w_k x_k\bigg )    
 \end{equation}
 
 donde $x_k$ son las señales de salida de otros nodos o entradas de un sistema
@@ -547,7 +547,7 @@ externo, $w_k$ son los pesos de los enlaces de conexión y $f$ es una función
 no lineal. Aquí una la unidad calcula una combinación lineal de los pesos y sus
 entradas y la pasa por $f$ para producir un valor escalar. 
 $f$ es conocida como \textit{función de activación}, y es muy común que
-se utilice una función no lineal acotada y creciente como la sigmoide.
+se utilice una función no lineal acotada y creciente como la sigmoide, definida como sigue
 
 \[
 f(u) = \frac{1}{1 + e^{-u}}
@@ -627,7 +627,7 @@ Queremos que $\mathbf{y}_i$ y $\mathbf{t}_i$ sean idénticos para
 $i = 1, \dots, p$, usando un algoritmo de aprendizaje. De manera
 más precisa, queremos minimizar una \textit{función de costo} de la red
 con respecto a sus pesos;
-por ejemplo la definida como sigue:
+por ejemplo la definida como sigue
 
 \[
 E = \frac{1}{2} \sum_{i=1}^p \|\mathbf{t}_i - \mathbf{y}_i\|^2
@@ -1200,7 +1200,7 @@ w_{ij} \leftarrow  w_{ij} - \gamma \frac{\partial E}{\partial w_{ij}}
 
 donde la \textit{tasa de aprendizaje} $0 < \gamma$.
 Hay dos variaciones básicas para la actualización, el \textit{modo por lotes} y 
-el \textit{online}.
+\textit{en línea}.
 
 \begin{itemize}
     \item \textbf{Aprendizaje por lotes}: En este modo, cada patrón $p$ es evaluado para obtener los términos de la derivada $\frac{\partial E_p}{\partial w}$; estos se suman para obtener la derivada total
@@ -1226,10 +1226,10 @@ el \textit{online}.
     
     Cada paso a través de todo el conjunto de entrenamiento se llama \textit{época}.
     
-    \item \textbf{Aprendizaje online}: En este modo de aprendizaje, los pesos
+    \item \textbf{Aprendizaje en línea}: En este modo de aprendizaje, los pesos
     se actualizan después de que se presenta cada patrón. Generalmente, un patrón $p$ se
     elige aleatoriamente y se presenta a la red. La salida se compara con el objetivo
-    para ese patrón y los error son retropropagados para obtener una
+    para ese patrón y los errores son propagados hacia atrás para obtener una
     derivada $\frac{\partial E_p}{\partial w}$  para un solo patrón. Los pesos se actualizan
     inmediatamente después, usando el gradiente del error de un solo patrón.
     Los pasos son:
@@ -1671,7 +1671,7 @@ de menos abstractas.
     \caption{Ejemplo de un modelo de aprendizaje profundo. El aprendizaje profundo resuelve el problema de mapear un conjunto de pixeles al identificador de un objeto separando este mapeo
     complejo en mapeos simples anidados, cada uno descrito por
     una capa diferente en el modelo. La entrada es presentada
-    en la capa visible, llamada así porque contiene las variables que somos capaces de observar. Después una series de capas ocultas extraen de la imagen características cada vez más
+    en la capa visible, llamada así porque contiene las variables que somos capaces de observar. Después una serie de capas ocultas extraen de la imagen características cada vez más
     abstractas. Estas capas se llaman \textit{ocultas} porque
     sus valores no son dados en los datos; en su lugar, el modelo
     debe determinar qué conceptos son útiles para explicar 
@@ -1768,7 +1768,7 @@ Cuando se aplica un filtro para suavizar una imagen, encontrar bordes, etcétera
 proceso se denota como convolución incluso si se implementa como una correlación. Por
 lo tanto, por conveniencia llamaremos a ambas operaciones convolución.
 
-\begin{figure}[h]
+\begin{figure}[htbp]
     \centering
     \includegraphics[scale=0.5]{conv_operation.png}
     \caption{Convolución entre una imagen
@@ -1988,7 +1988,7 @@ A menudo los clientes construyen la gráfica de cómputo usando uno de los
 lenguajes de frontend soportados (C++ o Python). Todos los ejemplos
 que se muestran en esta sección están desarrollados en Python.
 
-En una gráfica de TensorFlow los nodos representan instancias de \textit{operaciones}, tiene cero o más entradas y
+En una gráfica de TensorFlow los nodos representan instancias de \textit{operaciones}, éstos tienen cero o más entradas y
 cero o más salidas. Los valores que fluyen sobre las aristas en la gráfica son
 \textit{tensores}. Estos últimos son arreglos de dimensiones arbitrarias donde el tipo
 de sus elementos se especifica o infiere durante la construcción de la gráfica.
@@ -1998,7 +1998,7 @@ una multiplicación de matrices o una suma.
 
 Los programas clientes interactúan con el sistema de TensorFlow creando una
 \textit{Session}. El objeto Session es una interfaz para la gráfica de cómputo,
-es quien permite su ejecución a través del su operación primaria
+es quien permite su ejecución a través de su operación primaria
 \textit{Run}, la cual toma un conjunto de nodos de la gráfica que necesitan ser
 calculados, así como un conjunto de tensores que necesitan alimentar a la 
 gráfica para poder obtener las salidas de ciertos nodos. TensorFlow puede calcular
@@ -2009,7 +2009,7 @@ para poder calcular las salidas que fueron solicitadas en los argumentos de \tex
 \begin{savenotes}\sphinxattablestart
 \centering
 \sphinxcapstartof{table}
-\sphinxcaption{Algunos de los tipos de operaciones en TensorFlow.}\label{\detokenize{chapter_one/tensorflow:operations}}
+\caption{Algunos de los tipos de operaciones en TensorFlow.}\label{\detokenize{chapter_one/tensorflow:operations}}
 \sphinxaftercaption
 %\begin{tabulary}
 
@@ -2040,7 +2040,7 @@ Operaciones de puntos de control & \texttt{Save, Restore} \\
 
 Cuando construimos un modelo de aprendizaje en TensorFlow utilizamos \textit{variables}
 para representar los parámetros del modelo. Las variables de TensorFlow
-son buffers en memoria que contienen tensores; pero a diferencia a los tensores
+son buffers en memoria que contienen tensores; pero a diferencia de los tensores
 normales que sólo son instanciados cuando una gráfica se ejecuta y que 
 inmediatamente después se eliminan, las variables se mantienen durante
 múltiples ejecuciones de una gráfica. Como resultado, las variables de TensorFlow 
@@ -2081,15 +2081,15 @@ permite referirnos a un nodo en específico en
 la gráfica de cómputo.
 
 Por defecto las variables son entrenables,
-lo que quiere decir que cuando utilizamos algo
+lo que quiere decir que cuando utilizamos un método
 como el descenso del gradiente, las variables
 automáticamente cambian sus valores.
 
 
-\subsubsection{PlaceHolder}
+\subsubsection{Placeholder}
 
 Los modelos de aprendizaje necesitan una entrada ya sea 
-para el entrenamiento y la evaluación. Una variable no es 
+para el entrenamiento o la evaluación. Una variable no es 
 suficiente porque sólo se inicializa una vez. Necesitamos un
 componente que llenemos cada que la gráfica de cómputo se ejecuta.
 TensorFlow usa una estructura llamada \textit{placeholder}. 
@@ -2115,9 +2115,9 @@ multiplicar cada muestra por separado con \sphinxcode{W},
 al expresar un lote completo como un tensor tenemos
 permitido calcular los resultados de todas los
 patrones de entrada en paralelo. El
-resultado de la la fila i del tensor de
+resultado de la fila $i$ del tensor de
 multiplicación corresponde a multiplicar \sphinxcode{W}
-con el patrón i.
+con el patrón $i$.
 
 Así como las variables se inicializan la primera vez
 que se construye la gráfica, los placeholder necesitan
@@ -2133,15 +2133,17 @@ simple, una red neuronal, en TensorFlow para el cálculo de la función
 
 
 Como estamos en el contexto del aprendizaje automático
-supervisado, antes de definir la gráfica necesitamos un conjunto de datos.
-Nuestro conjunto de datos está dado por la tabla \ref{table:xor}.
+supervisado, necesitamos un conjunto de datos etiquetado.
+Nuestro conjunto de datos está dado por la tabla \ref{table:xor}. Las
+primeras dos columnas son los atributos $X_1$ y $X_2$ y la tercera 
+columna es el objetivo.
 
 
 \begin{quote}
 \begin{savenotes}\sphinxattablestart
 \centering
 \sphinxcapstartof{table}
-\sphinxcaption{Definición de la función XOR.\label{table:xor}}
+\caption{Definición de la función XOR.\label{table:xor}}
 \sphinxaftercaption
 \begin{tabulary}{\linewidth}[t]{|T|T|T|}
 \hline 
@@ -2176,8 +2178,9 @@ Antes de comenzar con el código conviene dibujar la gráfica de cómputo que
 deseamos ejecutar.
 La gráfica de cómputo está descrita en la figura \ref{fig:xor_graph}.
 Los círculos representan o variables o placeholders excepto para
-la salida predicha $y'$ que es el resultado de una operación. Los placeholders son 
-nuestras entradas $X$ y las salidas correctas u objetivos $y$. Las variables
+la salida predicha $y'$ que es el resultado de una operación. Tenemos
+un placeholder para 
+las entradas $X$ y otro para las salidas correctas u objetivos $y$. Las variables
 son los pesos $W_i$ y los sesgos $b_i$.
 Los rectángulos son las operaciones. En una red neuronal las únicas operaciones
 son la multiplicación y suma de tensores, la aplicación de la función de

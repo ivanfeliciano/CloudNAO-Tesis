@@ -42,7 +42,7 @@ cada versión, el robot únicamente sabe que hay un obstáculo presente.
 Tiene un cono efectivo de 60°.
 
 Entre los sensores restantes están los de posición de las articulaciones, los
-de contacto y táctiles. Los dos últimos están en la cabeza, manos, pecho y
+de contacto y los táctiles. Los dos últimos están en la cabeza, manos, pecho y
 pies.
 
 Tiene en total 25 articulaciones repartidas entre la cabeza, brazos,
@@ -52,11 +52,11 @@ del cuerpo que está más cerca del tronco se considera fija y la parte que est�
 más lejos  es la que rota alrededor de los ejes de la articulación.
 Para realizar una rotación de las partes del cuerpo, definimos un sistema
 de referencia en cada articulación.
-En el sistema de referencia se tiene tres ángulos de rotación:
+En el sistema de referencia se tienen tres ángulos de rotación:
 \sphinxstyleemphasis{roll} (dirección), \sphinxstyleemphasis{pitch} (elevación) y \sphinxstyleemphasis{roll} (alabeo).
 Las rotaciones \sphinxstyleemphasis{roll}, son
 alrededor del eje X, las \sphinxstyleemphasis{pitch}  sobre Y y \sphinxstyleemphasis{yaw} con respecto a Z. La
-\hyperref[\detokenize{chapter_one/naoqi:rollpitchyaw-frame}]{Figura \ref{\detokenize{chapter_one/naoqi:rollpitchyaw-frame}}} muestra el sistema de referencia.
+\hyperref[\detokenize{chapter_one/naoqi:rollpitchyaw-frame}]{figura \ref{\detokenize{chapter_one/naoqi:rollpitchyaw-frame}}} muestra el sistema de referencia.
 
 \begin{figure}[htbp]
 \centering
@@ -65,13 +65,13 @@ alrededor del eje X, las \sphinxstyleemphasis{pitch}  sobre Y y \sphinxstyleemph
 \noindent\sphinxincludegraphics[scale=0.7]{{rollPitchYaw_frame}.png}
 \caption{Sistema de referencia de los ángulos de rotación}\label{\detokenize{chapter_one/naoqi:rollpitchyaw-frame}}\end{figure}
 
-En la \hyperref[\detokenize{chapter_one/naoqi:nao-config}]{Figura \ref{\detokenize{chapter_one/naoqi:nao-config}}} se muestran algunos de los componentes del robot NAO.
+En la \hyperref[\detokenize{chapter_one/naoqi:nao-config}]{figura \ref{\detokenize{chapter_one/naoqi:nao-config}}} se muestran algunos de los componentes del robot NAO.
 
 \begin{figure}[htbp]
 \centering
 \capstart
 
-\noindent\sphinxincludegraphics[scale=0.55]{{nao_config}.png}
+\noindent\sphinxincludegraphics[scale=0.5]{{nao_config}.png}
 \caption{Componentes del robot NAO}\label{\detokenize{chapter_one/naoqi:nao-config}}\end{figure}
 
 
@@ -93,13 +93,13 @@ módulos (movimiento, audio, video). Además es multiplataforma y multilenguaje
 lo que permite crear aplicaciones distribuidas.
 \begin{itemize}
 \item {} 
-\sphinxstylestrong{Multiplataforma} : El marco de trabajo de NAOqi puede ser usando en Windows, Linux y MacOS.
+\sphinxstylestrong{Multiplataforma}: El marco de trabajo de NAOqi puede ser usando en Windows, Linux y MacOS.
 
 \item {} 
-\sphinxstylestrong{Multilenguaje} : Con el marco de trabajo se puede desarrollar código para ejecutarlo directamente sobre el robot o remotamente en otro dispositivo. En la \hyperref[\detokenize{chapter_one/naoqi:supp-languages}]{Tabla \ref{\detokenize{chapter_one/naoqi:supp-languages}}} se muestran los lenguajes compatibles.
+\sphinxstylestrong{Multilenguaje}: Con el marco de trabajo se puede desarrollar código para ejecutarlo directamente sobre el robot o remotamente en otro dispositivo. En la \hyperref[\detokenize{chapter_one/naoqi:supp-languages}]{tabla \ref{\detokenize{chapter_one/naoqi:supp-languages}}} se muestran los lenguajes compatibles.
 
 \item {} 
-\sphinxstylestrong{Aplicaciones distribuidas} : Una aplicación puede estar compuesta de procesos y módulos entre diversos robots. Para ejecutar un programa en un robot de manera remota sólo se necesita su dirección IP y puerto, los métodos de la API son los mismos como si se llamaran localmente.
+\sphinxstylestrong{Aplicaciones distribuidas}: Una aplicación puede estar compuesta de procesos y módulos entre diversos robots. Para ejecutar un programa en un robot de manera remota sólo se necesita su dirección IP y puerto, los métodos de la API son los mismos como si se llamaran localmente.
 
 \end{itemize}
 
@@ -168,7 +168,7 @@ Llamar la función ya sea en C++ o en Python.
 Saber si la función está en ejecución.
 
 \item {} 
-Ejecutar la función localmente o remotamente.
+Ejecutar la función local o remotamente.
 
 \item {} 
 Llamar a las funciones \sphinxcode{wait}, \sphinxcode{stop} e \sphinxcode{isRunning}.
@@ -188,13 +188,13 @@ para publicar sus métodos.
 \centering
 \capstart
 \noindent\sphinxincludegraphics[scale=0.70]{{broker-libraries-modules}.png}
-\caption{Conexión entre el broker las bibliotecas y los módulos}\label{\detokenize{chapter_one/naoqi:broker-lib-mod}}\end{figure}
+\caption{Conexión entre el broker, las bibliotecas y los módulos}\label{\detokenize{chapter_one/naoqi:broker-lib-mod}}\end{figure}
 
 El broker provee un servicio de búsqueda para que cualquier módulo en el árbol
-de la \hyperref[\detokenize{chapter_one/naoqi:broker-lib-mod}]{Figura \ref{\detokenize{chapter_one/naoqi:broker-lib-mod}}} o a través de una red pueda encontrar cualquier
+de la \hyperref[\detokenize{chapter_one/naoqi:broker-lib-mod}]{figura \ref{\detokenize{chapter_one/naoqi:broker-lib-mod}}} o a través de una red pueda encontrar cualquier
 método que ha sido publicado.
 
-La carga de módulos forma un árbol (\hyperref[\detokenize{chapter_one/naoqi:broker-mod-meth}]{Figura \ref{\detokenize{chapter_one/naoqi:broker-mod-meth}}}) de métodos
+La carga de módulos forma un árbol (\hyperref[\detokenize{chapter_one/naoqi:broker-mod-meth}]{figura \ref{\detokenize{chapter_one/naoqi:broker-mod-meth}}}) de métodos
 ligados a los módulos, y módulos ligados a un broker.
 
 \begin{figure}[htbp]
@@ -235,7 +235,7 @@ Usar el nombre del módulo, y la dirección IP y puerto de un broker. En este ca
 \subsubsection{Módulos}
 \label{\detokenize{chapter_one/naoqi:modulos}}
 Cada módulo es una clase dentro de una biblioteca. Cuando una
-biblioteca se carga desde \sphinxcode{autoload.ini}, automáticamente al crear una instancia del módulo.
+biblioteca se carga desde \sphinxcode{autoload.ini}, automáticamente instanciará una clase del módulo.
 
 En el constructor de una subclase de \sphinxcode{ALModule}, se pueden «enlazar» o
 «ligar» 
@@ -418,7 +418,7 @@ Las notificaciones son manejadas por una threadpool (localmente), o por un
 hilo único de notificación (remotamente).
 
 
-Para acceder a los valores almacenados en \sphinxcode{ALMemory}, su usan las funciones:
+Para acceder a los valores almacenados en \sphinxcode{ALMemory}, se usan las funciones:
 \begin{itemize}
 \item {} 
 \sphinxcode{getDataPtr()}, que provee un acceso rápido al puntero. Sin embargo, no hay seguridad en el hilo.
@@ -501,7 +501,7 @@ efector del robot en el espacio cartesiano, determinar el movimiento de una cade
 % \label{\detokenize{chapter_one/naoqi:definicion-de-ejes}}
 El eje \sphinxstylestrong{X} es positivo con respecto al frente del robot, el eje \sphinxstylestrong{Y} de
 derecha a izquierda y el \sphinxstylestrong{Z} es vertical.
-La \hyperref[\detokenize{chapter_one/naoqi:almotionaxis}]{Figura \ref{\detokenize{chapter_one/naoqi:almotionaxis}}} muestra la definición de los ejes con respecto al robot.
+La \hyperref[\detokenize{chapter_one/naoqi:almotionaxis}]{figura \ref{\detokenize{chapter_one/naoqi:almotionaxis}}} muestra la definición de los ejes con respecto al robot.
 % \subparagraph{\sphinxstylestrong{Sistema Internacional de Unidades}}
 % \label{\detokenize{chapter_one/naoqi:sistema-internacional-de-unidades}}
 El módulo de \sphinxcode{ALMotion} usa el Sistema Internacional de Unidades (metros,
@@ -510,7 +510,7 @@ segundos, radianes, etc).
 \centering
 \capstart
 
-\noindent\sphinxincludegraphics[scale=0.50]{{almotionaxis}.png}
+\noindent\sphinxincludegraphics[scale=0.40]{{almotionaxis}.png}
 \caption{Sistema de ejes sobre los que el robot ejecuta movimientos}\label{\detokenize{chapter_one/naoqi:almotionaxis}}\end{figure}
 
 
@@ -584,13 +584,13 @@ Si se desea esperar a que termine la animación basta con añadir la instrucció
 Existen tres \textit{modos del lenguaje corporal}:
 \begin{itemize}
 \item {} 
-\sphinxstylestrong{disabled}, el lenguaje corporal nunca lanza una animación.
+\sphinxstylestrong{disabled}: el lenguaje corporal nunca lanza una animación.
 
 \item {} 
-\sphinxstylestrong{random}, el lenguaje corporal ejecuta aleatoriamente algunas animaciones que son ejecutadas una tras otra.
+\sphinxstylestrong{random}: el lenguaje corporal ejecuta aleatoriamente algunas animaciones que son ejecutadas una tras otra.
 
 \item {} 
-\sphinxstylestrong{contextual}, el lenguaje corporal lanza algunas animaciones específicas cada vez que una palabra clave como «Yo», «tú», es detectada en un contexto gramatical apropiado.
+\sphinxstylestrong{contextual}: el lenguaje corporal lanza algunas animaciones específicas cada vez que una palabra clave como «Yo», «tú», es detectada en un contexto gramatical apropiado.
 
 \end{itemize}
 
@@ -649,7 +649,7 @@ Cuando se detiene el módulo, se llama \sphinxcode{unsubscribe()} después de sa
 
 % \paragraph{Sensores}
 % \label{\detokenize{chapter_one/naoqi:sensores}}
-Existen numerosos sensores en el robot NAO; NAOqi ofrece módulos para interactuar
+Existen numerosos sensores en el robot NAO. NAOqi ofrece módulos para interactuar
 con el robot a través de algunos de ellos, o manejar eventos cuando estos
 cambian valores.
 
@@ -661,7 +661,7 @@ El módulo de \sphinxcode{ALSonar} obtiene valores de los sensores ultrasónicos
 Para ahorrar energía, los sensores ultrasónicos no están activados por defecto.
 
 Hay cuatro eventos diferentes relacionados cn los sensores ultrasónicos, y se
-muestran en la tabla \hyperref[\detokenize{chapter_one/naoqi:sonar-events}]{Tabla \ref{\detokenize{chapter_one/naoqi:sonar-events}}}
+muestran en la \hyperref[\detokenize{chapter_one/naoqi:sonar-events}]{tabla \ref{\detokenize{chapter_one/naoqi:sonar-events}}}
 \begin{quote}
 \begin{savenotes}\sphinxattablestart
 \centering
@@ -811,7 +811,7 @@ caminar sobre su eje \sphinxstylestrong{X} durante tres segundos:
 
 \PYG{n}{motion\PYGZus{}proxy} \PYG{o}{=} \PYG{n}{ALProxy}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{ALMotion}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{\PYGZlt{}IP del robot\PYGZgt{}}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,} \PYG{l+m+mi}{9559}\PYG{p}{)} \PYG{c+c1}{\PYGZsh{} Crear un proxy al módulo ALMotion}
 
-\PYG{n}{motion\PYGZus{}proxy}\PYG{o}{.}\PYG{n}{wakeUp}\PYG{p}{(}\PYG{p}{)} \PYG{c+c1}{\PYGZsh{} Utiliza un método de ALMotion para cambiar la posición del robot}
+\PYG{n}{motion\PYGZus{}proxy}\PYG{o}{.}\PYG{n}{wakeUp}\PYG{p}{(}\PYG{p}{)} \PYG{c+c1}{\PYGZsh{} Utiliza un método de ALMotion para cambiar la postura del robot}
 \PYG{n}{x} \PYG{o}{=} \PYG{l+m+mf}{0.5}
 \PYG{n}{y} \PYG{o}{=} \PYG{l+m+mf}{0.0}
 \PYG{n}{theta} \PYG{o}{=} \PYG{l+m+mf}{0.0}

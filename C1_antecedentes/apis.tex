@@ -184,12 +184,12 @@ y los guarda en una galería, cada rostro necesita un identificador de la
 persona. Las galerías sirven para que posteriormente se reconozca a un sujeto
 por medio de su fotografía.
 
-El otro recurso que nos interesa es \sphinxcode{recognize}, que toma una fotografía
+El otro recurso que nos interesa es \sphinxcode{recognize}, que toma una fotografía,
 encuentra caras e intenta emparejarlas con las que sean guardado
 previamente en una galería.
 
 Para hacer ambas peticiones se utiliza el método POST. Al hacer un POST
-a \sphinxcode{/enroll} se debe enviar un JSON con la siguiente estructura en el cuerpo
+a \sphinxcode{enroll} se debe enviar un JSON con la siguiente estructura en el cuerpo
 del mensaje.
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -311,7 +311,7 @@ Wit trabaja con \sphinxstyleemphasis{intenciones} y \sphinxstyleemphasis{entidad
 el significado en general de una oración. Por ejemplo la intención
 de la oración «¿A qué hora abren la bibloteca central de CU?»
 puede ser las horas de apertura de un lugar. Las entidades
-proveen más información para contestar correctamente. Siguiente el ejemplo,
+proveen más información para contestar correctamente. Siguiendo el ejemplo,
 el usuario no está preguntando a qué hora abren todas las bibliotecas,
 sino en específico la biblioteca central de CU, por lo que
 una entidad sería el lugar del que se desear obtener la hora de apertura.

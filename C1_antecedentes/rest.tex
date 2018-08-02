@@ -18,7 +18,7 @@ web, HTTP es invocado.
 
 El contenido de la Web reside en servidores web. Los servidores web
 “hablan” el protocolo HTTP, por lo que son llamados servidores HTTP.
-Estos servidores HTTP almacenan datos de Internet y proveen estos datos
+Estos servidores HTTP almacenan datos de internet y proveen estos datos
 cuando son solicitados por los clientes HTTP. Los clientes hacen
 peticiones HTTP a los servidores, y los servidores regresan los datos
 solicitados en respuestas HTTP. Juntos, los clientes y servidores HTTP
@@ -39,7 +39,7 @@ En resumen, un recurso es cualquier tipo de fuente de contenido.
 Una \sphinxstyleemphasis{transacción} en HTTP consiste de un comando de \sphinxstyleemphasis{solicitud} o \sphinxstyleemphasis{petición} (enviada
 desde un cliente a un servidor), y una \sphinxstyleemphasis{respuesta} como resultado (enviado
 del servidor al cliente). Esta comunicación se lleva a cabo con bloques
-de datos, con un formato definido, llamados \sphinxstyleemphasis{mensajes HTTP}.
+de datos, con un formato definido, llamados \sphinxstyleemphasis{mensajes} HTTP.
 
 
 \subsubsection{Métodos}
@@ -53,7 +53,7 @@ son:
 \item[{GET.}] \leavevmode
 Obtiene una representación del recurso. El cliente envía una
 solicitud GET para pedir la representación de un recurso,
-identificado por una URL.
+identificado por un URL.
 
 \item[{DELETE.}] \leavevmode
 Destruye el recurso. El cliente envía un DELETE cuando desea que un
@@ -102,14 +102,14 @@ pequeños cambios en el estado del recurso.
 Todo mensaje de respuesta HTTP trae consigo un código de estado. El
 código de estado es un código de tres dígitos que le dice al cliente si
 la petición fue exitosa o si otras acciones son requeridas. En la
-\hyperref[\detokenize{chapter_one/rest:table-status-code}]{Tabla \ref{\detokenize{chapter_one/rest:table-status-code}}} se muestran algunas categorías
+tabla \ref{\detokenize{chapter_one/rest:table-status-code}} se muestran algunas categorías
 de los códigos de estado más comunes.
 
 
 \begin{savenotes}\sphinxattablestart
 \centering
 \sphinxcapstartof{table}
-\sphinxcaption{Alguno códigos de estado comunes.}\label{\detokenize{chapter_one/rest:table-status-code}}
+\caption{Categorías de los códigos de estado. \label{\detokenize{chapter_one/rest:table-status-code}}}
 \sphinxaftercaption
 \begin{tabulary}{\linewidth}[t]{|T|T|}
 \hline
@@ -170,8 +170,8 @@ coma. Los encabezados terminan con un espacio en blanco.
 
 \item[{Cuerpo.}] \leavevmode
 Después del espacio en blanco sigue un cuerpo del mensaje opcional
-que contiene cualquier tipo de datos. Los cuerpos de la petición
-llevan datos al servidor web; los cuerpos de la respuesta cargan
+que contiene cualquier tipo de datos. El cuerpo de la petición
+lleva datos al servidor web; el cuerpo de la respuesta carga
 datos de regreso al cliente. A diferencia de la línea inicial y los
 encabezados, el cuerpo puede contener datos binarios arbitrarios
 (imágenes, videos, audio, aplicaciones, etc.).
@@ -200,7 +200,7 @@ donde inventó e implementó, entre otras cosas:
 El Identificador de Recursos Uniforme, una sintaxis que asigna a cada documento web una dirección única.
 
 \item {} 
-El Protocolo de Transferencia de Hipertexto (HTTP), un lenguaje basado en mensajes que las computadoras pueden usar para comunicarse a través de Internet.
+El Protocolo de Transferencia de Hipertexto (HTTP), un lenguaje basado en mensajes que las computadoras pueden usar para comunicarse a través de internet.
 
 \item {} 
 El Lenguaje de Marcas de Hipertexto (HTML), para representar documentos informativos que contienen enlaces a documentos relacionados.
@@ -214,7 +214,7 @@ El primer navegador web, llamado «Nexus».
 \end{itemize}
 
 Desde el momento que el proyecto se publicó, comenzó a crecer exponencialmente.
-El tráfico de la web estaba superando la capacidad de la infraestructura del Internet.
+El tráfico de la web estaba superando la capacidad de la infraestructura del internet.
 
 
 \subsubsection{Arquitectura web}
@@ -222,7 +222,8 @@ El tráfico de la web estaba superando la capacidad de la infraestructura del In
 A finales de 1993, Roy Fielding, a través de un análisis, reconoció que la escalabilidad
 de la web estaba gobernada por un conjunto de restricciones clave.
 Fielding agrupó en seis categorías esas restricciones y de manera manera colectiva
-se refirió a ellas como el \sphinxstyleemphasis{estilo arquitectónico de la web}.
+se refirió a ellas como el \sphinxstyleemphasis{estilo arquitectónico de la web}. Las
+restricciones se describen a continuación.
 
 
 \paragraph{Cliente servidor}
@@ -242,17 +243,16 @@ se rompe.
 Los componentes web interactúan consistentemente dentro las siguientes
 cuatro restricciones de la interfaz uniforme.
 
-
-\subparagraph{Identificación de recursos}
-\label{\detokenize{chapter_one/rest:identificacion-de-recursos}}
+\begin{itemize}
+    \item 
+    Identificación de recursos:
 Como se mencionó anteriormente, los elementos dentro de la web son
 conocidos como \sphinxstyleemphasis{recursos} y tienen un identificador único. Por ejemplo, una
 página web como \sphinxstyleemphasis{http://convoynetwork.com/}, identifica de manera única el
 recurso en la raíz del sitio web.
 
 
-\subparagraph{Manipulación de recursos a través de sus representaciones}
-\label{\detokenize{chapter_one/rest:manipulacion-de-recursos-a-traves-de-sus-representaciones}}
+\item Manipulación de recursos a través de sus representaciones:
 Los clientes manipulan representaciones de recursos. Un mismo
 recurso puede ser representado de diferentes formas a diferentes
 clientes. Por ejemplo, un documentos puede representarse como un HTML
@@ -261,8 +261,7 @@ principal es que la representación es una manera de interactuar con el recurso
 pero no es el recurso en sí.
 
 
-\subparagraph{Mensajes autodescriptivos}
-\label{\detokenize{chapter_one/rest:mensajes-autodescriptivos}}
+\item Mensajes autodescriptivos:
 El estado deseado de un recurso puede ser representado dentro del mensaje
 de petición del cliente. El estado actual de un recurso puede estar representado
 dentro del mensaje de respuesta por parte del servidor.
@@ -273,8 +272,7 @@ Un mensaje HTTP provee \sphinxstyleemphasis{encabezados} para organizar varios t
 de metadatos en campos uniformes.
 
 
-\subparagraph{Hipermedia como el motor del estado de la aplicación (HATEOAS)}
-\label{\detokenize{chapter_one/rest:hipermedia-como-el-motor-del-estado-de-la-aplicacion-hateoas}}
+\item Hipermedia como el motor del estado de la aplicación (HATEOAS):
 La representación del estado de un recurso incluye enlaces a recursos
 relacionados. Los enlaces son los hilos que entrelazan la web, permitiendo
 a los usuarios moverse a través de aplicaciones y datos de una manera directa
@@ -282,9 +280,11 @@ y significativa. La presencia, o ausencia, de un enlace en una página es una
 parte importante del estado del recurso actual.
 
 
+\end{itemize}
+
 \paragraph{Sistema de capas}
 \label{\detokenize{chapter_one/rest:sistema-de-capas}}
-Las restricciones del sistema en capas permiten intermediarios de red como
+Las restricciones del sistema en capas permiten que intermediarios de red como
 los proxies y puertas de acceso sean desplegadas de manera transparente entre el cliente
 y el servidor usando una interfaz uniforme de la web. Intermediarios basados
 en la red se usan para reforzar la seguridad, almacenamiento en caché de
@@ -368,7 +368,7 @@ intercambien información.
 El estilo arquitectónico REST se aplica comúnmente al diseño de API para
 servicios web modernos. Una API web que sigue el estilo REST es una API REST.
 Tener una API REST hace a un servicio web RESTful. Una API REST está formada de
-recursos entrelazados.
+recursos entrelazados.\\
 
 \begin{remark}
 REST es una arquitectura basada en recursos. Se accede a un recurso a través
@@ -377,7 +377,7 @@ solicita a los desarrolladores usar métodos HTTP explícitamente
 y de una forma que sea consistente con la definición del protocolo.
 Cada recurso se identifica con un URL. Todos los recursos deben soportar
 las operaciones HTTP más comunes, además REST permite que ese recurso
-tenga diferentes representaciones, por ejemplo, texto, xml, json, etc.
+tenga diferentes representaciones, por ejemplo, texto, XML, JSON, etc.
 El cliente REST puede solicitar una representación en específico por
 medio del protocolo HTTP. La \hyperref[\detokenize{chapter_one/rest:rest-struct}]{Tabla \ref{\detokenize{chapter_one/rest:rest-struct}}} describe
 los elementos usados en REST.
@@ -387,7 +387,7 @@ los elementos usados en REST.
 \begin{savenotes}\sphinxattablestart
 \centering
 \sphinxcapstartof{table}
-\sphinxcaption{Elementos de REST}\label{\detokenize{chapter_one/rest:rest-struct}}
+\sphinxcaption{Elementos de REST \label{\detokenize{chapter_one/rest:rest-struct}}}
 \sphinxaftercaption
 \begin{tabulary}{\linewidth}[t]{|T|T|}
 \hline
