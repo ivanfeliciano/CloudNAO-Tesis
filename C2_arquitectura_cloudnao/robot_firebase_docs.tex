@@ -6,10 +6,10 @@ logs para sus posteriores análisis usando la Firebase, también en la nube, y m
 funcionalidades más. Sin embargo, en esta sección se describe el robot como componente
 que no sólo recibe órdenes y envía datos sin ejecutar un programa localmente.
 
-El cómputo en la nube como ya se habló en en secciones pasadas, incluye también
-que el robot aunque no realice todo el procesamiento que conlleva el ejecutar
-un modelo de aprendizaje profundo para analizar imágenes, procese la salida
-de un algoritmo para realizar cierta tarea que desee.
+% El cómputo en la nube como ya se habló en en secciones pasadas, incluye también
+% que el robot aunque no realice todo el procesamiento que conlleva el ejecutar
+% un modelo de aprendizaje profundo para analizar imágenes, procese la salida
+% de un algoritmo para realizar cierta tarea que desee.
 
 En esta sección se describe cómo conectar al robot a la aplicación web utilizando
 como intermediario a Firebase.
@@ -20,6 +20,7 @@ y la respuesta sea inmediata, Ese intermediario es Firebase, que sirve como
 backend para conectar estas plataformas.
 
 El robot es una plataforma con recursos muy limitados, no hay un SDK
+de Firebase
 específicamente hecho para el robot. Por lo anterior, se utiliza la API REST
 de Firebase Realtime Database para enviar y recibir información a través de
 internet. Sin embargo, a pesar de ser una API REST, fue necesaria la creación
@@ -32,7 +33,6 @@ los SDK disponibles.
 \label{\detokenize{nao_firebase:modulo-auxiliar-para-la-api-rest}}
 Para utilizar la API REST de manera más simple se desarrolló una biblioteca
 que encapsulara los métodos de lectura, escritura y el streaming de datos.
-
 Es un módulo de Python, compuesto por dos partes principales; la primera parte
 es aquella que maneja las peticiones de escritura y lectura usando los métodos
 HTTP antes mencionados, la segunda parte es la encargada de recibir las
@@ -40,19 +40,15 @@ notificaciones de parte del servidor. Para la primera el uso de la biblioteca
 \sphinxcode{\sphinxupquote{requests}} es suficiente. Para la segunda, se emplean las bibliotecas
 \sphinxcode{\sphinxupquote{threading}}, para que en un hilo se escuchen los cambios, \sphinxcode{\sphinxupquote{sseclient}},
 un cliente del protocolo \sphinxstylestrong{SSE}, y \sphinxcode{\sphinxupquote{socket}}, el hilo del cliente \sphinxstylestrong{SSE}.
-
-A continuación se describe cada componente del módulo \sphinxcode{\sphinxupquote{firebase}}.
-
-
+A continuación se describe cada elemnto del módulo \sphinxcode{\sphinxupquote{firebase}}.
+\newline
 
 \codedocumentation{\sphinxbfcode{\sphinxupquote{class }}\sphinxcode{\sphinxupquote{firebase.}}\sphinxbfcode{\sphinxupquote{ClosableSSEClient}}(\emph{*args}, \emph{**kwargs})}
-
 Una clase pública desarrollada por el equipo de Firebase.
 Añade una funcionalidad al módulo \sphinxcode{\sphinxupquote{SSEClient}} para
 abandonar correctamente el streaming.
 
 \codedocumentation{{\sphinxbfcode{\sphinxupquote{class }}\sphinxcode{\sphinxupquote{firebase.}}\sphinxbfcode{\sphinxupquote{FirebaseDatabase}}}(\emph{url})}
-
 Una clase para usar utilizar la API REST de Firebase con métodos de alto nivel.
 Sirve para crear algo similar a las \sphinxstyleemphasis{Referencias} definidas por Firebase.
 Un objeto de esta clase representa una ubicación específica en la base de datos.
@@ -61,12 +57,9 @@ Con los métodos se realizan operaciones de escritura y lectura sobre esa ubicac
 El constructor de la clase se encarga de definir la ubicación de la base de datos
 sobre la que se harán las operaciones.
 Necesita el diccionario \sphinxcode{\sphinxupquote{config}} que contiene el valor del parámetro de autorización.
-\index{add\_event\_listener() (método de firebase.FirebaseDatabase)}
 
 \begin{fulllineitems}
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{add\_event\_listener}}}{\emph{handler\_function}}{}
-\end{fulllineitems}
-
+\phantomsection\label{\detokenize{nao_firebase:firebase.FirebaseDatabase.addeventlistener}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{add\_event\_listener}}}{\emph{handler\_function}}{}~
 
 Este método crea un hilo para escuchar los cambios en la ubicación actual
 de la base de datos, y manejar esos cambios en una función.
@@ -75,8 +68,7 @@ de la base de datos, y manejar esos cambios en una función.
 \sphinxstyleliteralstrong{\sphinxupquote{handler\_function}} \textendash{} La función que maneja los eventos enviados por firebase.
 
 \end{description}\end{quote}
-
-\index{child() (método de firebase.FirebaseDatabase)}
+\end{fulllineitems}
 
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{nao_firebase:firebase.FirebaseDatabase.child}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{child}}}{\emph{path}}{}~
@@ -128,8 +120,7 @@ Elimina todos los datos en la ubicación actual.
 Escribe datos en la ubicación actual. Esto sobrescribe cualquier información
 que contenga.
 Hace un \sphinxcode{\sphinxupquote{PUT}} sobre la ubicación actual.
-:param data: Los datos que se envían en la petición.
-:type data: Cualquier tipo de datos válido en un JSON.
+Recibe cualquier tipo de objeto válido en un JSON.
 
 \end{fulllineitems}
 
@@ -140,11 +131,10 @@ Hace un \sphinxcode{\sphinxupquote{PUT}} sobre la ubicación actual.
 Escribe múltiples valores en la ubicación actual de la base de datos. A diferencia
 de {\hyperref[\detokenize{nao_firebase:firebase.FirebaseDatabase.set}]{\sphinxcrossref{\sphinxcode{\sphinxupquote{set()}}}}} solo actualiza los valores que se desean de acuerdo a la ubicación
 actual. Se hace un \sphinxcode{\sphinxupquote{PATCH}} al URL.
-
+\newline
 \end{fulllineitems}
 
 \codedocumentation{{\sphinxbfcode{\sphinxupquote{class }}\sphinxcode{\sphinxupquote{firebase.}}\sphinxbfcode{\sphinxupquote{RemoteThread}}}(\emph{url}, \emph{handler})}
-
 Una clase creada por el equipo de Firebase para que un hilo
 se encargue de los eventos enviados por Firebase, con una
 funcionalidad que añadí para que una función callback maneje
@@ -158,9 +148,9 @@ Este módulo es el que se ocupa de integrar la API de NAOqi en la aplicación
 que se corre sobre el robot. Aquí se crean los proxies a los módulos de NAOqi,
 y los métodos que se utilizan para obtener datos de la memoria del robot,
 realizar un movimiento, hablar, entre otros.
+\newline
 
 \codedocumentation{{\sphinxbfcode{\sphinxupquote{class }}\sphinxcode{\sphinxupquote{nao\_robot.}}\sphinxbfcode{\sphinxupquote{Robot}}}(\emph{ip\_address}, \emph{port})}
-
 Una clase para encapsular todos los métodos del robot
 que van a recibir o enviar información a Firebase.
 Los atributos de clase y sus valores son los siguientes:
@@ -182,8 +172,8 @@ Los atributos de clase y sus valores son los siguientes:
 \PYG{p}{]}
 \end{sphinxVerbatim}
 
-El constructor de la clase crea los proxies a los módulos de NAOqi.
-Recibe la la dirección ip y el puerto del robot. A continuación
+El constructor de la clase crea los proxies de las API de NAOqi.
+Recibe la dirección IP y el puerto del robot. A continuación
 se describen los métodos de esta clase.
 
 \begin{fulllineitems}
@@ -202,8 +192,8 @@ y lo retorna.
 
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{nao_firebase:nao_robot.Robot.get_image_from_robot}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{get\_image\_from\_robot}}}{}{}
-Obtiene la imagen del robot codificada en base64. Primero con
-\sphinxcode{\sphinxupquote{getImageRemote()}} recibe el contenedor de la imagen, y luego,
+Obtiene la imagen del robot codificada en base 64. Primero con
+\sphinxcode{\sphinxupquote{getImageRemo\\te()}} recibe el contenedor de la imagen, y luego,
 el arreglo de bytes de la imagen en el contenedor, se guarda en una
 estructura de \sphinxcode{\sphinxupquote{PIL}} para que pueda convertirse en una cadena.
 
@@ -233,27 +223,14 @@ segundos y luego desactiva la rigidez del motor.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{nao_firebase:nao_robot.Robot.move_robot}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{move\_robot}}}{\emph{\_x}, \emph{\_y}, \emph{\_theta}}{}
 Método para ejecutar hacer caminar utilizando \sphinxcode{\sphinxupquote{moveToward}} de la
-API de NAOqi.
-\begin{quote}\begin{description}
-\item[{Parámetros}] \leavevmode\begin{itemize}
-\item {} 
-\sphinxstyleliteralstrong{\sphinxupquote{\_x}} \textendash{} La velocidad (-1, 1) sobre el eje \sphinxstylestrong{X}
-
-\item {} 
-\sphinxstyleliteralstrong{\sphinxupquote{\_y}} \textendash{} La velocidad (-1, 1) sobre el eje \sphinxstylestrong{Y}
-
-\item {} 
-\sphinxstyleliteralstrong{\sphinxupquote{\_theta}} \textendash{} La velocidad (-1, 1) sobre el eje \sphinxstylestrong{Z}
-
-\end{itemize}
-
-\end{description}\end{quote}
+API de NAOqi.Recibe como parámetros la velocidad sobre los tres
+ejes en el intervalo $(-1, 1)$.
 
 \end{fulllineitems}
 
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{nao_firebase:nao_robot.Robot.say_speech}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{say\_speech}}}{\emph{text}}{}
-Ejecuta la función \sphinxcode{\sphinxupquote{say}} de \sphinxcode{\sphinxupquote{ALTextToSpeech}}. Dice la cadena
+Ejecuta la función \sphinxcode{\sphinxupquote{say}} de \sphinxcode{\sphinxupquote{ALTextToSpeech}}. Repite la cadena
 enviada como parámetro.
 
 \end{fulllineitems}

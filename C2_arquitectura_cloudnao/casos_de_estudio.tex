@@ -3,7 +3,7 @@
 \label{\detokenize{chapter_two/study_cases_implementation:implementacion-de-casos-de-estudio-con-servicios-en-la-nube-existente}}\label{\detokenize{chapter_two/study_cases_implementation::doc}}
 
 
-\subsubsection{Reconocimiento de rostros utilizando la API de Kairos}
+\subsection{Reconocimiento de rostros utilizando la API de Kairos}
 
 En la arquitectura utilizamos los servicios de detección de rostros y reconocimiento
 de sujetos de la API de Kairos.
@@ -32,7 +32,7 @@ se muestra una lista de las personas en la fotografía.
 Al dar clic sobre el nombre de la persona en la lista, el robot ejecuta
 un movimiento de saludo diciendo una frase simple con el nombre de la persona.
 
-\begin{figure}[!h]
+\begin{figure}[htbp]
 \centering
 \caption{El flujo de el reconocimiento de personas. 1) El usuario presiona el botón para capturar una imagen desde el robot. 2) El robot envía la imagen a la 
 aplicación. 3) El usuario presiona el botón Reconoce personas y envía la imagen a la API REST de CloudNAO. 4) La API de CloudNAO solicita el recurso \texttt{recognize} de Kairos. 5) Kairos envía un JSON como respuesta. 6) La API 
@@ -40,7 +40,7 @@ de CloudNAO envía un JSON a la aplicación móvil. 7) La aplicación envía eje
 \includegraphics[scale=0.6]{study_case_kairos}
 \end{figure}
 
-\subsubsection{Reconocimiento óptico de caracteres y traducción de texto con Google Cloud Vision y Google Cloud Translation}
+\subsection{Reconocimiento óptico de caracteres y traducción de texto con Google Cloud Vision y Google Cloud Translation}
 
 El reconocimiento óptico de caracteres (OCR por sus siglas en inglés) permite detectar y extraer texto de imágenes para luego
 almacenarlo en un formato que una máquina pueda "entender".
@@ -64,7 +64,7 @@ la API de Vision, éste se traduce, el resultado se muestra
 en la aplicación y el robot repite oralmente
 el texto traducido.
 
-\subsubsection{Reconocimiento de voz con la API de Wit.ai}
+\subsection{Reconocimiento de voz con la API de Wit.ai}
 
 Una aplicación interesante de tecnologías que realizan el 
 procesamiento de lenguaje natural es la creación de bots conversacionales
@@ -132,7 +132,7 @@ zonas de interés con servicios como Foursquare o los Mapas de Google,
 uso de la la gráfica de conocimiento de Google o de Wolfram Alpha, 
 servicios de noticias, etc.
 
-\begin{figure}[!h]
+\begin{figure}[htbp]
 \centering
 \caption{El funcionamiento de la interacción con el robot a través de un discurso
 oral. 1) El usuario envía un mensaje que el robot graba en un archivo de audio

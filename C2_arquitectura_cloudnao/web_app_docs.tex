@@ -10,7 +10,7 @@ visualiza a través de su cámara. Esta aplicación forma parte de lo que
 llamamos \sphinxstyleemphasis{Robot logs} y \sphinxstyleemphasis{Robot Remote Control}.
 
 A pesar de que el objetivo principal de esta aplicación web es ser el
-front-end de la conexión entre el robot NAO directamente con la Firebase
+frontend de la conexión entre el robot NAO directamente con la Firebase
 Realtime Database, la unión de estos tres elementos pretende
 mostrar un caso de uso del cómputo en la nube, que no es el procesamiento de
 imágenes o la ejecución de un algoritmo de aprendizaje automático que el robot
@@ -30,10 +30,10 @@ La aplicación tiene una estructura muy sencilla, cumple con los elementos
 básicos de una aplicación web moderna. Un login de usuario, registro de uno
 nuevo, y un tablero donde el usuario interactúe con el robot.
 
-En las siguientes secciones se describen a detalle los elementos que conforman
-este componente, Firebase y React como herramientas de desarrollo,
-una descripción más detallada de la aplicación y la guía para
-los desarrolladores que mantienen la aplicación.
+% En las siguientes secciones se describen a detalle los elementos que conforman
+% este componente, Firebase y React como herramientas de desarrollo,
+% una descripción más detallada de la aplicación y la guía para
+% los desarrolladores que mantienen la aplicación.
 
 
 %\subsubsection{Firebase para aplicaciones Web}
@@ -1218,7 +1218,7 @@ Puede cerrar la sesión o esta se mantiene activa.
 \centering
 \capstart
 
-\noindent\sphinxincludegraphics[scale=0.2]{{webappflow}.png}
+\noindent\sphinxincludegraphics[scale=0.175]{{webappflow}.png}
 \caption{El usuario inicia sesión o se registra, es redireccionado a un panel, el usuario debe elegir un robot de la lista para poder interactuar con él.}\label{\detokenize{users_docs:webappflow}}\end{figure}
 
 Como se puede ver, la aplicación web cuenta con algunas características
@@ -1307,7 +1307,7 @@ de aplicaciones web.
 \paragraph{Descripción de los componentes}
 \label{\detokenize{code_docs:creacion-del-proyecto}}
 
-La aplicación se creo utilizando la herramienta
+La aplicación se creó utilizando la herramienta
 \sphinxcode{\sphinxupquote{create-react-app}} y 
 y después se le agregaron todos los servicios de Firebase
 que se ocuparon. 
@@ -1422,7 +1422,7 @@ de Firebase.
 \textbf{navigation\_bar.js}
 \label{\detokenize{code_docs:navigation-bar-js}}
 Hay tres componentes dentro de este archivo:
-\texttt{NavigationAut}, el menú de navegación cuando el
+\texttt{NavigationAuth}, el menú de navegación cuando el
 usuario no ha iniciado sesión,
 \texttt{NavigationNonAuth}, el menú cuando ha iniciado sesión y
 \texttt{NavigationBar}, 
@@ -1448,7 +1448,6 @@ Se define al componente \texttt{RobotList} el cual maneja la selección de un ro
 \sphinxcode{\sphinxupquote{Dashboard}} para que envíe a sus hijos el id del robot seleccionado.
 
 \textbf{robot\_status.js}
-
 Contiene al componente \texttt{RobotStatus} que muestra la batería y el estado de la conexión con el robot.
 
 \textbf{signin.js}
@@ -1491,7 +1490,7 @@ Este archivo contiene las rutas de la aplicación.
 La aplicación inicia mostrando el componente de la ruta \sphinxcode{\sphinxupquote{LANDING}}, que es
 \sphinxcode{\sphinxupquote{Landing}}, el usuario selecciona \sphinxcode{\sphinxupquote{Sign In}} en el menú de navegación
 se direcciona a la ruta \sphinxcode{\sphinxupquote{SIGN\_IN}}, si es un nuevo usuario puede dar clic
-en el botón que envía a la ruta \sphinxcode{\sphinxupquote{SIGN\_UP}}. Después de realzar un inicio de
+en el botón que envía a la ruta \sphinxcode{\sphinxupquote{SIGN\_UP}}. Después de realizar un inicio de
 sesión de cualquiera de las dos formas anteriores se redirecciona a la ruta
 \sphinxcode{\sphinxupquote{ROBOTS}} que muestra al componente \sphinxcode{\sphinxupquote{Dashboard}}.
 

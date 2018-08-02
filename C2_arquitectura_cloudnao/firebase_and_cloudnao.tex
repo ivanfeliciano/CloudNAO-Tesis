@@ -1,7 +1,7 @@
 
 
 
-\subsection{Firebase Realtime Database y CloudNAO}
+\subsection{Firebase Realtime Database dentro de CloudNAO}
 \label{\detokenize{chapter_two/desc_cloudnao:firebase-realtime-database-y-cloudnao}}
 Como componente dentro de la arquitectura CloudNAO, la Realtime Database tiene
 dos funciones principales; almacenar un registro de datos generados por el robot,
@@ -27,7 +27,8 @@ estructura del \sphinxstyleemphasis{Robot Remote Control}.
 De la \hyperref[\detokenize{chapter_two/desc_cloudnao:rtd-components-diagram}]{Figura \ref{\detokenize{chapter_two/desc_cloudnao:rtd-components-diagram}}} se muestran identificadas por un número
 las relaciones entre cada elemento. A continuación se describe cada una de estas:
 
-1. \sphinxstylestrong{Robot - Firebase Realtime Database}, el robot envía información
+\begin{enumerate}
+    \item\sphinxstylestrong{Robot - Firebase Realtime Database}: el robot envía información
 a la base de datos mediante su API REST.
 Para la parte de \sphinxstyleemphasis{Robot Log}, envía datos de \sphinxcode{ALMemory} o de \sphinxcode{ALVideDevice}
 y para \sphinxstyleemphasis{Robot Remote Control} establece una conexión constante para recibir
@@ -40,33 +41,31 @@ servidor mediante una conexión HTTP. Con esta herramienta el robot se mantiene
 recibir un mensaje el robot lo maneja como un comando para ejecutar cierta
 acción, como puede ser un movimiento o enviar una imagen en vivo. Esta es la parte principal del \sphinxstyleemphasis{Robot Remote Control}.
 
-2. \sphinxstylestrong{Aplicación móvil - Robot}, utilizando el SDK de NAOqi para Java,
+\item\sphinxstylestrong{Aplicación móvil - Robot}: utilizando el SDK de NAOqi para Java,
 específicamente para Android, se ejecutan remotamente módulos de la API de NAOqi.
 Para la parte de Realtime Database se solicitan datos de \sphinxcode{ALMemory}. El robot
 envía la información a la aplicación y ésta escribe los datos en una ubicación
 única para cada robot. Esta relación es una de las partes que generan los datos
 de \sphinxstyleemphasis{Robot Log}.
 
-3. \sphinxstylestrong{Firebase Realtime Database - Aplicación móvil}, el primer elemento
-envía los últimos valores guardados en la base de datos a una lista que se muestra
-dentro de una actividad en la aplicación cuya función es mostrar valores
-obtenidos de \sphinxcode{ALMemory}, esta parte corresponde a \sphinxstyleemphasis{Robot Log}. Usando
-el SDK para Android de Firebase Realtime Database se hacen realizan las
-operaciones de escritura y lectura de los datos de \sphinxcode{ALMemory}
-obtenidos del robot.
+\item\sphinxstylestrong{Firebase Realtime Database - Aplicación móvil}: Dentro de la aplicación se elige
+que valores de \texttt{ALMemory}
+se desean guardar. Después
+usando
+el SDK para Android de Firebase Realtime Database se hacen la
+escritura, de manera paralela,
+de los datos de \sphinxcode{ALMemory}
+obtenidos del robot. Forma parte
+de \textit{Robot Log}.
 
-4. \sphinxstylestrong{Firebase Realtime Database - Aplicación web}, el navegador web escribe y
-lee los datos con el SDK web de Firebase Realtime Database. Se vale de
+\item \sphinxstylestrong{Firebase Realtime Database - Aplicación web}: desde el navegador web se escriben y
+leen los datos con el SDK web de Firebase Realtime Database. Se vale de
 la funcionalidad de \sphinxstyleemphasis{Robot Log} para mostrar los últimos valores de \sphinxcode{ALMemory}
 enviados por el robot y escribe información a una ubicación de la base de
 datos a la que el robot se habrá suscrito para detectar cambios. Dichos cambios
 son comandos que el robot ejecutará. Esto último es una parte de
 \sphinxstyleemphasis{Robot Remote Control}.
-
-En las secciones subsecuentes se explica cómo implementar el servicio de
-Firebase Realtime Database en cada una de las plataformas utilizadas, el robot
-NAO, la aplicación móvil y la web.
-
+\end{enumerate}
 
 \subsubsection{Diseño de la base de datos}
 \label{\detokenize{chapter_two/desc_cloudnao:diseno-de-la-base-de-datos}}
@@ -101,10 +100,12 @@ En las siguientes secciones primero se describe la base de datos con un enfoque
 clásico con el modelo entidad relación y después como se puede transformar ese
 modelo base en un JSON que se pueda almacenar en la nube.
 
+\paragraph{Diagrama entidad-relación}
+
 El diagrama de la \hyperref[\detokenize{chapter_two/desc_cloudnao:entity-relationship-model-cn-firebase}]{Figura \ref{\detokenize{chapter_two/desc_cloudnao:entity-relationship-model-cn-firebase}}}, muestra el
 modelo sobre el que se basa el JSON que se almacena en Firebase.
 
-Un usuario puede tener varios robots, cada robot cuenta está relacionado
+Un usuario puede tener varios robots, cada robot está relacionado
 con otras entidades como: un texto que representa el discurso que tiene que decir,
 la última imagen enviada por el robot, un largo historial de
 logs con valores de \sphinxcode{ALMemory}, el estado del robot (el nivel de batería y
@@ -144,22 +145,23 @@ algunos de sus principales atributos:
 \sphinxstylestrong{nao-firebase}, es la raíz del objeto.
 
 \item {} 
-\sphinxstylestrong{commands}, es parte del segundo nivel, los robots se suscriben esta ubicación para manejar actualizaciones. Está compuesto por objetos que corresponde a cada robot.
+\sphinxstylestrong{commands}, es parte del segundo nivel, los robots se suscriben esta ubicación para manejar actualizaciones. Está compuesto por objetos que corresponden a cada robot.
 
 \item {} 
 \sphinxstylestrong{liveImages}, es parte del segundo nivel, y almacena imágenes enviadas por cada robot. Está compuesto por objetos que corresponde a cada robot.
 
 \item {} 
-\sphinxstylestrong{logs}, está en el segundo nivel, y aquí se encuentra el historial de logs de \sphinxcode{ALMemory} de cada robot. Está compuesto por objetos que corresponde a cada robot.
+\sphinxstylestrong{logs}, está en el segundo nivel, y aquí se encuentra el historial de logs de \sphinxcode{ALMemory} de cada robot. Está compuesto por objetos que corresponden a cada robot.
 
 \item {} 
 \sphinxstylestrong{robots}, definido en el segundo nivel, conjunto de todos los robots que se añaden a la aplicación.
 
 \item {} 
-\sphinxstylestrong{speeches}, está en el segundo nivel y contiene el texto que debe ser enviado al robot y éste repetir oralmente. Está compuesto por objetos que corresponde a cada robot.
+\sphinxstylestrong{speeches}, está en el segundo nivel y contiene el texto que debe ser enviado al robot y que éste repite oralmente. Está compuesto por objetos que corresponden a cada robot.
 
 \item {} 
-\sphinxstylestrong{users}, en el segundo nivel, el conjunto de todos los usuarios de la aplicación, ordenados por su identificador generado por Firebase Auth. Sólo se almacena su dirección de correo electrónico y un objeto con los robots que le pertenecen.
+\sphinxstylestrong{users}, en el segundo nivel, el conjunto de todos los usuarios de la aplicación, ordenados por su identificador generado por Firebase Auth. Sólo se almacena su dirección de correo electrónico y un objeto con los identificadores de los robots que 
+ha registrado.
 
 \item {} 
 \sphinxstylestrong{robotId}, es un identificador único generado por Firebase, cada robot que agrega un usuario tiene un id único. Es una cadena que sirve para que cada robot tenga su propia ubicación de comandos, imágenes, etc.
@@ -168,6 +170,4 @@ algunos de sus principales atributos:
 \sphinxstylestrong{userId}, un id obtenido de Firebase Authentication.
 
 \end{itemize}
-
-Los demás atributos son autodescriptivos.
 

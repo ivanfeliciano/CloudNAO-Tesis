@@ -46,8 +46,8 @@ En este recurso la única forma de persistencia de datos es al guardar el
 rostro de una nueva persona para su posterior reconocimiento.
 
 
-\texttt{POST /vision}
-\label{\detokenize{chapter_two/desc_cloudnao:post-vision}}\\
+\paragraph{\texttt{\large POST /vision}}
+\label{\detokenize{chapter_two/desc_cloudnao:post-vision}}
 
 Se envía una imagen ya sea codificada en base 64 o mediante su URL y
 las características que se desean obtener. Las características disponibles
@@ -61,7 +61,7 @@ con un identificador enviado en
 el cuerpo de la petición se
 almacena en una galería de
 Kairos. Se emplea
-\sphinxhref{https://www.kairos.com/docs/api/\#post-enroll}{/enroll}
+\sphinxhref{https://www.kairos.com/docs/api/\#post-enroll}{\texttt{/enroll}}
 de Kairos.
 \item{}
 \sphinxcode{FACE\_RECOGNITION}:
@@ -70,13 +70,12 @@ imagen y los relaciona con los
 rostros similares previamente
 guardados en una galería de
 Kairos. Usa
-\sphinxhref{https://www.kairos.com/docs/api/\#post-recognize}{/recognize}
+\sphinxhref{https://www.kairos.com/docs/api/\#post-recognize}{\texttt{/recognize}}
 de la API de Kairos.
 \item{}
 \sphinxcode{OBJECT\_DETECTION}:
 Busca objetos en una la imagen,
-usa la API de \sphinxhref{https://github.com/tensorflow/models/tree/master/research/object\_detection}{Tensorflow object
-detection}.
+usa la API de \sphinxhref{https://github.com/tensorflow/models/tree/master/research/object\_detection}{detecctión de objetos de TensorFlow}.
 Regresa las coordenadas de un
 cuadro delimitador para cada
 objeto detectado.
@@ -145,13 +144,13 @@ En el cuerpo del mensaje se envía un JSON con la siguiente estructura. En la ta
 \begin{tabular}{|l|l}
 \hline
 \multicolumn{2}{|l|}{\cellcolor[HTML]{68CBD0}\textbf{Propiedades}}                                                                                                                                                                                                      \\ \hline
-\multicolumn{2}{|l|}{\cellcolor[HTML]{68CBD0}imageContent}                                                                                                                                                                                                              \\ \hline
+\multicolumn{2}{|l|}{\cellcolor[HTML]{68CBD0}\texttt{imageContent}}                                                                                                                                                                                                       \\ \hline
 Tipo de dato & \multicolumn{1}{l|}{string}                                                                                                                                                                                                      \\ \hline
 Descripción  & \multicolumn{1}{l|}{Imagen codificada en base 64.}                                                                                                                                                                               \\ \hline
-\multicolumn{2}{|l|}{\cellcolor[HTML]{68CBD0}imageSource}                                                                                                                                                                                                               \\ \hline
+\multicolumn{2}{|l|}{\cellcolor[HTML]{68CBD0}\texttt{imageSource}}                                                                                                                                                                                                       \\ \hline
 Tipo de dato & \multicolumn{1}{l|}{string}                                                                                                                                                                                                      \\ \hline
 Descripción  & \multicolumn{1}{l|}{URL público de la imagen.}                                                                                                                                                                                   \\ \hline
-\multicolumn{2}{|l|}{features}                                                                                                                                                                                                                  \\ \hline
+\multicolumn{2}{|l|}{\texttt{features}}                                                                                                                                                                                      \\ \hline
 Tipo de dato & \multicolumn{1}{l|}{array}                                                                                                                                                                                                       \\ \hline
 \multirow{4}{*}{Descripción}  & 
 \multicolumn{1}{l|}{
@@ -205,8 +204,8 @@ en la} \\
 
 \subparagraph{\sphinxstylestrong{Cuerpo.}}
 \label{\detokenize{chapter_two/desc_cloudnao:id1}}
-En el cuerpo del mensaje de respuesta si se obtiene un código 200
-se obtiene un JSON con las características encontradas. En éste también
+En el cuerpo del mensaje de respuesta, si se obtiene un código 200,
+va un JSON con las características encontradas. En éste también
 se incluyen mensajes de error que no pertenecen al estándar del protocolo HTTP.
 En la tabla \ref{tab:json_schema_response} se describen los atributos del JSON.
 
@@ -252,11 +251,10 @@ En la tabla \ref{tab:json_schema_response} se describen los atributos del JSON.
       \PYG{l+s+s2}{\PYGZdq{}confidence\PYGZdq{}}\PYG{o}{:} \PYG{l+m+mi}{1}\PYG{p}{,}
       \PYG{l+s+s2}{\PYGZdq{}gender\PYGZdq{}}\PYG{o}{:} \PYG{l+s+s2}{\PYGZdq{}Hello, world!\PYGZdq{}}
     \PYG{p}{\PYGZcb{}}
-    \PYG{l+s+s2}{\PYGZdq{}indoorScenesClassify\PYGZdq{}} \PYG{o}{:} \PYG{p}{\PYGZob{}}
+    \PYG{l+s+s2}{\PYGZdq{}indoorScenesClassifie\PYGZdq{}} \PYG{o}{:} \PYG{p}{\PYGZob{}}
       \PYG{l+s+s2}{\PYGZdq{}indoorScene\PYGZdq{}}\PYG{o}{:} \PYG{l+s+s2}{\PYGZdq{}Hello, world!\PYGZdq{}}
     \PYG{p}{\PYGZcb{}}
-  \PYG{p}{\PYGZcb{}}\PYG{p}{,}
-\PYG{p}{\PYGZcb{}}
+  \PYG{p}{\PYGZcb{}}\PYG{p}{\PYGZcb{}}
 \end{sphinxVerbatim}
 
 \begin{longtable}{|l|l|}
@@ -313,12 +311,12 @@ Descripción                                   & Valor de 0-1 que representa una
 Tipo de dato                                  & string                                                                                                                                         \\ \hline
 Descripción                                   & Sexo de la persona con ese rostro (M o F)                                                                                                      \\ \hline
 Descripción                                   & Características del rostro detectado.                                                                                                          \\ \hline
-\multicolumn{2}{|l|}{\cellcolor[HTML]{68CBD0}\texttt{indoorScenesClassify}}                                                                                                                    \\ \hline
+\multicolumn{2}{|l|}{\cellcolor[HTML]{68CBD0}\texttt{indoorScenesClassifier}}                                                                                                                    \\ \hline
 Tipo de dato                                  & objeto                                                                                                                                         \\ \hline
 \multicolumn{2}{|l|}{Propiedades}                                                                                                                                                              \\ \hline
 \multicolumn{2}{|l|}{\texttt{indoorScene}}                                                                                                                                                     \\ \hline
 Tipo de dato                                  & string                                                                                                                                         \\ \hline
-Descripción                                   & \begin{tabular}[c]{@{}l@{}}La escena detectada, puede ser cualquiera de las\\ cuatro posibles \(exit, soccer_court, desks, office\)\end{tabular} \\ \hline
+Descripción                                   & \begin{tabular}[c]{@{}l@{}}La escena detectada, puede ser cualquiera de las\\ cuatro posibles (exit, soccer\_court, desks, office)\end{tabular} \\ \hline
 Descripción                                   & Escenario reconocido.                                                                                                                          \\ \hline
 \cellcolor[HTML]{68CBD0}\textbf{Descripción}  & \begin{tabular}[c]{@{}l@{}}Lista con las respuestas de acuerdo a las \\ características que se solicitaron.\end{tabular}                       \\ \hline
 \end{longtable}
@@ -329,7 +327,7 @@ Descripción                                   & Escenario reconocido.          
 cURL es una herramienta en la línea de comandos para transferir
 datos usando diferentes protocolos. Por facilidad,
 se muestra el uso de la API a través de esta herramienta.
-Para solicitar el recurso para procesamiento de imágenes, \texttt{vision} se necesita un token de acceso. El token
+Para solicitar el recurso \texttt{vision}, para procesamiento de imágenes,  se necesita un token de acceso. El token
 se obtiene creando un usuario haciendo una petición al recurso
 \texttt{register}. El código para solicitar este servicio con
 \texttt{cURL} es el siguiente:
@@ -388,8 +386,8 @@ http://132.248.180.17/vision \PYG{l+s+se}{\PYGZbs{}}
 \PYG{l+s+s1}{\PYGZcb{}\PYGZsq{}}
 \end{sphinxVerbatim}
 
-La respuesta de la API de CloudNAO envía como respuesta el 
-subsecuente JSON:
+La API de CloudNAO envía como respuesta el 
+siguiente JSON:
 
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -504,10 +502,9 @@ Flask. La siguiente lista muestra las dependencias más importantes:
 \end{itemize}
 
 %
-Para comprender mejor este elemento, en el
-Anexo \ref{anexo:api-rest} se describen
-cada una de las herramientas utilizadas, primero el framework Flask, junto con
-sus extensiones y la biblioteca requests.
+En el
+Anexo \ref{anexo:api-rest} se describen cómo utilizar
+Flask, sus extensiones y la biblioteca requests.
 
 
 \paragraph{Descripción de los módulos principales}
@@ -559,7 +556,8 @@ divididos de la siguiente forma:
 En el nivel más alto están:
 \begin{itemize}
 \item {} 
-La aplicación de Flask en un paquete llamado \sphinxstyleemphasis{app}. Este es el núcleo del proyecto, contiene los modelos para la base de datos, los recursos, clientes de servicios web de terceros, etc.
+La aplicación de Flask en un paquete llamado \sphinxstyleemphasis{app}. Este es el núcleo del proyecto, contiene los modelos para la base de datos, la definición de los recursos, clientes de servicios web de terceros, los modelos de TensorFlow
+y algunos módulos auxiliares.
 
 \item {} 
 El archivo que almacena las opciones de configuración \sphinxstyleemphasis{config.py}.
@@ -573,7 +571,8 @@ Los archivos \sphinxstyleemphasis{README.md} y \sphinxstyleemphasis{requirements
 \end{itemize}
 
 En las siguientes secciones se documentan las partes más importantes del
-proyecto, el paquete \sphinxstyleemphasis{app}, \sphinxstyleemphasis{config.py} y \sphinxstyleemphasis{manage.py}.
+proyecto, el paquete \sphinxstyleemphasis{app}, y los
+archivos \sphinxstyleemphasis{config.py} y \sphinxstyleemphasis{manage.py}.
 
 
 \subparagraph{Aplicación (\sphinxstyleemphasis{app}).}
@@ -594,13 +593,13 @@ Este paquete contiene los modelos de la base de datos, usando SQLAlchemy.
 \sphinxbfcode{class }\sphinxcode{app.models.user\_model.}\sphinxbfcode{UserModel}{(\emph{username}, \emph{password}})}
 Una clase pública para el modelo del usuario que se almacena en la base
 de datos.
-El nombre de la tabla en la base de datos es \sphinxcode{users}. Los atributos de esta
-última se describen en la tabla \ref{desc_cloudnao:user-model-attr}.
+El nombre de la tabla en la base de datos es \sphinxcode{users}. Los atributos de ésta
+se describen en la tabla \ref{desc_cloudnao:user-model-attr}.
 
 \begin{savenotes}\sphinxattablestart
 \centering
 \sphinxcapstartof{table}
-\sphinxcaption{Descripción de los atributos del modelo User\label{desc_cloudnao:user-model-attr}}
+\caption{Descripción de los atributos del modelo User\label{desc_cloudnao:user-model-attr}}
 \sphinxaftercaption
 \begin{tabulary}{\linewidth}[t]{|T|T|}
 \hline
@@ -798,12 +797,12 @@ Aquí se unen en una sola las respuestas de los módulos dentro de
 \subparagraph{Modelos de Tensorflow (\sphinxstyleemphasis{tf\_models}).}
 En este paquete se encuentran los módulos encargados de la 
 detección de objetos y la clasificación de escenarios usando
-TensorFlow.
-\newline
+TensorFlow.\\
+
 \codedocumentation{\sphinxbfcode{class }\sphinxcode{app.tf\_models.object\_detection.}\sphinxbfcode{ObjectDetectionTensorflow}}
 Una clase pública que utiliza un modelo pre-entrenado para la detección
 de múltiples objetos en una imagen. El modelo utilizado es
-\sphinxcode{ssd\_mobilenet\_v1\_\\coco} provisto por la API de TensorFlow y entrenado con el
+\sphinxcode{ssd\_mobilenet\_v1\_coco} provisto por la API de TensorFlow y entrenado con el
 conjunto de imágenes de \sphinxhref{http://cocodataset.org/}{COCO}.
 
 El siguiente ejemplo
@@ -842,7 +841,7 @@ y soccer\_court.
 Es la clase que carga el modelo ya entrenado, simplemente carga
 la gráfica de cómputo que diseñamos con los parámetros
 aprendidos. El clasificador puede
-recibir una imagen codificada en base64 o su URL. El resultado
+recibir una imagen codificada en base 64 o su URL. El resultado
 es un diccionario que pueda ser enviado como respuesta en la API
 REST.
 
@@ -942,7 +941,7 @@ debe tener la siguiente estructura.
 
 En el parámetro \sphinxcode{features} solo añadimos las dos que utilizamos. El objeto
 \sphinxcode{image} contiene la imagen que se desea analizar, y acepta la imagen codificada
-en base64 (\sphinxcode{content}) o un URL (\sphinxcode{imageUri}).
+en base 64 (\sphinxcode{content}) o un URL (\sphinxcode{imageUri}).
 
 Además de el cuerpo con la imagen es necesaria una API Key en los parámetros
 del URL.
@@ -1020,7 +1019,7 @@ Estos recursos tiene la función de hallar información estructurada dentro
 de una oración.
 
 En seguida se muestra cómo utilizar el método \sphinxcode{message()} para
-enlistar las entidades encontradas en una cadena de texto.
+enlistar las intenciones encontradas en una cadena de texto.
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{k+kn}{from} \PYG{n+nn}{app}\PYG{n+nn}{.}\PYG{n+nn}{tpa\PYGZus{}client\PYGZus{}libraries}\PYG{n+nn}{.}\PYG{n+nn}{wit\PYGZus{}api} \PYG{k}{import} \PYG{n}{WitAPI}
