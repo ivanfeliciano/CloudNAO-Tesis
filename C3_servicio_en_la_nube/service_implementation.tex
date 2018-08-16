@@ -57,7 +57,7 @@
 
 
 
-Para crear y probar cada una de las arquitecturas que se
+Para crear y probar cada una de las topologías que se
 describieron en la sección anterior se utilizó la biblioteca
 de TensorFlow.
 Se construyó una clase que pudiera crear gráficas de modelos
@@ -75,6 +75,10 @@ Para agregar el modelo a la API de CloudNAO sólo se añadió un nuevo módulo
 al recurso \texttt{/vision}, en donde se carga la gráfica de cómputo 
 con los mejores resultados.
 
+Todo el material descrito en esta sección se encuentra disponible en el
+repositorio de GitLab
+con la siguiente dirección
+\url{https://gitlab.com/ivan-felavel/lar-image-classifier}.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -133,7 +137,7 @@ carga y procesa las imágenes para definir los conjuntos de entrenamiento
 y de prueba para nuestro modelo.
 Primero se obtiene la ruta de cada imagen y se crea la lista con las etiquetas
 (vectores one-hot)
-de cada imagen dependiendo de la carpeta donde se encontraba, luego con
+de cada imagen dependiendo de la carpeta donde se encuentre, luego con
 \sphinxcode{\sphinxupquote{opencv}} se cargan las imágenes a la memoria como arreglos de
 \sphinxcode{\sphinxupquote{numpy}}, se redimensionan a un tamaño de $32 \times 32$ y se normalizan
 los valores de los pixeles. Al final se tienen dos arreglos de \sphinxcode{\sphinxupquote{numpy}}
@@ -170,7 +174,7 @@ Para la implementación de la CNN en TensorFlow
 se utilizó una clase que representara una
 arquitectura. Esto fue para que experimentar con
 una estructura y parámetros diferentes sólo
-implicara instanciar un objeto de la clase.
+implicara crear una instancia de la clase.
 La clase se llama \sphinxcode{\sphinxupquote{CNNClassifierLAR}} y
 está dentro del módulo {\hyperref[\detokenize{model_desc:module-cnn\_indoor\_classifier\_model}]{\sphinxcrossref{\sphinxcode{\sphinxupquote{cnn\_indoor\_classifier\_model}}}}}.
 El módulo anterior además de la clase contiene múltiples
@@ -180,9 +184,9 @@ tensores, la obtención de las rutas de las imágenes
 y la generación de los vectores one-hot de sus etiquetas.
 
 Se pueden construir hasta cuatro tipos distintos de
-arquitecturas, con dos capas convolucionales con una o dos
+estructuras; dos capas convolucionales con una o dos
 completamente conectadas, y con una capa de convolución
-y uno o dos completamente conectadas.
+y una o dos completamente conectadas.
 La construcción de éstas se hace con los métodos
 \texttt{create\_graph\_2\_convo\_layers()}
 y \texttt{create\_graph\_1\_convo\_layer()}
@@ -208,8 +212,7 @@ dimensiones de los 16 mapas a la mitad:
 \end{sphinxVerbatim}
 
 \item Luego sigue la otra capa de convolución que tiene como entrada las salidas
-de la capa anterior. Se aplica de nuevo un agrupamiento para reducir las al $50\%$ las
-dimensiones de la imagen:
+de la capa anterior. Se aplica de nuevo un agrupamiento las dimensiones de la entrada un $50$ por ciento:
 
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -249,7 +252,7 @@ retropropagación:
 
 \subsubsection{Ejecución}
 
-La ejecución de la gráfica de cómputo de una instancia
+La ejecución de la gráfica de cómputo de una instancia de la clase
 es con el método \texttt{run\_graph()}.
 Se pasan como parámetro el número de épocas y el tamaño del lote
 para el aprendizaje.
@@ -258,10 +261,9 @@ Este método ejecuta la operación
 Cada 100 épocas se evalúa la precisión del modelo y se imprimen:
 el número de época, el tiempo transcurrido desde que se inició el entrenamiento, el error de entrenamiento, el error de prueba y
 la precisión.
-
+\newline
 
 \codedocumentation{\sphinxbfcode{\sphinxupquote{class }}\sphinxcode{\sphinxupquote{cnn\_indoor\_classifier\_model.}}\sphinxbfcode{\sphinxupquote{CNNClassifierLAR}}{(\emph{shape\_convo\_layers}, \emph{units\_fc}, \emph{learning\_rate}})}
-
 La clase que representa una arquitectura de red convolucional con a lo más
 dos capas de convolución y dos capas completamente conectadas.
 
@@ -317,7 +319,7 @@ Modelo                                                           & Épocas & $\g
 
 \end{table}
 
-Los modelos con la mayor precisión sobre todos son el modelo (1) y
+Los modelos con mayor precisión son (1) y
 (2) con una proporción de valores correctamente clasificados de
 0.97917. Se puede ver que los parámetros que comparten todas
 las arquitecturas son el número de épocas y la tasa de aprendizaje,
@@ -327,7 +329,7 @@ por las capas de convolución no son menores a $16$, lo que podría
 indicar que podríamos añadir más mapas para mejorar el modelo.
 
 La diferencia entre tiempo y la precisión entre los cinco modelos
-no es significativa. Todos están por arriba del $0.96$
+no es significativa. Todos están por arriba del 0.96
 en cuanto a la precisión. La diferencia del tiempo de entrenamiento 
 entre los modelos es mínima, un par de minutos entre el modelo (2) y (5),
 lo que no es nada en comparación a modelos más complejos que tardan horas
@@ -339,21 +341,21 @@ podemos ver que la precisión de cada modelo, a pesar de que
 sí mejora con respecto a las épocas, converge muy rápidamente.
 Aproximadamente desde la época $300$,
 el incremento de la precisión es lento pero está por arriba
-del $0.95$.
+del 0.95.
 
 
 \begin{figure}[!ht]
 \renewcommand*\thesubfigure{\arabic{subfigure}} 
   \centering
-\subfloat[2 Convo 2 FC]{\includegraphics[scale=0.3]{model1}}
+\subfloat[2 Convo 2 FC]{\includegraphics[scale=0.25]{model1}}
 \qquad
-\subfloat[2 Convo 2 FC]{\includegraphics[scale=0.3]{model2}}
+\subfloat[2 Convo 2 FC]{\includegraphics[scale=0.25]{model2}}
 \qquad
-\subfloat[2 Convo 1 FC]{\includegraphics[scale=0.3]{model3}}
+\subfloat[2 Convo 1 FC]{\includegraphics[scale=0.25]{model3}}
 \qquad
-\subfloat[1 Convo 2 FC]{\includegraphics[scale=0.3]{model4}}
+\subfloat[1 Convo 2 FC]{\includegraphics[scale=0.25]{model4}}
 \qquad
-\subfloat[1 Convo 1 FC]{\includegraphics[scale=0.3]{model5}}
+\subfloat[1 Convo 1 FC]{\includegraphics[scale=0.25]{model5}}
 \caption{La precisión de cada modelo con respecto a las épocas.\label{fig:results_acc_epochs}}
 \end{figure}
 
@@ -551,7 +553,7 @@ del $0.95$.
 
 \subsubsection{Pruebas sobre el robot NAO}
 
-Para finalizar la implementación del modelo sobre la arquitectura
+Para finalizar,
 se debe integrar uno de los cinco modelos descritos en la tabla \ref{table:models_results} sobre la API REST de CloudNAO y luego hacer peticiones con el robot a ésta.
 Los modelos elaborados en TensorFlow contienen la gráfica de cómputo
 y los valores de los parámetros que se han entrenado. Estos datos
@@ -589,28 +591,33 @@ que representa la imagen la que se envía a la API REST usando
 Se hicieron $40$ solicitudes a la API REST desde el robot,
 $10$ por cada categoría. Esto es, se enviaron
 $10$ imágenes de la cancha, $10$ de la salida,
-$10$ de la oficina y $10$ del área de trabajo.
+$10$ del cubículo y $10$ del área de trabajo.
 En las tablas \ref{table:soccer_nao_results},
 \ref{table:exit}, \ref{table:desks} y
 \ref{table:office}, se resumen los resultados obtenidos.
-Podemos ver que en donde tuvo más aciertos fue 
-con imágenes de la cancha de fútbol con 8 de 10.
-Clasificando imágenes de la salida de emergencia
-y de la oficina se tienen 7 de 10 predicciones correctas.
-Para el área de trabajo tuvo su peor desempeño con 6 de
-10 aciertos.
+En la figura \ref{nao_api_images} se muestran algunas imágenes capturadas en las pruebas.
 
+
+
+Se puede ver que existen más aciertos
+con imágenes de la cancha de fútbol, 8 de 10 inferencias correctas.
+Clasificando imágenes de la salida de emergencia
+y del cubículo se tienen 7 de 10 predicciones correctas.
+Para el área de trabajo tuvo su peor desempeño con 6 de
+10 aciertos. Si bien no se obtiene
+la precisión reportada durante el
+entrenamiento del modelo, el tiempo
+de ejecución y los
+resultados son buenos
+para la funcionalidad de
+auxiliar a la navegación del robot.
 El tiempo de solicitud y repuesta varía entre peticiones.
 Factores que influyen al tiempo son el tamaño de la 
 imagen enviada y la velocidad de la conexión del cliente
 y del servidor. Convendría probar el modelo sobre PaaS
 como Google Cloud o Heroku para ver si hay una mejora
-en el tiempo. Sin embargo, el tiempo me parece 
-bajo, ya que como mencionamos antes, esta funcionalidad
-es un auxiliar en la solución del problema de navegación.
+en el tiempo.
 
-
-En la figura \ref{nao_api_images} se muestran algunas imágenes capturadas en las pruebas.
 
 
 \begin{table}[!h]
@@ -641,13 +648,13 @@ Clase & Predicción & Tiempo        & Correcta \\ \hline
 salida  & salida       & 3.2262349129 & T     \\ \hline
 salida  & salida       & 3.0402858257 & T     \\ \hline
 salida  & salida     & 3.298979044  & T    \\ \hline
-salida  & oficina     & 3.6488580704 & F    \\ \hline
+salida  & cubículo     & 3.6488580704 & F    \\ \hline
 salida  & salida       & 3.4767799377 & T     \\ \hline
 salida  & salida       & 3.6147930622 & T     \\ \hline
 salida  & salida       & 3.7430388927 & T     \\ \hline
-salida  & oficina     & 3.7496609688 & F    \\ \hline
+salida  & cubículo     & 3.7496609688 & F    \\ \hline
 salida  & salida       & 3.8713350296 & T     \\ \hline
-salida  & oficina     & 4.0420210361 & F    \\ \hline
+salida  & cubículo     & 4.0420210361 & F    \\ \hline
 \end{tabular}
 \caption{Resultados para fotografías de la salida de emergencia.}
 \label{table:exit}
@@ -659,11 +666,11 @@ salida  & oficina     & 4.0420210361 & F    \\ \hline
 \hline
 Clase      & Predicción & Tiempo        & Correcta \\ \hline
 z. trabajo & z. trabajo & 5.3504459858 & T        \\ \hline
-z. trabajo & oficina    & 5.2893049717 & F        \\ \hline
-z. trabajo & oficina    & 5.2149860859 & F        \\ \hline
+z. trabajo & cubículo    & 5.2893049717 & F        \\ \hline
+z. trabajo & cubículo    & 5.2149860859 & F        \\ \hline
 z. trabajo & z. trabajo & 5.2179970741 & T        \\ \hline
-z. trabajo & oficina    & 5.6882929802 & F        \\ \hline
-z. trabajo & oficina    & 5.6848390102 & F        \\ \hline
+z. trabajo & cubículo    & 5.6882929802 & F        \\ \hline
+z. trabajo & cubículo    & 5.6848390102 & F        \\ \hline
 z. trabajo & z. trabajo & 5.9792921543 & T        \\ \hline
 z. trabajo & z. trabajo & 5.8859920502 & T        \\ \hline
 z. trabajo & z. trabajo & 5.722206831  & T        \\ \hline
@@ -679,16 +686,16 @@ de trabajo.}
 \begin{tabular}{|l|l|l|l|}
 \hline
 Clase   & Predicción & Tiempo        & Correcta \\ \hline
-oficina & oficina    & 3.5342819691 & T        \\ \hline
-oficina & oficina    & 3.9999611378 & T        \\ \hline
-oficina & z. trabajo & 4.6536300182 & F        \\ \hline
-oficina & z. trabajo & 3.8637499809 & F        \\ \hline
-oficina & z. trabajo & 4.887745142  & F        \\ \hline
-oficina & oficina    & 4.4888358116 & T        \\ \hline
-oficina & oficina    & 4.6198430061 & T        \\ \hline
-oficina & oficina    & 4.4448840618 & T        \\ \hline
-oficina & oficina    & 4.5735599995 & T        \\ \hline
-oficina & oficina    & 5.2998209    & T        \\ \hline
+cubículo & cubículo    & 3.5342819691 & T        \\ \hline
+cubículo & cubículo    & 3.9999611378 & T        \\ \hline
+cubículo & z. trabajo & 4.6536300182 & F        \\ \hline
+cubículo & z. trabajo & 3.8637499809 & F        \\ \hline
+cubículo & z. trabajo & 4.887745142  & F        \\ \hline
+cubículo & cubículo    & 4.4888358116 & T        \\ \hline
+cubículo & cubículo    & 4.6198430061 & T        \\ \hline
+cubículo & cubículo    & 4.4448840618 & T        \\ \hline
+cubículo & cubículo    & 4.5735599995 & T        \\ \hline
+cubículo & cubículo    & 5.2998209    & T        \\ \hline
 \end{tabular}
 \caption{Resultados de obtenidos con imágenes del cubículo.}
 \label{table:office}
@@ -698,11 +705,11 @@ oficina & oficina    & 5.2998209    & T        \\ \hline
   \centering
 \subfloat[Clase = cancha, predicción = cancha. Tiempo = 3.05]{\includegraphics[scale=1]{nao_api_soccer}}
 \qquad
-\subfloat[Clase = salida, predicción = oficina. Tiempo = 3.64]{\includegraphics[scale=1]{exit_incorrect}}
+\subfloat[Clase = salida, predicción = salida. Tiempo = 3.29]{\includegraphics[scale=1]{exit_incorrect}}
 \qquad
-\subfloat[Clase = zona de trabajo, predicción = oficina. Tiempo = 5.21]{\includegraphics[scale=1]{deks_incorrect}}
+\subfloat[Clase = zona de trabajo, predicción = cubículo. Tiempo = 5.21]{\includegraphics[scale=1]{deks_incorrect}}
 \qquad
-\subfloat[Clase = oficina, predicción = oficina. Tiempo = 3.53]{\includegraphics[scale=1]{nao_api_office}}
+\subfloat[Clase = cubículo, predicción = cubículo. Tiempo = 3.53]{\includegraphics[scale=1]{nao_api_office}}
 \caption{Predicciones hechas enviando imágenes del robot a la API REST. El tiempo son los
 segundos que se tardó en enviar la solicitud y en recibir la respuesa. \label{nao_api_images}}
 \end{figure}

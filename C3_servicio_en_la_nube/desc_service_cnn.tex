@@ -44,7 +44,7 @@ En ambos conjuntos cada imagen es de $60 \times  80$ pixeles y de tres canales p
 
 \subsection{Arquitectura de la CNN}
 
-La selección de una arquitectura para la CNN y de sus parámetros se
+La selección de una arquitectura o topología para la CNN y de sus parámetros se
 realizó a través de pruebas. Se tomó como base 
 la arquitectura LeNet-5 (una variante de la arquitectura LeNet  que fue una de las primeras CNN que operaba sobre el 
 conjunto MNIST de dígitos escritos a mano) y se probó cambiando
@@ -83,10 +83,10 @@ Donde $8$ y $16$ son el número de mapas obtenidos de la primera
 capa de convolución y $16$ y $32$ para la segunda.
 Queremos mantener el tamaño de los mapas de
 características del mismo que el de las entradas de la convolución,
-esto se logra con un borde de ceros llamado \textit{same}, 
+esto se logra con un borde de ceros llamado \textit{idéntico}, 
 el cual se asegura que las salidas y entradas tengan las mismas dimensiones. 
-La zancada o stride se mantiene constante con un valor de $1$.
-Para la parte del pooling queremos ir disminuyendo las 
+La zancada se mantiene constante con un valor de $1$.
+Para la parte del agrupamiento queremos ir disminuyendo las 
 dimensiones de las entradas a la mitad después de cada
 convolución, por lo que se ocupa un agrupamiento máximo 
 de $2 \times 2$.
@@ -116,7 +116,7 @@ El cálculo de los valores de $\mathbf{p}$  se logra usando una la función \tex
 
 \begin{remark}
 
-La función softmax se emplea para mapear un vector $\mathbf{z} \in \mathbb{R}^k$,  en un vector $\sigma(\mathbf{z})$ de dimensión $k$ de valores reales en el rango $(0, 1]$ cuya suma es igual a $1$. La función está dada por: 
+La función softmax se emplea para mapear un vector $\mathbf{z} \in \mathbb{R}^k$,  en un vector $\sigma(\mathbf{z})$ de dimensión $k$ de valores reales en el intervalo $(0, 1]$ cuya suma es igual a $1$. La función está dada por: 
 \end{remark}
 
 \[
@@ -124,7 +124,7 @@ La función softmax se emplea para mapear un vector $\mathbf{z} \in \mathbb{R}^k
 \]
 
 \[
-\sigma(\mathbf{z})_j = \frac{e^{z_j}}{\sum_{i=1}^k e^{z_i}} \text{ para  } j=1,\dots,k
+\sigma(\mathbf{z})_j = \frac{e^{z_j}}{\sum_{i=1}^k e^{z_i}} \text{ para  } j=1,\dots,k.
 \]
 %
 %donde $\hat{p}_n$ es el resultado de la unidad de cómputo antes de pasarlo
@@ -132,8 +132,7 @@ La función softmax se emplea para mapear un vector $\mathbf{z} \in \mathbb{R}^k
 %que para esta función se necesitan los valores no normalizados
 %de las otras unidades en la misma capa.
 
-El tipo de función de costo depende principalmente de la tarea a realizar,
-para nosotros una tarea de clasificación en múltiples clases. La función
+El tipo de función de costo depende principalmente de la tarea a realizar. Nuestra tarea es de clasificación en múltiples clases. La función
 de costo asociada con este problema es la \textit{entropía cruzada}.\\
 
 \begin{remark}
@@ -157,10 +156,10 @@ donde el tamaño de los lotes fue de elegido entre los valores
 $100$, $200$ y $300$; y
 para el número de épocas entre $500$, $1000$ y $2000$.
 La tasa
-de aprendizaje se tomó de entre las constantes $0.001$,
-$0.001$ y $0.01$.
+de aprendizaje se tomó de entre las constantes 0.001,
+0.001 y 0.01.
 
-\begin{table}[]
+\begin{table}[htbp]
 \centering
 \caption{Resumen de los parámetros del diseño de la CNN con los que se experimentó.}
 \label{table:param_cnn}
@@ -170,7 +169,7 @@ Parámetro de diseño      & Valores probados                                   
 Capas                    & \begin{tabular}[c]{@{}l@{}}1 convolución 1 completa                    \\1 convolución 2 completas\\ 2 convolución 1 completa\\ 2 convolución 2 completas\end{tabular} \\ \hline
 \multicolumn{2}{|l|}{Capas de convolución}                                                                                                                             \\ \hline
 Tamaño del kernel        & $7 \times 7$, $5 \times 5$, $3 \times 3$                                                                                                   \\ \hline
-Borde de ceros                & Same                                                                                                                                        \\ \hline
+Borde de ceros                & Idéntico                                                                                                                                        \\ \hline
 Zancada                   & 1                                                                                                                                           \\ \hline
 Mapas de características & 8, 16, 32                                                                                                                               \\ \hline
 Pooling                  & \begin{tabular}[c]{@{}l@{}}Agrupamiento máximo (vecindades de \\ $2 \times 2$).\end{tabular}                                                \\ \hline
@@ -213,9 +212,9 @@ Un ejemplo de una de las posibles arquitecturas se muestra en la figura \ref{fig
 
 \begin{figure}[!ht]
 \centering
-\caption{Ejemplo de una CNN con dos capas de convolucionales y dos completamente conectadas. El tamaño de los kernels en la primera capa de convolución es de $5 \times 5$ y de la segunda de
+\caption{Ejemplo de una CNN con dos capas convolucionales y dos completamente conectadas. El tamaño de los kernels en la primera capa de convolución es de $5 \times 5$ y de la segunda de
 $3 \times 3$. Los mapas de características que se obtienen de la primera y segunda capa de convolución son $8$ y $16$, respectivamente. Se utiliza un agrupamiento máximo
-para reducir el tamaño de la imagen de entrada hasta un $75$ porciento. Finalmente la capa oculta conectada con la capa de salida cuenta con $1024$ unidades.\label{fig:cnn_topo_example}}
+para reducir el tamaño de la imagen de entrada un $75$ por ciento. Finalmente la capa oculta conectada con la capa de salida cuenta con $1024$ unidades.\label{fig:cnn_topo_example}}
 \includegraphics[scale=0.4]{cnn_topology_example}
 \end{figure}
 %\end{document}

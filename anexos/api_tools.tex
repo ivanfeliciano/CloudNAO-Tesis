@@ -6,13 +6,14 @@
 Flask es un micro framework para desarrollo web. Fue diseñado para ser un
 framework extensible, sólo provee un núcleo sólido con servicios básicos,
 mientras que las extensiones brindan el resto. Esto quiere decir que Flask,
-te da la posibilidad de como desarrollador contar sólo con las dependencias que
-necesitas.
+brinda la posibilidad contar sólo con las dependencias que se necesitan.
 
 Tiene dos dependencias principales, \sphinxstylestrong{Werkzeug} y \sphinxstylestrong{Jinja2}.
 El enrutamiento, debugging y WSGI tienen procedencia de Werkzeug.
-Jinga2 ofrece el soporte para el manejo de plantillas. Para nuestra
-aplicación solamente hacemos uso de la primera.
+Jinga2 ofrece el soporte para el manejo de plantillas. 
+% Para nuestra
+% aplicación solamente hacemos uso de la primera.
+
 \begin{quote}
 
 \sphinxstyleemphasis{WSGI} es la Web Server Gateway Interface. Es un protocolo que describe
@@ -21,14 +22,14 @@ web se pueden encadenar para procesar una petición.
 \end{quote}
 
 Para la instalación de Flask así como de cualquier paquete de Python, se
-recomienda crear un ambiente virtual con la herramienta \sphinxstylestrong{virtualenv}
+recomienda crear un ambiente virtual con la herramienta \sphinxstylestrong{virtualenv}.
 Un ambiente virtual es una copia privada del intérprete de Python sobre la cual
 es posible instalar paquetes de manera privada, sin afectar al intérprete
 global de Python. Permite crear un ambiente de trabajo aislado para cada
 proyecto, así cada aplicación tiene acceso solo a los paquetes que utiliza.
-
-Con esto, todo lo descrito a continuación que se refiera a la instalación de
-paquetes o ejecución de programas se hace dentro de un ambiente virtual.
+Con esto, lo descrito a continuación que se refiera a la instalación de
+paquetes o ejecución de programas se
+recomienda hacer dentro de un ambiente virtual.
 
 
 \subsection*{Inicialización}
@@ -36,7 +37,7 @@ paquetes o ejecución de programas se hace dentro de un ambiente virtual.
 Todas las aplicaciones de Flask deben crear una \sphinxstyleemphasis{instancia de la aplicación}. Este
 objeto maneja todas las peticiones que recibe el servidor web, usando
 la especificación WSGI.
-La instancia de la aplicación es un objeto de la clase Flask,
+La instancia de la aplicación es un objeto de la clase \texttt{Flask},
 se crea de la siguiente manera:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -44,7 +45,7 @@ se crea de la siguiente manera:
 \PYG{n}{app} \PYG{o}{=} \PYG{n}{Flask}\PYG{p}{(}\PYG{n+nv+vm}{\PYGZus{}\PYGZus{}name\PYGZus{}\PYGZus{}}\PYG{p}{)}
 \end{sphinxVerbatim}
 
-El único argumento requerido para el constructor de la clase Flask es el nombre
+El único argumento requerido para el constructor de la clase \texttt{Flask} es el nombre
 del módulo o paquete de la aplicación. Para la mayoría de los casos,
 la variable de Python \sphinxcode{\_\_name\_\_} es el valor correcto. Flask usa este argumento
 para determinar la ruta raíz de la aplicación, para que después pueda encontrar
@@ -89,14 +90,16 @@ muestra el nombre de usuario como componente dinámico.
 \end{sphinxVerbatim}
 
 La parte encerrada por los paréntesis angulares es el componente dinámico, así
-que cualesquiera URL que coincidan con la porción estática será mapeada a esta
+que cualesquiera URL que coincidan con la porción estática serán mapeadas a esta
 ruta.
 
-El decorador \sphinxcode{app.route} cuenta con un argumento opcional \sphinxcode{methods},
-el cual recibe
-una lista de métodos HTTP. \sphinxcode{methods} le dice a Flask que registra a las
+El decorador \sphinxcode{app.route} cuenta con el argumento opcional \sphinxcode{methods},
+que recibe
+una lista de métodos HTTP. \sphinxcode{methods} 
+% le dice a Flask que 
+registra las
 funciones de vista como manejadores para las peticiones de acuerdo
-al tipo de método enviado. Cuando \sphinxcode{methods} no está el los parámetros de la
+al tipo de método enviado. Cuando \sphinxcode{methods} no está en los parámetros de la
 función, la función de vista es registrada para manejar solamente peticiones
 \sphinxcode{GET}. El siguiente ejemplo se le pide a Flask que se registre a la
 función de vista como manejadora de petición de tipo \sphinxcode{GET} y \sphinxcode{POST}.
@@ -110,9 +113,10 @@ función de vista como manejadora de petición de tipo \sphinxcode{GET} y \sphin
 
 \subsection*{Arranque del servidor}
 \label{\detokenize{chapter_two/desc_cloudnao:arranque-del-servidor}}
-La instancia de la aplicación tiene un tiene un método \sphinxcode{run} que inicia el
-servidor web integrado con Flask, el cual sólo está destinado para usarse
-durante el desarrollo.
+La instancia de la aplicación tiene un tiene un método 
+\sphinxcode{run} que inicia el
+servidor web integrado con Flask, el cual sólo está destinado 
+para usarse durante el desarrollo.
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{k}{if} \PYG{n+nv+vm}{\PYGZus{}\PYGZus{}name\PYGZus{}\PYGZus{}} \PYG{o}{==} \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{\PYGZus{}\PYGZus{}main\PYGZus{}\PYGZus{}}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{:}
@@ -120,13 +124,12 @@ durante el desarrollo.
 \end{sphinxVerbatim}
 
 Una vez que el servidor es puesto en marcha, entra en un bucle que espera por
-peticiones para procesarlas. Este bucle continua hasta que la aplicación es
-detenida.
+peticiones para procesarlas. Este bucle continúa hasta que la aplicación se detiene.
 
 Existen varios parámetros que \sphinxcode{app.run()} puede recibir para configurar el
 modo de operación del servidor web. Durante el desarrollo, conviene  activar
-el modo de debugging, que entre otras cosas activa el \sphinxstyleemphasis{debugger} y el \sphinxstyleemphasis{reloader}.
-Esto se hace pasando el argumento \sphinxcode{debug} igual a \sphinxcode{True} .
+el modo de depuración, pasando el argumento \sphinxcode{debug} 
+igual a \sphinxcode{True}.
 
 
 
@@ -142,29 +145,27 @@ dando la libertad de elegir los paquetes que se ajusten mejor a la aplicación.
 
 \subsection*{Flask-Script}
 \label{\detokenize{chapter_two/desc_cloudnao:flask-script}}
-Flask-Script es una extensión que añade un parseador de línea de comandos
-para tu aplicación de Flask. Un ejemplo de una aplicación en la que se añade
-el parseo en línea de comandos.
+Flask-Script es una extensión que añade un analizador de línea de comandos
+para una aplicación de Flask. Un ejemplo de una aplicación en la que se añade el analizador es el siguiente:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{k+kn}{from} \PYG{n+nn}{flask} \PYG{k}{import} \PYG{n}{Flask}
 \PYG{k+kn}{from} \PYG{n+nn}{flask\PYGZus{}script} \PYG{k}{import} \PYG{n}{Manager}\PYG{p}{,} \PYG{n}{Shell}
 
 \PYG{n}{app} \PYG{o}{=} \PYG{n}{Flask}\PYG{p}{(}\PYG{n+nv+vm}{\PYGZus{}\PYGZus{}name\PYGZus{}\PYGZus{}}\PYG{p}{)}
-\PYG{n}{manager} \PYG{o}{=} \PYG{n}{Manager} \PYG{p}{(}\PYG{n}{app}\PYG{p}{)}
+\PYG{n}{manager} \PYG{o}{=} \PYG{n}{Manager}\PYG{p}{(}\PYG{n}{app}\PYG{p}{)}
 
 \PYG{k}{if} \PYG{n+nv+vm}{\PYGZus{}\PYGZus{}name\PYGZus{}\PYGZus{}} \PYG{o}{==} \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{\PYGZus{}\PYGZus{}main\PYGZus{}\PYGZus{}}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{:}
   \PYG{n}{manager}\PYG{o}{.}\PYG{n}{run}\PYG{p}{(}\PYG{p}{)}
 \end{sphinxVerbatim}
 
-El método de inicialización de esta extensión es común en muchas otras
-extensiones: una instancia de la clase principal es inicializada pasando como
+Para inicializar esta extenseión 
+El método de inicialización es el siguiente: se crea un objeto pasando como
 argumento en el constructor una instancia de la aplicación.
 
 El servidor inicia a través de \sphinxcode{manager.run()}, donde la línea de comandos
-es parseada.
-
-Si corremos la aplicación anterior en una terminal, esta tiene opciones básicas
+es analizada.
+Si corremos la aplicación anterior en una terminal, ésta tiene opciones básicas
 en la línea de comandos. Correr el programa anterior mostraría un mensaje como
 el siguiente:
 
@@ -180,12 +181,11 @@ optional arguments:
   \PYGZhy{}h, \PYGZhy{}\PYGZhy{}help  show this \PYG{n+nb}{help} message and \PYG{n+nb}{exit}
 \end{sphinxVerbatim}
 
-El comando \sphinxcode{shell} es usado para iniciar un shell de Python en el contexto
-de la aplicación. Sirve para tareas de mantenimiento, debugging, etc.
+El comando \sphinxcode{shell} es usado para iniciar un intérprete de Python en el contexto
+de la aplicación. Sirve para tareas de mantenimiento, depuración, etc.
 
 El comando \sphinxcode{runserver} como su nombre lo dice, inicia el servidor web. Cuenta
-con varios argumentos opcionales, \sphinxcode{-{-}host, -{-}port, -{-}threaded, -{-}no-debug},
-entre otros.
+con varios argumentos opcionales como  \sphinxcode{-{-}host, -{-}port, -{-}threaded} y  \sphinxcode{-{-}no-debug}.
 
 
 \subsection*{Flask-RESTful}
@@ -193,11 +193,11 @@ entre otros.
 Flask-RESTful es una extensión para Flask que añade soporte para la rápida
 construcción de una API REST. Las características básicas de esta extensión
 que se necesitan conocer
-son el \sphinxstyleemphasis{enrutamiento de recursos}, los \sphinxstyleemphasis{endpoints} y el \sphinxstyleemphasis{parseo de argumentos}
+son el \sphinxstyleemphasis{enrutamiento de recursos}, los \sphinxstyleemphasis{puntos finales} y el \sphinxstyleemphasis{análisis de argumentos}
 
 El componente principal que provee Flask-RESTful es la clase \sphinxcode{Resource}.
-Esta brinda un fácil acceso a múltiples métodos HTTP definiendo
-solamente los métodos en el recurso que se cree.
+Esta brinda un fácil acceso a múltiples métodos HTTP, definiendo
+solamente los métodos en el recurso que se crea.
 
 Se pueden añadir múltiples URL al objeto \sphinxcode{Api}, el \sphinxstyleemphasis{punto de entrada principal}
 de la aplicación, a través de su método \sphinxcode{add\_resource()}. Cada URL será
@@ -251,42 +251,43 @@ programa usando esta extensión.
         \PYG{k}{return} \PYG{n}{task}\PYG{p}{,} \PYG{l+m+mi}{201}
 
 
-\PYG{c+c1}{\PYGZsh{} muestra una lista con todas las tareas y permite crear una nueva con POST}
+\PYG{c+c1}{\PYGZsh{} muestra una lista con todas las tareas}
 \PYG{k}{class} \PYG{n+nc}{TaskList}\PYG{p}{(}\PYG{n}{Resource}\PYG{p}{)}\PYG{p}{:}
     \PYG{k}{def} \PYG{n+nf}{get}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{)}\PYG{p}{:}
         \PYG{k}{return} \PYG{n}{TASKS}
 
-    \PYG{k}{def} \PYG{n+nf}{post}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{)}\PYG{p}{:}
-        \PYG{n}{args} \PYG{o}{=} \PYG{n}{parser}\PYG{o}{.}\PYG{n}{parse\PYGZus{}args}\PYG{p}{(}\PYG{p}{)}
-        \PYG{n}{task\PYGZus{}id} \PYG{o}{=} \PYG{n+nb}{int}\PYG{p}{(}\PYG{n+nb}{max}\PYG{p}{(}\PYG{n}{TASKS}\PYG{o}{.}\PYG{n}{keys}\PYG{p}{(}\PYG{p}{)}\PYG{p}{)}\PYG{o}{.}\PYG{n}{lstrip}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{task}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)}\PYG{p}{)} \PYG{o}{+} \PYG{l+m+mi}{1}
-        \PYG{n}{task\PYGZus{}id} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{tarea}\PYG{l+s+si}{\PYGZob{}\PYGZcb{}}\PYG{l+s+s1}{\PYGZsq{}}\PYG{o}{.}\PYG{n}{format}\PYG{p}{(}\PYG{n}{task\PYGZus{}id}\PYG{p}{)}
-        \PYG{n}{TASKS}\PYG{p}{[}\PYG{n}{task\PYGZus{}id}\PYG{p}{]} \PYG{o}{=} \PYG{p}{\PYGZob{}}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{description}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{:} \PYG{n}{args}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{task}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{]}\PYG{p}{\PYGZcb{}}
-        \PYG{k}{return} \PYG{n}{TASKS}\PYG{p}{[}\PYG{n}{task\PYGZus{}id}\PYG{p}{]}\PYG{p}{,} \PYG{l+m+mi}{201}
+
 
 \PYG{c+c1}{\PYGZsh{}\PYGZsh{} enrutamiento}
-\PYG{n}{api}\PYG{o}{.}\PYG{n}{add\PYGZus{}resource}\PYG{p}{(}\PYG{n}{TodoList}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{/tasks}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)}
-\PYG{n}{api}\PYG{o}{.}\PYG{n}{add\PYGZus{}resource}\PYG{p}{(}\PYG{n}{Todo}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{/tasks/\PYGZlt{}todo\PYGZus{}id\PYGZgt{}}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{api}\PYG{o}{.}\PYG{n}{add\PYGZus{}resource}\PYG{p}{(}\PYG{n}{TaskList}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{/tasks}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{api}\PYG{o}{.}\PYG{n}{add\PYGZus{}resource}\PYG{p}{(}\PYG{n}{Task}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{/tasks/\PYGZlt{}todo\PYGZus{}id\PYGZgt{}}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)}
 
 
 \PYG{k}{if} \PYG{n+nv+vm}{\PYGZus{}\PYGZus{}name\PYGZus{}\PYGZus{}} \PYG{o}{==} \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{\PYGZus{}\PYGZus{}main\PYGZus{}\PYGZus{}}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{:}
     \PYG{n}{app}\PYG{o}{.}\PYG{n}{run}\PYG{p}{(}\PYG{n}{debug}\PYG{o}{=}\PYG{k+kc}{True}\PYG{p}{)}
 \end{sphinxVerbatim}
 
+% \PYG{k}{def} \PYG{n+nf}{post}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{)}\PYG{p}{:}
+%     \PYG{n}{args} \PYG{o}{=} \PYG{n}{parser}\PYG{o}{.}\PYG{n}{parse\PYGZus{}args}\PYG{p}{(}\PYG{p}{)}
+%     \PYG{n}{task\PYGZus{}id} \PYG{o}{=} \PYG{n+nb}{int}\PYG{p}{(}\PYG{n+nb}{max}\PYG{p}{(}\PYG{n}{TASKS}\PYG{o}{.}\PYG{n}{keys}\PYG{p}{(}\PYG{p}{)}\PYG{p}{)}\PYG{o}{.}\PYG{n}{lstrip}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{task}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)}\PYG{p}{)} \PYG{o}{+} \PYG{l+m+mi}{1}
+%     \PYG{n}{task\PYGZus{}id} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{tarea}\PYG{l+s+si}{\PYGZob{}\PYGZcb{}}\PYG{l+s+s1}{\PYGZsq{}}\PYG{o}{.}\PYG{n}{format}\PYG{p}{(}\PYG{n}{task\PYGZus{}id}\PYG{p}{)}
+%     \PYG{n}{TASKS}\PYG{p}{[}\PYG{n}{task\PYGZus{}id}\PYG{p}{]} \PYG{o}{=} \PYG{p}{\PYGZob{}}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{description}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{:} \PYG{n}{args}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{task}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{]}\PYG{p}{\PYGZcb{}}
+%     \PYG{k}{return} \PYG{n}{TASKS}\PYG{p}{[}\PYG{n}{task\PYGZus{}id}\PYG{p}{]}\PYG{p}{,} \PYG{l+m+mi}{201}
 
 \subsection*{Flask-SQLAlchemy}
 \label{\detokenize{chapter_two/desc_cloudnao:flask-sqlalchemy}}
 Flask-SQLAlchemy simplifica el uso de \sphinxstyleemphasis{SQLAlchemy} dentro de una aplicación de
 Flask. SQLAlchemy es un  poderoso framework para bases de datos relacionales
-que soporta varios administradores de bases de datos. Ofrece un ORM de alto
+que soporta varios administradores de bases de datos. Ofrece un ORM (mapeo objeto-relacional) de alto
 nivel y acceso de bajo nivel a la funcionalidad SQL nativa de los DBMS.
 
 En Flask-SQLAlchemy, una base de datos se especifica con su URL. Por ejemplo
 usando \sphinxstyleemphasis{SQLite}, que en realidad es sólo un archivo en el disco, el URL
-será: \sphinxstylestrong{sqlite:////ruta/absoluta/a/la/basededatos}.
+será: \sphinxcode{sqlite:////ruta/absoluta/a/la/basededatos}.
 
 El URL de la base de datos añadiendo la llave \sphinxcode{SQLALCHEMY\_DATABASE\_URI} al
-objeto de configuración de Flask. El ejemplo siguiente muestra como inicializar
-y configurar una base de datos simple en SQLite.
+objeto de configuración de Flask. El siguiente ejemplo muestra como inicializar
+y configurar una base de datos simple usando SQLite.
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{k+kn}{from} \PYG{n+nn}{flask\PYGZus{}sqlalchemy} \PYG{k}{import} \PYG{n}{SQLAlchemy}
@@ -307,7 +308,7 @@ de datos y brinda acceso a toda la funcionalidad de Flask-SQLAlchemy.
 %\label{\detokenize{chapter_two/desc_cloudnao:definicion-de-un-modelo}}
 El término \sphinxstyleemphasis{modelo} es usado para referirse a entidades persistentes dentro de la
 aplicación. En el contexto de un ORM, un modelo es una clase de Python con
-atributos que son iguales a las columnas de la tabla de una base de datos.
+atributos que son iguales a las columnas de una tabla de     una base de datos.
 
 La instancia de una base de datos en Flask-SQLAlchemy tiene una clase base
 para los modelos así como un conjunto de clases y funciones auxiliares que
@@ -330,7 +331,7 @@ El fragmento de código siguiente definen los modelos \sphinxcode{Usuario} y \sp
   \PYG{n}{\PYGZus{}\PYGZus{}tablename\PYGZus{}\PYGZus{}} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{users}\PYG{l+s+s1}{\PYGZsq{}}
   \PYG{n+nb}{id} \PYG{o}{=} \PYG{n}{db}\PYG{o}{.}\PYG{n}{Column}\PYG{p}{(}\PYG{n}{db}\PYG{o}{.}\PYG{n}{Integer}\PYG{p}{,} \PYG{n}{primary\PYGZus{}key}\PYG{o}{=}\PYG{k+kc}{True}\PYG{p}{)}
   \PYG{n}{nombre} \PYG{o}{=} \PYG{n}{db}\PYG{o}{.}\PYG{n}{Column}\PYG{p}{(}\PYG{n}{db}\PYG{o}{.}\PYG{n}{String}\PYG{p}{(}\PYG{l+m+mi}{64}\PYG{p}{)}\PYG{p}{,} \PYG{n}{unique}\PYG{o}{=}\PYG{k+kc}{True}\PYG{p}{,} \PYG{n}{index}\PYG{o}{=}\PYG{k+kc}{True}\PYG{p}{)}
-  \PYG{n}{password} \PYG{o}{=} \PYG{n}{db}\PYG{o}{.}\PYG{n}{Column}\PYG{p}{(}\PYG{n}{db}\PYG{o}{.}\PYG{n}{String}\PYG{p}{(}\PYG{l+m+mi}{128}\PYG{p}{)}\PYG{p}{)}
+  \PYG{n}{password} \PYG{o}{=} \PYG{n}{db}\PYG{o}{.}\PYG{n}{Column}\PYG{p}{(}\PYG{n}{db}\PYG{o}{.}\PYG{n}{String}\PYG{p}{(}\PYG{l+m+mi}{128}\PYG{p}{)}\PYG{p}{)} \PYG{c+c1}{\PYGZsh{} NUNCA HACER ESTO}
 \PYG{k}{class} \PYG{n+nc}{Recurso}\PYG{p}{(}\PYG{n}{db}\PYG{o}{.}\PYG{n}{Model}\PYG{p}{)}\PYG{p}{:}
   \PYG{n}{\PYGZus{}\PYGZus{}tablename\PYGZus{}\PYGZus{}} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{resources}\PYG{l+s+s1}{\PYGZsq{}}
   \PYG{n+nb}{id} \PYG{o}{=} \PYG{n}{db}\PYG{o}{.}\PYG{n}{Column}\PYG{p}{(}\PYG{n}{db}\PYG{o}{.}\PYG{n}{Integer}\PYG{p}{,} \PYG{n}{primary\PYGZus{}key}\PYG{o}{=}\PYG{k+kc}{True}\PYG{p}{)}
@@ -354,13 +355,12 @@ las más comunes están \sphinxcode{primary\_key, unique, index, default} y  \sp
 Las bases de datos relaciones establecen conexiones entre tuplas de diferentes
 tablas, con el uso de relaciones. En el diagrama relacional de la \hyperref[\detokenize{chapter_two/desc_cloudnao:relationship-example}]{Figura \ref{\detokenize{chapter_two/desc_cloudnao:relationship-example}}}
 se establece una relación de \sphinxstyleemphasis{uno a muchos} de usuarios a recursos.
-
-Esta relación uno a muchos se representa en nuestras clases modelo añadiendo
-un atributo más, en la clase \sphinxcode{Recurso} agregamos como
+Esta relación uno a muchos se representa en la clase añadiendo
+un atributo más. En la clase \sphinxcode{Recurso} se agrega como
 llave foránea el id del usuario al que le
-pertenece \sphinxcode{id\_usuario = db.Column(db.Integer, db.ForeignKey('usuari\\
+pertenece \sphinxcode{id\_usuario = db.Column(db.Integer, db.ForeignKey('usuari
 os.id'))}.
-Para el modelo de \sphinxcode{Usuario} agregamos el atributo
+Para el modelo de \sphinxcode{Usuario} el atributo
 \sphinxcode{recursos = db.relationship('Recurso', backref='usuario')}. El primer argumento
 indica que modelo está del otro lado de la relación, \sphinxcode{backref} establece la
 relación en la dirección opuesta.
@@ -388,7 +388,7 @@ Los cambios  se manejan a través de una \sphinxcode{session} en la base de dato
 Escribir cambios: \sphinxcode{db.session.commit()}.
 Para guardar los objetos en la base de datos, las sesiones necesitan ser \sphinxstyleemphasis{confirmadas}.
 \item
-Modificar tupas: \sphinxcode{Objeto.atributo\_a\_actualizar = nuevo\_valor} \sphinxcode{db.session.add(Objeto)}.
+Modificar tupas: \sphinxcode{Objeto.atributo\_a\_actualizar = nuevo\_valor}, \sphinxcode{db.session.add(Objeto)}.
 El método \sphinxcode{add} también se puede usar para actualizar los modelos.
 \item
 Eliminar tuplas: \sphinxcode{db.session.delete(Objeto)}.
@@ -400,8 +400,8 @@ La consulta más básica retorna todo el contenido de la tabla correspondiente \
 
 \section*{Requests}
 \label{\detokenize{chapter_two/desc_cloudnao:requests}}
-Requests permite hacer peticiones HTTP de una manera muy sencilla. Un petición
-de tipo GET se convierte en algo simple como lo siguiente:
+Requests permite hacer peticiones HTTP de una manera muy sencilla. Una petición
+de tipo GET se hace como sigue:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{k+kn}{import} \PYG{n+nn}{requests}
@@ -411,24 +411,23 @@ de tipo GET se convierte en algo simple como lo siguiente:
 \PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{n}{r}\PYG{o}{.}\PYG{n}{headers}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{content\PYGZhy{}type}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{]}
 \PYG{g+go}{\PYGZsq{}application/json\PYGZsq{}}
 \PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{n}{r}\PYG{o}{.}\PYG{n}{text}
-\PYG{g+go}{u\PYGZsq{}\PYGZob{}\PYGZca{}name\PYGZca{}:\PYGZca{}Tatooine\PYGZca{},\PYGZca{}rotation\PYGZus{}period\PYGZca{}:\PYGZca{}23\PYGZca{},\PYGZca{}orbital\PYGZus{}period\PYGZca{}:\PYGZca{}304\PYGZca{},\PYGZca{}diameter\PYGZca{}:\PYGZca{}10465\PYGZca{},\PYGZca{}climate\PYGZca{}:\PYGZca{}arid\PYGZca{}...\PYGZcb{}}
+\PYG{g+go}{u\PYGZsq{}\PYGZob{}\PYGZsq{}name\PYGZsq{}:\PYGZsq{}Tatooine\PYGZsq{},\PYGZsq{}rotation\PYGZus{}period\PYGZsq{}:\PYGZsq{}23\PYGZsq{},\PYGZsq{}orbital\PYGZus{}period\PYGZsq{}:\PYGZsq{}304\PYGZsq{},\PYGZsq{}diameter\PYGZsq{}:\PYGZsq{}10465\PYGZsq{},\PYGZsq{}climate\PYGZsq{}:\PYGZsq{}arid\PYGZsq{}...\PYGZcb{}}
 \PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{n}{r}\PYG{o}{.}\PYG{n}{json}\PYG{p}{(}\PYG{p}{)}
 \PYG{g+go}{\PYGZob{}u\PYGZsq{}diameter\PYGZsq{}: u\PYGZsq{}10465\PYGZsq{}, u\PYGZsq{}climate\PYGZsq{}: u\PYGZsq{}arid\PYGZsq{}, u\PYGZsq{}surface\PYGZus{}water\PYGZsq{}: u\PYGZsq{}1\PYGZsq{}, u\PYGZsq{}name\PYGZsq{}: u\PYGZsq{}Tatooine\PYGZsq{}, ...\PYGZcb{}}
 \end{sphinxVerbatim}
 
-Hay varios métodos para hacer una petición, sin embargo, nos enfocaremos en uno.
 El método \sphinxcode{request} de la clase \sphinxcode{requests}, construye, envía una petición
 y tiene  como valor de retorno un objeto \sphinxcode{Response}.
-A continuación de los parámetros más comunes del método \sphinxcode{requests.request(method, url, **kwargs)}
+A continuación se hace una breve descripción de los parámetros más comunes del método \sphinxcode{requests.request(method, url, **kwargs)}
 \begin{itemize}
 \item {} 
 \texttt{method}, (obligatorio) el método de la petición, una cadena con valor \sphinxcode{post}, \sphinxcode{get}, etc.
 
 \item {} 
-\texttt{url}, (obligatorio) la URL a la que se hace la petición.
+\texttt{url}, (obligatorio) el URL al que se hace la petición.
 
 \item {} 
-\texttt{params}, (opcional) diccionario o bytes enviados en la URL.
+\texttt{params}, (opcional) diccionario o bytes enviados en el URL.
 
 \item {} 
 \texttt{data}, (opcional)  diccionario o lista de tuplas \sphinxcode{{[}(llave, valor){]}}, bytes u objeto similar a un archivo.
@@ -444,8 +443,8 @@ A continuación de los parámetros más comunes del método \sphinxcode{requests
 Dependiendo del contenido de la respuesta por parte del servidor, se elige cómo
 procesar la respuesta. Si es solo texto, se puede usar \sphinxcode{Response.text},
 que automáticamente decodificara el contenido enviado por el servidor,
-\sphinxcode{Response.content}, si queremos acceder al cuerpo del mensaje como bytes.
+\sphinxcode{Response.content}, si se desear accder al cuerpo del mensaje como un conjunto de bytes.
 También cuenta con un decodificador de JSON, \sphinxcode{Response.json()}.
 
-Podemos checar el código de estado de la respuesta con
-\sphinxcode{Response.status\_code}. Y también los headers, utilizando \sphinxcode{Response.headers}.
+El código de estado de la respuesta se verifica con el atributo
+\sphinxcode{Response.status\_code}. De las misma forma los encabezados del mensaje de respuesta se pueden checar con el atributo \sphinxcode{Response.headers}.

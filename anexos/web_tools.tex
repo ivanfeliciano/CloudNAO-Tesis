@@ -6,7 +6,7 @@
 React es una biblioteca de Javascript para crear interfaces de usuario
 lanzada por Facebook en 2013.
 Tiene tres características que la definen y distinguen  de otras
-biblioteca o frameworks y son:
+bibliotecas o frameworks y son:
 \begin{itemize}
 \item {} 
 Es \textbf{declarativa}, ya que permite crear interfaces de manera sencilla. Sólo se diseña una vista para cada estado de la aplicación; React actualizará de manera eficiente y \sphinxstylestrong{rederizará} los componentes correctos cuando los datos cambian.
@@ -56,7 +56,6 @@ La manera más simple para crear una aplicación en
 React es a través del kit inicial sin
 configuraciones para React lanzado por Facebook
 llamado \texttt{create-react-app}.
-
 Para iniciar con esta herramienta primero se instala a través del
 manejador de paquetes de node, \texttt{npm}:
 
@@ -105,7 +104,7 @@ ejemplo\PYGZus{}react\PYGZus{}app/
 \sphinxstylestrong{package.json}. El archivo que muestra las lista de dependencias y otras opciones de configuración del proyecto.
 
 \item {} 
-\sphinxstylestrong{.gitignore}. Este archivo indica todos los archivos y carpetas que nos deben añadirse a un repositorio remoto cuando se usa git.
+\sphinxstylestrong{.gitignore}. Este archivo indica todos los archivos y carpetas que no deben añadirse a un repositorio remoto cuando se usa git.
 
 \item {} 
 \sphinxstylestrong{public/}. Esta carpeta guarda todos los archivos cuando se despliega un proyecto en modo de producción.
@@ -113,10 +112,10 @@ ejemplo\PYGZus{}react\PYGZus{}app/
 \end{itemize}
 
 En un principio todo lo que se necesita está localizado en la carpeta \sphinxstyleemphasis{src/}.
-El enfoque principal está dirigido al archivo \sphinxstyleemphasis{src/App.js} para implementar los
+En el archivo \sphinxstyleemphasis{src/App.js} se implementan los
 componentes de React. Este se usa para implementar la aplicación, pero con el
 crecimiento de un proyecto siempre es necesario dividir los componentes en
-múltiples archivos, donde cada archivo mantiene uno o algunos componentes por
+múltiples archivos, donde cada archivo mantiene uno o más componentes por
 su cuenta.
 
 La aplicación generada con \sphinxstyleemphasis{create-react-app} es un proyecto de npm. Se puede usar
@@ -135,8 +134,7 @@ npm \PYG{n+nb}{test}
 npm run build
 \end{sphinxVerbatim}
 
-Esos scripts están definidos en el \sphinxstyleemphasis{package.json}.
-
+% Esos scripts están definidos en el \sphinxstyleemphasis{package.json}.
 El siguiente fragmento de código muestra una subclase
 de \texttt{React.Component} llamada \texttt{PodcastsList}.
 
@@ -154,9 +152,7 @@ class PodcastsList extends React.Component \PYGZob{}
           \PYG{p}{\PYGZlt{}}\PYG{n+nt}{li}\PYG{p}{\PYGZgt{}}Revolver\PYG{p}{\PYGZlt{}}\PYG{p}{/}\PYG{n+nt}{li}\PYG{p}{\PYGZgt{}}
         \PYG{p}{\PYGZlt{}}\PYG{p}{/}\PYG{n+nt}{ul}\PYG{p}{\PYGZgt{}}
       \PYG{p}{\PYGZlt{}}\PYG{p}{/}\PYG{n+nt}{div}\PYG{p}{\PYGZgt{}}
-    );
-  \PYGZcb{}
-\PYGZcb{}
+    );\PYGZcb{}\PYGZcb{}
 \end{sphinxVerbatim}
 
 Una forma de añadir la clase anterior a nuestro proyecto
@@ -169,17 +165,17 @@ generados por \sphinxcode{\sphinxupquote{create-react-app}}.
 \begin{figure}[ht]
 \centering
 \caption{Resultado de la aplicación en un navegador.}
-\includegraphics[scale=0.3]{react_first_app}
+\includegraphics[scale=0.4]{react_first_app}
 \end{figure}
 
 
-\section*{Anexo IX: Firebase para aplicaciones web}
+\section*{Firebase para aplicaciones web}
 
 Para utilizar los servicios Firebase en una aplicación web
 se siguen los mismos pasos que para el caso de 
 aplicaciones para Android. Desde la consola de Firebase
 se crea el proyecto y se obtiene un fragmento de código
-de inicialización. Ese código  contiene información de inicialización para configurar el SDK de Firebase JavaScript a fin de usar Authentication, Cloud Storage, Realtime Database y Cloud Firestore.
+de inicialización. Ese código  contiene información de inicialización para configurar el SDK de Firebase JavaScript a fin de usar los servicios Authentication, Cloud Storage, Realtime Database y Cloud Firestore.
 
 
 Se puede acceder
@@ -224,7 +220,7 @@ asíncrono a \sphinxcode{\sphinxupquote{firebase.database.Reference}}. El escuch
 el estado inicial de los datos y otra vez cuando los datos cambian.
 
 
-Para ejecutar operaciones de escritura básicas, puedes usar \sphinxcode{\sphinxupquote{set()}} para guardar
+Para ejecutar operaciones de escritura básicas, se usa \sphinxcode{\sphinxupquote{set()}} para guardar
 datos en una referencia que especifiques y reemplazar los datos existentes en
 esa ruta de acceso. Por ejemplo si se desea añadir un usuario a la base de datos,
 una opción es la siguiente:
@@ -243,14 +239,15 @@ una opción es la siguiente:
 \sphinxcode{\sphinxupquote{set()}} sobrescribe los datos en la ubicación que se especifica, incluidos
 los nodos secundarios.
 
+También existe el método \sphinxcode{\sphinxupquote{push()}} para añadir una entrada con un identificador
+único sobre una referencia.
 
 \subsubsection*{Detección de eventos en valores}
 \label{\detokenize{firebase_web:detecta-eventos-en-valores}}
-Si deseas leer datos de una ruta de acceso y escuchar para detectar cambios,
-usa los métodos \sphinxcode{\sphinxupquote{on()}} o \sphinxcode{\sphinxupquote{once()}} de \sphinxcode{\sphinxupquote{firebase.database.Reference}}
-para observar eventos.
+Para leer y detectar cambios,
+se usan los métodos \sphinxcode{\sphinxupquote{on()}} o \sphinxcode{\sphinxupquote{once()}} de \sphinxcode{\sphinxupquote{firebase.database.Reference}}.
 
-El evento más común es \sphinxcode{\sphinxupquote{value}} y permite leer una instantánea estática del
+El evento más común es \sphinxcode{\sphinxupquote{value}} y permite leer una instantánea estática (snapshot en inglés) del
 contenido de una ruta de acceso determinada, en el estado en que se encontraba
 en el momento del evento. Este método se activa cuando se vincula el escuchador
 y se vuelve a activar cada vez que cambian los datos (incluidos los de
@@ -259,7 +256,7 @@ que contiene todos los datos de dicha ubicación, incluidos los datos
 secundarios. Si no hay datos, la instantánea tiene un valor nulo.
 
 En el siguiente ejemplo se muestra una aplicación donde se recupera el valor
-de un recurso en la base de datos:
+de un recurso, \sphinxcode{resource}, en la base de datos:
 
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -269,7 +266,7 @@ de un recurso en la base de datos:
 \PYG{p}{\PYGZcb{}}\PYG{p}{)}\PYG{p}{;}
 \end{sphinxVerbatim}
 
-El escuchador recibe una \sphinxcode{\sphinxupquote{snapshot}} que contiene los datos de la ubicación
+El escuchador recibe un objeto \sphinxcode{\sphinxupquote{snapshot}} que contiene los datos de la ubicación
 especifica en la base de datos en el momento del evento. Se pueden recuperar
 los datos de la \sphinxcode{\sphinxupquote{snapshot}} con el método \sphinxcode{\sphinxupquote{val()}}.
 
@@ -277,10 +274,7 @@ los datos de la \sphinxcode{\sphinxupquote{snapshot}} con el método \sphinxcode
 \subsubsection*{Actualizar o borrar datos}
 \label{\detokenize{firebase_web:actualizar-o-borrar-datos}}
 Para escribir de forma simultánea en elementos secundarios específicos de un
-nodo sin sobrescribir otros nodos secundarios, usa el método \sphinxcode{\sphinxupquote{update()}}.
-
-También existe el método \sphinxcode{\sphinxupquote{push()}} para añadir una entrada con un identificador
-único sobre una referencia.
+nodo sin sobrescribir otros nodos secundarios, se usa el método \sphinxcode{\sphinxupquote{update()}}.
 
 La forma más sencilla de borrar datos es llamar a \sphinxcode{\sphinxupquote{remove()}} en una referencia a
 la ubicación de los datos. Para borrar, también puedes especificar nulo como
@@ -357,13 +351,11 @@ Para obtener la información del perfil de un usuario, puedes usar las propiedad
   \PYG{n}{email} \PYG{o}{=} \PYG{n}{user}\PYG{o}{.}\PYG{n}{email}\PYG{p}{;}
   \PYG{n}{photoUrl} \PYG{o}{=} \PYG{n}{user}\PYG{o}{.}\PYG{n}{photoURL}\PYG{p}{;}
   \PYG{n}{emailVerified} \PYG{o}{=} \PYG{n}{user}\PYG{o}{.}\PYG{n}{emailVerified}\PYG{p}{;}
-  \PYG{n}{uid} \PYG{o}{=} \PYG{n}{user}\PYG{o}{.}\PYG{n}{uid}\PYG{p}{;}  \PYG{o}{/}\PYG{o}{/} \PYG{n}{El} \PYG{n+nb}{id} \PYG{k}{del} \PYG{n}{usuario} \PYG{n}{es} \PYG{n}{único} \PYG{n}{en} \PYG{n}{un} \PYG{n}{proyecto} \PYG{n}{de} \PYG{n}{Firebase}
-
-\PYG{p}{\PYGZcb{}}
+  \PYG{n}{uid} \PYG{o}{=} \PYG{n}{user}\PYG{o}{.}\PYG{n}{uid}\PYG{p}{;}  \PYG{o}{/}\PYG{o}{/} \PYG{n}{El} \PYG{n+nb}{id} \PYG{k}{del} \PYG{n}{usuario} \PYG{n}{es} \PYG{n}{único} \PYG{n}{en} \PYG{n}{un} \PYG{n}{proyecto} \PYG{n}{de} \PYG{n}{Firebase}\PYG{p}{\PYGZcb{}}
 \end{sphinxVerbatim}
 
 
-Para salir de la sesión de un usuario, se llama a \sphinxcode{\sphinxupquote{signOut}}:
+Para cerrar la sesión de un usuario, se llama a \sphinxcode{\sphinxupquote{signOut}}:
 
 \fvset{hllines={, ,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -416,7 +408,7 @@ uno.
 
 \item\textbf{Lanzar un sitio web.}
 \label{\detokenize{firebase_web:implementar-un-sitio-web}}
-Ejecutar \sphinxcode{\sphinxupquote{firebase deploy}} implementará la aplicación en el dominio
-\sphinxcode{\sphinxupquote{\textless{}APP-DE-FIREBASE\textgreater{}.firebaseapp.com}}
+Ejecutar \sphinxcode{\sphinxupquote{firebase deploy}} despliega la aplicación en el dominio
+\sphinxcode{\sphinxupquote{\textless{}NOMBRE-DE-LA-APP-DE-FIREBASE\textgreater{}.firebaseapp.com}}
 
 \end{itemize}
