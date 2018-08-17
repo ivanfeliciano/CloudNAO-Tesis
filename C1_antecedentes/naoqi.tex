@@ -104,10 +104,9 @@ lo que permite crear aplicaciones distribuidas.
 \end{itemize}
 
 
-\begin{savenotes}\sphinxattablestart
+\begin{table}
 \centering
-\sphinxcapstartof{table}
-\sphinxcaption{Lenguajes de programación soportados}\label{\detokenize{chapter_one/naoqi:supp-languages}}
+\caption{Lenguajes de programación soportados}\label{\detokenize{chapter_one/naoqi:supp-languages}}
 \sphinxaftercaption
 \begin{tabulary}{\linewidth}[t]{|T|T|T|}
 \hline
@@ -148,8 +147,7 @@ Sí
 \\
 \hline
 \end{tabulary}
-\par
-\sphinxattableend\end{savenotes}
+\end{table}
 
 
 % \subsubsection{Introspección}
@@ -662,61 +660,57 @@ Para ahorrar energía, los sensores ultrasónicos no están activados por defect
 
 Hay cuatro eventos diferentes relacionados cn los sensores ultrasónicos, y se
 muestran en la \hyperref[\detokenize{chapter_one/naoqi:sonar-events}]{tabla \ref{\detokenize{chapter_one/naoqi:sonar-events}}}
-\begin{quote}
-\begin{savenotes}\sphinxattablestart
+\begin{table}
 \centering
-\sphinxcapstartof{table}
-\sphinxcaption{Eventos lanzados por los sensores ultrasónicos}\label{\detokenize{chapter_one/naoqi:sonar-events}}
+\caption{Eventos lanzados por los sensores ultrasónicos}\label{\detokenize{chapter_one/naoqi:sonar-events}}
 \sphinxaftercaption
-\begin{tabulary}{\linewidth}[t]{|T|T|T|}
+\begin{tabulary}{\linewidth}[t]{|T|T|}
 \hline
+% \sphinxstylethead{ 
+% Caso
+% \unskip}\relax &
 \sphinxstylethead{ 
-Caso
-\unskip}\relax &\sphinxstylethead{ 
 Evento
 \unskip}\relax &\sphinxstylethead{ 
 Descripción
 \unskip}\relax \\
 \hline
-\noindent\sphinxincludegraphics{{sonar_front_left}.png}
-&
+% \noindent\sphinxincludegraphics{{sonar_front_left}.png} &
 SonarLeftDetected
 &
 Hay algo enfrente del robot (lado izquierdo) al menos a 0.5 m. Esto significa que el robot no puede ir hacia adelante, tiene que detenerse y girar a la derecha para evitar el obstáculo.
 \\
 \hline
-\noindent\sphinxincludegraphics{{sonar_front_right}.png}
-&
+% \noindent\sphinxincludegraphics{{sonar_front_right}.png}
+% &
 SonarRightDetected
 &
 Hay algo frente al robot (lado derecho) al menos a 0.5 m. Esto significa que el robot no puede ir hacia a delante, tiene que detenerse e ir hacia la izquierda.
 \\
 \hline
-\noindent\sphinxincludegraphics{{sonar_left}.png}
-&
+% \noindent\sphinxincludegraphics{{sonar_left}.png}
+% &
 SonarLeftNothingDetected
 &
 No hay presencia de un objeto en frente del robot o de su lado izquierdo, esto significa que el robot puede ir hacia adelante o girar a la izquierda. Hay un obstáculo presente a menos 0.5 m del lado derecho., pero no es problema si el robot sigue de manera recta.
 \\
 \hline
-\noindent\sphinxincludegraphics{{sonar_right}.png}
-&
+% \noindent\sphinxincludegraphics{{sonar_right}.png}
+% &
 SonarRightNothingDetected
 &
 No hay algo frente al robot o de su lado derecho. El robot puede ir hacia adelante o girar a la derecha. Hay un obstáculo a la izquierda, sin embargo no es un problema para una caminado recto.
 \\
 \hline
-\noindent\sphinxincludegraphics{{sonar_front_none}.png}
-&
+% \noindent\sphinxincludegraphics{{sonar_front_none}.png}
+% &
 SonarLeftNothingDetected y SonarRightNothingDetected
 &
 Si ambos eventos son lanzados al mismo tiempo significa que no hay obstáculos presentes.
 \\
 \hline
 \end{tabulary}
-\par
-\sphinxattableend\end{savenotes}
-\end{quote}
+\end{table}
 
 Los valores actuales de los sensores se pueden recuperar desde \sphinxcode{ALMemory} a través
 del método \sphinxcode{getData()} de \sphinxcode{ALMemory}.
@@ -833,14 +827,10 @@ servicios y reaccionar a eventos.
 El SDK está basado en la biblioteca \sphinxstylestrong{libqi-java}, la cual utiliza el
 \sphinxstylestrong{marco de trabajo qi}.
 
-\begin{quote}
 
-\begin{savenotes}\sphinxattablestart
+\begin{table}
 \centering
-\sphinxcapstartof{table}
-\sphinxcaption{Sistemas operativos compatibles con el SDK de Java}
-\sphinxaftercaption
-
+\caption{Sistemas operativos compatibles con el SDK de Java}
 \begin{tabulary}{\linewidth}[t]{|T|T|}
 \hline
 \sphinxstylethead{ 
@@ -873,9 +863,7 @@ Para ARM
 \\
 \hline
 \end{tabulary}
-\par
-\sphinxattableend\end{savenotes}
-\end{quote}
+\end{table}
 
 Existe un archivo \sphinxcode{.jar} por cada plataforma y versión de NAOqi. Éste
 permite usar la API de C++ de Aldebaran o crear servicios
