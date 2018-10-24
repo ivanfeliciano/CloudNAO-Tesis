@@ -34,20 +34,21 @@ los SDK disponibles.
 \label{\detokenize{nao_firebase:modulo-auxiliar-para-la-api-rest}}
 Para utilizar la API REST de manera más simple se desarrolló una biblioteca
 que encapsulara los métodos de lectura, escritura y el streaming de datos.
-Es un módulo de Python, compuesto por dos partes principales; la primera parte
+Es un módulo de Python, compuesto por dos partes principales: la primera parte
 es aquella que maneja las peticiones de escritura y lectura usando los métodos
 HTTP antes mencionados, la segunda parte es la encargada de recibir las
 notificaciones de parte del servidor. Para la primera el uso de la biblioteca
 \sphinxcode{\sphinxupquote{requests}} es suficiente. Para la segunda, se emplean las bibliotecas
 \sphinxcode{\sphinxupquote{threading}}, para que en un hilo se escuchen los cambios, \sphinxcode{\sphinxupquote{sseclient}},
-un cliente del protocolo \sphinxstylestrong{SSE}, y \sphinxcode{\sphinxupquote{socket}}, el hilo del cliente \sphinxstylestrong{SSE}.
-A continuación se describe cada elemnto del módulo \sphinxcode{\sphinxupquote{firebase}}.
+un cliente del protocolo \sphinxstylestrong{SSE} y \sphinxcode{\sphinxupquote{socket}}, el hilo del cliente \sphinxstylestrong{SSE}.
+A continuación se describe cada elemento del módulo \sphinxcode{\sphinxupquote{firebase}}.
 \newline
 
 \codedocumentation{\sphinxbfcode{\sphinxupquote{class }}\sphinxcode{\sphinxupquote{firebase.}}\sphinxbfcode{\sphinxupquote{ClosableSSEClient}}(\emph{*args}, \emph{**kwargs})}
 Una clase pública desarrollada por el equipo de Firebase.
 Añade una funcionalidad al módulo \sphinxcode{\sphinxupquote{SSEClient}} para
 abandonar correctamente el streaming.
+\newline
 
 \codedocumentation{{\sphinxbfcode{\sphinxupquote{class }}\sphinxcode{\sphinxupquote{firebase.}}\sphinxbfcode{\sphinxupquote{FirebaseDatabase}}}(\emph{url})}
 Una clase para usar utilizar la API REST de Firebase con métodos de alto nivel.

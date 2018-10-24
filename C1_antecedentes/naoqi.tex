@@ -10,18 +10,19 @@ Aldebaran Robotics.
 El robot NAO mide 57.3 cm de altura, 27.3 cm de ancho, y pesa menos de 4.3 kg.
 El cuerpo está construido de un material de plástico y tiene una batería de ion
 de litio que lo abastece para un uso normal de aproximadamente
-90 minutos o 60 en un modo activo.
+90 o 60 minutos en un modo activo.
 
 Las versiones \sphinxstyleemphasis{V5} y \sphinxstyleemphasis{V4} tiene una CPU Atom de 1.6 GHz, 1 GB de RAM, una
-memoria flash de 2 GB y una micro SDHC de 8GB.
+memoria flash de 2 GB y una micro SDHC de 8 GB.
 
 Se comunica remotamente con otros dispositivos mediante WiFi o por medio de un
 cable Ethernet. También cuenta con un puerto USB cuyo principal uso es para
 añadir un dispositivo como un sensor 3D o un Arduino.
 
-Para la parte multimedia, el robot está equipado con un sistema de transmisión
-estéreo compuesto por dos bocinas en las orejas. Dos micrófonos en la cabeza
-con un paso de banda eléctrico entre 300Hz y 8kHz. Dos cámaras idénticas están
+Para la parte multimedia, el robot está equipado con: un sistema de transmisión
+estéreo compuesto por dos bocinas en las orejas, dos micrófonos en la cabeza
+% con un paso de banda eléctrico entre 300Hz y 8kHz
+y dos cámaras idénticas
 localizadas en la parte anterior de la cabeza. Éstas proveen imágenes con una
 resolución de hasta 1280px $\times$ 960px y 30 cuadros por segundo.
 
@@ -56,23 +57,23 @@ En el sistema de referencia se tienen tres ángulos de rotación:
 \sphinxstyleemphasis{roll} (dirección), \sphinxstyleemphasis{pitch} (elevación) y \sphinxstyleemphasis{roll} (alabeo).
 Las rotaciones \sphinxstyleemphasis{roll}, son
 alrededor del eje X, las \sphinxstyleemphasis{pitch}  sobre Y y \sphinxstyleemphasis{yaw} con respecto a Z. La
-\hyperref[\detokenize{chapter_one/naoqi:rollpitchyaw-frame}]{figura \ref{\detokenize{chapter_one/naoqi:rollpitchyaw-frame}}} muestra el sistema de referencia.
+\hyperref[\detokenize{chapter_one/naoqi:rollpitchyaw-frame}]{Figura \ref{\detokenize{chapter_one/naoqi:rollpitchyaw-frame}}} muestra el sistema de referencia.
 
 \begin{figure}[htbp]
 \centering
 \capstart
 
 \noindent\sphinxincludegraphics[scale=0.7]{{rollPitchYaw_frame}.png}
-\caption{Sistema de referencia de los ángulos de rotación}\label{\detokenize{chapter_one/naoqi:rollpitchyaw-frame}}\end{figure}
+\caption{Sistema de referencia de los ángulos de rotación (Figura obtenida desde \cite{rowpitchyawimagereference})}\label{\detokenize{chapter_one/naoqi:rollpitchyaw-frame}}\end{figure}
 
-En la \hyperref[\detokenize{chapter_one/naoqi:nao-config}]{figura \ref{\detokenize{chapter_one/naoqi:nao-config}}} se muestran algunos de los componentes del robot NAO.
+En la \hyperref[\detokenize{chapter_one/naoqi:nao-config}]{Figura \ref{\detokenize{chapter_one/naoqi:nao-config}}} se muestran algunos de los componentes del robot NAO.
 
 \begin{figure}[htbp]
 \centering
 \capstart
 
 \noindent\sphinxincludegraphics[scale=0.5]{{nao_config}.png}
-\caption{Componentes del robot NAO}\label{\detokenize{chapter_one/naoqi:nao-config}}\end{figure}
+\caption{Componentes del robot NAO (Figura obtenida desde \cite{naoh25bodytype})}\label{\detokenize{chapter_one/naoqi:nao-config}}\end{figure}
 
 
 \subsection{NAOqi}
@@ -96,7 +97,7 @@ lo que permite crear aplicaciones distribuidas.
 \sphinxstylestrong{Multiplataforma}: El marco de trabajo de NAOqi puede ser usando en Windows, Linux y MacOS.
 
 \item {} 
-\sphinxstylestrong{Multilenguaje}: Con el marco de trabajo se puede desarrollar código para ejecutarlo directamente sobre el robot o remotamente en otro dispositivo. En la \hyperref[\detokenize{chapter_one/naoqi:supp-languages}]{tabla \ref{\detokenize{chapter_one/naoqi:supp-languages}}} se muestran los lenguajes compatibles.
+\sphinxstylestrong{Multilenguaje}: Con el marco de trabajo se puede desarrollar código para ejecutarlo directamente sobre el robot o remotamente en otro dispositivo. En la \hyperref[\detokenize{chapter_one/naoqi:supp-languages}]{Tabla \ref{\detokenize{chapter_one/naoqi:supp-languages}}} se muestran los lenguajes compatibles.
 
 \item {} 
 \sphinxstylestrong{Aplicaciones distribuidas}: Una aplicación puede estar compuesta de procesos y módulos entre diversos robots. Para ejecutar un programa en un robot de manera remota sólo se necesita su dirección IP y puerto, los métodos de la API son los mismos como si se llamaran localmente.
@@ -186,13 +187,13 @@ para publicar sus métodos.
 \centering
 \capstart
 \noindent\sphinxincludegraphics[scale=0.70]{{broker-libraries-modules}.png}
-\caption{Conexión entre el broker, las bibliotecas y los módulos}\label{\detokenize{chapter_one/naoqi:broker-lib-mod}}\end{figure}
+\caption{Conexión entre el broker, las bibliotecas y los módulos (Figura obtenida desde \cite{brokerlibrariesmodules})}\label{\detokenize{chapter_one/naoqi:broker-lib-mod}}\end{figure}
 
 El broker provee un servicio de búsqueda para que cualquier módulo en el árbol
-de la \hyperref[\detokenize{chapter_one/naoqi:broker-lib-mod}]{figura \ref{\detokenize{chapter_one/naoqi:broker-lib-mod}}} o a través de una red pueda encontrar cualquier
+de la \hyperref[\detokenize{chapter_one/naoqi:broker-lib-mod}]{Figura \ref{\detokenize{chapter_one/naoqi:broker-lib-mod}}} o a través de una red pueda encontrar cualquier
 método que ha sido publicado.
 
-La carga de módulos forma un árbol (\hyperref[\detokenize{chapter_one/naoqi:broker-mod-meth}]{figura \ref{\detokenize{chapter_one/naoqi:broker-mod-meth}}}) de métodos
+La carga de módulos forma un árbol (\hyperref[\detokenize{chapter_one/naoqi:broker-mod-meth}]{Figura \ref{\detokenize{chapter_one/naoqi:broker-mod-meth}}}) de métodos
 ligados a los módulos, y módulos ligados a un broker.
 
 \begin{figure}[htbp]
@@ -200,7 +201,7 @@ ligados a los módulos, y módulos ligados a un broker.
 \capstart
 
 \noindent\sphinxincludegraphics[scale=0.70]{{broker-modules-methods}.png}
-\caption{Conexión entre broker, módulos y métodos}\label{\detokenize{chapter_one/naoqi:broker-mod-meth}}\end{figure}
+\caption{Conexión entre broker, módulos y métodos (Figura obtenida desde \cite{brokermodulesmethods})}\label{\detokenize{chapter_one/naoqi:broker-mod-meth}}\end{figure}
 
 
 \label{\detokenize{chapter_one/naoqi:broker}}
@@ -240,7 +241,7 @@ En el constructor de una subclase de \sphinxcode{ALModule}, se pueden «enlazar�
 métodos. Esto publica los nombres y firmas de sus métodos al broker para que así
 estén disponibles para otros.
 
-Un módulo puede ser ya sea remoto o local. Si es remoto, es compilado como un ejecutable y puede ser ejecutado fuera del robot.
+Un módulo puede ser remoto o local. Si es remoto, es compilado como un ejecutable y puede ser ejecutado fuera del robot.
 Los módulos remotos son más fáciles de usar y pueden ser fácilmente depurados. Sin
 embargo, son menos eficientes en términos de velocidad y uso de memoria.
 
@@ -258,9 +259,9 @@ Si el módulo es local, se compila como una biblioteca, y puede ser usado
 Los \textit{módulos locales} son dos o más módulos lanzados en el mismo proceso. Estos
 se comunican entre ellos usando solamente un broker.
 
-Como los módulos locales están en el mismo proceso, estos puede compartir
+Como los módulos locales están en el mismo proceso, éstos puede compartir
 variables y llamar otros métodos sin serializar información y sin necesidad de
-una red. Esto permite la comunicación más rápida posible.
+una red. Esto permite que la comunicación sea más rápida.
 
 
 % \paragraph{Módulos remotos}
@@ -306,7 +307,7 @@ Para hacer eso, es necesario crear un proxy dentro del módulo y conectarlo
 a la dirección IP y puerto del broker que se desea.
 
 Por ejemplo, si se tienen dos módulos B y C. Cuando se conecten B a C sólo
-usando un proxy, B puede acceder a las funciones de C pero C no puede acceder
+usando un proxy, B puede acceder a las funciones de C, pero C no puede acceder
 a las funciones de B.
 
 
@@ -315,7 +316,7 @@ a las funciones de B.
 NAOqi ofrece dos maneras de llamar métodos:
 \begin{itemize}
 \item {} 
-Llamadas de bloqueo (blocking call): Al llamar una función de bloqueo, la siguiente instrucción se ejecutará después de que la que fue previamente llamada. Todas las llamadas pueden lanzar excepciones y deben ser encapsuladas en bloques try-catch.
+Llamadas de bloqueo (blocking call): Al llamar una función de bloqueo, la siguiente instrucción se ejecutará después de la que fue llamada previamente. Todas las llamadas pueden lanzar excepciones y deben ser encapsuladas en bloques try-catch.
 
 \item {} 
 Llamadas sin bloqueo (non-blocking call): Usando el objeto \sphinxcode{post} de un proxy, una tarea es creada en un hilo paralelo. Esto permite hacer otro trabajo al mismo tiempo (por ejemplo, caminar y hablar). Cada \sphinxcode{post} genera un identificador de la tarea. Se puede usa el identificador anterior para verificar si la tarea se está ejecutando, o esperar a que termine.
@@ -359,7 +360,6 @@ Por ejemplo, supongamos que se define un módulo llamado \sphinxcode{FaceReactio
 contiene un método \sphinxcode{onFaceDetected}.
 Se puede suscribir \sphinxcode{FaceReaction} al método \sphinxcode{FaceDetected} del módulo
 \sphinxcode{ALFaceRecognition} con el callback \sphinxcode{onFaceDetected}.
-
 Esto provocará que el algoritmo de detección de rostros se ejecute, y cada vez
 que una cara sea detectada, se llame al callback \sphinxcode{onFaceDetected}.
 
@@ -375,7 +375,7 @@ NAOqi viene con una lista de módulos centrales que están disponibles siempre.
 Cada módulo cuenta con una lista de métodos por defecto.
 
 
-\subparagraph{ALMemory.}
+\textbf{ALMemory.}
 \label{\detokenize{chapter_one/naoqi:id1}}
 Es una memoria centralizada usada para almacenar toda la información importante
 relacionada con la configuración del hardware del robot.
@@ -438,7 +438,7 @@ realizar movimientos de forma autónoma y hasta generar movimientos
 personalizados.
 
 
-\subparagraph{ALMotion.}
+\textbf{ALMotion.}
 \label{\detokenize{chapter_one/naoqi:almotion}}
 Es la principal herramienta para permitir que el robot se mueva.
 
@@ -459,7 +459,7 @@ efector del robot en el espacio cartesiano, determinar el movimiento de una cade
 \end{itemize}
 
 
-% \subparagraph{Reflejos}
+% \textbf{Reflejos}
 % \label{\detokenize{chapter_one/naoqi:reflejos}}
 % El módulo de \sphinxcode{ALMotion} implementa algunos «reflejos» como; evitar la autocolisión,
 % evadir la colisión externa, manejar de caídas, una rigidez inteligente y un
@@ -480,27 +480,27 @@ efector del robot en el espacio cartesiano, determinar el movimiento de una cade
 % \end{itemize}
 
 
-% \subparagraph{Desocupado}
+% \textbf{Desocupado}
 % \label{\detokenize{chapter_one/naoqi:desocupado}}
 % El módulo también suministra herramientas para definir el comportamiento del
 % robot cuando el usuario no envía comandos.
 
 
-% \subparagraph{Herramientas}
+% \textbf{Herramientas}
 % \label{\detokenize{chapter_one/naoqi:herramientas}}
 % Este módulo brinda información útil sobre el hardware del robot, tal como el
 % número de articulaciones, su nombre, límites, sensores disponibles, etcétera.
 
 
-% \subparagraph{Información esencial}
+% \textbf{Información esencial}
 % \label{\detokenize{chapter_one/naoqi:informacion-esencial}}
 
-% \subparagraph{\sphinxstylestrong{Definición de ejes}}
+% \textbf{\sphinxstylestrong{Definición de ejes}}
 % \label{\detokenize{chapter_one/naoqi:definicion-de-ejes}}
 El eje \sphinxstylestrong{X} es positivo con respecto al frente del robot, el eje \sphinxstylestrong{Y} de
 derecha a izquierda y el \sphinxstylestrong{Z} es vertical.
-La \hyperref[\detokenize{chapter_one/naoqi:almotionaxis}]{figura \ref{\detokenize{chapter_one/naoqi:almotionaxis}}} muestra la definición de los ejes con respecto al robot.
-% \subparagraph{\sphinxstylestrong{Sistema Internacional de Unidades}}
+La \hyperref[\detokenize{chapter_one/naoqi:almotionaxis}]{Figura \ref{\detokenize{chapter_one/naoqi:almotionaxis}}} muestra la definición de los ejes con respecto al robot.
+% \textbf{\sphinxstylestrong{Sistema Internacional de Unidades}}
 % \label{\detokenize{chapter_one/naoqi:sistema-internacional-de-unidades}}
 El módulo de \sphinxcode{ALMotion} usa el Sistema Internacional de Unidades (metros,
 segundos, radianes, etc).
@@ -509,7 +509,7 @@ segundos, radianes, etc).
 \capstart
 
 \noindent\sphinxincludegraphics[scale=0.40]{{almotionaxis}.png}
-\caption{Sistema de ejes sobre los que el robot ejecuta movimientos}\label{\detokenize{chapter_one/naoqi:almotionaxis}}\end{figure}
+\caption{Sistema de ejes sobre los que el robot ejecuta movimientos (Figura obtenida desde \cite{naotorsoaxis})}\label{\detokenize{chapter_one/naoqi:almotionaxis}}\end{figure}
 
 
 
@@ -521,14 +521,14 @@ manejar la salida o entrada a través de sus bocinas y micrófonos,
 para la detección y localización de sonidos,  y para el manejo del lenguaje.
 
 
-\subparagraph{ALTextToSpeech.}
+\textbf{ALTextToSpeech.}
 \label{\detokenize{chapter_one/naoqi:altexttospeech}}
 Este módulo permite al robot hablar. Envía órdenes a un componente que
-convierte texto a un discurso hablado, y autoriza la personalización de la voz.
+convierte texto a un discurso hablado y autoriza la personalización de la voz.
 El resultado de la síntesis es enviado a las bocinas del robot.
 
 
-\subparagraph{ALAnimatedSpeech.}
+\textbf{ALAnimatedSpeech.}
 \label{\detokenize{chapter_one/naoqi:alanimatedspeech}}
 El módulo \sphinxcode{ALAnimatedSpeech} brinda la posibilidad de hacer que el robot hable
 de una manera expresiva.
@@ -555,7 +555,7 @@ El módulo prepara al robot para ejecutar cada instrucción para que estas sean 
 
 \end{enumerate}
 
-% \subparagraph{Texto anotado}
+% \textbf{Texto anotado}
 % \label{\detokenize{chapter_one/naoqi:texto-anotado}}
 El \textit{texto anotado} es una cadena combinando texto que se dirá e \textit{instrucciones}
 que manejan comportamientos.
@@ -577,7 +577,7 @@ Si se desea esperar a que termine la animación basta con añadir la instrucció
 \end{sphinxVerbatim}
 
 
-% \subparagraph{Modos de lenguaje corporal}
+% \textbf{Modos de lenguaje corporal}
 % \label{\detokenize{chapter_one/naoqi:modos-de-lenguaje-corporal}}
 Existen tres \textit{modos del lenguaje corporal}:
 \begin{itemize}
@@ -588,12 +588,12 @@ Existen tres \textit{modos del lenguaje corporal}:
 \sphinxstylestrong{random}: el lenguaje corporal ejecuta aleatoriamente algunas animaciones que son ejecutadas una tras otra.
 
 \item {} 
-\sphinxstylestrong{contextual}: el lenguaje corporal lanza algunas animaciones específicas cada vez que una palabra clave como «Yo», «tú», es detectada en un contexto gramatical apropiado.
+\sphinxstylestrong{contextual}: el lenguaje corporal lanza algunas animaciones específicas cada vez que una palabra clave como «Yo», «Tú», es detectada en un contexto gramatical apropiado.
 
 \end{itemize}
 
 
-\subparagraph{ALAudioRecorder.}
+\textbf{ALAudioRecorder.}
 \label{\detokenize{chapter_one/naoqi:alaudiorecorder}}
 \sphinxcode{ALAudioRecorder} provee servicios de grabación en archivos «WAV»
 u «OGG» a partir de las señales recibidas de los micrófonos del robot.
@@ -615,19 +615,22 @@ un canal (anterior, posterior, izquierda o derecha) para OGG y WAV.
 %\paragraph{Vision}
 % \label{\detokenize{chapter_one/naoqi:vision}}
 Los módulos de visión provistos por NAOqi se encargan del manejo de video e
-imágenes, detección de objectos predefinidos en video, y cuenta con herramientas
-para crear una memoria visual donde aprenda y reconozca ciertos patrones,
-y herramientas para navegación, usar una imagen como brújula, entre otras.
+imágenes.
+Éstos cuentan con herramientas para detección de objetos,
+creación de una memoria visual, reconocimiento de patrones
+y navegación.
+% , detección de objectos predefinidos en video, y cuenta con herramientas
+% para crear una memoria visual donde aprenda y reconozca ciertos patrones,
+% y herramientas para navegación, usar una imagen como brújula, entre otras.
 
-
-\subparagraph{ALVideoDevice.}
+\textbf{ALVideoDevice.}
 \label{\detokenize{chapter_one/naoqi:alvideodevice}}
 Este módulo es responsable de proveer, de una manera eficiente, imágenes de la
 cámara del robot a todos los módulos que las procesan, como \sphinxcode{ALFaceDetection}
 o \sphinxcode{ALVisionRecognition}.
 
 
-% \subparagraph{Uso}
+% \textbf{Uso}
 % \label{\detokenize{chapter_one/naoqi:id2}}
 Para empezar a utilizar este módulo es necesario seguir los siguientes pasos:
 \begin{enumerate}
@@ -652,14 +655,14 @@ con el robot a través de algunos de ellos, o manejar eventos cuando estos
 cambian valores.
 
 
-\subparagraph{ALSonar.}
+\textbf{ALSonar.}
 \label{\detokenize{chapter_one/naoqi:alsonar}}
 El módulo de \sphinxcode{ALSonar} obtiene valores de los sensores ultrasónicos desde
 \sphinxcode{ALMemory}, procesa esa información y lanza eventos de acuerdo con la situación.
 Para ahorrar energía, los sensores ultrasónicos no están activados por defecto.
 
 Hay cuatro eventos diferentes relacionados cn los sensores ultrasónicos, y se
-muestran en la \hyperref[\detokenize{chapter_one/naoqi:sonar-events}]{tabla \ref{\detokenize{chapter_one/naoqi:sonar-events}}}
+muestran en la \hyperref[\detokenize{chapter_one/naoqi:sonar-events}]{Tabla \ref{\detokenize{chapter_one/naoqi:sonar-events}}}
 \begin{table}
 \centering
 \caption{Eventos lanzados por los sensores ultrasónicos}\label{\detokenize{chapter_one/naoqi:sonar-events}}
@@ -716,7 +719,7 @@ Los valores actuales de los sensores se pueden recuperar desde \sphinxcode{ALMem
 del método \sphinxcode{getData()} de \sphinxcode{ALMemory}.
 
 
-%\subparagraph{Uso}
+%\textbf{Uso}
 %\label{\detokenize{chapter_one/naoqi:id3}}
 El hardware de los sensores no se inicia de manera automática. Para empezar,
 es necesario suscribirse al módulo de \sphinxcode{ALSonar} a través del método \sphinxcode{subscribe()}.
@@ -758,16 +761,6 @@ El administrador de comunicación de dispositivos, DCM por sus siglas en inglés
 es un módulo de software, parte de NAOqi, encargado de la comunicación con
 casi todos los dispositivos electrónicos del robot (sensores, actuadores, etc),
 excepto los de audio y las cámaras.
-
-
-\subsubsection{El marco de trabajo qi}
-\label{\detokenize{chapter_one/naoqi:el-marco-de-trabajo-qi}}
-Es una nueva arquitectura, que permite utilizar la API de NAOqi con una sintaxis
-nueva y sencilla.
-
-En vez de crear un proxy a un módulo, se crea una sesión y se solicita un
-servicio. El resultado de esto es un objeto con los mismos métodos del
-módulo que se desea.
 
 
 \subsubsection{SDK de Python}
@@ -825,7 +818,13 @@ El SDK de Java provee una API para llamar servicios remotos, crear nuevos
 servicios y reaccionar a eventos.
 
 El SDK está basado en la biblioteca \sphinxstylestrong{libqi-java}, la cual utiliza el
-\sphinxstylestrong{marco de trabajo qi}.
+\sphinxstylestrong{marco de trabajo qi}. Este marco de trabajo es 
+una nueva arquitectura, que permite utilizar la API de NAOqi con 
+una sintaxis nueva y sencilla.
+En vez de crear un proxy a un módulo, se crea una sesión y se 
+solicita un servicio. El resultado de esto es un objeto con los 
+mismos métodos del módulo que se desea.
+
 
 
 \begin{table}

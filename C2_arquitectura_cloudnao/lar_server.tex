@@ -17,21 +17,26 @@ neuronal. A continuación se enlistan los servicios de terceros que el servidor
 consume.
 \begin{itemize}
 \item {} 
-\sphinxhref{https://cloud.google.com/vision/}{API Vision de Google Cloud}, permite comprender el contenido de una imagen. Son dos las funcionalidades ocupadas; el etiquetado de imágenes en miles de categorías y el reconocimiento óptico de caracteres (OCR).
+Google Cloud Vision, permite comprender el contenido de una imagen. Son dos las funcionalidades ocupadas; el etiquetado de imágenes en miles de categorías y el reconocimiento óptico de caracteres (OCR).
 
 % \item {} 
 % \sphinxhref{https://cloud.google.com/speech/}{API Speech de Google Cloud}, convierte audio a texto.
 
 \item {} 
-\sphinxhref{https://cloud.google.com/translate/}{API Translation de Google Cloud}, se encarga de traducir una cadena arbitraria en cualquier idioma admitido.
+Google Cloud Translation, se encarga de traducir una cadena arbitraria en cualquier idioma admitido.
 
 \item {} 
-\sphinxhref{https://www.kairos.com/}{Kairos}, es una API de reconocimiento facial. Esta cuenta con varios métodos, de los cuales se utilizaron \sphinxstyleemphasis{enroll} y \sphinxstyleemphasis{recognize}. El primero para añadir a un nuevo rostro a una base de datos junto con un identificador, el segundo para encontrar a un usuario cuya cara ha sido almacenada.
+Kairos, es una API de reconocimiento facial. Esta cuenta con varios métodos, de los cuales se utilizaron \sphinxstyleemphasis{enroll} y \sphinxstyleemphasis{recognize}. El primero para añadir a un nuevo rostro a una base de datos junto con un identificador, el segundo para encontrar a un usuario cuya cara ha sido almacenada.
 
 \item {} 
-\sphinxhref{https://wit.ai/}{Wit.ai}, una API para procesamiento de lenguaje natural capaz de convertir oraciones en información estructurada.
+Wit.ai, un servicio para procesamiento de lenguaje natural capaz de convertir oraciones en información estructurada.
 
 \end{itemize}
+
+Los servicios mantenidos por el LAR son dos modelos de TensorFlow.
+El primero permite la detección de objetos en imágenes y es parte
+de la API de detección de objetos de TensorFlow. El segundo
+servicio es un clasificador de imágenes en cuatro categorías.
 
 El servidor mantiene la ejecución de un contenedor de
 Docker en el que se encuentra corriendo una aplicación web desarrollada en Python.

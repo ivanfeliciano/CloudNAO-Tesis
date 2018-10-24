@@ -1,18 +1,18 @@
 
 
-\section{Algoritmos de aprendizaje profundo y TensorFlow}
+\section{Algoritmos de aprendizaje profundo y TensorFlow}\label{chapter_two/deep_learning_tf}
 \subsection{Aprendizaje automático}\label{aprendizaje-automuxe1tico}
 
 \begin{remark}
 Un algoritmo de
 aprendizaje automático es un algoritmo que tiene la capacidad de
-aprender a partir de datos.
+aprender a partir de datos \cite{iangoodfellowyoshuabengioaaroncourville2017}.\\
 \end{remark}
 
 \begin{remark}
 Un programa de computadora se dice que aprende de la experiencia $E$ con
 respecto a alguna clase de tarea $T$ y una medida de desempeño $P$, si su
-desempeño de tareas en $T$, medido por $P$, mejora con la experiencia $E$.
+desempeño de tareas en $T$, medido por $P$, mejora con la experiencia $E$ \cite{iangoodfellowyoshuabengioaaroncourville2017}.
 \end{remark}
 
 
@@ -30,7 +30,7 @@ Una muestra es una colección de características que han sido medidas
 cuantitativamente a partir de un objeto o evento que queremos que
 nuestro sistema de aprendizaje automático procese. De manera típica una
 muestra se representa como un vector $\mathbf{x} \in \mathbb{R}^{n}$ donde cada elemento
-$x_i$ del vector es una característica.
+$x_i$ del vector es una característica \cite{iangoodfellowyoshuabengioaaroncourville2017}.
 \end{remark}
 
 Muchos tipos de tareas se pueden resolver con aprendizaje automático.
@@ -120,10 +120,10 @@ transcripción, se mide la precisión (\textit{accuracy}) del modelo. \\
 
 \begin{remark}
 La precisión
-es sólo la proporción de muestras para los cuales el modelo produce la
+es la proporción de muestras para los cuales el modelo produce la
 salida correcta. Se puede obtener una información equivalente midiendo
 la tasa de error, la proporción de muestras para las cuales el modelo
-produce la salida incorrecta.
+produce la salida incorrecta \cite{iangoodfellowyoshuabengioaaroncourville2017}.
 \end{remark}
 
 % Con frecuencia nos referimos a la tasa de
@@ -151,16 +151,16 @@ Un conjunto de datos es un
 colección de muchas muestras. Algunas veces a esas muestras se les llama
 \textit{patrones de entrada}.
 De manera muy general un conjunto de datos
-es una colección de muestras, que a su vez son colecciones de \textit{características}.
+es una colección de muestras, que a su vez son colecciones de \textit{características} \cite{iangoodfellowyoshuabengioaaroncourville2017}.
 \end{remark}
 
 
 \subsubsection{Algoritmos de aprendizaje no supervisados}
 
 \begin{remark}
-Los algoritmos de aprendizaje no supervisados aprende a partir de un conjunto
+Los algoritmos de aprendizaje no supervisados aprenden a partir de un conjunto
 de datos que contiene una gran cantidad de características, entonces aprenden algunas
-propiedades útiles de la estructura del conjunto de datos. 
+propiedades útiles de la estructura del conjunto de datos \cite{iangoodfellowyoshuabengioaaroncourville2017}.  
 \end{remark}
 
 Algunos algoritmos no supervisados realizan papeles como el 
@@ -185,7 +185,7 @@ datos que contiene características, pero cada muestra está asociada además co
 una \textit{etiqueta} u \textit{objetivo}.
 El aprendizaje supervisado involucra observar bastantes muestras de un
 vector aleatorio $\mathbf{x}$ y un valor o vector asociado $\mathbf{y}$, y aprender a
-predecir $\mathbf{y}$ a partir de $\mathbf{x}$, usualmente estimando $P(\mathbf{y} |\mathbf{x})$.
+predecir $\mathbf{y}$ a partir de $\mathbf{x}$, usualmente estimando $P(\mathbf{y} |\mathbf{x})$ \cite{iangoodfellowyoshuabengioaaroncourville2017}.
 \end{remark}
 
 
@@ -204,14 +204,14 @@ medida de error sobre el conjunto de entrenamiento llamado error de
 entrenamiento, y reducir este error. Hasta acá, simplemente se ha descrito
 un problema de optimización ya que se pretende encontrar la mejor solución.
 Lo que distingue al aprendizaje automático de la optimización es que
-queremos que el \textit{error de generalización}, también llamado error de
-prueba, sea bajo también.\\
+queremos que el \textit{error de generalización o de prueba}, también sea bajo.\\
 
 \begin{remark}
 El error de generalización se define como el valor esperado del error de
-una nueva entrada. Aquí la esperanza es tomada a través de diferentes
-entradas posibles. extraída de la distribución de entradas que esperamos
-el sistema se encuentre en la práctica.
+una nueva entrada \cite{iangoodfellowyoshuabengioaaroncourville2017}. 
+% Aquí la esperanza es tomada a través de diferentes
+% entradas posibles. extraída de la distribución de entradas que esperamos
+% el sistema se encuentre en la práctica.
 \end{remark}
 
 
@@ -231,11 +231,13 @@ sólo se ha observado el conjunto de entrenamiento?
 Mediante un \textit{proceso de generación de datos} los conjuntos de 
 entrenamiento y de prueba son producidos por una 
 distribución de probabilidad sobre conjuntos de datos. 
-Se hacen un conjunto de suposiciones conocidas
-colectivamente como las suposiciones i.i.d. Estas suposiciones son que
+% Se hacen un conjunto de suposiciones conocidas
+% colectivamente como las suposiciones i.i.d. 
+Suponemos que
 las muestras en cada conjunto de datos son independientes entre sí, y
 los conjuntos de entrenamiento y de prueba están idénticamente
-distribuidos. Esta suposición nos permite describir el proceso de
+distribuidos. Estas suposiciones
+son conocidas por las siglas i.i.d (independientes e idénticamente distribuidas). Esta suposición nos permite describir el proceso de
 generación de datos con una distribución de probabilidad sobre una sola
 muestra. La misma distribución es usada para generar cada muestra de
 entrenamiento y cada muestra de prueba. Llamamos a la distribución
@@ -278,7 +280,7 @@ El infra-ajuste
 ocurre cuando el modelo no puede obtener un valor en el error lo
 suficientemente bajo sobre el conjunto de entrenamiento. El sobreajuste
 ocurre cuando la diferencia entre el error de entrenamiento y de prueba
-es muy grande.
+es muy grande \cite{iangoodfellowyoshuabengioaaroncourville2017}.
 \end{remark}
 
 
@@ -291,7 +293,7 @@ modelo es la habilidad de ajustarse a una amplia variedad de funciones.
 Modelos con baja capacidad pueden esforzarse por ajustarse a su conjunto
 de entrenamiento. Los modelos con alta capacidad pueden sobre ajustarse
 memorizando propiedades del conjunto de entrenamiento que no pueden
-funcionar bien sobre el conjunto de prueba.
+funcionar bien sobre el conjunto de prueba \cite{iangoodfellowyoshuabengioaaroncourville2017}.
 \end{remark}
 
 
@@ -322,7 +324,7 @@ representacional de la familia del modelo.
 \subsubsection{Optimización basada en el gradiente}
 
 La mayoría de los algoritmos de aprendizaje involucran la optimización 
-de alguna forma. La optimización se refiere a la tarea de ya sea 
+de alguna forma. La optimización se refiere a la tarea de 
 minimizar o maximizar una función $f(\mathbf{x})$ alterando $\mathbf{x}$.
 
 La función que queremos minimizar o maximizar se conoce como \textit{función objetivo}.
@@ -381,14 +383,14 @@ donde la derivada es con respecto a un vector: el gradiente de $f$ es el
 vector que contiene todas las derivadas parciales, denotado por $\nabla f(\mathbf{x})$. El i-ésimo elemento del gradiente es la 
 derivada parcial de $f$ con respecto a $x_i$. En múltiples dimensiones,
 los puntos críticos son puntos donde cada elemento del gradiente es igual 
-a cero.
+a cero \cite{iangoodfellowyoshuabengioaaroncourville2017}.\\
 \end{remark}
 
 \begin{remark}
 La \textit{derivada direccional} mide  la tasa de cambio de una función
 en un punto sobre un vector. 
 La derivada direccional en la dirección $\mathbf{u}$ (un vector
-unitario) es la pendiente de la función $f$ en la dirección $\mathbf{u}$ y se denota como $D_\mathbf{u}f(\mathbf{x})$.
+unitario) es la pendiente de la función $f$ en la dirección $\mathbf{u}$ y se denota como $D_\mathbf{u}f(\mathbf{x})$ \cite{iangoodfellowyoshuabengioaaroncourville2017}.
 \end{remark}
 
 Para minimizar $f$, nos gustaría encontrar la dirección en la que $f$ disminuye
@@ -422,7 +424,7 @@ máximo $\|\nabla f (\mathbf{\mathbf{x}})\|$
 cuando $\mathbf{u}$ tiene la misma dirección que $ \nabla f (\mathbf{x})$ y un mínimo valor $-\|\nabla f (\mathbf{\mathbf{x}})\|$ cuando $\mathbf{u}$ tiene la dirección que $-\nabla f (\mathbf{\mathbf{x}})$. En otras palabras, el vector
 gradiente apunta en la dirección de la máxima tasa de crecimiento de la función
 y el vector gradiente negativo apunta a la máxima tasa de disminución de la 
-función.
+función \cite{acourseinmultivariablecalculusanalysis2010}.\\
 \end{remark}
 
 \begin{remark}
@@ -446,15 +448,15 @@ se defina como una constante pequeña.
 El descenso del gradiente converge cuando cada elemento del gradiente es 
 cero (en la práctica son valores muy cercanos a cero).
 
-Resumiendo, la manera en la que el método del descenso del gradiente
-trabaja, es calculando repetidamente el gradiente $\nabla f(\mathbf{x})$,
-y después se moviéndose en la dirección opuesta. Con esto se disminuirá $f$ hasta 
+Resumiendo, el método del descenso del gradiente
+calcula repetidamente el gradiente $\nabla f(\mathbf{x})$,
+y después se mueve en la dirección opuesta. Con ésto, se disminuirá $f$ hasta 
 posiblemente alcanzar un mínimo global.
 
 \subsubsection{Terminología}
 
 A continuación se definen diferentes términos que se utilizan a lo
-largo del trabajo.
+largo del trabajo (las definiciones se obtuvieron de \cite{mehryarmohriafshinrostamizadehameettalwalkar2012}).
 
 \begin{itemize}
 
@@ -517,12 +519,12 @@ conocimiento basado en experiencias y poniéndolo a disposición para su uso. Se
 asemeja al cerebro en dos aspectos:
 \begin{enumerate}
     \item El conocimiento es adquirido por la red desde su ambiente a través de un proceso de aprendizaje. El proceso de aprendizaje se hace a través de un algoritmo de aprendizaje.
-    \item Las fuerza de conexión entre neuronas, también conocidas como pesos sinápticos, son usadas para almacenar el conocimiento adquirido.
+    \item Las fuerza de conexión entre neuronas, también conocidas como pesos sinápticos, son usadas para almacenar el conocimiento adquirido \cite{johnahertzandersskroghrichardgpalmer1991}.
 \end{enumerate}
 
 \end{remark}
 
-En términos generales, una red neuronal artificial consiste un de un gran número 
+En términos generales, una red neuronal artificial consiste de un gran número 
 de procesadores simples enlazados por conexiones ponderadas.
 Cada unidad recibe entradas que vienen de muchas otras unidades y 
 produce un valor escalar como salida que depende sólo de la información
@@ -789,7 +791,7 @@ para entrenar redes neuronales más utilizado y se describe en la siguiente secc
 % \textit{neuronas de entrada}. La capa de más a la derecha o capa 
 % de salida contiene a las \textit{neuronas de salida}, o, en este 
 % caso, una sola neurona de salida. La capa interna se conoce como
-% \textit{capa oculta}. La red de la figura tiene sólo
+% \textit{capa oculta}. La red de la Figura tiene sólo
 % una capa oculta, pero algunas redes cuentan con múltiples capas
 % ocultas. Por ejemplo la siguiente tiene dos capas ocultas:
 
@@ -798,7 +800,7 @@ para entrenar redes neuronales más utilizado y se describe en la siguiente secc
 % múltiples capas o MLP (por sus siglas en inglés), a pesar de estar compuestas por 
 % neuronas sigmoides o por neuronas con otras funciones de activación y no por perceptrones.
 
-% La red de la figura tiene una estructura donde la salida de una
+% La red de la Figura tiene una estructura donde la salida de una
 % capa es la entrada de la siguiente capa. Tales redes se llaman
 % \textit{red neuronales prealimentadas}. Lo que esto significa es
 % que no existen bucles en la red, la información siempre alimenta
@@ -919,8 +921,8 @@ la cual se actualiza con las salidas de la última capa oculta.
 
 
 
-% Consideremos primero una red con dos capas como la de la figura. La notación que usaremos 
-% se muestran en la figura; las unidades de salida están denotadas por $o_i$, las
+% Consideremos primero una red con dos capas como la de la Figura. La notación que usaremos 
+% se muestran en la Figura; las unidades de salida están denotadas por $o_i$, las
 % unidades de la capa oculta por $v_{j}$ y las de entrada por $x_{k}$. Hay aristas con pesos
 % $w_{jk}$ de los nodos de entrada a los nodos ocultos, y $w_{ij}$ de las unidades ocultas a las
 % unidades de salida. Es importante destacar que el índice $i$ siempre se refiere a un unidad
@@ -1454,7 +1456,7 @@ capas de las unidades de cómputo.
 
 % \paragraph{Pasos del algoritmo}. 
 
-% La figura \ref{fig:extended_multilayer_net} muestra la red extendida para el cálculo de la función de costo. A modo de simplificar la
+% La Figura \ref{fig:extended_multilayer_net} muestra la red extendida para el cálculo de la función de costo. A modo de simplificar la
 % explicación, trataremos con un solo par de entrada y salida $(\mathbf{o}, \mathbf{t})$ y se
 % generalizará más tarde para $p$ muestras de entrenamiento. La red se ha extendido con una 
 % capa de unidades adicional. El lado derecho calcula
@@ -1490,7 +1492,7 @@ capas de las unidades de cómputo.
 % \textbf{Segundo paso: retropropagación a la capa de salida}. Buscamos el primer
 % conjunto de derivadas parciales $\frac{\partial E}{\partial w_{ij}^{(2)}}$. El camino de la 
 % propagación hacia atrás desde la salida de la red hasta la unidad de salida $j$ se muestra
-% en el diagrama B de la figura \ref{fig:backprop_output}.
+% en el diagrama B de la Figura \ref{fig:backprop_output}.
 
 % \begin{figure}
 %     \centering
@@ -1515,7 +1517,7 @@ capas de las unidades de cómputo.
 % Recordemos que para este último paso consideramos el peso $w_{ij}^{(2)}$ como una variables y su
 % entrada $o_i^{(1)}$ una constante.
 
-% En la figura \ref{fig:backprop_edge_multi_net} se muestra la situación general que encontramos durante el algoritmo
+% En la Figura \ref{fig:backprop_edge_multi_net} se muestra la situación general que encontramos durante el algoritmo
 % de propagación hacia atrás. En el lado de la entrada de arista con peso $w_{ij}$
 % tenemos $o_i^{(1)}$ y en el lado de la salida el error retropropagado $\delta_j^{(2)}$.
 
@@ -1531,7 +1533,7 @@ capas de las unidades de cómputo.
 % está conectada a cada unidad $q$ en la capa de saida con una arista con pesos $w_{jq}^2$,
 % para $q = 1, \dots, m$. El error retropropagado hasta la unidad $j$ en la capa oculta
 % debe ser calculado tomando en cuenta todos los hacia atrás posibles, como se muestra en
-% la figura \ref{fig:backprop_multi_net_input}. El error retropropagado es entonces
+% la Figura \ref{fig:backprop_multi_net_input}. El error retropropagado es entonces
 
 % \[
 % \delta_j^{(1)} = o_j^{(1)} (1-o_j^{(1)}) \sum_{q=1}^m w_{jq}^{(2)}\delta_q^{(2)}
@@ -1642,7 +1644,7 @@ capas de las unidades de cómputo.
 
 \subsection{Aprendizaje profundo}
 El \textit{aprendizaje profundo} permite a las computadoras construir conceptos complejos
-a partir de conceptos más simples. La figura 
+a partir de conceptos más simples. La Figura 
 \ref{fig:deeplearning_person} muestra como un sistema de aprendizaje profundo
 puede representar el concepto de la imagen de una persona al combinar conceptos más simples, tales
 como esquinas y contornos, que a su vez están definidos en términos de los bordes.
@@ -1660,7 +1662,7 @@ poderoso y flexible que aprende una representación del mundo
 como una jerarquía anidada de conceptos, donde 
 cada concepto está definido a partir de conceptos más simples,
 y representaciones más abstractas calculadas en términos
-de menos abstractas.
+de menos abstractas \cite{iangoodfellowyoshuabengioaaroncourville2017}.
 
 \end{remark}
 
@@ -1715,7 +1717,7 @@ de red neuronal para procesamiento de datos que tienen una topología parecida a
 red convolucional indica que la red ocupa una operación matemática llamada convolución. Las redes 
 neuronales
 convolucionales son simplemente redes neuronales que usan la convolución en lugar de la multiplicación de 
-matrices en al menos una de sus capas.
+matrices en al menos una de sus capas \cite{iangoodfellowyoshuabengioaaroncourville2017}.
 \end{remark}
 
 
@@ -1745,7 +1747,7 @@ La correlación es una operación que funciona recorriendo una imagen y aplicand
 el kernel se llena con números llamados coeficientes de kernel. Estos coeficientes 
 ponderan el valor del pixel que cubren y la salida de la correlación es la suma
 de los valores de los pixeles ponderados. Matemáticamente la correlación de la imagen
-$I$ con el kernel $K$ se puede expresar como sigue:
+$I$ con el kernel $K$ se puede expresar como
 \begin{equation}\label{correlation}
     S(i,j) = (I * K)(i,j) = \sum_{m} \sum_{n} I(i+m, j+n) K(m,n).
 \end{equation}
@@ -1754,7 +1756,7 @@ $I$ con el kernel $K$ se puede expresar como sigue:
 % donde $m$ y $n$ son el largo y ancho del kernel respectivamente.
 La correlación está asociada con el término de \textit{convolución} y ambos se utilizan
 en el contexto de procesamiento de imágenes. La convolución únicamente difiere en la manera
-en que el kernel se aplica a la imagen. Formalmente la convolución se define como:
+en que el kernel se aplica a la imagen. Formalmente la convolución se define como
 
 \[
 S(i,j) = \sum_{m} \sum_{n} I(i-m, j-n) K(m,n).
@@ -1776,7 +1778,7 @@ lo tanto, por conveniencia llamaremos a ambas operaciones convolución.
     \label{fig:convolution_example}
 \end{figure}
 
-En la figura \ref{fig:convolution_example} para calcular
+En la Figura \ref{fig:convolution_example} para calcular
 cada valor en la salida, el kernel se mueve con un paso 
 de tamaño uno sobre el eje horizontal y vertical. Este paso
 se conoce como \textit{zancada} o \textit{stride} (en inglés).
@@ -1853,7 +1855,7 @@ no lineal. La función de activación más común es el
 rectificador o ReLU definido como $g(z) = max(0, z)$.
 Esta etapa también se conoce como detector.
 En la tercera etapa utilizamos una función de agrupación
-o pooling para modificar la salida de la capa aún más.
+o pooling para modificar la salida de la capa aún más \cite{iangoodfellowyoshuabengioaaroncourville2017}.\\
 \end{remark}
 
 \begin{remark}
@@ -1981,7 +1983,7 @@ robótica, procesamiento de lenguaje natural, etcétera.\\
 \begin{remark}
 Los cálculos en TensorFlow son descritos por una gráfica dirigida
 que está compuesta por un conjunto de nodos y aristas.
-La gráfica representa un cálculo de flujo de datos (un modelo
+La gráfica representa un cálculo de flujo de datos \cite{tensorflow} (un modelo
 de programación para cómputo paralelo).
 \end{remark}
 A menudo los clientes construyen la gráfica de cómputo usando uno de los
@@ -2025,9 +2027,9 @@ Operaciones con arreglos & \texttt{Concat, Slice, Split, Constant, Rank, Shape, 
 \hline 
 Operaciones con matrices & \texttt{MatMul, MatrixInverse, MatrixDeterminant, ...} \\ 
 \hline 
-Construcción de redes neuronales & \texttt{SoftMax, Sigmoid, ReLU, Convolution2D, MaxPool} \\ 
+Construcción de redes neuronales & \texttt{SoftMax, Sigmoid, ReLU, Convolution2D, MaxPool, ...} \\ 
 \hline 
-Operaciones de puntos de control & \texttt{Save, Restore} \\ 
+Operaciones de puntos de control & \texttt{Save, Restore, ...} \\ 
 \hline 
 \end{tabulary} 
 
@@ -2134,7 +2136,7 @@ simple, una red neuronal, en TensorFlow para el cálculo de la función
 
 Como estamos en el contexto del aprendizaje automático
 supervisado, necesitamos un conjunto de datos etiquetado.
-Nuestro conjunto de datos está dado por la tabla \ref{table:xor}. Las
+Nuestro conjunto de datos está dado por la Tabla \ref{table:xor}. Las
 primeras dos columnas son los atributos $X_1$ y $X_2$ y la tercera 
 columna es el objetivo.
 
@@ -2166,7 +2168,7 @@ $X_1$ & $X_2$ & $Y = X_1 \oplus X2$ \\
 La arquitectura de nuestra red es la siguiente: una capa de entrada con dos unidades
 de entrada $X_1$ y $X_2$. Una capa oculta con dos unidades, que tienen como función
 de activación la sigmoide. Por último una unidad de salida con la función sigmoide.
-De manera gráfica esto se puede ver en la figura \ref{image:xor_net}.
+De manera gráfica esto se puede ver en la Figura \ref{image:xor_net}.
 
 \begin{figure}[ht]
 \centering
@@ -2176,7 +2178,7 @@ De manera gráfica esto se puede ver en la figura \ref{image:xor_net}.
 
 Antes de comenzar con el código conviene dibujar la gráfica de cómputo que
 deseamos ejecutar.
-La gráfica de cómputo está descrita en la figura \ref{fig:xor_graph}.
+La gráfica de cómputo está descrita en la Figura \ref{fig:xor_graph}.
 Los círculos representan o variables o placeholders excepto para
 la salida predicha $y'$ que es el resultado de una operación. Tenemos
 un placeholder para 

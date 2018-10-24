@@ -1,8 +1,7 @@
 \subsection{Aplicación para Android CloudNAO}
 \label{\detokenize{introduction:welcome-to-cloudnao-android-s-documentation}}
 Esta aplicación móvil es el componente dentro de la arquitectura CloudNAO
-que permite interactuar con el robot sin necesidad de instalar software en el
-robot. Se conecta con el robot usando el SDK para Android de NAOqi, hace peticiones
+que permite interactuar con el robot sin necesidad de ejecutar programas de manera local. Se conecta con el robot usando el SDK para Android de NAOqi, hace peticiones
 a la API REST de CloudNAO, y además utiliza la autenticación
 y la base de datos en tiempo real de Firebase utilizando su SDK para Android.
 
@@ -12,7 +11,7 @@ y el potente análisis de imágenes simplemente haciendo peticiones a la API
 REST de CloudNAO.
 
 En las siguientes secciones se describe con mayor detalle cada elemento de la
-aplicación, ya sea para la parte que ve el usuario final como los componentes
+aplicación: la parte que ve el usuario final y los componentes
 internos para que desarrolladores puedan mantenerla o añadir nuevas
 funcionalidades.
 
@@ -43,7 +42,7 @@ de cada uno.
 En general las siguientes son las funcionalidades ofrecidas por las aplicación.
 
 
-\subparagraph{Autenticación de usuarios.}
+\textbf{Autenticación de usuarios.}
 \label{\detokenize{users_docs:autenticacion-de-usuarios}}
 Para poder ocupar la aplicación los usuarios deben iniciar sesión con un correo
 y contraseña. La aplicación cuenta con la opción de registro, si el usuario
@@ -59,7 +58,7 @@ es nuevo.
     \subfloat{\includegraphics[scale=.1]{signin2}}%
 \end{figure}
 
-\subparagraph{Selección y adición de robots a la aplicación.}
+\textbf{Selección y adición de robots a la aplicación.}
 \label{\detokenize{users_docs:los-usuarios-pueden-anadir-nuevos-robots}}
 Para llevar un control de los robots que tiene un usuario se le permite añadir
 los robots que sean necesarios.
@@ -80,7 +79,7 @@ que previamente creó.
 
 
 
-\subparagraph{Conexión con un robot seleccionado.}
+\textbf{Conexión con un robot seleccionado.}
 \label{\detokenize{users_docs:conexion-con-un-robot-seleccionado}}
 Al elegir un robot entre los que el usuario posee, simplemente escribe la
 dirección IP del robot, y se crea una conexión con éste dentro de la misma
@@ -99,7 +98,7 @@ aplicación.
 \end{figure}
 
 
-\subparagraph{Menú intuitivo.}
+\textbf{Menú intuitivo.}
 Las actividades que se pueden realizar después de conectar
 la aplicación con el robot se muestran en un menú intuitivo.
 
@@ -118,7 +117,7 @@ la aplicación con el robot se muestran en un menú intuitivo.
 
 
 
-\subparagraph{Control remoto.}
+\textbf{Control remoto.}
 \label{\detokenize{users_docs:control-remoto-para-el-robot}}
 Una primera necesidad que se encontró y por la que surgió todo el proyecto
 fue crear un control remoto para el robot NAO. Es muy básico pero admite
@@ -133,7 +132,7 @@ cámara del robot.
 \end{figure}
 
 
-\subparagraph{Guarda valores de ALMemory en la nube.}
+\textbf{Guarda valores de ALMemory en la nube.}
 \label{\detokenize{users_docs:guarda-valores-de-almemory-en-la-nube}}
 Otra función dentro del control remoto es la de la opción de guardar ciertos
 valores de la memoria del robot en la nube, para consultarlos o descargarlos
@@ -151,7 +150,7 @@ rightUSSensorValue, leftUSSensorValue, rightFootTotalWeight, RightBumperPressed,
 \end{figure}
 
 
-\subparagraph{Detección de rostros y reconocimiento de sujetos en una fotografía enviada por el robot.}
+\textbf{Detección de rostros y reconocimiento de sujetos en una fotografía enviada por el robot.}
 \label{\detokenize{users_docs:deteccion-de-rostros-en-una-fotografia-enviada-por-el-robot}}
 Esta funcionalidad permite a un usuario
 capturar una fotografía con la cámara del robot, añadir
@@ -167,7 +166,7 @@ un gesto de saludo.
 \end{figure}
 
 
-\subparagraph{Detección de objetos de entre 80 categorías en una imagen de la cámara del robot.}
+\textbf{Detección de objetos de entre 80 categorías en una imagen de la cámara del robot.}
 \label{\detokenize{users_docs:deteccion-de-objectos-de-entre-80-categorias-en-una-imagen-de-la-camara-del-robot}}
 Funciona de manera similar a la detección de rostros. Envía una imagen capturada
 con la cámara del robot a la API REST, que ejecuta un módulo
@@ -185,7 +184,7 @@ dice la cantidad de objetos que ve de acuerdo a las categorías válidas.
 \end{figure}
 
 
-\subparagraph{Reconocimiento óptico de caracteres y traducción de texto encontrados en una imagen enviada por el robot.}
+\textbf{Reconocimiento óptico de caracteres y traducción de texto encontrados en una imagen enviada por el robot.}
 \label{\detokenize{users_docs:reconocimiento-optico-de-caracteres-y-traduccion-de-texto-encontrados-en-una-imagen-enviada-por-el-robot}}
 La aplicación solicita una imagen del robot, esa imagen es parte de la petición
 a la API RESTful de CloudNAO, igual que en las dos funcionalidades anteriores.
@@ -295,7 +294,7 @@ función realizar tareas asíncronas para manejar imágenes del robot,
 enviar peticiones a la API REST, manejar la IU, etcétera.\\
 
 \codedocumentation{\texttt{Interface }\sphinxcode{OnRobotNameClickListener}}
-Una interfaz con un método abstracto que sirve como callback
+Método abstracto que sirve como callback
 cuando un usuario da clic sobre alguno de los robots obtenidos desde Firebase y mostrados en un \texttt{RecyclerView}.
 \newline
 
@@ -345,7 +344,6 @@ de la llave en \texttt{ALMemory}, respectivamente.
 \codedocumentation{\texttt{Class }\sphinxcode{RecyclerViewAdapter}}
 La clase pública del \texttt{Adapter} para el \texttt{RecyclerView} que mostrará la lista de robots obtenidos desde Firebase y que le pertenecen al
 usuario que inició sesión en la aplicación.
-\newline
 
 \codedocumentation{\texttt{Class }\sphinxcode{RecyclerViewHolders}}
 La clase que modela a los \texttt{ViewHolders} que representan cada robot obtenido de Firebase.
@@ -365,7 +363,7 @@ Clase que modela los \texttt{ViewHolders} de la lista de datos que se desean gua
 \newline
 
 \codedocumentation{\texttt{Class }\sphinxcode{VisionListElement}}
-Clase pública que modela los objetos dentro de una lista que muestra resultados de las actividades de reconocimiento de rostros y objetos. Cada instancia tiene un identificador, que puede ser el nombre del sujeto reconocido , la confianza y las coordenadas de que delimitan al elemento encontrado (un cuadro que encierra un rostro, o un rectángulo que acota un objeto).
+Clase pública que modela los objetos dentro de una lista que muestra resultados de las actividades de reconocimiento de rostros y objetos. Cada instancia tiene un identificador, que puede ser el nombre del sujeto reconocido, la confianza y las coordenadas de que delimitan al elemento encontrado (un cuadro que encierra un rostro, o un rectángulo que acota un objeto).
 \newline
 
 \codedocumentation{\texttt{Class }\sphinxcode{VisionRESTRequestsTask}}
@@ -379,8 +377,7 @@ para mostrar los resultados en el contexto de donde se solicitó.
 \newline
 
 \codedocumentation{\texttt{Class }\sphinxcode{VolleyResponseUtils}}
-Clase estática para manejar la repuesta de \texttt{Volley}, que puede ser un error o puede ser la estructura que se espera.
-\newline
+Clase estática para manejar la repuesta de \texttt{Volley}, que puede ser un error o puede ser la estructura que se espera.\\
 
 \codedocumentation{\texttt{Enum ModelObjectViewPager}}
 Un enumerado de Java que representa todas las posibles páginas del \texttt{ViewPager}. Se utiliza en el menú de la aplicación. En este enumerado se almacenan el identificador del \texttt{Layout} de cada página y un título que le corresponde.

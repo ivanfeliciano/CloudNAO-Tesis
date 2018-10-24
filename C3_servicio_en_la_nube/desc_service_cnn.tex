@@ -50,7 +50,7 @@ la arquitectura LeNet-5 (una variante de la arquitectura LeNet  que fue una de l
 conjunto MNIST de dígitos escritos a mano) y se probó cambiando
 diversos parámetros como el número y tamaño de los kernels, la tasa de aprendizaje y el número de unidades en las capas completamente conectadas.
 
-El primer parámetro importante son las dimensiones de
+El primer parámetro importante es la dimensión de
 la entrada de la red. El valor de éste se mantuvo del
 modelo LeNet-5 donde las imágenes tiene tamaño de $32 \times 32$,
 con la adición de que las imágenes en nuestra red
@@ -82,9 +82,9 @@ $16$, $32$, emparejando $8$ con $16$ y $16$ con $32$.
 Donde $8$ y $16$ son el número de mapas obtenidos de la primera 
 capa de convolución y $16$ y $32$ para la segunda.
 Queremos mantener el tamaño de los mapas de
-características del mismo que el de las entradas de la convolución,
-esto se logra con un borde de ceros llamado \textit{idéntico}, 
-el cual se asegura que las salidas y entradas tengan las mismas dimensiones. 
+características del mismo que el de las entradas de la convolución.
+Esto se logra con un borde de ceros llamado \textit{idéntico}, 
+el cual asegura que las salidas y entradas tengan las mismas dimensiones. 
 La zancada se mantiene constante con un valor de $1$.
 Para la parte del agrupamiento queremos ir disminuyendo las 
 dimensiones de las entradas a la mitad después de cada

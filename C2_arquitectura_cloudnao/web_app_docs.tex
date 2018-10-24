@@ -24,7 +24,7 @@ del robot NAO.
 
 Además de depender del SDK para Web de Firebase, otras dos dependencias están
 detrás de la aplicación, React, una biblioteca de Javascript para construir
-interfaces de usuario y Semantic UI,.
+interfaces de usuario y Semantic UI.
 
 La aplicación tiene una estructura muy sencilla, cumple con los elementos
 básicos de una aplicación web moderna. Un login de usuario, registro de uno
@@ -1210,7 +1210,7 @@ El usuario inicia sesión o se registra si no ha creado una cuenta.
 Es redireccionado a un panel para interactuar con el robot, después de haber seleccionado alguno de una lista o de haber creado uno nuevo.
 
 \item {} 
-Puede cerrar la sesión o esta se mantiene activa.
+Puede cerrar la sesión o mantenerla activa.
 
 \end{enumerate}
 
@@ -1224,13 +1224,13 @@ Puede cerrar la sesión o esta se mantiene activa.
 Como se puede ver, la aplicación web cuenta con algunas características
 muy similares a la aplicación móvil. Cuenta con las funcionalidades para
 el registro de usuarios, que cada usuario pueda utilizar varios robots e
-interactuar con ellos usando un control remoto, o recibiendo valores enviados
+interactuar con ellos usando un control remoto o recibiendo valores enviados
 por el mimos Robot a Firebase.
 
 
 \paragraph{Funcionalidades}
 
-\subparagraph{Inicio de sesión.}
+\textbf{Inicio de sesión.}
 \label{\detokenize{inicio-de-sesion}}
 Un usuario puede iniciar sesión si ya se ha registrado, sino tiene la opción
 de crear una nueva cuenta. El usuario no necesariamente debe crearse dentro
@@ -1238,7 +1238,7 @@ de la aplicación web, si se ha registrado usando la aplicación móvil, entonce
 puede usar el mismo nombre de usuario y contraseña.
 
 
-\subparagraph{Panel de interacción con el robot.}
+\textbf{Panel de interacción con el robot.}
 \label{\detokenize{users_docs:panel-de-inteaccion-con-el-robot}}
 La principal función de esta aplicación es conectarse remotamente a un robot
 NAO usando como intermediario a Firebase. Si se desea enviar una orden al robot
@@ -1275,9 +1275,9 @@ Una tabla con valores de \sphinxcode{\sphinxupquote{ALMemory}} enviados por el r
 \end{enumerate}
 
 
-\subparagraph{Cierre de sesión.}
+\textbf{Cierre de sesión.}
 \label{\detokenize{users_docs:cierre-de-sesion}}
-El usuario puede cerrar su sesión o esta se mantiene activa en el navegador
+El usuario puede cerrar su sesión o mantenerla activa en el navegador
 hasta que se desee.
 
 Cabe señalar nuevamente que para usar todas las funcionalidades de esta
@@ -1286,7 +1286,7 @@ Firebase para recibir y enviar información, si esto no se lleva a cabo, sólo
 se muestran los últimos datos enviados por el robot o por la aplicación móvil.
 
 Cada robot que registra un usuario tiene un identificador único, este identificador
-le sirve para escribir en las ubicaciones den la base de datos que le corresponden.
+le sirve para escribir en las ubicaciones de la base de datos que le corresponden.
 Al pasar el puntero del ratón sobre un robot en la lista de robots, se muestra
 su identificador único que es el que se añade al archivo de configuración
 del programa que se corre sobre el robot.
@@ -1352,7 +1352,7 @@ src/
 \end{sphinxVerbatim}
 
 
-\subparagraph{App.js}
+\textbf{App.js}
 \label{\detokenize{code_docs:app-js}}
 Se define el componente principal de la aplicación \texttt{App}, que se renderizará
 al iniciarla. Se define el elemento \sphinxcode{\sphinxupquote{Router}} de React-Router
@@ -1360,20 +1360,20 @@ que define las rutas de los componentes que se renderizarán de acuerdo a lo
 elegido por el usuario.
 
 
-\subparagraph{auth.js}
+\textbf{auth.js}
 \label{\detokenize{code_docs:auth-js}}
 Aquí se definen las funciones para el inicio de sesión, registro de un usuario
 y el cierre de sesión.
 
 
-\subparagraph{fire.js}
+\textbf{fire.js}
 \label{\detokenize{code_docs:fire-js}}
 Aquí está la configuración de Firebase para usar los servicios de la base de datos
 y de la autenticación.
 
 
 
-\subparagraph{index.js}
+\textbf{index.js}
 \label{\detokenize{code_docs:index-js}}
 En este archivo se llama al método render de \texttt{ReactDOM} para renderizar al
 componente \sphinxcode{\sphinxupquote{App}}.
@@ -1384,7 +1384,7 @@ Dentro del directorio \texttt{components} están los archivos con los componente
 \textbf{dashboard.js}
 \label{\detokenize{code_docs:dashboard-js}}
 Archivo con el componente \texttt{Dashboard} que muestra el panel de interacción con el robot.
-Como estados define al usuario actual, un id y el nombre de un robot, el robot
+Como estados define al usuario actual, un id y el nombre de un robot; el robot
 que se selecciona en la lista de robots.
 
 En el método \sphinxcode{\sphinxupquote{render()}} incluye otros componentes:
@@ -1475,9 +1475,8 @@ datos.
 Define la clase \texttt{TextToSpeech}, el componente que envía una cadena de texto a Firebase para que el robot la
 replique oralmente.
 
-\subparagraph{constants/routes.js}
+\textbf{constants/routes.js}
 \label{\detokenize{code_docs:constants}}
-
 Este archivo contiene las rutas de la aplicación.
 
 \fvset{hllines={, ,}}%

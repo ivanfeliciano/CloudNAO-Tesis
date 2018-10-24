@@ -45,7 +45,7 @@
 \usepackage{caption}
 \usepackage{subfig}
 \usepackage{url}
-\usepackage{natbib}
+% \usepackage{natbib}
 
 %\usepackage{apalike}
 %\usepackage{setspace}
@@ -65,6 +65,16 @@
 
 \usepackage{appendix}
 
+% \usepackage[
+% backend=biber
+% ,style=iso-authoryear
+% ,sortlocale=cs_CZ
+% ,autolang=other
+% ,bibencoding=UTF8
+% ]{biblatex}
+
+% \addbibresource{referencias.bib}
+
 \addto\captionsspanish{
 \renewcommand{\appendixname}{Anexo}
 \renewcommand{\appendixtocname}{Anexos}
@@ -82,7 +92,7 @@
 
 \addto\extrasspanish{\def\pageautorefname{página}}
 
-\newtheorem*{remark}{Remark}
+\newtheorem*{remark}{Afirmación}
 % \setcounter{secnumdepth}{4}
 
 
@@ -140,26 +150,122 @@ cómputo en la nube con robots NAO}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Antecedentes}
 \label{\detokenize{chapter_one:antecedentes}}\label{\detokenize{chapter_one::doc}}
+
+En este capítulo se describen los conceptos 
+necesarios para comprender mejor el desarrollo
+de la arquitectura de software y los fundamentos
+de sus componentes. 
+
+En la Sección \ref{\detokenize{chapter_one/naoqi::doc}} se 
+familiariza al lector con la plataforma NAO y con
+NAOqi, el marco de trabajo para desarrollar
+aplicaciones sobre éste. 
+
+En la Sección \ref{chapter_two/deep_learning_tf} se describe 
+de manera muy general lo que es el aprendizaje profundo,
+primero introduciendo conceptos básicos del aprendizaje 
+automático, siguiendo con redes neuronales para finalmente
+llegar a las redes neuronales profundas, en específico,
+las redes convolucionales. En esa misma sección
+hay un apartado sobre la biblioteca TensorFlow,
+donde se describe la estructura un programa
+usando esta herramienta y un ejemplo muy
+sencillo para poner en práctica el paradigma de programación utilizado
+en TensorFlow.
+
+En la Sección \ref{\detokenize{chapter_one/cloud_computing::doc}}
+se define la idea del cómputo en la nube, las características y capas de éste, 
+las tecnologías que involucra y las diferencias entre los servicios
+en la nube y el cómputo en la nube.
+
+La Sección \ref{\detokenize{chapter_one/rest::doc}}
+presenta el estilo de arquitectura de software REST.
+Se muestran algunos conceptos generales del protocolo
+HTTP y la web, finalizando con los elementos 
+que componen esta arquitectura.
+
+La Sección \ref{\detokenize{chapter_one/firebase::doc}}
+comienza con una breve definición del modelo 
+de Backend as a Service, para después
+explicar lo que es la plataforma Firebase y los servicios
+que se ocupan en este trabajo.
+
+En la Sección \ref{\detokenize{chapter_one/apis_rest::doc}},
+la última de este capítulo, se muestran los servicios
+utilizados dentro de la arquitectura. Además,
+para amarrar mejor los conceptos explicados 
+en la Sección \ref{\detokenize{chapter_one/rest::doc}},
+para cada servicio se describe el funcionamiento
+de la API REST con la que cuenta.
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\input{C1_antecedentes/naoqi.tex}
-\input{C1_antecedentes/deep_learning_and_tf.tex}
-\input{C1_antecedentes/cloud_computing.tex}
-\input{C1_antecedentes/rest.tex}
-\input{C1_antecedentes/baas_firebase.tex}
-\input{C1_antecedentes/apis.tex}
+% \input{C1_antecedentes/naoqi.tex}
+% \input{C1_antecedentes/deep_learning_and_tf.tex}
+% \input{C1_antecedentes/cloud_computing.tex}
+% \input{C1_antecedentes/rest.tex}
+% \input{C1_antecedentes/baas_firebase.tex}
+% \input{C1_antecedentes/apis.tex}
 
+
+En este capítulo se describieron algunos 
+fundamentos teóricos y prácticos de la arquitectura de software 
+propuesta. Se mencionó el funcionamiento de algunos elementos de los robots NAO y cómo se lleva a cabo el desarrollo de un programa
+remota y localmente, el uso de los SDK para Java y Python y
+ciertas API para manejar el movimiento del robot, la captura de 
+video, imágenes y audio, etc. 
+
+En el apartado de aprendizaje profundo se inicia con 
+conceptos muy generales del aprendizaje automático,
+se ahonda en las redes neuronales y el algoritmo de 
+retropropagación para el aprendizaje de los parámetros
+de una red y finalmente se describen las redes
+convolucionales con un enfoque hacia la visión 
+computacional. De TensorFlow, se describe 
+la estructura fundamental de un programa usando esta
+biblioteca y de los objetos que utiliza
+para el entrenamiento y evaluación de un modelo, 
+incluyendo un ejemplo, usando Python, de una
+red neuronal que aprende la función XOR. 
+
+En cuanto a las secciones de cómputo en la nube
+y REST, se describieron algunos conceptos teóricos
+de cada uno y las tecnologías que están involucradas.
+
+De Firebase se mencionan a grandes rasgos 
+tres características que ofrece y que se ocupan
+en este proyecto, la base de datos en tiempo real,
+el servicio de autenticanción y el servicio de alojamiento.
+En el apartado de las API REST se describe cómo
+se hacen solicitudes y cuáles son las respuestas
+de los servicios de Google Cloud, Kairos y Wit.ai.
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % %%%%%%%%%%%%%% Capítulo 2 : CloudNAO %%%%%%%%%%%%%%%%%%
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% \chapter{La arquitectura CloudNAO}
-% \label{\detokenize{chapter_two:la-arquitectura-cloudnao}}\label{\detokenize{chapter_two::doc}}
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{La arquitectura CloudNAO}
+\label{\detokenize{chapter_two:la-arquitectura-cloudnao}}\label{\detokenize{chapter_two::doc}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+En este capítulo se explica el desarrollo de la arquitectura de software CloudNAO y algunos casos de estudio donde utilizamos
+algunos elementos de ésta.
+
+En la Sección \ref{\detokenize{chapter_two/desc_cloudnao:descripcion-de-la-arquitectura-cloudnao}} se describen los componentes de
+la arquitectura, como se comunican y relacionan entre ellos.
+Esta sección incluye una subsección por cada elemento de CloudNAO
+donde se agrega un apartado para usuarios y otro para desarrolladores.
+
+En la Sección \ref{\detokenize{chapter_two/study_cases_implementation::doc}} se muestran tres casos de estudio, el primero es el 
+reconocimiento rostros, el segundo incluye el reconocimiento
+óptico de caracteres y su traducción y el tercer caso es
+el reconocimiento de voz para que el robot realice ciertas
+tareas.
+
+
 
 % \input{C2_arquitectura_cloudnao/intro}
 % \input{C2_arquitectura_cloudnao/lar_server}
@@ -170,6 +276,33 @@ cómputo en la nube con robots NAO}
 % \input{C2_arquitectura_cloudnao/web_app_docs}
 % \input{C2_arquitectura_cloudnao/casos_de_estudio}
 
+Este capítulo se describieron cada uno de los
+componentes de la arquitectura de software CloudNAO.
+
+De la API REST se mostraron los recursos que ofrece, como enviar una solicitud y la estructura de la respuesta 
+retornada por la API. Además, se incluye una descripción
+de cada módulo que compone la aplicación para poder
+darle mantenimiento, replicarla o extenderla.
+
+Después se incluye un apartado únicamente para
+hablar de la base de datos en tiempo real de Firebase
+y su papel dentro de CloudNAO. Aquí se definió 
+la estructura del JSON y cada uno de sus atributos.
+
+De la aplicación móvil para dispositivos con
+sistema Android se exponen las funcionalidades que 
+ofrece y también una explicación general de las 
+clases principales dentro del código fuente.
+
+Además se incluye un apartado especial de la conexión 
+del robot NAO con Firebase sin ningún intermediario
+
+
+
+
+
+
+
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -177,9 +310,9 @@ cómputo en la nube con robots NAO}
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% \chapter{Un servicio de cómputo en la nube sobre la arquitectura CloudNAO}
-% \label{\detokenize{chapter_three:un-servicio-de-computo-en-la-nube-sobre-la-arquitectura-cloudnao}}
-% \label{\detokenize{chapter_three::doc}}
+\chapter{Un servicio de cómputo en la nube sobre la arquitectura CloudNAO}
+\label{\detokenize{chapter_three:un-servicio-de-computo-en-la-nube-sobre-la-arquitectura-cloudnao}}
+\label{\detokenize{chapter_three::doc}}
 
 
 % \input{C3_servicio_en_la_nube/intro}
@@ -206,9 +339,11 @@ cómputo en la nube con robots NAO}
 
 % \include{anexos}
 
-% \nocite{*}
-% \addcontentsline{toc}{chapter}{Bibliografía}
-% \bibliographystyle{unsrt}
-% \bibliography{referencias}
+\nocite{*}
+\addcontentsline{toc}{chapter}{Bibliografía}
+\bibliographystyle{unsrt}
+\bibliography{referencias}
+
+% \printbibliography
 
 \end{document}

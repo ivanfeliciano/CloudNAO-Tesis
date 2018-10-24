@@ -6,20 +6,19 @@
 Flask es un micro framework para desarrollo web. Fue diseñado para ser un
 framework extensible, sólo provee un núcleo sólido con servicios básicos,
 mientras que las extensiones brindan el resto. Esto quiere decir que Flask,
-brinda la posibilidad contar sólo con las dependencias que se necesitan.
+brinda la posibilidad de contar sólo con las dependencias que se necesitan.
 
 Tiene dos dependencias principales, \sphinxstylestrong{Werkzeug} y \sphinxstylestrong{Jinja2}.
 El enrutamiento, debugging y WSGI tienen procedencia de Werkzeug.
-Jinga2 ofrece el soporte para el manejo de plantillas. 
+Jinga2 ofrece el soporte para el manejo de plantillas.\\
 % Para nuestra
 % aplicación solamente hacemos uso de la primera.
 
-\begin{quote}
-
-\sphinxstyleemphasis{WSGI} es la Web Server Gateway Interface. Es un protocolo que describe
+\begin{remark}
+WSGI es la Web Server Gateway Interface. Es un protocolo que describe
 cómo un servido web se comunica con aplicaciones web, y cómo las aplicaciones
 web se pueden encadenar para procesar una petición.
-\end{quote}
+\end{remark}
 
 Para la instalación de Flask así como de cualquier paquete de Python, se
 recomienda crear un ambiente virtual con la herramienta \sphinxstylestrong{virtualenv}.
@@ -382,7 +381,7 @@ Crea la base de datos basándose en las clases modelos.
 Borrar tablas: \sphinxcode{db.drop\_all()}.
 Destruye los datos en la base de datos.
 \item
-Añadir tuplas: \sphinxcode{db.session.add(Objeto){}`}.
+Añadir tuplas: \sphinxcode{db.session.add(Objeto){}}.
 Los cambios  se manejan a través de una \sphinxcode{session} en la base de datos. Se pasa como parámetro un objeto del modelo.
 \item
 Escribir cambios: \sphinxcode{db.session.commit()}.
@@ -395,7 +394,7 @@ Eliminar tuplas: \sphinxcode{db.session.delete(Objeto)}.
 El método \sphinxcode{delete} recibe como parámetro al objeto que desea eliminarse.
 \item
 Consultas: \sphinxcode{Modelo.query.all()} \sphinxcode{Modelo.query.filter\_by(Criterio)}.
-La consulta más básica retorna todo el contenido de la tabla correspondiente \sphinxcode{Modelo.query.all()}.Se pueden usar \sphinxstyleemphasis{filtros} para buscar elementos más específicos en la base de datos.
+La consulta más básica retorna todo el contenido de la tabla correspondiente \sphinxcode{Modelo.query.all()}. Se pueden usar \sphinxstyleemphasis{filtros} para buscar elementos más específicos en la base de datos.
 \end{itemize}
 
 \section*{Requests}

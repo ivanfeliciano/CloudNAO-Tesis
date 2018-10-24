@@ -105,10 +105,10 @@ lugar dentro del área del LAR.
 \end{itemize}
 
 
-\subparagraph{Solicitud}
+\paragraph{Solicitud}
 \label{\detokenize{chapter_two/desc_cloudnao:peticion}}
 
-\subparagraph{Headers.}
+\textbf{Headers.}
 \label{\detokenize{chapter_two/desc_cloudnao:headers}}
 En los encabezados de la petición debe de ir el tipo de contenido que se envía
 y un token de acceso único para cada usuario registrado. Esto último
@@ -120,7 +120,7 @@ simplemente es para evitar que cualquiera pueda hacer peticiones a la API.
 \end{sphinxVerbatim}
 
 
-\subparagraph{\sphinxstylestrong{Cuerpo.}}
+\textbf{Cuerpo.}
 \label{\detokenize{chapter_two/desc_cloudnao:body}}
 En el cuerpo del mensaje se envía un JSON con la siguiente estructura. En la tabla 
 \ref{tab:body_json_schema_request} se describen los atributos del JSON.
@@ -199,10 +199,10 @@ en la} \\
 % \end{sphinxVerbatim}
 
 
-\subparagraph{\sphinxstylestrong{Respuesta}}
+\paragraph{Respuesta}
 \label{\detokenize{chapter_two/desc_cloudnao:respuesta}}
 
-\subparagraph{\sphinxstylestrong{Cuerpo.}}
+\textbf{Cuerpo.}
 \label{\detokenize{chapter_two/desc_cloudnao:id1}}
 En el cuerpo del mensaje de respuesta, si se obtiene un código 200,
 va un JSON con las características encontradas. En éste también
@@ -322,7 +322,7 @@ Descripción                                   & Escenario reconocido.          
 \end{longtable}
 
 
-\subparagraph{Ejemplo de una petición a la API con cURL.}
+\paragraph{Ejemplo de una petición a la API con cURL}
 
 cURL es una herramienta en la línea de comandos para transferir
 datos usando diferentes protocolos. Por facilidad,
@@ -337,8 +337,7 @@ se obtiene creando un usuario haciendo una petición al recurso
 curl \PYGZhy{}X POST \PYG{l+s+se}{\PYGZbs{}}
 http://132.248.180.17/register \PYG{l+s+se}{\PYGZbs{}}
 \PYGZhy{}H \PYG{l+s+s1}{\PYGZsq{}content\PYGZhy{}type: application/json\PYGZsq{}}\PYG{l+s+se}{\PYGZbs{}}
-\PYGZhy{}d \PYG{l+s+s1}{\PYGZsq{}\PYGZob{}}
-\PYG{l+s+s1}{    \PYGZdq{}username\PYGZdq{} : \PYGZdq{}mock\PYGZus{}user@gmailcom\PYGZdq{},}
+\PYGZhy{}d \PYG{l+s+s1}{\PYGZsq{}\PYGZob{}\PYGZdq{}username\PYGZdq{} : \PYGZdq{}mock\PYGZus{}user@gmailcom\PYGZdq{},}
 \PYG{l+s+s1}{    \PYGZdq{}password\PYGZdq{} : \PYGZdq{}p45sw0rd\PYGZdq{}}
 \PYG{l+s+s1}{    \PYGZcb{}\PYGZsq{}}
 \end{sphinxVerbatim}
@@ -512,7 +511,7 @@ Flask, sus extensiones y la biblioteca requests.
 
 \paragraph{Descripción de los módulos principales}
 \label{\detokenize{chapter_two/desc_cloudnao:codigo}}
-La aplicación está compuesta por diferentes por módulos
+La aplicación está compuesta por diferentes módulos
 divididos de la siguiente forma:
 %está levemente basada en la definida en el libro
 %\sphinxstylestrong{Flask Web Development} de Miguel Grinberg, pero adaptada para una API REST.
@@ -569,23 +568,22 @@ El archivo que almacena las opciones de configuración \sphinxstyleemphasis{conf
 El script que ejecuta al aplicación \sphinxstyleemphasis{manage.py}.
 
 \item {} 
-Los archivos \sphinxstyleemphasis{README.md} y \sphinxstyleemphasis{requirements.txt}, y la carpeta \sphinxstyleemphasis{venv}, contienen una breve descripción del proyecto, la lista de dependencias y el ambiente virtual de Python, respectivamente.
+Los archivos \sphinxstyleemphasis{README.md} y \sphinxstyleemphasis{requirements.txt}, así como la carpeta \sphinxstyleemphasis{venv}, contienen una breve descripción del proyecto, la lista de dependencias y el ambiente virtual de Python, respectivamente.
 
 \end{itemize}
 
 En las siguientes secciones se documentan las partes más importantes del
-proyecto, el paquete \sphinxstyleemphasis{app}, y los
+proyecto, el paquete \sphinxstyleemphasis{app}, los
 archivos \sphinxstyleemphasis{config.py} y \sphinxstyleemphasis{manage.py}.
 
 
-\subparagraph{Aplicación (\sphinxstyleemphasis{app}).}
+\textbf{Aplicación (\sphinxstyleemphasis{app}).}
 \label{\detokenize{chapter_two/desc_cloudnao:aplicacion-app}}\label{\detokenize{chapter_two/desc_cloudnao:module-app}}\index{app (módulo)}
 La aplicación en Flask de la API de CloudNAO, está compuesta por varios paquetes,
 los recursos, los modelos para la base datos, los clientes de los servicios web de
 terceros, modelos de Tensorflow y módulos auxiliares.
 
-
-\subparagraph{Modelos (\sphinxstyleemphasis{models}).}
+\textbf{Modelos (\sphinxstyleemphasis{models}).}
 \label{\detokenize{chapter_two/desc_cloudnao:module-app.models}}\label{\detokenize{chapter_two/desc_cloudnao:modelos-models}}\index{app.models (módulo)}
 Este paquete contiene los modelos de la base de datos, usando SQLAlchemy.
 \newline
@@ -624,7 +622,7 @@ Una cadena con el nombre del usuario, es única.
 \hline
 password\_hash
 &
-Una cadena que obtenida de una función hash aplicada a la contraseña original
+Una cadena que se obtiene al aplicar una función hash a la contraseña original. 
 \\
 \hline
 access\_token
@@ -659,7 +657,7 @@ base de datos.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-\subparagraph{Recursos (\sphinxstyleemphasis{resources}).}
+\textbf{Recursos (\sphinxstyleemphasis{resources}).}
 \label{\detokenize{chapter_two/desc_cloudnao:recursos-resources}}\label{\detokenize{chapter_two/desc_cloudnao:module-app.resources}}\index{app.resources (módulo)}
 En este paquete se definen los recursos que representan a los servicios que
 la API estará brindando. Desde el registro de un usuario, obtención de un nuevo
@@ -797,7 +795,7 @@ Aquí se unen en una sola las respuestas de los módulos dentro de
 
 
 
-\subparagraph{Modelos de Tensorflow (\sphinxstyleemphasis{tf\_models}).}
+\textbf{Modelos de Tensorflow (\sphinxstyleemphasis{tf\_models}).}
 En este paquete se encuentran los módulos encargados de la 
 detección de objetos y la clasificación de escenarios usando
 TensorFlow.\\
@@ -868,7 +866,7 @@ codificada en base 64.
 \PYG{g+go}{\PYGZgt{}\PYGZgt{}\PYGZgt{}}
 \end{sphinxVerbatim}
 
-\subparagraph{Cliente de servicios web de terceros (\sphinxstyleemphasis{tpa\_client\_libraries})}
+\textbf{Cliente de servicios web de terceros (\sphinxstyleemphasis{tpa\_client\_libraries})}
 \label{\detokenize{chapter_two/desc_cloudnao:cliente-de-servicios-web-de-terceros-tpa-client-libraries}}\phantomsection\label{\detokenize{chapter_two/desc_cloudnao:module-app.tpa_client_libraries.google_cloud_translation}}\index{app.tpa\_client\_libraries.google\_cloud\_translation (módulo)}\index{GoogleCloudTranslation (clase en app.tpa\_client\_libraries.google\_cloud\_translation).}
 
 En este paquete se encuentran los módulos para hacer las peticiones
@@ -877,7 +875,6 @@ y Wit.ai.
 \newline
 
 \codedocumentation{\sphinxbfcode{class }\sphinxcode{app.tpa\_client\_libraries.google\_cloud\_translation.}\sphinxbfcode{GoogleCloudTranslation}}
-
 Una clase pública que se conecta a la API de traducción de Google Cloud,
 la cual permite traducir una cadena dada en un cualquier idioma admitido.
 Hay tres métodos que provee la API; \sphinxcode{translate}, que recibe una cadena y
@@ -906,7 +903,6 @@ se muestra cómo utilizar este módulo.
 
 
 \codedocumentation{\sphinxbfcode{class }\sphinxcode{app.tpa\_client\_libraries.google\_cloud\_vision.}\sphinxbfcode{GoogleCloudVision}}
-
 Una clase pública para integrar en la aplicación dos de las características
 ofrecidas por Google Cloud Vision, el reconocimiento óptico de caracteres y
 el etiquetado de imágenes, usando su API REST.
@@ -1034,7 +1030,7 @@ enlistar las intenciones encontradas en una cadena de texto.
 \index{message() (método de app.tpa\_client\_libraries.wit\_api.WitAPI)}
 
 
-\subparagraph{Utilidades (\sphinxstyleemphasis{utils})}
+\textbf{Utilidades (\sphinxstyleemphasis{utils})}
 \label{\detokenize{chapter_two/desc_cloudnao:utilidades-utils}}\index{make\_request() (en el módulo app.utils.requests\_utils)}
 
 Este paquete incluye funciones auxiliares
@@ -1063,14 +1059,13 @@ O lanzar el servidor:
 \end{sphinxVerbatim}
 
 
-\subparagraph{config.py}
+\textbf{config.py}
 \label{\detokenize{chapter_two/desc_cloudnao:config-py}}\label{\detokenize{chapter_two/desc_cloudnao:module-config}}\index{config (módulo)}
 Programa que establece las opciones de configuración para la
 aplicación.
 \index{Config (clase en config)}
 
-
-\subparagraph{manage.py}
+\textbf{manage.py}
 \label{\detokenize{chapter_two/desc_cloudnao:module-manage}}\label{\detokenize{chapter_two/desc_cloudnao:manage-py}}\index{manage (módulo)}
 El programa que inicia la aplicación.
 \index{create\_tables() (en el módulo manage)}

@@ -171,9 +171,11 @@ y rápido en cualquier aplicación o servicio. Cuenta con un API REST
 para ejecutar tareas en la nube como la detección e identificación de rostros,
 emociones, raza, edad, entre otras. También cuenta con un SDK, más limitado
 pero que puede ejecutarse offline y directamente en dispositivos móviles.
-Por ahora sólo nos interesa la API REST, por lo que describiremos cómo funciona,
-es decir, cómo se debe hacer una petición y cuál es la respuesta
-que envía el servicio.
+En esta sección se describe cómo se debe hacer una petición
+y cuál es la repuesta que retorna el servicio.
+% Por ahora sólo nos interesa la API REST, por lo que describiremos cómo funciona,
+% es decir, cómo se debe hacer una petición y cuál es la respuesta
+% que envía el servicio.
 
 Para realizar el reconocimiento de caras, la API tiene como URL base
 \sphinxcode{https://api.kairos.com} y cuenta con diversos recursos para cada tipo de
@@ -208,8 +210,7 @@ La respuesta de un POST a \sphinxcode{/enroll}, si todo fue exitoso
 es un JSON con la siguiente estructura.
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{p}{\PYGZob{}}
-  \PYG{l+s+s2}{\PYGZdq{}face\PYGZus{}id\PYGZdq{}}\PYG{o}{:} \PYG{n+nx}{string}\PYG{p}{,}
+\PYG{p}{\PYGZob{}}\PYG{l+s+s2}{\PYGZdq{}face\PYGZus{}id\PYGZdq{}}\PYG{o}{:} \PYG{n+nx}{string}\PYG{p}{,}
   \PYG{l+s+s2}{\PYGZdq{}images\PYGZdq{}}\PYG{o}{:} \PYG{p}{[}
     \PYG{p}{\PYGZob{}}
       \PYG{l+s+s2}{\PYGZdq{}attributes\PYGZdq{}}\PYG{o}{:} \PYG{p}{\PYGZob{}}
@@ -238,12 +239,10 @@ es un JSON con la siguiente estructura.
         \PYG{l+s+s2}{\PYGZdq{}width\PYGZdq{}}\PYG{o}{:} \PYG{n+nx}{number}\PYG{p}{,}
         \PYG{l+s+s2}{\PYGZdq{}face\PYGZus{}id\PYGZdq{}}\PYG{o}{:} \PYG{n+nx}{number}
       \PYG{p}{\PYGZcb{}}
-    \PYG{p}{\PYGZcb{}}
-  \PYG{p}{]}
-\PYG{p}{\PYGZcb{}}
+    \PYG{p}{\PYGZcb{}}\PYG{p}{]}\PYG{p}{\PYGZcb{}}
 \end{sphinxVerbatim}
 
-Como se puede ver, los elementos del JSON son autodescriptivos. Para el caso
+Para el caso
 del POST a \sphinxcode{/recognize}, el cuerpo de la petición lleva un JSON como el
 siguiente:
 
@@ -254,9 +253,9 @@ siguiente:
 \PYG{p}{\PYGZcb{}}
 \end{sphinxVerbatim}
 
-La respuesta enviada por Kairos,  si se todo fue exitoso,
+La respuesta enviada por Kairos,  si todo fue exitoso,
 es un JSON con campos autodescriptivos como los
-de la respuesta del recurso previo. Este JSON tiene se muestra a continuación.
+de la respuesta del recurso previo. Este JSON se muestra a continuación.
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{p}{\PYGZob{}}
@@ -297,7 +296,7 @@ de la respuesta del recurso previo. Este JSON tiene se muestra a continuación.
 Wit.ai es una API para procesamiento de lenguaje natural capaz de convertir
 oraciones en datos estructurados. Esto quiere decir que puedes crear bots
 que interactúen con humanos en plataformas de mensajería. Con Wit.ai los
-desarrolladores pueden contruir aplicaciones a la que se les pueda hablar o
+desarrolladores pueden contruir aplicaciones a las que se les pueda hablar o
 escribir. Los bots aprenden conforme se les hable, se vuelven más inteligentes
 en cada interacción.
 

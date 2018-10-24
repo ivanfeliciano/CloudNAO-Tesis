@@ -1,10 +1,7 @@
-
-
-
 \subsection{Firebase Realtime Database dentro de CloudNAO}
 \label{\detokenize{chapter_two/desc_cloudnao:firebase-realtime-database-y-cloudnao}}
 Como componente dentro de la arquitectura CloudNAO, la Realtime Database tiene
-dos funciones principales; almacenar un registro de datos generados por el robot,
+dos funciones principales: almacenar un registro de datos generados por el robot,
 y servir como interfaz para enviar desde un navegador web comandos que puedan
 ser ejecutados por el robot de manera remota, sin la necesidad de estar
 conectados a la misma red. A la primera
@@ -93,18 +90,11 @@ en cuenta para estructurar los datos dentro del JSON.
 \end{itemize}
 
 Siguiendo estas recomendaciones, se diseñó una base de datos, evitando anidar
-elementos separándolos como fuera conveniente y manteniendo relaciones que
+elementos, separándolos como fuera conveniente y manteniendo relaciones que
 eran necesarias para realizar consultas de manera simple.
-
-En las siguientes secciones primero se describe la base de datos con un enfoque
-clásico con el modelo entidad relación y después como se puede transformar ese
-modelo base en un JSON que se pueda almacenar en la nube.
-
-\paragraph{Diagrama entidad-relación}
 
 El diagrama de la \hyperref[\detokenize{chapter_two/desc_cloudnao:entity-relationship-model-cn-firebase}]{Figura \ref{\detokenize{chapter_two/desc_cloudnao:entity-relationship-model-cn-firebase}}}, muestra el
 modelo sobre el que se basa el JSON que se almacena en Firebase.
-
 Un usuario puede tener varios robots, cada robot está relacionado
 con otras entidades como: un texto que representa el discurso que tiene que decir,
 la última imagen enviada por el robot, un largo historial de
@@ -116,17 +106,16 @@ su conexión a la red), y comandos para ejecutar ciertas tareas.
 \capstart
 
 \noindent\sphinxincludegraphics[scale=0.75]{{entity_relationship_model_cn_firebase}.png}
-\caption{Diagrama entidad relación de la base de datos para Firebase}\label{\detokenize{chapter_two/desc_cloudnao:entity-relationship-model-cn-firebase}}\end{figure}
+\caption{Un diagrama basado en el enfoque clásico de relaciones entre entidades.}\label{\detokenize{chapter_two/desc_cloudnao:entity-relationship-model-cn-firebase}}\end{figure}
 
 
 \paragraph{Estructura del JSON para Firebase}
 \label{\detokenize{chapter_two/desc_cloudnao:estructura-del-json-para-firebase}}
-La estructura de la base de datos descrita en el modelo de la \hyperref[\detokenize{chapter_two/desc_cloudnao:entity-relationship-model-cn-firebase}]{Figura \ref{\detokenize{chapter_two/desc_cloudnao:entity-relationship-model-cn-firebase}}}
-es la base del JSON y es por eso que puede no cumplir los requisitos de normalización,
-simplemente ilustra el diseño de la base de datos para que sea más simple su
-visualización.
+% La estructura de la base de datos descrita en el modelo de la \hyperref[\detokenize{chapter_two/desc_cloudnao:entity-relationship-model-cn-firebase}]{Figura \ref{\detokenize{chapter_two/desc_cloudnao:entity-relationship-model-cn-firebase}}}
+% es la base del JSON e ilustra un enfoque clásico de la base de datos para que sea más simple su
+% visualización.
 
-Con una idea de cómo está diseñada la base de datos la estructura del JSON
+A partir del modelo descrito en la \hyperref[\detokenize{chapter_two/desc_cloudnao:entity-relationship-model-cn-firebase}]{Figura \ref{\detokenize{chapter_two/desc_cloudnao:entity-relationship-model-cn-firebase}}}, la estructura del JSON
 queda como en la \hyperref[\detokenize{chapter_two/desc_cloudnao:json-structure}]{Figura \ref{\detokenize{chapter_two/desc_cloudnao:json-structure}}}. Es importante señalar que esta base de datos
 es muy flexible, los campos en las «entidades» que aquí son los atributos
 del JSON, pueden cambiar: eliminándolos, agregando nuevos, etcétera.
