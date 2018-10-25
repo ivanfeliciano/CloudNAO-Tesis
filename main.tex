@@ -45,6 +45,11 @@
 \usepackage{caption}
 \usepackage{subfig}
 \usepackage{url}
+\usepackage[xindy,toc]{glossaries} 
+% \usepackage[toc]{glossaries}
+\input{glossary.tex}
+\makeglossaries
+
 % \usepackage{natbib}
 
 %\usepackage{apalike}
@@ -125,6 +130,8 @@ cómputo en la nube con robots NAO}
 
 \graphicspath {{figures/}}
 
+\glsaddall
+
 \begin{document}
 \ifnum\catcode`\"=\active\shorthandoff{"}\fi
 \maketitle
@@ -168,21 +175,20 @@ automático, siguiendo con redes neuronales para finalmente
 llegar a las redes neuronales profundas, en específico,
 las redes convolucionales. En esa misma sección
 hay un apartado sobre la biblioteca TensorFlow,
-donde se describe la estructura un programa
+donde se describe la estructura de un programa
 usando esta herramienta y un ejemplo muy
 sencillo para poner en práctica el paradigma de programación utilizado
 en TensorFlow.
 
 En la Sección \ref{\detokenize{chapter_one/cloud_computing::doc}}
 se define la idea del cómputo en la nube, las características y capas de éste, 
-las tecnologías que involucra y las diferencias entre los servicios
-en la nube y el cómputo en la nube.
+las tecnologías que involucra y las diferencias entre los servicios y el cómputo en la nube.
 
 La Sección \ref{\detokenize{chapter_one/rest::doc}}
 presenta el estilo de arquitectura de software REST.
 Se muestran algunos conceptos generales del protocolo
 HTTP y la web, finalizando con los elementos 
-que componen esta arquitectura.
+que componen a la arquitectura REST.
 
 La Sección \ref{\detokenize{chapter_one/firebase::doc}}
 comienza con una breve definición del modelo 
@@ -202,28 +208,28 @@ de la API REST con la que cuenta.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% \input{C1_antecedentes/naoqi.tex}
-% \input{C1_antecedentes/deep_learning_and_tf.tex}
-% \input{C1_antecedentes/cloud_computing.tex}
-% \input{C1_antecedentes/rest.tex}
-% \input{C1_antecedentes/baas_firebase.tex}
-% \input{C1_antecedentes/apis.tex}
+\input{C1_antecedentes/naoqi.tex}
+\input{C1_antecedentes/deep_learning_and_tf.tex}
+\input{C1_antecedentes/cloud_computing.tex}
+\input{C1_antecedentes/rest.tex}
+\input{C1_antecedentes/baas_firebase.tex}
+\input{C1_antecedentes/apis.tex}
 
-
+\section*{Conclusiones del capítulo}
 En este capítulo se describieron algunos 
 fundamentos teóricos y prácticos de la arquitectura de software 
-propuesta. Se mencionó el funcionamiento de algunos elementos de los robots NAO y cómo se lleva a cabo el desarrollo de un programa
-remota y localmente, el uso de los SDK para Java y Python y
-ciertas API para manejar el movimiento del robot, la captura de 
-video, imágenes y audio, etc. 
+propuesta. Se mencionó el funcionamiento de varios elementos que 
+componen al robot NAO, a nivel hardware y software, como el uso de los SDK para Java y Python y
+ciertas interfaces para el control del robot, captura de 
+video, imágenes, audio, etc. 
 
-En el apartado de aprendizaje profundo se inicia con 
+En el apartado de aprendizaje profundo se definieron 
 conceptos muy generales del aprendizaje automático,
-se ahonda en las redes neuronales y el algoritmo de 
+se ahondó en las redes neuronales y el algoritmo de 
 retropropagación para el aprendizaje de los parámetros
-de una red y finalmente se describen las redes
+de una red y finalmente se describieron las redes
 convolucionales con un enfoque hacia la visión 
-computacional. De TensorFlow, se describe 
+computacional. De TensorFlow, se mostró 
 la estructura fundamental de un programa usando esta
 biblioteca y de los objetos que utiliza
 para el entrenamiento y evaluación de un modelo, 
@@ -234,12 +240,12 @@ En cuanto a las secciones de cómputo en la nube
 y REST, se describieron algunos conceptos teóricos
 de cada uno y las tecnologías que están involucradas.
 
-De Firebase se mencionan a grandes rasgos 
+De Firebase se mencionaron a grandes rasgos 
 tres características que ofrece y que se ocupan
 en este proyecto, la base de datos en tiempo real,
-el servicio de autenticanción y el servicio de alojamiento.
-En el apartado de las API REST se describe cómo
-se hacen solicitudes y cuáles son las respuestas
+el servicio de autenticación y el servicio de alojamiento.
+En el apartado de las API REST se describió 
+el flujo de petición y respuesta
 de los servicios de Google Cloud, Kairos y Wit.ai.
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -251,33 +257,33 @@ de los servicios de Google Cloud, Kairos y Wit.ai.
 \label{\detokenize{chapter_two:la-arquitectura-cloudnao}}\label{\detokenize{chapter_two::doc}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-En este capítulo se explica el desarrollo de la arquitectura de software CloudNAO y algunos casos de estudio donde utilizamos
+En este capítulo se explica el desarrollo de la arquitectura de software CloudNAO y algunos casos de estudio donde se usan
 algunos elementos de ésta.
 
 En la Sección \ref{\detokenize{chapter_two/desc_cloudnao:descripcion-de-la-arquitectura-cloudnao}} se describen los componentes de
-la arquitectura, como se comunican y relacionan entre ellos.
-Esta sección incluye una subsección por cada elemento de CloudNAO
-donde se agrega un apartado para usuarios y otro para desarrolladores.
+la arquitectura, la comunicación y relación entre ellos.
+Esta sección incluye una subsección por cada elemento de CloudNAO, la cual contiene dos apartados, uno para usuarios y otro para desarrolladores.
 
-En la Sección \ref{\detokenize{chapter_two/study_cases_implementation::doc}} se muestran tres casos de estudio, el primero es el 
+En la Sección \ref{\detokenize{chapter_two/study_cases_implementation::doc}} se muestran tres casos de estudio. El primero es el 
 reconocimiento rostros, el segundo incluye el reconocimiento
 óptico de caracteres y su traducción y el tercer caso es
-el reconocimiento de voz para que el robot realice ciertas
-tareas.
+el reconocimiento de voz con el objetivo de que
+el robot realice algunas tareas utilizando comandos por voz.
 
+\input{C2_arquitectura_cloudnao/intro}
+\input{C2_arquitectura_cloudnao/lar_server}
+\input{C2_arquitectura_cloudnao/api_rest_cloudnao}
+\input{C2_arquitectura_cloudnao/firebase_and_cloudnao}
+\input{C2_arquitectura_cloudnao/android}
+\input{C2_arquitectura_cloudnao/robot_firebase_docs}
+\input{C2_arquitectura_cloudnao/web_app_docs}
+\input{C2_arquitectura_cloudnao/casos_de_estudio}
 
-
-% \input{C2_arquitectura_cloudnao/intro}
-% \input{C2_arquitectura_cloudnao/lar_server}
-% \input{C2_arquitectura_cloudnao/api_rest_cloudnao}
-% \input{C2_arquitectura_cloudnao/firebase_and_cloudnao}
-% \input{C2_arquitectura_cloudnao/android}
-% \input{C2_arquitectura_cloudnao/robot_firebase_docs}
-% \input{C2_arquitectura_cloudnao/web_app_docs}
-% \input{C2_arquitectura_cloudnao/casos_de_estudio}
-
-Este capítulo se describieron cada uno de los
-componentes de la arquitectura de software CloudNAO.
+\section*{Conclusiones del capítulo}
+En este capítulo se describieron cada uno de los
+componentes de la arquitectura de software CloudNAO que llevaron al
+cumplimiento del primer objetivo
+de esta investigación. 
 
 De la API REST se mostraron los recursos que ofrece, como enviar una solicitud y la estructura de la respuesta 
 retornada por la API. Además, se incluye una descripción
@@ -292,15 +298,37 @@ la estructura del JSON y cada uno de sus atributos.
 De la aplicación móvil para dispositivos con
 sistema Android se exponen las funcionalidades que 
 ofrece y también una explicación general de las 
-clases principales dentro del código fuente.
+clases principales dentro del código fuente. Una restriccion
+encontrada es que el SDK de NAOqi
+para desarrollar aplicaciones para
+Android sólo funciona con 
+dispositivos con arquitecturas ARM
+y con una versión menor o igual a Android 5.1.1.
 
-Además se incluye un apartado especial de la conexión 
-del robot NAO con Firebase sin ningún intermediario
+Se explicó también como se realiza la conexión 
+entre el robot NAO y Firebase sin ningún intermediario. Con ésto el
+robot puede directamente
+leer y escribir en la base
+de datos en tiempo real de Firebase
+para realizar algunas tareas de 
+movimiento y almacenamiento de
+registros del estado del robot.
 
+La primera sección del capítulo finaliza con la descripción de
+la aplicación web, sus funcionalidades y un vistazo general
+a sus componentes.
 
-
-
-
+En la segunda sección del capítulo
+se mostraron algunos casos de estudio para poner ejemplos
+prácticos del uso de algunos elementos de la arquitectura.
+Se expusieron tres casos, una herramienta para
+identificar a una persona con una
+fotografía capturada con la cámara
+del robot, un traductor de texto
+encontrado en una imagen
+al idioma español y finalmente 
+un control por voz del robot
+para realizar algunas tareas.
 
 
 
@@ -315,9 +343,33 @@ del robot NAO con Firebase sin ningún intermediario
 \label{\detokenize{chapter_three::doc}}
 
 
-% \input{C3_servicio_en_la_nube/intro}
-% \input{C3_servicio_en_la_nube/desc_service_cnn}
-% \input{C3_servicio_en_la_nube/service_implementation}
+\input{C3_servicio_en_la_nube/intro}
+\input{C3_servicio_en_la_nube/desc_service_cnn}
+\input{C3_servicio_en_la_nube/service_implementation}
+
+\section*{Conclusiones del capítulo}
+En este capítulo logramos cumplir
+el segundo objetivo de la tesis
+al desarrollar un servicio que
+utiliza una red neuronal profunda
+como clasificador de imágenes y
+que es consumido por el robot NAO.
+
+Se logró ver que gracias a
+TensorFlow, la creación, el 
+entrenamiento y evaluación
+del modelo se hace de manera sencilla
+y rápida.
+
+Como trabajos a futuro quedan:
+utilizar otras medidas para evaluar
+el desempeño del clasificador,
+integrar este servicio a la solución
+de la navegación del robot 
+(al menos dentro del laboratorio)
+y probar otras arquitecturas
+de redes neuronales profundas.
+
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -337,8 +389,11 @@ del robot NAO con Firebase sin ningún intermediario
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-% \include{anexos}
+\include{anexos}
 
+% \addcontentsline{toc}{chapter}{Glosario y acrónimos}
+
+\printglossary[nonumberlist, toctitle=Glosario]
 \nocite{*}
 \addcontentsline{toc}{chapter}{Bibliografía}
 \bibliographystyle{unsrt}

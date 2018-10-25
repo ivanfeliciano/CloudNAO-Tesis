@@ -46,7 +46,7 @@ En ambos conjuntos cada imagen es de $60 \times  80$ pixeles y de tres canales p
 
 La selección de una arquitectura o topología para la CNN y de sus parámetros se
 realizó a través de pruebas. Se tomó como base 
-la arquitectura LeNet-5 (una variante de la arquitectura LeNet  que fue una de las primeras CNN que operaba sobre el 
+la arquitectura LeNet-5\cite{Lecun98gradient-basedlearning} (una variante de la arquitectura LeNet  que fue una de las primeras CNN que operaba sobre el 
 conjunto MNIST de dígitos escritos a mano) y se probó cambiando
 diversos parámetros como el número y tamaño de los kernels, la tasa de aprendizaje y el número de unidades en las capas completamente conectadas.
 
@@ -133,7 +133,7 @@ La función softmax se emplea para mapear un vector $\mathbf{z} \in \mathbb{R}^k
 %de las otras unidades en la misma capa.
 
 El tipo de función de costo depende principalmente de la tarea a realizar. Nuestra tarea es de clasificación en múltiples clases. La función
-de costo asociada con este problema es la \textit{entropía cruzada}.\\
+de costo asociada con este problema es la \textit{entropía cruzada} \cite{ragavvenkatesanbaoxinli2018}.\\
 
 \begin{remark}
 La entropía cruzada mide la diferencia entre dos distribuciones de probabilidad, y está
