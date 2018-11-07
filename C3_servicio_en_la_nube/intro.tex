@@ -6,47 +6,33 @@
 %\begin{document}
 %
 
-El segundo objetivo del
-trabajo es implementar un modelo de aprendizaje 
-profundo que se brinde como un servicio web para ser consumido por robots NAO.
-A pesar de que el servicio de detección de objetos es mantenido por el LAR, y 
-se adaptó para ser consumido a través de la API REST, no fue construido
-desde cero ya que es parte de la API de detección de objetos de TensorFlow.
-Es por eso que como parte final del proyecto se desarrolló un modelo que 
-resolviera la tarea de clasificar imágenes.
+Este capítulo se enfoca en el segundo 
+objetivo del trabajo que es: desarrollar un 
+servicio de cómputo en la nube que utilice 
+algoritmos de aprendizaje automático, para 
+robots NAO.
 
+Como parte final del trabajo se desarrolló un modelo que resolviera la tarea de clasificar imágenes.
 El problema de clasificación de imágenes es la tarea de asignarle a una imagen de
 entrada una etiqueta a partir de un conjunto de categorías. Éste es uno de los principales
 problemas dentro del campo de la visión computacional, que a pesar de su simplicidad
-tiene bastantes aplicaciones prácticas. Entre esas aplicaciones, muchas interesan al
-campo de la robótica móvil, por ejemplo, para la navegación de un robot de manera
-autónoma, nos gustaría que supiera en que lugar está simplemente con una fotografía
-que obtenga en ese momento, así podría saber si ha llegado al 
-lugar de su objetivo, o a partir de la zona donde se ubica planear una trayectoria.
+tiene bastantes aplicaciones prácticas. Por ejemplo, dentro de la planeación automática de movimiento, para el problema de localización de un robot
+autónomo, nos gustaría que supiera en que lugar está simplemente con una fotografía
+que obtenga en ese momento, así podría saber si ha llegado al lugar de su objetivo, o a partir de la zona donde se ubica planear una trayectoria.
 
-Lo anterior nos inspiró en la creación de un modelo que clasificara imágenes
+Lo anterior inspiró a la creación de un modelo que clasificara imágenes
 de algunos lugares sobre los que podría navegar el robot NAO. 
 Como solución a este problema de clasificación se propuso usar 
 una red neuronal convolucional, que recibiera como entrada un arreglo con los
 pixeles de una imagen tomada por el robot, y la salida fuera la categoría
 a la que pertenece esa imagen. 
 Las clases en las que se desea clasificar las imágenes son lugares alrededor
-del Laboratorio de Algoritmos para la Robótica, que se ubica en el cubículo $15$ del
-Centro de Desarrollo Tecnológico de la FES Acatlán. Se eligieron las siguientes cuatro zonas:
+del Laboratorio de Algoritmos para la Robótica.
 
-\begin{itemize}
-    \item El cubículo.
-    \item La salida de emergencia.
-    \item La cancha de entrenamiento de fútbol para el robot NAO.
-    \item Zona de trabajo del Laboratorio.
-\end{itemize}
-
-
-En este capítulo se describe con detalle la confección del
-conjunto de datos, la arquitectura de la red 
+En este capítulo se describe con detalle la confección del conjunto de datos, la arquitectura de la red 
 convolucional, la implementación
 del modelo utilizando Python y TensorFlow, los resultados obtenidos
-y finalmente cómo se integra este modelo dentro de la API de CloudNAO 
+y finalmente cómo se integra este modelo dentro de la API de CloudNAO. 
 
 %
 %\end{document}

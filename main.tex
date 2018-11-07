@@ -159,30 +159,29 @@ cómputo en la nube con robots NAO}
 \label{\detokenize{chapter_one:antecedentes}}\label{\detokenize{chapter_one::doc}}
 
 En este capítulo se describen los conceptos 
-necesarios para comprender mejor el desarrollo
-de la arquitectura de software y los fundamentos
-de sus componentes. 
+teóricos y prácticos utilizados para el desarrollo
+de la arquitectura de software CloudNAO.
 
-En la Sección \ref{\detokenize{chapter_one/naoqi::doc}} se 
-familiariza al lector con la plataforma NAO y con
-NAOqi, el marco de trabajo para desarrollar
-aplicaciones sobre éste. 
+En la Sección \ref{\detokenize{chapter_one/naoqi::doc}}, primero se describen los componentes del robot  
+NAO, para después hablar del marco de trabajo NAOqi, sus características, las API que lo componen, su uso y los SDK disponibles. 
 
-En la Sección \ref{chapter_two/deep_learning_tf} se describe 
-de manera muy general lo que es el aprendizaje profundo,
-primero introduciendo conceptos básicos del aprendizaje 
-automático, siguiendo con redes neuronales para finalmente
-llegar a las redes neuronales profundas, en específico,
-las redes convolucionales. En esa misma sección
-hay un apartado sobre la biblioteca TensorFlow,
+La Sección \ref{chapter_two/deep_learning_tf} 
+aborda de manera general lo que es el aprendizaje 
+profundo, primero introduciendo conceptos básicos del 
+aprendizaje automático, siguiendo con redes neuronales 
+para finalmente llegar a las redes neuronales profundas, 
+en específico, las redes convolucionales. En esa misma 
+sección hay un apartado sobre la biblioteca TensorFlow,
 donde se describe la estructura de un programa
 usando esta herramienta y un ejemplo muy
 sencillo para poner en práctica el paradigma de programación utilizado
 en TensorFlow.
 
 En la Sección \ref{\detokenize{chapter_one/cloud_computing::doc}}
-se define la idea del cómputo en la nube, las características y capas de éste, 
-las tecnologías que involucra y las diferencias entre los servicios y el cómputo en la nube.
+se define el concepto de cómputo en la nube, las 
+características y capas de éste, 
+las tecnologías que involucra y las diferencias entre los 
+servicios y el cómputo en la nube.
 
 La Sección \ref{\detokenize{chapter_one/rest::doc}}
 presenta el estilo de arquitectura de software REST.
@@ -196,9 +195,8 @@ de Backend as a Service, para después
 explicar lo que es la plataforma Firebase y los servicios
 que se ocupan en este trabajo.
 
-En la Sección \ref{\detokenize{chapter_one/apis_rest::doc}},
-la última de este capítulo, se muestran los servicios
-utilizados dentro de la arquitectura. Además,
+En la última sección de este capítulo, se muestran los 
+servicios utilizados dentro de la arquitectura. Además,
 para amarrar mejor los conceptos explicados 
 en la Sección \ref{\detokenize{chapter_one/rest::doc}},
 para cada servicio se describe el funcionamiento
@@ -219,7 +217,7 @@ de la API REST con la que cuenta.
 En este capítulo se describieron algunos 
 fundamentos teóricos y prácticos de la arquitectura de software 
 propuesta. Se mencionó el funcionamiento de varios elementos que 
-componen al robot NAO, a nivel hardware y software, como el uso de los SDK para Java y Python y
+componen al robot NAO, a nivel hardware y software, así como el uso de los SDK para Java, Python y
 ciertas interfaces para el control del robot, captura de 
 video, imágenes, audio, etc. 
 
@@ -257,14 +255,21 @@ de los servicios de Google Cloud, Kairos y Wit.ai.
 \label{\detokenize{chapter_two:la-arquitectura-cloudnao}}\label{\detokenize{chapter_two::doc}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-En este capítulo se explica el desarrollo de la arquitectura de software CloudNAO y algunos casos de estudio donde se usan
-algunos elementos de ésta.
+En este capítulo se explica el desarrollo de la 
+arquitectura de software CloudNAO y algunos casos de 
+estudio donde se usan partes de ésta.
 
-En la Sección \ref{\detokenize{chapter_two/desc_cloudnao:descripcion-de-la-arquitectura-cloudnao}} se describen los componentes de
-la arquitectura, la comunicación y relación entre ellos.
-Esta sección incluye una subsección por cada elemento de CloudNAO, la cual contiene dos apartados, uno para usuarios y otro para desarrolladores.
+Los elementos de CloudNAO son: una API REST que integra servicios de terceros y servicios desarrollados por el LAR, una aplicación móvil para 
+dispositivos con el sistema operativo Android, la
+plataforma Firebase, una aplicación web y 
+al robot humanoide NAO.  En la Sección 
+\ref{\detokenize{chapter_two/desc_cloudnao:descripcion-de-la-arquitectura-cloudnao}} se describen los componentes 
+listados anteriormente, su papel dentro de la arquitectura, la comunicación y relación entre ellos. 
+Además, este apartado sirve como documentación para
+desarrolladores y usuarios finales.
 
-En la Sección \ref{\detokenize{chapter_two/study_cases_implementation::doc}} se muestran tres casos de estudio. El primero es el 
+La Sección \ref{\detokenize{chapter_two/study_cases_implementation::doc}} está compuesta por tres casos de estudio
+donde se muestran en acción algunos elementos de la arquitectura como la aplicación móvil y al robot conectándose directamente a servicios para realizar algunas tareas. El primer caso es el 
 reconocimiento rostros, el segundo incluye el reconocimiento
 óptico de caracteres y su traducción y el tercer caso es
 el reconocimiento de voz con el objetivo de que
@@ -280,43 +285,40 @@ el robot realice algunas tareas utilizando comandos por voz.
 \input{C2_arquitectura_cloudnao/casos_de_estudio}
 
 \section*{Conclusiones del capítulo}
-En este capítulo se describieron cada uno de los
-componentes de la arquitectura de software CloudNAO que llevaron al
+En este capítulo se explicó detalladamente la arquitectura
+de software CloudNAO, la cual llevó al
 cumplimiento del primer objetivo
-de esta investigación. 
+de esta investigación: desarrollar una arquitectura de 
+software para la integración de cómputo en
+la nube con robots NAO. Se mencionaron los 
+siguientes elementos dentro de la 
+arquitectura:
 
-De la API REST se mostraron los recursos que ofrece, como enviar una solicitud y la estructura de la respuesta 
-retornada por la API. Además, se incluye una descripción
-de cada módulo que compone la aplicación para poder
-darle mantenimiento, replicarla o extenderla.
+\begin{itemize}
+    \item Una API REST. Se mostraron los servicios que brinda: detección y reconocimiento de 
+    rostros, procesamiento de un mensaje oral o escrito,
+    OCR y traducción de texto, detección de objetos,
+    y clasificación de imágenes. Se describe
+    el flujo de petición y repuesta. Además, se incluye una descripción de cada módulo que compone la aplicación para poder darle mantenimiento, replicarla o extenderla. 
+    \item Firebase la plataforma que sirve como intermediario para la comunicación de la aplicación web y el robot NAO además de ser
+    la que comparte datos del robot entre las aplicaciones
+    web y móvil. Adicionalmente
+    el robot NAO se puede
+    conectar directamente a Firebase con lo que puede directamente
+    leer y escribir en la base
+    de datos en tiempo real de Firebase
+    para recibir comandos remotos 
+    desde la aplicación web (lectura) y almacenar
+    registros de su estado o configuración (escritura).
 
-Después se incluye un apartado únicamente para
-hablar de la base de datos en tiempo real de Firebase
-y su papel dentro de CloudNAO. Aquí se definió 
-la estructura del JSON y cada uno de sus atributos.
-
-De la aplicación móvil para dispositivos con
-sistema Android se exponen las funcionalidades que 
-ofrece y también una explicación general de las 
-clases principales dentro del código fuente. Una restriccion
-encontrada es que el SDK de NAOqi
-para desarrollar aplicaciones para
+    \item La aplicación móvil para dispositivos con
+sistema Android. En este capítulo se expusieron las funcionalidades de la aplicación. Se encontró con la restricción de que el SDK de NAOqi para desarrollar aplicaciones para
 Android sólo funciona con 
 dispositivos con arquitecturas ARM
 y con una versión menor o igual a Android 5.1.1.
-
-Se explicó también como se realiza la conexión 
-entre el robot NAO y Firebase sin ningún intermediario. Con ésto el
-robot puede directamente
-leer y escribir en la base
-de datos en tiempo real de Firebase
-para realizar algunas tareas de 
-movimiento y almacenamiento de
-registros del estado del robot.
-
-La primera sección del capítulo finaliza con la descripción de
-la aplicación web, sus funcionalidades y un vistazo general
+\item La aplicación web. Al igual que en la aplicación móvil se exponen sus funcionalidades y un vistazo general
 a sus componentes.
+\end{itemize}
 
 En la segunda sección del capítulo
 se mostraron algunos casos de estudio para poner ejemplos
@@ -348,28 +350,34 @@ para realizar algunas tareas.
 \input{C3_servicio_en_la_nube/service_implementation}
 
 \section*{Conclusiones del capítulo}
-En este capítulo logramos cumplir
-el segundo objetivo de la tesis
-al desarrollar un servicio que
+Al concluir este capítulo se logró
+la segunda meta de la investigación.
+Se explicó el desarrollo de un servicio que
 utiliza una red neuronal profunda
 como clasificador de imágenes y
 que es consumido por el robot NAO.
 
-Se logró ver que gracias a
-TensorFlow, la creación, el 
-entrenamiento y evaluación
-del modelo se hace de manera sencilla
-y rápida.
 
-Como trabajos a futuro quedan:
-utilizar otras medidas para evaluar
-el desempeño del clasificador,
-integrar este servicio a la solución
-de la navegación del robot 
-(al menos dentro del laboratorio)
-y probar otras arquitecturas
-de redes neuronales profundas.
+Se experimentó con distintas
+arquitecturas para seleccionar la
+que tuviera el mejor desempeño. Por 
+simplicidad sólo se midió la 
+proporción de objetos clasificados 
+correctamente. Se obtuvieron 
+resultados muy altos, lo cual no
+dice mucho sobre nuestro modelo. 
+Sin embargo, como no era parte del objetivo
+del trabajo no se realizó una evaluación
+exhaustiva del desempeño de la
+red seleccionada.
 
+Con un modelo entrenado, sólo fue necesario 
+integrarlo como un recurso más dentro
+de la API REST de la arquitectura CloudNAO.
+Finalmente se realizaron algunas pruebas
+con una aplicación simple donde el robot
+enviara fotografías a la API mostrando así
+que el servicio es completamente funcional.
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -379,6 +387,8 @@ de redes neuronales profundas.
 
 
 \input{conclusions}
+
+
 
 
 

@@ -2,14 +2,19 @@
 \label{\detokenize{conclusion:cloudnao-una-arquitectura-de-software-para-la-integracion-de-computo-en-la-nube-con-robots-nao}}\label{\detokenize{conclusion:conclusion}}\label{\detokenize{conclusion::doc}}
 \addcontentsline{toc}{chapter}{Conclusiones}
 
-
-El primer objetivo de la tesis fue el diseño e 
-implementación de
-la arquitectura sobre la cual robots NAO pueden
-utilizar tecnologías emergentes como son el cómputo en la nube
-y el aprendizaje 
-profundo. Esto se logró uniendo los siguientes componentes:
-una aplicación móvil y una web, una API REST y al robot NAO.
+El primer objetivo del trabajo fue
+desarrollar una arquitectura de software para la
+integración de cómputo en la nube con robots NAO.
+% fue el diseño e 
+% implementación de
+% la arquitectura sobre la cual robots NAO pueden
+% utilizar tecnologías emergentes como son el cómputo en la nube
+% y el aprendizaje 
+% profundo.
+Esto se logró con la creación de una arquitectura llamada
+CloudNAO. 
+De manera general los componentes de esta arquitectura propuesta son:
+una aplicación móvil y una web, una API REST, el robot NAO y Firebase.
 
 En la aplicación
 móvil se muestran algunos casos de uso del consumo de
@@ -20,11 +25,10 @@ Con ésta, el robot puede generar datos que
 se guardan en la nube o tomar una fotografía,
 enviarla a un servicio para su procesamiento y a partir
 de la respuesta obtenida realizar una acción; todo
-esto en cuestión de segundos.
+esto en cuestión de un par de segundos.
 % Sin embargo, un problema pendiente de la aplicación móvil
 % es la compatibilidad del SDK de NAOqi con nuevos sistemas
 % Android.
-
 Como los servicios brindados dentro de la arquitectura son 
 RESTful, no están limitados a una sola plataforma
 de consumo, cualquier dispositivo que pueda solicitar y
@@ -35,28 +39,42 @@ los principales beneficios de la nube en el desarrollo
 de aplicaciones modernas. Cuenta con una base de datos en tiempo
 real que permite mandar comandos al robot de manera
 inmediata, almacenar grandes volúmenes de datos
-producidos por los sensores de éste y sincronizarlos entre los dispositivos
-conectados.
+producidos por los sensores de éste y sincronizarlos entre los dispositivos conectados.
 
-El segundo objetivo del trabajo fue 
-alcanzado exitosamente con el desarrollo
-de una red neuronal convolucional para la clasificación
-de imágenes en diferentes escenarios dentro del laboratorio.
-De la experimentación, encontramos modelos
-cuyo tiempo de entrenamiento es relativamente bajo, sólo unos 
-cuantos pares de minutos, y cuya precisión es muy alta, que 
-aunque no significa que sean excelentes clasificadores,
-las pruebas sobre el robot funcionaron bien.
-Esto en parte se debe a que
-TensorFlow hace simples y eficientes
-la definición, el entrenamiento y la carga de modelos de 
-aprendizaje automático. 
+El segundo objetivo del trabajo el cual fue desarrollar un servicio de cómputo en la nube que utilizara
+algoritmos de aprendizaje automático, para robots NAO, se 
+alcanzó exitosamente con el desarrollo
+de una red neuronal convolucional para clasificación
+de imágenes. Este clasificador fue inspirado
+por el problema de localización dentro de la planeación 
+automática de movimiento. El flujo de implementación e
+integración utilizado para el clasificador 
+propuesto, se puede replicar para la creación de nuevos servicios
+enfocados a las plataformas NAO.
+% De la experimentación, encontramos modelos
+% cuyo tiempo de entrenamiento es relativamente bajo, sólo unos 
+% cuantos pares de minutos, y cuya precisión es muy alta, que 
+% aunque no significa que sean excelentes clasificadores,
+% las pruebas sobre el robot funcionaron bien.
+% Esto en parte se debe a que
+% TensorFlow hace simples y eficientes
+% la definición, el entrenamiento y la carga de modelos de 
+% aprendizaje automático. 
 % Un trabajo a futuro sería desarrollar un caso de estudio 
 % donde el modelo sirva como auxiliar en la navegación
 % del robot.
 
-Como nota final puedo decir que las tecnologías empleadas
-facilitan la adición
-de nuevas funcionalidades sobre una plataforma con recursos
-limitados, como los son los robots NAO,
-permitiendo introducir al robot a otros campos de estudio.
+Entre los principales trabajos a futuro están:
+extender la arquitectura
+CloudNAO,
+integrar el servicio de clasificacióń de imágenes
+a la solución de planeación de movimiento del robot
+y el uso de otros enfoques, dentro de la inteligencia
+artificial, como las redes bayesianas para solucionar
+problemas dentro de la robótica móvil.
+
+
+% La principal desventaja de la arquitectura es, como
+% en la mayoría de los servicios en la nube, la dependencia
+% a una conexión de internet para acceder a todos
+% los servicios dentro de CloudNAO. Esto se compensa con
