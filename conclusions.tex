@@ -13,15 +13,17 @@ integración de cómputo en la nube con robots NAO.
 % profundo.
 Esto se logró con la creación de una arquitectura llamada
 CloudNAO. 
-De manera general los componentes de esta arquitectura propuesta son:
+De manera general, los elementos que interactúan en la arquitectura son:
 una aplicación móvil y una web, una API REST, el robot NAO y Firebase.
 
-En la aplicación
-móvil se muestran algunos casos de uso del consumo de
-servicios para que el robot NAO pueda realizar tareas
-que por su capacidad de procesamiento no podría 
-llevar a cabo de manera autónoma.
-Con ésta, el robot puede generar datos que
+Entre las características más importantes dentro 
+de la arquitectura CloudNAO están las brindadas por 
+la aplicación móvil, la API REST y Firebase. Por medio
+del consumo de servicios en la aplicación móvil móvil 
+el robot NAO pueda realizar tareas
+que por sus capacidades, no podría llevar a cabo
+localmente.
+Con la aplicación, el robot puede generar datos que
 se guardan en la nube o tomar una fotografía,
 enviarla a un servicio para su procesamiento y a partir
 de la respuesta obtenida realizar una acción; todo
@@ -34,12 +36,11 @@ RESTful, no están limitados a una sola plataforma
 de consumo, cualquier dispositivo que pueda solicitar y
 manejar mensajes HTTP puede hacer uso de los servicios
 de la API REST de CloudNAO.
-El papel de Firebase es importante porque muestra
-los principales beneficios de la nube en el desarrollo
-de aplicaciones modernas. Cuenta con una base de datos en tiempo
-real que permite mandar comandos al robot de manera
-inmediata, almacenar grandes volúmenes de datos
-producidos por los sensores de éste y sincronizarlos entre los dispositivos conectados.
+Gracias a los servicios que ofrece Firebase, como la
+base de datos en tiempo real, se pueden mandar comandos al 
+robot de manera inmediata, almacenar grandes volúmenes de datos
+producidos por los sensores de éste y sincronizarlos entre los 
+dispositivos conectados.
 
 El segundo objetivo del trabajo el cual fue desarrollar un servicio de cómputo en la nube que utilizara
 algoritmos de aprendizaje automático, para robots NAO, se 
@@ -47,10 +48,11 @@ alcanzó exitosamente con el desarrollo
 de una red neuronal convolucional para clasificación
 de imágenes. Este clasificador fue inspirado
 por el problema de localización dentro de la planeación 
-automática de movimiento. El flujo de implementación e
-integración utilizado para el clasificador 
-propuesto, se puede replicar para la creación de nuevos servicios
-enfocados a las plataformas NAO.
+automática de movimiento.
+En el Capítulo \ref{\detokenize{chapter_three::doc}} se explicó
+la implementación de un servicio, misma que se puede 
+replicar para la creación de nuevos servicios
+enfocados a las plataformas NAO u otros dispositivos.
 % De la experimentación, encontramos modelos
 % cuyo tiempo de entrenamiento es relativamente bajo, sólo unos 
 % cuantos pares de minutos, y cuya precisión es muy alta, que 
@@ -65,14 +67,25 @@ enfocados a las plataformas NAO.
 % del robot.
 
 Entre los principales trabajos a futuro están:
-extender la arquitectura
-CloudNAO,
-integrar el servicio de clasificacióń de imágenes
-a la solución de planeación de movimiento del robot
-y el uso de otros enfoques, dentro de la inteligencia
-artificial, como las redes bayesianas para solucionar
-problemas dentro de la robótica móvil.
 
+\begin{itemize}
+    \item Uso de nuevos dispositivos
+que interactúen dentro de la arquitectura como
+kits de microcontroladores (Arduino), ordenadores
+de placa reducida (Raspberry Pi) o incluso 
+vehículos aéreos no tripulados. Hacer pruebas con estos 
+dispositivos es posible gracias a las tecnologías 
+utilizadas en la arquitectura CloudNAO.
+\item Un caso de estudio interesante es la navegación y localización del robot NAO, por ejemplo, en el espacio de trabajo del LAR.
+Queda como tarea ulterior la integración del servicio de clasificacióń de imágenes a la solución de navegación y localización del robot NAO. El clasificador ofrecido como un servicio es un herramienta simple y 
+eficiente que tiene como objetivo asistir a la planeación de movimiento de robots NAO dentro del LAR.
+\item Crear nuevos servicios para la arquitectura CloudNAO. Estos 
+servicios no tienen que aplicarse necesariamente
+sobre tareas específicas de los robots NAO, pueden estar enfocados
+hacia otras plataformas. Adicionalmente, se propone utilizar otras
+técnicas, dentro del campo de la inteligencias artificial, como
+las redes bayesianas.
+\end{itemize}
 
 % La principal desventaja de la arquitectura es, como
 % en la mayoría de los servicios en la nube, la dependencia

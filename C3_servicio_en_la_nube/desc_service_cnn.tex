@@ -33,7 +33,7 @@ Las imágenes se obtuvieron desde el robot usando el módulo de
 el cual permite guardar secuencias de video utilizando las cámaras del robot y guardarlas 
 en su disco. De los videos se extrajeron algunos fotogramas, no todos para evitar
 redundancias, los cuales se separaron en carpetas
-de acuerdo al lugar (categoría) que pertenecían. Después de este proceso
+de acuerdo con el lugar (categoría) que pertenecían. Después de este proceso
 de obtención de imágenes a partir de video y de su separación en cada clase, se
 generaron dos conjuntos, el de entrenamiento y el de prueba. El conjunto 
 de entrenamiento está compuesto por $6000$ imágenes, $1500$ por cada clase.
@@ -52,7 +52,7 @@ diversos parámetros como el número y tamaño de los kernels, la tasa de aprend
 
 El primer parámetro importante es la dimensión de
 la entrada de la red. El valor de éste se mantuvo del
-modelo LeNet-5 donde las imágenes tiene tamaño de $32 \times 32$,
+modelo LeNet-5 donde las imágenes tienen tamaño de $32 \times 32$,
 con la adición de que las imágenes en nuestra red
 tienen tres canales porque se encuentran en el espacio de 
 color RGB.
@@ -201,7 +201,7 @@ Para estructuras con dos capas de convolución y dos capas completamente conecta
 tenemos dos
 pares de dimensiones para el kernel y dos pares para el número de mapas de 
 características. Podemos escoger tres valores para el número de unidades 
-en la cada oculta. Y tenemos tres valores distintos para la tasa de aprendizaje, 
+en la capa oculta. Y tenemos tres valores distintos para la tasa de aprendizaje, 
 el número de épocas y el tamaño del lote. Por lo que tenemos un total
 de $2 \times 2 \times 3 \times 3 \times 3 \times 3 = 324$ modelos posibles. 
 

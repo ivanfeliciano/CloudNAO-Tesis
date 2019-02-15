@@ -74,18 +74,17 @@
 % éste desde cualquier lugar.
 
 El cómputo en la nube se ha convertido en una
-tendencia tecnológica importante y muchos
-expertos esperan que este paradigma 
-modifique los procesos de las tecnologías de
+tendencia tecnológica importante y se espera que este paradigma modifique los procesos de las tecnologías de
 la información. Con el cómputo en la nube, los usuarios 
  utilizan una variedad de dispositivos como 
  computadoras personales y teléfonos inteligentes,
  para acceder a programas, almacenamiento y plataformas
  para el desarrollo de aplicaciones a través de internet,
  usando servicios ofrecidos por proveedores de cómputo
- en la nube. Las ventajas de esta tecnología 
- incluyen ahorro en el costo, alta disponibilidad y fácil
- escalabilidad \cite{borkofurhtarmandoescalante2010}.
+ en la nube \cite{borkofurhtarmandoescalante2010}. 
+%  Las ventajas de esta tecnología 
+%  incluyen ahorro en el costo, alta disponibilidad y fácil
+%  escalabilidad .
  
  
 El cómputo en la nube puede definirse como un modelo 
@@ -97,23 +96,21 @@ unir y lanzar rápidamente con un mínimo esfuerzo de
 gestión o interacción con el proveedor de servicios \cite{mell_peter_tim_2011}.
 
 
-Existen diferentes plataformas que 
-ofrecen servicios
-de computación en la nube para solucionar problemas de 
-visión computacional \cite{googlevision2018} o
-procesamiento de lenguaje natural \cite{witaidocs2018} usando modelos
-de aprendizaje profundo. 
+Existen diferentes plataformas 
+de cómputo en la nube que 
+ofrecen servicios de aprendizaje profundo
+para la solución de problemas de visión
+computacional \cite{googlevision2018} o
+procesamiento de lenguaje natural \cite{witaidocs2018}.
+El aprendizaje profundo es un 
+tipo de aprendizaje automático donde las computadoras 
+construyen conceptos complejos a partir de conceptos más 
+simples \cite{iangoodfellowyoshuabengioaaroncourville2017}.
 Todos estos recursos se entregan a través de 
 interfaces que
-permiten que casi cualquier dispositivo con 
-internet
-pueda acceder a éstos.
-El aprendizaje profundo es un 
-tipo
-de aprendizaje automático donde las computadoras 
-construyen
-conceptos complejos a partir de conceptos más 
-simples \cite{iangoodfellowyoshuabengioaaroncourville2017}.
+permiten que casi cualquier dispositivo con internet, un robot
+por ejemplo, pueda acceder a éstos.
+
 
 Un robot es un dispositivo mecánico versátil (por ejemplo,
 una brazo manipulador, una mano con múltiples dedos 
@@ -149,18 +146,19 @@ determinar el estado del robot. El mapeo es el problema de
 explorar y sensar un ambiente desconocido. La combinación
 de localización y mapeo es conocido como SLAM (mapeo y localización simultáneos)  \cite{choset_2005}.
 
-El Laboratorio de Algoritmos para la Robótica (LAR) es un grupo de 
-investigación que se dedica principalmente al diseño de 
-algoritmos con aplicación en la planeación de movimientos 
-de robots móviles y está 
-conformado por estudiantes de la Facultad de Estudios 
+El Laboratorio de Algoritmos para la Robótica (LAR) es un 
+grupo de investigación perteneciente a la Facultad de Estudios
 Superiores (FES) Acatlán, de la Universidad Nacional 
-Autónoma de México (UNAM). El LAR cuenta con un robot NAO, un robot
-humanoide programable y autónomo.
-NAO cuenta con un poder de procesamiento suficiente para realizar 
-tareas como jugar un partido de fútbol con otros robots \cite{splinfo2018}. Sin embargo, debido a las características
-del hardware y a que sus componentes no son personalizables,
-es una plataforma con recursos limitados \cite{aldebaranrobotics}.
+Autónoma de México (UNAM), que se dedica, entre otras cosas, 
+al diseño de algoritmos con aplicación en la planeación de 
+movimientos de robots móviles. El LAR cuenta con un robot 
+NAO, un robot humanoide programable y autónomo, conocido
+por ser la plataforma utilizada en la competencia de RoboCup Standard Platform League \cite{splinfo2018}. 
+Debido a las 
+características del hardware (véanse las especificaciones 
+técnicas en \cite{aldebaranrobotics}) y a que sus componentes 
+no son personalizables, es una plataforma con recursos 
+bastante limitados.
 
 
 % Utilizando esta plataforma el laboratorio ha participado
@@ -169,15 +167,16 @@ es una plataforma con recursos limitados \cite{aldebaranrobotics}.
 % en la que todos los equipos participantes utilizan al robot NAO y éste juega de manera autónoma.
 %¿Qué es lo que no sabemos?\\
 
-Las tendencias actuales indican que 
-el cómputo en la nube tienen el potencial para
+Trabajos actuales como 
+\cite{benkehoesachinpatilpieterabbeelkengoldberg2014}
+indican que el cómputo en la nube tienen el potencial para
 proveer beneficios significativos a robots y
-sistemas autónomos \cite{benkehoesachinpatilpieterabbeelkengoldberg2014}.
-Además el cómputo en la nube es el marco de trabajo que
+sistemas autónomos.
+Además, el cómputo en la nube es el marco de trabajo que
 unifica los elementos que permiten que exista el
 internet de las cosas \cite{jayavardhanagubbiarajkumarbuyyabslavenmarusicamarimuthupalaniswamia2013}. Utilizar este modelo de cómputo sobre el robot NAO permite
 que forme parte de esa interconexión de sensores y actuadores que comparten información entre plataformas
-a través de internet. Además, los proveedores de servicios de 
+a través de internet. Adicionalmente, los proveedores de servicios de 
 computación en la nube brindan herramientas para el acceso 
 a los datos del robot desde cualquier lugar y el uso de 
 aprendizaje profundo para resolver problemas 
@@ -186,7 +185,8 @@ imágenes, procesamiento de lenguaje natural e incluso el
 problema de SLAM \cite{tateno2017cnn}.
 Estos servicios en la nube permiten que
 todo el sensado, cálculo y memoria no estén
-integrados en un solo sistema.
+integrados en un solo sistema, lo que permite
+extender las capacidades del robot NAO.
 %¿Qué pretendemos averiguar? (objetivo)
 
 Este trabajo de investigación tiene dos objetivos principales:
@@ -212,30 +212,33 @@ imágenes en escenarios, la conexión con el robot desde diferentes dispositivos
 Para cubrir el segundo objetivo se desarrolló 
 una red neuronal convolucional, tal que pudiera ser consumida
 como un servicio. Esta red neuronal profunda es un clasificador
-que sirve como herramienta auxiliar a una pequeña parte de la solución del 
-problema de localización. Aquí el principal objetivo
+que sirve como herramienta auxiliar a una pequeña parte de la solución 
+del problema de localización. Aquí el principal objetivo
 no es la calidad ni el desempeño del clasificador,
-si no mostrar el flujo del desarrollo de un algoritmo
-de aprendizaje y su lanzamiento como un servicio.
+sino la implementación de este servicio para ser consumido
+por cualquier robot NAO.
 
 En el Capítulo \ref{\detokenize{chapter_one::doc}} de este 
 documento se describen las tecnologías sobre las que está
-basada la arquitectura de software propuesta como son: el robot
-NAO y su marco de trabajo para desarrollo, la arquitecura REST y 
-su uso en las API, el cómputo en la nube, la plataforma Firebase, los servicios utilizados dentro de la arquitectura y además de 
-algunos conceptos fundamentales del aprendizaje automático,
-profundizando en las redes neuronales.
+basada la arquitectura de software propuesta como son: el 
+robot NAO y su marco de trabajo para desarrollo, la 
+arquitectura REST (una arquitectura de software que provee 
+estándares entre sistemas computacionales en la web, 
+facilitando la comunicación entro ellos), 
+el cómputo en la nube, la plataforma de Backend as a Service 
+Firebase, ejemplos de servicios utilizados dentro de la 
+arquitectura y además de conceptos fundamentales del 
+aprendizaje automático y redes neuronales, esto último para la
+implementación del servicio.
 
 En el Capítulo \ref{\detokenize{chapter_two::doc}} se 
 desarrolla la arquitectura de software
-CloudNAO. Se
-detalla cada uno de los componentes de la arquitectura,
-sus funcionalidades, implementación y relación
+CloudNAO. Se detalla cada uno de los elementos de la arquitectura, sus funcionalidades, implementación y relación
 entre ellos.
-Entre los elementos que integran la arquitectura se encuentran una aplicación móvil y una web, el robot NAO,
-una API REST la cual maneja los servicios consumidos
-por terceros y los desarrollados por el laboratorio
-y Firebase.
+Entre los elementos que integran la arquitectura se 
+encuentran: el robot NAO, una API REST la cual maneja los 
+servicios que consume el robot, una aplicación móvil, una 
+aplicación web y Firebase.
 Lo descrito
 en esta parte del trabajo sirve 
 como documentación tanto como para desarrolladores como

@@ -16,8 +16,9 @@ Es un cliente y servidor a la vez.
 \label{\detokenize{chapter_two/desc_cloudnao:documentacion-para-desarrolladores-clientes}}
 La API REST de CloudNAO permite integrar dentro de una aplicación un
 conjunto de herramientas para el análisis de imágenes.
-Todas éstas basadas en modelos de aprendizaje automático. El URL base al
-que todos los recursos son relativos es \sphinxcode{http://132.248.180.17/}.
+Todas éstas basadas en modelos de aprendizaje automático. 
+% El URL base al
+% que todos los recursos son relativos es \sphinxcode{http://132.248.180.17/}.
 
 La API tiene tres recursos:
 \begin{itemize}
@@ -131,11 +132,9 @@ En el cuerpo del mensaje se envía un JSON con la siguiente estructura. En la ta
   \PYG{l+s+s2}{\PYGZdq{}imageSource\PYGZdq{}}\PYG{o}{:} \PYG{l+s+s2}{\PYGZdq{}Hello, world!\PYGZdq{}}\PYG{p}{,}
   \PYG{l+s+s2}{\PYGZdq{}features\PYGZdq{}}\PYG{o}{:} \PYG{p}{[}
     \PYG{p}{\PYGZob{}}
-      \PYG{l+s+s2}{\PYGZdq{}type\PYGZdq{}}\PYG{o}{:} \PYG{l+s+s2}{\PYGZdq{}Hello, world!\PYGZdq{}}\PYG{p}{,}
-      \PYG{l+s+s2}{\PYGZdq{}subjectID\PYGZdq{}}\PYG{o}{:} \PYG{l+s+s2}{\PYGZdq{}Hello, world!\PYGZdq{}}
+      \PYG{l+s+s2}{\PYGZdq{}type\PYGZdq{}}\PYG{o}{:} \PYG{l+s+s2}{\PYGZdq{}Hello, world!\PYGZdq{}}\PYG{p}{,}      \PYG{l+s+s2}{\PYGZdq{}subjectID\PYGZdq{}}\PYG{o}{:} \PYG{l+s+s2}{\PYGZdq{}Hello, world!\PYGZdq{}}
     \PYG{p}{\PYGZcb{}}
-  \PYG{p}{]}
-\PYG{p}{\PYGZcb{}}
+  \PYG{p}{]}{\PYGZcb{}}
 \end{sphinxVerbatim}
 
 
@@ -1017,7 +1016,7 @@ un módulo cliente para solicitar los recursos de \sphinxcode{/message} y \sphin
 Estos recursos tiene la función de hallar información estructurada dentro
 de una oración.
 
-En seguida se muestra cómo utilizar el método \sphinxcode{message()} para
+Enseguida se muestra cómo utilizar el método \sphinxcode{message()} para
 enlistar las intenciones encontradas en una cadena de texto.
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]

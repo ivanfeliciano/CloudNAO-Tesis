@@ -63,7 +63,7 @@ de TensorFlow.
 Se construyó una clase que pudiera crear gráficas de modelos
 con los cuatro casos antes descritos y luego se automatizó el proceso de
 entrenamiento de todas las posibles arquitecturas, variando los parámetros.
-Así, cada instancia de la clase, es un modelo diferente. En esta sección se 
+Así, cada instancia de la clase es un modelo diferente. En esta sección se 
 describe la implementación de las CNN, su entrenamiento, evaluación
 y lanzamiento sobre la API REST de CloudNAO.
 
@@ -116,7 +116,7 @@ Como estamos utilizando un algoritmo de aprendizaje supervisado,
 se necesitan etiquetas u objetivos para cada imagen. La representación
 de esas etiquetas se hizo con vectores $\mathbf{y}$ en codificación one-hot,
 con $y_n = 1$ si la imagen pertenece a la clase $n$ y $y_i = 0$ para todos los
-demás casos. Los vectores posibles de acuerdo las cuatro categorías son los siguientes:
+demás casos. Los vectores posibles de acuerdo con las cuatro categorías son los siguientes:
 
 \begin{itemize}
 \item $(1, 0, 0, 0)$ si la imagen es de la categoría \textit{zona de trabajo}.
@@ -197,7 +197,7 @@ crear la gráfica con dos capas de convolución.
 
 \begin{enumerate}
 
-\item La creación de la primera de convolución, recibe como entradas el placeholder
+\item La creación de la primera capa de convolución, recibe como entradas el placeholder
 con las imágenes y a la función se le pasan como parámetros una lista con las dimensiones
 de los kernels que se aplican y el número de mapas de características. Por ejemplo
 un lista \sphinxcode{\sphinxupquote{{[}5, 5, 3, 16{]}}} indica que se deben aplicar kernels de $5 \times 5$ a
@@ -285,10 +285,10 @@ el tamaño del lote y el número de épocas, respectivamente.
 \PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{n}{clasificador}\PYG{o}{.}\PYG{n}{create\PYGZus{}graph\PYGZus{}2\PYGZus{}convo\PYGZus{}layers}\PYG{p}{(}\PYG{p}{)}
 \PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{n}{clasificador}\PYG{o}{.}\PYG{n}{run\PYGZus{}graph}\PYG{p}{(}\PYG{l+m+mi}{200}\PYG{p}{,} \PYG{l+m+mi}{3000}\PYG{p}{)}
 \PYG{g+go}{i; time; training loss; test loss; accuracy}
-\PYG{g+go}{0;0.7688136100769043;1.5798137187957764;1.4590167999267578;0.13778409361839294}
+\PYG{g+go}{0;0.768813;1.579813;1.459016;0.13778409}
 \PYG{g+gp}{...}
-\PYG{g+go}{3000;68.31876397132874;0.0036288381088525057;0.11022621393203735;0.9692234992980957}
-\PYG{g+go}{Time 68.3188087940216}
+\PYG{g+go}{3000;68.318763;0.003628;0.110226;0.969223}
+\PYG{g+go}{Time 68.318808}
 \end{sphinxVerbatim}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

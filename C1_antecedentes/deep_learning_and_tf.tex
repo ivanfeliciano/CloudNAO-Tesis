@@ -132,7 +132,7 @@ produce la salida incorrecta \cite{iangoodfellowyoshuabengioaaroncourville2017}.
 
 Usualmente estamos interesados en cómo se desempeña un algoritmo de
 aprendizaje automático sobre datos que no ha visto,
-ya que determina que tan bien trabajará cuando se lance al mundo real.
+ya que determina qué tan bien trabajará cuando se lance al mundo real.
 Por lo tanto evaluamos estas medidas de desempeño usando un \textit{conjunto de
 prueba}, que está separado de los datos usados para entrenar el sistema
 de aprendizaje automático.
@@ -147,7 +147,7 @@ A la mayoría de los algoritmos de aprendizaje se les permite
 experimentar un \textit{conjunto de datos}.\\
 
 \begin{remark}
-Un conjunto de datos es un
+Un conjunto de datos es una
 colección de muchas muestras. Algunas veces a esas muestras se les llama
 \textit{patrones de entrada}.
 De manera muy general un conjunto de datos
@@ -158,9 +158,9 @@ es una colección de muestras, que a su vez son colecciones de \textit{caracter�
 \subsubsection{Algoritmos de aprendizaje no supervisados}
 
 \begin{remark}
-Los algoritmos de aprendizaje no supervisados aprenden a partir de un conjunto
-de datos que contiene una gran cantidad de características, entonces aprenden algunas
-propiedades útiles de la estructura del conjunto de datos \cite{iangoodfellowyoshuabengioaaroncourville2017}.  
+Los algoritmos de aprendizaje no supervisados utilizan un conjunto
+de datos que contiene una gran cantidad de características para aprender algunas
+propiedades útiles de la estructura de éste \cite{iangoodfellowyoshuabengioaaroncourville2017}.  
 \end{remark}
 
 Algunos algoritmos no supervisados realizan papeles como el 
@@ -183,8 +183,8 @@ supervisados}
 Los algoritmos de aprendizaje supervisados experimentan un conjunto de
 datos que contiene características, pero cada muestra está asociada además con
 una \textit{etiqueta} u \textit{objetivo}.
-El aprendizaje supervisado involucra observar bastantes muestras de un
-vector aleatorio $\mathbf{x}$ y un valor o vector asociado $\mathbf{y}$, y aprender a
+El aprendizaje supervisado involucra observar varias muestras de 
+un vector aleatorio $\mathbf{x}$ y un valor o vector asociado $\mathbf{y}$, y aprender a
 predecir $\mathbf{y}$ a partir de $\mathbf{x}$, usualmente estimando $P(\mathbf{y} |\mathbf{x})$ \cite{iangoodfellowyoshuabengioaaroncourville2017}.
 \end{remark}
 
@@ -280,7 +280,7 @@ El infra-ajuste
 ocurre cuando el modelo no puede obtener un valor en el error lo
 suficientemente bajo sobre el conjunto de entrenamiento. El sobreajuste
 ocurre cuando la diferencia entre el error de entrenamiento y de prueba
-es muy grande \cite{iangoodfellowyoshuabengioaaroncourville2017}.
+es muy grande\cite{iangoodfellowyoshuabengioaaroncourville2017}. Esto último ocurre cuando el primero es muy bajo y el segundo muy alto.
 \end{remark}
 
 
@@ -327,8 +327,8 @@ La mayoría de los algoritmos de aprendizaje involucran la optimización
 de alguna forma. La optimización se refiere a la tarea de 
 minimizar o maximizar una función $f(\mathbf{x})$ alterando $\mathbf{x}$.
 
-La función que queremos minimizar o maximizar se conoce como \textit{función objetivo}.
-En el contexto del aprendizaje automático, queremos minimizar una \textit{función
+La función a minimizar o maximizar se conoce como \textit{función objetivo}.
+En el contexto del aprendizaje automático, se quiere minimizar una \textit{función
 de costo} que mide el error de entrenamiento. 
 
 Antes de avanzar conviene repasar algunos conceptos de cálculo
@@ -337,7 +337,7 @@ Supongamos que tenemos la función $y = f(x)$, donde $x$ y $y$ son números real
 La \textit{derivada} de la función se denota como $f'(x)$ o $\frac{dy}{dx}$.
 La derivada $f'(x)$ da la pendiente de la recta tangente de $f(x)$ en el punto x.
 La derivada
-especifica como se puede escalar un cambio menor en la entrada de manera que se obtenga
+especifica cómo se puede escalar un cambio menor en la entrada de manera que se obtenga
 el cambio correspondiente en la salida: $f(x + \gamma) \approx f(x) + \gamma f'(x)$.
 
 La derivada por lo tanto es útil para minimizar una función porque nos dice
@@ -895,13 +895,15 @@ En el paso hacia adelante, la red calcula una salida basada en sus entradas actu
 $j$ calcula una suma ponderada $a_j$ de sus entradas y la pasa a través de una función
 para obtener la salida del nodo $y_j$.
 
-\[
-a_j = \sum_{i < j} w_{ij} y_i
-\]
+\begin{equation}\label{linear_combination_aj}
+a_j = \sum_{i < j} w_{ij} y_i    
+\end{equation}
 
-\[
-y_j = f(a_j)
-\]
+
+\begin{equation}
+y_j = f(a_j)    
+\end{equation}
+
 
 $w_{ij}$ denota el peso que llega al nodo $j$ desde el nodo $i$. El índice $i$ en la suma
 va sobre todos los índices $i < j$ de nodos que envían una entrada al nodo $j$. Normalmente
@@ -976,7 +978,7 @@ los nodos de salida, $t_{pk}$ y $y_{pk}$ son respectivamente, el objetivo y la s
 $k$ ésimo nodo de salida de la muestra $p$.
 Una de las razones por las que la SSE es conveniente es porque los errores entre las diferentes
 muestras o patrones y las diferentes salidas son independientes, el error
-total es la suma de la los errores cuadrados individuales.
+total es la suma de los errores cuadrados individuales.
 
 \[
 E = \sum_p E_p
@@ -989,7 +991,7 @@ E_p = \frac{1}{2} \sum_k (t_{pk} - y_{pk})^2
 \paragraph{Cálculo de las derivadas}
 Después de obtener las salidas y de haber calculado el error, el siguiente paso es
 calcular la derivada del error con respecto de los pesos. Recordando que $E = \sum_p E_p$
-es la suma de los error individuales de los patrones, entonces la derivada total
+es la suma del error individual de los patrones, entonces la derivada total
 es sola la suma de las derivadas por muestra.
 
 \[
@@ -1010,7 +1012,8 @@ La derivada con respecto a las conexiones a las unidades de salida puede ser esc
     \frac{\partial E_p}{\partial w_{jk}} = \frac{\partial E_p}{\partial y_k}\frac{\partial y_k}{\partial a_k} \frac{\partial a_{k}}{\partial w_{jk}}
 \end{equation}
 
-donde $k$ indexa a una unidad de salida. Conviene primero calcular un valor
+donde $k$ indexa a una unidad de salida y $a_k$ se calcula
+utilizando la ecuación \ref{linear_combination_aj}. Conviene primero calcular un valor
 $\delta_k$ para cada nodo de salida $k$. Este valor delta también es conocido
 como \textit{error de retropropagación}.
 
@@ -1030,7 +1033,7 @@ Por lo tanto
     \frac{\partial E_p}{\partial w_{jk}} = \delta_k y_j 
 \end{align*}
 
-El segundo caso corresponde al cálculo de las derivadas es con respecto a los
+El segundo caso corresponde al cálculo de las derivadas con respecto a los
 pesos que se conectan a unidades ocultas. El cálculo de la derivada hasta estos pesos
 no se obtiene de manera directa, como el caso de las conexiones a las unidades de salida,
 por lo que la derivada se obtiene calculando
@@ -1041,7 +1044,7 @@ por lo que la derivada se obtiene calculando
 
 donde $k$ indexa a todas los nodos a los que se conecta la unidad $j$, por ahora suponemos 
 que son las $k$ unidades de salida. Simplificando la expresión, podemos ver que
-en los primeros dos términos estamos calculando los valores delta de las unidades de 
+en los primeros dos factores de la suma estamos calculando los valores delta de las unidades de 
 salida, de ahí el nombre de error de retropropagación.
 
 \begin{align*}
@@ -1645,7 +1648,7 @@ capas de las unidades de cómputo.
 \subsection{Aprendizaje profundo}
 El \textit{aprendizaje profundo} permite a las computadoras construir conceptos complejos
 a partir de conceptos más simples. La Figura 
-\ref{fig:deeplearning_person} muestra como un sistema de aprendizaje profundo
+\ref{fig:deeplearning_person} muestra cómo un sistema de aprendizaje profundo
 puede representar el concepto de la imagen de una persona al combinar conceptos más simples, tales
 como esquinas y contornos, que a su vez están definidos en términos de los bordes.
 El ejemplo por excelencia de un modelo de aprendizaje profundo es una \textit{red neuronal feedforward
@@ -1714,10 +1717,7 @@ de menos abstractas \cite{iangoodfellowyoshuabengioaaroncourville2017}.
 \begin{remark}
 Las redes neuronales convolucionales o CNN (por sus siglas en inglés), son un tipo especializado
 de red neuronal para procesamiento de datos que tienen una topología parecida a una cuadrícula. El nombre de 
-red convolucional indica que la red ocupa una operación matemática llamada convolución. Las redes 
-neuronales
-convolucionales son simplemente redes neuronales que usan la convolución en lugar de la multiplicación de 
-matrices en al menos una de sus capas \cite{iangoodfellowyoshuabengioaaroncourville2017}.
+red convolucional indica que la red ocupa una operación matemática llamada convolución. \cite{iangoodfellowyoshuabengioaaroncourville2017}.
 \end{remark}
 
 
@@ -1774,7 +1774,7 @@ lo tanto, por conveniencia llamaremos a ambas operaciones convolución.
     \centering
     \includegraphics[scale=0.5]{conv_operation.png}
     \caption{Convolución entre una imagen
-    $I$ y un kernel $K$ sin rotarlo 180 grados.}
+    $I$ y un kernel $K$ sin rotarlo 180 grados. Para este ejemplo $h = w = 7$ y $f = 3$.}
     \label{fig:convolution_example}
 \end{figure}
 
@@ -1866,14 +1866,14 @@ retorna el valor máximo dentro de una vecindad rectangular.
 \end{remark}
 
 
-El agrupamiento ayuda a hace que la representación se vuelva 
+El agrupamiento ayuda a hacer que la representación se vuelva 
 aproximadamente invariante a pequeñas traslaciones de
 la entrada. La \textit{invarianza a las traslaciones} significa 
 que si trasladamos la entrada por una pequeña cantidad, los
 valores de la mayoría de las salidas agrupadas no cambian.
 La invarianza a traslaciones locales puede ser muy útil cuando
 nos importa si una característica está presente y no 
-exactamente donde.
+exactamente dónde.
 
 A las capas que pasan por las tres etapas las llamaremos \textit{capas
 de convolución}, aunque para algunos autores, cada etapa es una capa
@@ -2147,7 +2147,7 @@ columna es el objetivo.
 \sphinxcapstartof{table}
 \caption{Definición de la función XOR.\label{table:xor}}
 \sphinxaftercaption
-\begin{tabulary}{\linewidth}[t]{|T|T|T|}
+\begin{tabulary}{\linewidth}[t]{|c|c|c|}
 \hline 
 $X_1$ & $X_2$ & $Y = X_1 \oplus X2$ \\ 
 \hline 
